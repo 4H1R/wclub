@@ -107,9 +107,6 @@ class UserResource extends CustomResource
                 Tables\Columns\IconColumn::make('is_admin')
                     ->translateLabel()
                     ->boolean(),
-                Tables\Columns\TextColumn::make('type')
-                    ->badge()
-                    ->translateLabel(),
                 Tables\Columns\TextColumn::make('first_name')
                     ->sortable()
                     ->searchable()
