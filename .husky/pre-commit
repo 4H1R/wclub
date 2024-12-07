@@ -1,7 +1,7 @@
-# ./vendor/bin/sail artisan ziggy:generate resources/js/@types/ziggy.d.ts --types-only
-# ./vendor/bin/sail artisan ide-helper:models -M
-# ./vendor/bin/sail artisan typescript:transform
-# ./vendor/bin/sail pint --dirty
-# npm run ts:check
-# npm run lint
-# npm run format && git add -A .
+./vendor/bin/sail artisan ziggy:generate resources/js/@types/ziggy.d.ts --types-only
+./vendor/bin/sail artisan ide-helper:models -M
+./vendor/bin/sail artisan typescript:transform
+./vendor/bin/sail pint --dirty
+npm run ts:check
+npm run lint
+npm run format && git add -A .

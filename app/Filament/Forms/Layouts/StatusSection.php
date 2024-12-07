@@ -2,6 +2,7 @@
 
 namespace App\Filament\Forms\Layouts;
 
+use App\Filament\Forms\Components\DateTimePicker;
 use Filament\Forms;
 
 class StatusSection
@@ -9,14 +10,12 @@ class StatusSection
     /**
      * @param  array<Forms\Components\Component>  $components
      */
-    public static function make(array $components = [], bool $includeIsActive = false): Forms\Components\Section
+    public static function make(array $components = [], bool $includePublishedAt = false): Forms\Components\Section
     {
-        if ($includeIsActive) {
+        if ($includePublishedAt) {
             array_unshift(
                 $components,
-                Forms\Components\Toggle::make('is_active')
-                    ->default(true)
-                    ->translateLabel()
+                DateTimePicker::make('published_at'),
             );
         }
 

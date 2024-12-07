@@ -10,8 +10,8 @@ class TimestampsColumn
     public static function make(): array
     {
         return [
-            CustomTimeColumn::make('created_at')->translateLabel(),
-            CustomTimeColumn::make('updated_at')->translateLabel(),
+            CustomTimeColumn::make('created_at'),
+            CustomTimeColumn::make('updated_at'),
         ];
     }
 }

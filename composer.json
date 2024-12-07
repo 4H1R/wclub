@@ -20,6 +20,7 @@
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
         "league/flysystem-aws-s3-v3": "^3.0",
+        "mokhosh/filament-jalali": "^4.4",
         "opcodesio/log-viewer": "^3.12",
         "rawilk/filament-password-input": "^2.0",
         "spatie/eloquent-sortable": "^4.4",

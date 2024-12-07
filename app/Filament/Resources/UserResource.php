@@ -60,9 +60,16 @@ class UserResource extends CustomResource
                 ->regex('/^[0][9][0-9]{9,9}$/')
                 ->required(),
             Forms\Components\DateTimePicker::make('email_verified_at')
+                ->jalali()
                 ->translateLabel(),
             Forms\Components\DateTimePicker::make('phone_verified_at')
+                ->jalali()
                 ->translateLabel(),
+            Forms\Components\DatePicker::make('birth_date')
+                ->translateLabel()
+                ->date()
+                ->jalali()
+                ->required(),
             Password::make('password')
                 ->translateLabel()
                 ->copyable()

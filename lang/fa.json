@@ -2,6 +2,7 @@
   "Users": "کاربر|کاربران",
   "Permissions": "دسترسی|دسترسی ها",
   "Roles": "نقش|نقش ها",
+  "Reward Programs": "خدمت|خدمات",
   "Categories": "دسته بندی|دسته بندی ها",
   "Created at": "ایجاد شده در",
   "Others": "سایر",
@@ -53,5 +54,7 @@
   "Last month": "ماه گذشته",
   "Last year": "سال گذشته",
   "Email verified at": "ایمیل تایید شده",
-  "Phone verified at": "شماره تایید شده "
+  "Phone verified at": "شماره تایید شده ",
+  "Published at": "انتشار داده شده",
+  "Required score": "امتیاز مورد نیاز"
 }

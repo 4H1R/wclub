@@ -51,7 +51,7 @@ enum PermissionsEnum: string implements HasLabel
             self::CreateUsers => 'ایجاد کاربر',
             self::DeleteAnyUsers => 'حدف هر کاربر',
             // Reward Programs
-            self::ViewAnyRewardPrograms => 'مشاهده همه خدمات ها',
+            self::ViewAnyRewardPrograms => 'مشاهده همه خدمات',
             self::UpdateAnyRewardPrograms => 'ویرایش هر خدمت',
             self::CreateRewardPrograms => 'ایجاد خدمت',
             self::DeleteAnyRewardPrograms => 'حدف هر خدمت',
