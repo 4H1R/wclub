@@ -4,7 +4,6 @@ namespace App\Filament\Resources;
 
 use App\Enums\PermissionsEnum;
 use App\Filament\Custom\CustomResource;
-use App\Filament\Forms\Components\FileInput;
 use App\Filament\Forms\Layouts\BasicSection;
 use App\Filament\Forms\Layouts\ComplexForm;
 use App\Filament\Resources\UserResource\Pages;
@@ -68,10 +67,10 @@ class UserResource extends CustomResource
                 ->translateLabel()
                 ->copyable()
                 ->regeneratePassword()
-                ->dehydrateStateUsing(fn($state) => Hash::make($state))
+                ->dehydrateStateUsing(fn ($state) => Hash::make($state))
                 ->maxLength(16)
-                ->dehydrated(fn($state) => filled($state))
-                ->required(fn(string $context): bool => $context === 'create'),
+                ->dehydrated(fn ($state) => filled($state))
+                ->required(fn (string $context): bool => $context === 'create'),
             Password::make('password_confirmation')
                 ->translateLabel()
                 ->dehydrated(false)
@@ -87,8 +86,7 @@ class UserResource extends CustomResource
                 ->relationship('safeRoles', 'title'),
         ]);
 
-
-        return ComplexForm::make($form, [$basicSection,]);
+        return ComplexForm::make($form, [$basicSection]);
     }
 
     /**

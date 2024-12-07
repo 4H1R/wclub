@@ -73,7 +73,7 @@ class User extends Authenticatable implements FilamentUser, HasName
     protected function fullName(): Attribute
     {
         return Attribute::make(
-            get: fn(?string $value, array $attributes) => $attributes['first_name'] . ' ' . $attributes['last_name'],
+            get: fn (?string $value, array $attributes) => $attributes['first_name'].' '.$attributes['last_name'],
         );
     }
 
@@ -86,6 +86,6 @@ class User extends Authenticatable implements FilamentUser, HasName
         return $this
             ->roles()
             // @phpstan-ignore-next-line
-            ->unless(Auth::user()?->isSuperAdmin(), fn(Builder $builder) => $builder->where('name', '!=', RolesEnum::SuperAdmin));
+            ->unless(Auth::user()?->isSuperAdmin(), fn (Builder $builder) => $builder->where('name', '!=', RolesEnum::SuperAdmin));
     }
 }
