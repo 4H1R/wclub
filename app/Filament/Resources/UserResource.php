@@ -52,10 +52,6 @@ class UserResource extends CustomResource
                 ->translateLabel()
                 ->regex('/^[0][9][0-9]{9,9}$/')
                 ->required(),
-            Forms\Components\Select::make('type')
-                ->translateLabel()
-                ->options(UserTypeEnum::class)
-                ->required(),
             Forms\Components\DateTimePicker::make('email_verified_at')
                 ->translateLabel(),
             Forms\Components\DateTimePicker::make('phone_verified_at')
@@ -135,9 +131,6 @@ class UserResource extends CustomResource
             ->filters([
                 Tables\Filters\TernaryFilter::make('is_admin')
                     ->translateLabel(),
-                Tables\Filters\SelectFilter::make('type')
-                    ->translateLabel()
-                    ->options(UserTypeEnum::class),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
