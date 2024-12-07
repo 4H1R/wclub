@@ -25,6 +25,11 @@ enum PermissionsEnum: string implements HasLabel
     case DeleteAnyUsers = 'Delete Any Users';
     case UpdateAnyUsers = 'Update Any Users';
     case UpdateUser = 'Update User';
+    // Reward Programs
+    case ViewAnyRewardPrograms = 'View Reward Programs';
+    case CreateRewardPrograms = 'Create Reward Programs';
+    case DeleteAnyRewardPrograms = 'Delete Any Reward Programs';
+    case UpdateAnyRewardPrograms = 'Update Any Reward Programs';
 
     public function getLabel(): string
     {
@@ -41,10 +46,15 @@ enum PermissionsEnum: string implements HasLabel
             // Users
             self::ViewAnyUsers => 'مشاهده همه کاربر ها',
             self::ViewUser => 'مشاهده حساب کاربری خود',
-            self::UpdateAnyUsers => 'ویرایش هر کاربری',
+            self::UpdateAnyUsers => 'ویرایش هر کاربر',
             self::UpdateUser => 'ویرایش حساب کاربری خود',
             self::CreateUsers => 'ایجاد کاربر',
-            self::DeleteAnyUsers => 'حدف هر کابری',
+            self::DeleteAnyUsers => 'حدف هر کاربر',
+            // Reward Programs
+            self::ViewAnyRewardPrograms => 'مشاهده همه خدمات ها',
+            self::UpdateAnyRewardPrograms => 'ویرایش هر خدمت',
+            self::CreateRewardPrograms => 'ایجاد خدمت',
+            self::DeleteAnyRewardPrograms => 'حدف هر خدمت',
         };
     }
 }

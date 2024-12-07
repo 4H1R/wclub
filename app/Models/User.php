@@ -59,7 +59,7 @@ class User extends Authenticatable implements FilamentUser, HasName
 
     public function canAccessPanel(Panel $panel): bool
     {
-        return $this->isSuperAdmin() || $this->hasPermissionTo(PermissionsEnum::ViewAdminPanel);
+        return $this->hasPermissionTo(PermissionsEnum::ViewAdminPanel);
     }
 
     public function getFilamentName(): string

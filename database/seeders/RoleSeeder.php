@@ -25,6 +25,9 @@ class RoleSeeder extends Seeder
         Role::query()
             ->where('name', RolesEnum::SuperAdmin)
             ->first()
-            ?->syncPermissions(PermissionsEnum::except([])->values()->toArray());
+            ?->syncPermissions(PermissionsEnum::except([
+                PermissionsEnum::ViewUser->name,
+                PermissionsEnum::UpdateUser->name,
+            ])->values()->toArray());
     }
 }
