@@ -47,7 +47,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         Gate::define('viewLogViewer', static function (?User $user) {
-            return app()->isLocal() || $user?->isAdministrator();
+            return app()->isLocal() || $user?->isSuperAdmin();
         });
     }
 }

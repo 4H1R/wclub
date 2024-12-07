@@ -2,21 +2,21 @@
 
 namespace App\Filament\Resources;
 
-use App\Enums\User\UserTypeEnum;
+use App\Enums\PermissionsEnum;
 use App\Filament\Custom\CustomResource;
 use App\Filament\Forms\Components\FileInput;
 use App\Filament\Forms\Layouts\BasicSection;
 use App\Filament\Forms\Layouts\ComplexForm;
-use App\Filament\Forms\Layouts\StatusSection;
 use App\Filament\Resources\UserResource\Pages;
-use App\Filament\Resources\UserResource\RelationManagers;
 use App\Filament\Tables\Columns\TimestampsColumn;
+use App\Models\Role;
 use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Rawilk\FilamentPasswordInput\Password;
 
@@ -31,6 +31,14 @@ class UserResource extends CustomResource
     public static function getNavigationGroup(): ?string
     {
         return trans_choice('Users', 2);
+    }
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()
+            ->when(Auth::user()->hasPermissionTo(PermissionsEnum::ViewUser), function (Builder $builder) {
+                return $builder->where('id', Auth::id());
+            });
     }
 
     public static function form(Form $form): Form
@@ -68,33 +76,19 @@ class UserResource extends CustomResource
                 ->translateLabel()
                 ->dehydrated(false)
                 ->requiredWith('password'),
-            FileInput::make($form, 'image', visibility: 'public')
-                ->image()
-                ->imageEditor(),
-            FileInput::make($form, 'banner', visibility: 'public')
-                ->image()
-                ->imageEditor(),
-        ]);
-
-        $seriesLibraries = BasicSection::make([
-            Forms\Components\Select::make('owned_series')
-                ->label(trans_choice('Series', 2))
+            Forms\Components\Select::make('roles')
                 ->searchable()
-                ->preload()
-                ->columnSpanFull()
                 ->multiple()
+                ->visible(Auth::user()->hasPermissionTo(PermissionsEnum::UpdateAnyRoles))
+                ->notIn([Role::superAdmin()->id], ! Auth::user()->isSuperAdmin())
+                ->label(trans_choice('Roles', 2))
+                ->preload()
                 ->optionsLimit(50)
-                ->relationship(name: 'ownedSeries', titleAttribute: 'title', modifyQueryUsing: function (Builder $query) {
-                    return $query->select('series.id', 'series.title')->distinct();
-                }),
+                ->relationship('safeRoles', 'title'),
         ]);
 
-        $statusSection = StatusSection::make([
-            Forms\Components\Toggle::make('is_admin')
-                ->translateLabel(),
-        ]);
 
-        return ComplexForm::make($form, [$basicSection, $seriesLibraries], [$statusSection]);
+        return ComplexForm::make($form, [$basicSection,]);
     }
 
     /**
@@ -104,9 +98,6 @@ class UserResource extends CustomResource
     {
         return $table
             ->columns([
-                Tables\Columns\IconColumn::make('is_admin')
-                    ->translateLabel()
-                    ->boolean(),
                 Tables\Columns\TextColumn::make('first_name')
                     ->sortable()
                     ->searchable()
