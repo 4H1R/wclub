@@ -70,3 +70,8 @@ export function isAxiosError<ResponseType>(
 ): error is AxiosError<ResponseType> {
   return axios.isAxiosError(error) && statusCode ? error.response?.status === statusCode : true;
 }
+
+export function isUrlActive(currentUrl: string, targetUrl: string) {
+  if (targetUrl === '/') return currentUrl === targetUrl;
+  return currentUrl.startsWith(targetUrl);
+}

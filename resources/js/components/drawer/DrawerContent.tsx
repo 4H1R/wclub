@@ -1,7 +1,7 @@
 import { navbarLinks } from '@/fixtures/links';
 import Image from '@/shared/images/Image';
 import Search from '@/shared/Search';
-import { cn } from '@/utils';
+import { cn, isUrlActive } from '@/utils';
 import { Link, usePage } from '@inertiajs/react';
 
 export default function DrawerContent() {
@@ -22,7 +22,7 @@ export default function DrawerContent() {
         {navbarLinks
           .filter((link) => link.showOn !== 'desktop')
           .map((link) => {
-            const isActive = url === link.href;
+            const isActive = isUrlActive(url, link.href);
             const Icon = isActive ? link.ActiveIcon : link.Icon;
 
             return (

@@ -1,5 +1,5 @@
 import { navbarLinks } from '@/fixtures/links';
-import { cn } from '@/utils';
+import { cn, isUrlActive } from '@/utils';
 import { Link, usePage } from '@inertiajs/react';
 
 export default function DesktopLinks() {
@@ -13,7 +13,10 @@ export default function DesktopLinks() {
           .map((link) => (
             <li
               className={cn({
-                'border-b border-primary text-primary hover:border-none': url === link.href,
+                'border-b border-primary text-primary hover:border-none': isUrlActive(
+                  url,
+                  link.href,
+                ),
               })}
               key={link.title}
             >

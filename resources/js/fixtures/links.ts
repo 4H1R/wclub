@@ -27,7 +27,7 @@ type TNavbarLink = {
 };
 
 export const navbarLinks: TNavbarLink[] = [
-  { title: 'خانه', href: '/', Icon: HiOutlineHome, ActiveIcon: HiHome, showOn: 'all' },
+  { title: 'خانه', href: '/', Icon: HiOutlineHome, ActiveIcon: HiHome, showOn: 'mobile' },
   {
     title: 'رویداد ها',
     href: '/event-programs',

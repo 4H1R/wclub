@@ -1,30 +1,54 @@
 import { PageProps } from '@/@types';
+import { useShowTooltip } from '@/hooks';
 import RewardProgramCard from '@/shared/cards/RewardProgramCard';
+import DesktopSortBy from '@/shared/filtering/DesktopSortBy';
+import MobileSortBy from '@/shared/filtering/MobileSortBy';
+import Button from '@/shared/forms/Button';
 import NoRecords from '@/shared/NoRecords';
 import Pagination from '@/shared/Pagination';
 import Search from '@/shared/Search';
 import { PaginatedCollection } from '@/types';
 import { usePage } from '@inertiajs/react';
+import { HiOutlineSparkles } from 'react-icons/hi2';
 
 type TPage = PageProps<{
   reward_programs: PaginatedCollection<App.Data.RewardProgram.RewardProgramData>;
 }>;
 
+const sorts = [
+  { label: 'پیشفرض', value: '' },
+  { label: 'بیشترین امتیاز', value: '-required_score' },
+  { label: 'کمترین امتیاز', value: 'required_score' },
+  { label: 'جدیدترین', value: '-created_at' },
+  { label: 'قدیمی ترین', value: 'created_at' },
+];
+
 export default function Index() {
   const { reward_programs } = usePage<TPage>().props;
+  const showTooltip = useShowTooltip();
   const url = usePage().url;
 
   return (
     <div className="space-y container">
-      <div className="flex flex-wrap items-center justify-between gap-4">
+      <div className="flex items-center gap-2 overflow-x-auto">
+        <MobileSortBy options={sorts} />
+        <Button className="btn btn-sm">
+          <span>دسته بندی ها</span>
+          <HiOutlineSparkles className="size-5" />
+        </Button>
+      </div>
+      <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between lg:flex-col lg:items-start lg:justify-normal">
         <h1 className="h1 text-base-content">خدمات</h1>
-        <Search key={url} />
+        <div className="flex items-center justify-between gap-4 lg:w-full">
+          <DesktopSortBy options={sorts} />
+          <Search key={url} />
+        </div>
       </div>
       {reward_programs.meta.total < 1 && <NoRecords />}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {reward_programs.data.map((rewardProgram, i) => (
           <RewardProgramCard
-            showScoreTooltipForCoupleOfSeconds={i === 0 && reward_programs.meta.current_page === 1}
+            showTooltip={showTooltip && i === 0}
             key={rewardProgram.id}
             rewardProgram={rewardProgram}
           />

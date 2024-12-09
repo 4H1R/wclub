@@ -16,6 +16,7 @@ class RewardProgramController extends Controller
     {
         $rewardPrograms = QueryBuilder::for(RewardProgram::class)
             ->allowedFilters(AllowedFilter::scope('query'))
+            ->allowedSorts(['created_at', 'required_score'])
             ->withGlobalScope('active', new PublishedScope)
             ->with(['image', 'categories'])
             ->fastPaginate(15);
