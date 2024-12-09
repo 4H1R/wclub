@@ -1,5 +1,6 @@
 import { navbarLinks } from '@/fixtures/links';
 import Image from '@/shared/images/Image';
+import Search from '@/shared/Search';
 import { cn } from '@/utils';
 import { Link, usePage } from '@inertiajs/react';
 
@@ -15,6 +16,7 @@ export default function DrawerContent() {
         alt="لوگو بانوان آفتاب"
         src="/images/logo/logo3.webp"
       />
+      <Search key={url} url={route('search', undefined, false)} />
       <div className="divider" />
       <ul>
         {navbarLinks

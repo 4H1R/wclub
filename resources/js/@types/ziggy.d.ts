@@ -2,6 +2,14 @@
 declare module 'ziggy-js' {
   interface RouteList {
     'sanctum.csrf-cookie': [];
+    'reward-programs.index': [];
+    'reward-programs.show': [
+      {
+        name: 'reward_program';
+        required: true;
+      },
+    ];
+    search: [];
     register: [];
     login: [];
     'password.request': [];

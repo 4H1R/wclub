@@ -8,8 +8,14 @@ import {
   HiOutlineFilm,
   HiOutlineHome,
   HiOutlineMegaphone,
+  HiOutlineSignal,
+  HiOutlineSparkles,
   HiOutlineStar,
+  HiOutlineTrophy,
+  HiSignal,
+  HiSparkles,
   HiStar,
+  HiTrophy,
 } from 'react-icons/hi2';
 
 type TNavbarLink = {
@@ -22,12 +28,25 @@ type TNavbarLink = {
 
 export const navbarLinks: TNavbarLink[] = [
   { title: 'خانه', href: '/', Icon: HiOutlineHome, ActiveIcon: HiHome, showOn: 'all' },
-  { title: 'دوره ها', href: '/series', Icon: HiOutlineFilm, ActiveIcon: HiFilm, showOn: 'all' },
+  {
+    title: 'رویداد ها',
+    href: '/event-programs',
+    Icon: HiOutlineSignal,
+    ActiveIcon: HiSignal,
+    showOn: 'all',
+  },
   {
     title: 'خدمات',
-    href: '/educational-stages',
+    href: '/reward-programs',
     Icon: HiOutlineStar,
     ActiveIcon: HiStar,
+    showOn: 'all',
+  },
+  {
+    title: 'باغ بانوان',
+    href: '/educational-stages',
+    Icon: HiOutlineSparkles,
+    ActiveIcon: HiSparkles,
     showOn: 'all',
   },
   {
@@ -37,6 +56,14 @@ export const navbarLinks: TNavbarLink[] = [
     ActiveIcon: HiMegaphone,
     showOn: 'all',
   },
+  {
+    title: 'چالش و مسابقات',
+    href: '/contests',
+    Icon: HiOutlineTrophy,
+    ActiveIcon: HiTrophy,
+    showOn: 'all',
+  },
+  { title: 'دوره ها', href: '/series', Icon: HiOutlineFilm, ActiveIcon: HiFilm, showOn: 'all' },
   {
     title: 'تماس با ما',
     href: '/contact-us',
@@ -51,9 +78,9 @@ export const footerLinks = [
     title: 'بخش ها',
     links: [
       { title: 'خانه', href: '/' },
-      { title: 'امتیاز ها', href: '/' },
       { title: 'پویش ها', href: '/' },
-      { title: 'چالش و مسابقه ها', href: '/' },
+      { title: 'بازی ها', href: '/' },
+      { title: 'چالش و مسابقات', href: '/' },
       { title: 'دوره های آموزشی', href: '/' },
     ],
   },
@@ -61,7 +88,7 @@ export const footerLinks = [
     title: 'خدمات',
     links: [
       { title: 'باغ بانوان', href: '/' },
-      { title: 'همه خدمات', href: '/' },
+      { title: 'همه خدمات', href: '/reward-programs' },
     ],
   },
   {

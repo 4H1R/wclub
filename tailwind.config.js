@@ -30,7 +30,7 @@ export default {
           ...require('daisyui/src/theming/themes')['light'],
           primary: config.primaryColor,
           'primary-content': colors.white,
-          secondary: colors.pink['600'],
+          secondary: colors.pink['500'],
           error: colors.rose['600'],
         },
       },

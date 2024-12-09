@@ -1,3 +1,63 @@
+declare namespace App.Data {
+  export type ChartData = {
+    date: string;
+    aggregate: number;
+  };
+}
+declare namespace App.Data.Category {
+  export type CategoryData = {
+    id: number;
+    title: string;
+  };
+}
+declare namespace App.Data.Media {
+  export type ImageData = {
+    id: number;
+    original_url: string;
+  };
+  export type VideoData = {
+    id: number;
+    mime_type: string;
+    url: string | null;
+  };
+}
+declare namespace App.Data.RewardProgram {
+  export type RewardProgramData = {
+    id: number;
+    title: string;
+    short_description: string | null;
+    required_score: number;
+    image: App.Data.Media.ImageData | null;
+    categories: Array<App.Data.Category.CategoryData>;
+  };
+}
+declare namespace App.Data.Tag {
+  export type TagData = {
+    id: number;
+    title: string;
+  };
+}
+declare namespace App.Data.User {
+  export type AuthUserData = {
+    id: number;
+    first_name: string;
+    last_name: string;
+    email: string | null;
+    phone: string | null;
+    email_verified_at: string | null;
+    phone_verified_at: string | null;
+    is_admin: boolean;
+    created_at: string;
+    updated_at: string;
+  };
+  export type UserData = {
+    id: number;
+    first_name: string;
+    last_name: string;
+    image: App.Data.Media.ImageData | null;
+    created_at: string;
+  };
+}
 declare namespace App.Enums {
   export enum GenderEnum {
     'Male' = 'MALE',

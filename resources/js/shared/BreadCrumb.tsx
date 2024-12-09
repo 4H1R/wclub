@@ -7,9 +7,14 @@ export type TBreadcrumb = {
 
 type BreadCrumbProps = {
   links: TBreadcrumb[];
+  addBaseToLinks?: boolean;
 };
 
-export default function BreadCrumb({ links }: BreadCrumbProps) {
+export default function BreadCrumb({ links, addBaseToLinks = true }: BreadCrumbProps) {
+  if (addBaseToLinks) {
+    links.unshift({ href: '/', title: 'باشگاه بانوان' });
+  }
+
   return (
     <div className="breadcrumbs text-base">
       <ul>

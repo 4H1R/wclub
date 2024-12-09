@@ -1,14 +1,15 @@
+import { useCurrentRoute } from '@/hooks';
 import Button from '@/shared/forms/Button';
 import { PaginatedCollection } from '@/types';
 import { cn } from '@/utils';
-import { router, usePage } from '@inertiajs/react';
+import { router } from '@inertiajs/react';
 
 type PaginationProps = {
   data: PaginatedCollection<object>;
 };
 
 export default function Pagination({ data }: PaginationProps) {
-  const currentRoute = usePage().url.split('?')[0];
+  const currentRoute = useCurrentRoute();
   const handleChangePage = (page: string | number) => {
     router.get(currentRoute, { ...route().params, page }, { preserveState: true });
   };
@@ -16,7 +17,7 @@ export default function Pagination({ data }: PaginationProps) {
   if (data.meta.total <= 0) return null;
 
   return (
-    <div className="join col-span-full flex items-center justify-center">
+    <div className="join col-span-full flex flex-wrap items-center justify-center gap-y-2">
       {data?.links.map((link) => (
         <Button
           onClick={() => {

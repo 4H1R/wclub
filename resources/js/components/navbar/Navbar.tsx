@@ -41,7 +41,7 @@ export default function Navbar() {
       }}
       className={cn(
         'sticky top-0 z-10 border-b border-base-300 bg-base-100 transition-shadow delay-100',
-        { 'shadow-md': isScrolled },
+        { shadow: isScrolled },
       )}
     >
       <div className="container navbar">

@@ -42,6 +42,7 @@
     "vite": "^5.0"
   },
   "dependencies": {
+    "@persian-tools/persian-tools": "^3.5.2",
     "clsx": "^2.1.1",
     "framer-motion": "^11.13.1",
     "html-react-parser": "^5.2.0",
@@ -50,6 +51,7 @@
     "react-icons": "^5.4.0",
     "react-select": "^5.8.3",
     "react-toastify": "^10.0.6",
-    "tailwind-merge": "^2.5.3"
+    "tailwind-merge": "^2.5.3",
+    "use-debounce": "^10.0.4"
   }
 }
