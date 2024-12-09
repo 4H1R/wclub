@@ -3,6 +3,7 @@
   "Permissions": "دسترسی|دسترسی ها",
   "Roles": "نقش|نقش ها",
   "Reward Programs": "خدمت|خدمات",
+  "Event Programs": "رویداد|رویداد ها",
   "Categories": "دسته بندی|دسته بندی ها",
   "Created at": "ایجاد شده در",
   "Others": "سایر",
@@ -56,5 +57,7 @@
   "Email verified at": "ایمیل تایید شده",
   "Phone verified at": "شماره تایید شده ",
   "Published at": "انتشار داده شده",
-  "Required score": "امتیاز مورد نیاز"
+  "Required score": "امتیاز مورد نیاز",
+  "Min participants": "حداقل شرکت کنندگان",
+  "Max participants": "حداکثر شرکت کنندگان"
 }

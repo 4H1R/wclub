@@ -2,7 +2,7 @@
 
 namespace App\Filament\Resources;
 
-use App\Enums\PermissionsEnum;
+use App\Enums\PermissionEnum;
 use App\Filament\Custom\CustomResource;
 use App\Filament\Forms\Layouts\BasicSection;
 use App\Filament\Forms\Layouts\ComplexForm;
@@ -35,7 +35,7 @@ class UserResource extends CustomResource
     public static function getEloquentQuery(): Builder
     {
         return parent::getEloquentQuery()
-            ->when(Auth::user()->hasPermissionTo(PermissionsEnum::ViewUser), function (Builder $builder) {
+            ->when(Auth::user()->hasPermissionTo(PermissionEnum::ViewUser), function (Builder $builder) {
                 return $builder->where('id', Auth::id());
             });
     }
@@ -85,7 +85,7 @@ class UserResource extends CustomResource
             Forms\Components\Select::make('roles')
                 ->searchable()
                 ->multiple()
-                ->visible(Auth::user()->hasPermissionTo(PermissionsEnum::UpdateAnyRoles))
+                ->visible(Auth::user()->hasPermissionTo(PermissionEnum::UpdateAnyRoles))
                 ->notIn([Role::superAdmin()->id], ! Auth::user()->isSuperAdmin())
                 ->label(trans_choice('Roles', 2))
                 ->preload()

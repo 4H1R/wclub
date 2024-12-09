@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Enums\PermissionsEnum;
+use App\Enums\PermissionEnum;
 use App\Models\Permission;
 use Illuminate\Database\Seeder;
 
@@ -10,12 +10,12 @@ class PermissionSeeder extends Seeder
 {
     public function run(): void
     {
-        PermissionsEnum::all()->each(function (string $name) {
+        PermissionEnum::all()->each(function (string $name) {
             if (Permission::where('name', $name)->exists()) {
                 return;
             }
 
-            Permission::create(['name' => $name, 'title' => PermissionsEnum::from($name)->getLabel()]);
+            Permission::create(['name' => $name, 'title' => PermissionEnum::from($name)->getLabel()]);
         });
     }
 }

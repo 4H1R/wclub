@@ -23,7 +23,12 @@ class RewardProgramResource extends CustomResource
 
     protected static string $translationLabel = 'Reward Programs';
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-bolt';
+
+    public static function getNavigationGroup(): ?string
+    {
+        return trans_choice('Reward Programs', 2);
+    }
 
     public static function form(Form $form): Form
     {
@@ -39,6 +44,15 @@ class RewardProgramResource extends CustomResource
                 ->columnSpanFull()
                 ->minValue(0)
                 ->integer(),
+            Forms\Components\TextInput::make('min_participants')
+                ->translateLabel()
+                ->minValue(0)
+                ->integer(),
+            Forms\Components\TextInput::make('max_participants')
+                ->translateLabel()
+                ->gt('min_participants')
+                ->minValue(0)
+                ->integer(),
             Forms\Components\Textarea::make('short_description')
                 ->translateLabel()
                 ->columnSpanFull()
@@ -46,6 +60,15 @@ class RewardProgramResource extends CustomResource
             Forms\Components\MarkdownEditor::make('content')
                 ->translateLabel()
                 ->columnSpanFull()
+                ->required(),
+            Forms\Components\Select::make('categories')
+                ->label(trans_choice('Categories', 2))
+                ->searchable()
+                ->preload()
+                ->columnSpanFull()
+                ->multiple()
+                ->optionsLimit(50)
+                ->relationship('categories', 'title')
                 ->required(),
             FileInput::make($form, 'image', visibility: 'public')
                 ->image()
@@ -71,6 +94,18 @@ class RewardProgramResource extends CustomResource
                     ->sortable()
                     ->searchable()
                     ->badge()
+                    ->translateLabel(),
+                Tables\Columns\TextColumn::make('min_participants')
+                    ->sortable()
+                    ->badge()
+                    ->toggleable()
+                    ->toggledHiddenByDefault()
+                    ->translateLabel(),
+                Tables\Columns\TextColumn::make('max_participants')
+                    ->sortable()
+                    ->badge()
+                    ->toggleable()
+                    ->toggledHiddenByDefault()
                     ->translateLabel(),
                 CustomTimeColumn::make('published_at')
                     ->sortable()

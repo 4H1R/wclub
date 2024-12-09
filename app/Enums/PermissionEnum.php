@@ -5,7 +5,7 @@ namespace App\Enums;
 use EmreYarligan\EnumConcern\EnumConcern;
 use Filament\Support\Contracts\HasLabel;
 
-enum PermissionsEnum: string implements HasLabel
+enum PermissionEnum: string implements HasLabel
 {
     use EnumConcern;
 
@@ -30,6 +30,11 @@ enum PermissionsEnum: string implements HasLabel
     case CreateRewardPrograms = 'Create Reward Programs';
     case DeleteAnyRewardPrograms = 'Delete Any Reward Programs';
     case UpdateAnyRewardPrograms = 'Update Any Reward Programs';
+    // Reward Program Categories
+    case ViewAnyRewardProgramCategories = 'View Reward Program Categories';
+    case CreateRewardProgramCategories = 'Create Reward Program Categories';
+    case DeleteAnyRewardProgramCategories = 'Delete Any Reward Program Categories';
+    case UpdateAnyRewardProgramCategories = 'Update Any Reward Program Categories';
 
     public function getLabel(): string
     {
@@ -55,6 +60,11 @@ enum PermissionsEnum: string implements HasLabel
             self::UpdateAnyRewardPrograms => 'ویرایش هر خدمت',
             self::CreateRewardPrograms => 'ایجاد خدمت',
             self::DeleteAnyRewardPrograms => 'حدف هر خدمت',
+            // Reward Program Categories
+            self::ViewAnyRewardProgramCategories => 'مشاهده همه دسته بندی ها خدمات',
+            self::UpdateAnyRewardProgramCategories => 'ویرایش هر دسته بندی خدمات',
+            self::CreateRewardProgramCategories => 'ایجاد دسته بندی خدمات',
+            self::DeleteAnyRewardProgramCategories => 'حدف هر دسته بندی خدمات',
         };
     }
 }

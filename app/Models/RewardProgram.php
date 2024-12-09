@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\Traits\HasCategories;
+use App\Models\Traits\HasSlug;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
@@ -14,7 +16,7 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 class RewardProgram extends Model implements HasMedia
 {
     /** @use HasFactory<\Database\Factories\RewardProgramFactory> */
-    use HasFactory, InteractsWithMedia;
+    use HasCategories, HasFactory, HasSlug, InteractsWithMedia;
 
     public function registerMediaCollections(): void
     {

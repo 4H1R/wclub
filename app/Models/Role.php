@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Enums\RolesEnum;
+use App\Enums\RoleEnum;
 use Spatie\Permission\Models\Role as SpatieRole;
 
 /**
@@ -12,6 +12,6 @@ class Role extends SpatieRole
 {
     public static function superAdmin(): Role
     {
-        return once(fn () => self::where('name', RolesEnum::SuperAdmin)->firstOrFail());
+        return once(fn () => self::where('name', RoleEnum::SuperAdmin)->firstOrFail());
     }
 }

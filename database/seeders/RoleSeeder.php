@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Enums\PermissionsEnum;
-use App\Enums\RolesEnum;
+use App\Enums\PermissionEnum;
+use App\Enums\RoleEnum;
 use App\Models\Role;
 use Illuminate\Database\Seeder;
 
@@ -14,20 +14,20 @@ class RoleSeeder extends Seeder
      */
     public function run(): void
     {
-        RolesEnum::all()->each(function (string $name) {
+        RoleEnum::all()->each(function (string $name) {
             if (Role::where('name', $name)->exists()) {
                 return;
             }
 
-            Role::create(['name' => $name, 'title' => RolesEnum::from($name)->getLabel()]);
+            Role::create(['name' => $name, 'title' => RoleEnum::from($name)->getLabel()]);
         });
 
         Role::query()
-            ->where('name', RolesEnum::SuperAdmin)
+            ->where('name', RoleEnum::SuperAdmin)
             ->first()
-            ?->syncPermissions(PermissionsEnum::except([
-                PermissionsEnum::ViewUser->name,
-                PermissionsEnum::UpdateUser->name,
+            ?->syncPermissions(PermissionEnum::except([
+                PermissionEnum::ViewUser->name,
+                PermissionEnum::UpdateUser->name,
             ])->values()->toArray());
     }
 }

@@ -18,6 +18,8 @@ class RewardProgramFactory extends Factory
             'title' => $this->faker->persianWords(random_int(2, 7), true),
             'short_description' => fake()->boolean() ? $this->faker->persianText(random_int(160, 210)) : null,
             'content' => $this->faker->persianParagraphs(3, true),
+            'min_participants' => fake()->numberBetween(0, 50),
+            'max_participants' => fake()->boolean() ? fake()->numberBetween(100, 500) : null,
             'required_score' => fake()->numberBetween(50, 500),
             'published_at' => fake()->boolean(90) ? now() : null,
         ];

@@ -5,7 +5,7 @@ namespace App\Enums;
 use EmreYarligan\EnumConcern\EnumConcern;
 use Filament\Support\Contracts\HasLabel;
 
-enum RolesEnum: string implements HasLabel
+enum RoleEnum: string implements HasLabel
 {
     use EnumConcern;
 

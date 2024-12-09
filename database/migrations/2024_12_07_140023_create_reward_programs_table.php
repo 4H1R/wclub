@@ -17,6 +17,8 @@ return new class extends Migration
             $table->text('short_description')->nullable();
             $table->text('content');
             $table->unsignedInteger('required_score');
+            $table->unsignedBigInteger('min_participants')->nullable();
+            $table->unsignedBigInteger('max_participants')->nullable();
             $table->timestamp('published_at')->nullable();
             $table->timestamps();
         });

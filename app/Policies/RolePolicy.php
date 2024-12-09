@@ -2,8 +2,8 @@
 
 namespace App\Policies;
 
-use App\Enums\PermissionsEnum;
-use App\Enums\RolesEnum;
+use App\Enums\PermissionEnum;
+use App\Enums\RoleEnum;
 use App\Models\Role;
 use App\Models\User;
 
@@ -11,17 +11,17 @@ class RolePolicy
 {
     public function isAffectingSuperAdmin(Role $role): bool
     {
-        return $role->name === RolesEnum::SuperAdmin->value;
+        return $role->name === RoleEnum::SuperAdmin->value;
     }
 
     public function canViewSuperAdmin(User $user, Role $role): bool
     {
-        return $role->name === RolesEnum::SuperAdmin->value && ! $user->hasRole(RolesEnum::SuperAdmin);
+        return $role->name === RoleEnum::SuperAdmin->value && ! $user->hasRole(RoleEnum::SuperAdmin);
     }
 
     public function viewAny(User $user): bool
     {
-        return $user->hasPermissionTo(PermissionsEnum::ViewAnyRoles);
+        return $user->hasPermissionTo(PermissionEnum::ViewAnyRoles);
     }
 
     public function view(User $user, Role $role): bool
@@ -30,12 +30,12 @@ class RolePolicy
             return false;
         }
 
-        return $user->hasPermissionTo(PermissionsEnum::ViewAnyRoles);
+        return $user->hasPermissionTo(PermissionEnum::ViewAnyRoles);
     }
 
     public function create(User $user): bool
     {
-        return $user->hasPermissionTo(PermissionsEnum::CreateRoles);
+        return $user->hasPermissionTo(PermissionEnum::CreateRoles);
     }
 
     public function update(User $user, Role $role): bool
@@ -44,7 +44,7 @@ class RolePolicy
             return false;
         }
 
-        return $user->hasPermissionTo(PermissionsEnum::UpdateAnyRoles);
+        return $user->hasPermissionTo(PermissionEnum::UpdateAnyRoles);
     }
 
     public function delete(User $user, Role $role): bool
@@ -53,7 +53,7 @@ class RolePolicy
             return false;
         }
 
-        return $user->hasPermissionTo(PermissionsEnum::DeleteAnyRoles);
+        return $user->hasPermissionTo(PermissionEnum::DeleteAnyRoles);
     }
 
     public function restore(User $user, Role $role): bool

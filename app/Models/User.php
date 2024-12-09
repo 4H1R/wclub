@@ -4,15 +4,15 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
-use App\Enums\PermissionsEnum;
-use App\Enums\RolesEnum;
+use App\Enums\PermissionEnum;
+use App\Enums\RoleEnum;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Models\Contracts\HasName;
 use Filament\Panel;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Query\Builder;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
@@ -54,12 +54,12 @@ class User extends Authenticatable implements FilamentUser, HasName
 
     public function isSuperAdmin(): bool
     {
-        return $this->hasRole(RolesEnum::SuperAdmin);
+        return $this->hasRole(RoleEnum::SuperAdmin);
     }
 
     public function canAccessPanel(Panel $panel): bool
     {
-        return $this->hasPermissionTo(PermissionsEnum::ViewAdminPanel);
+        return $this->hasPermissionTo(PermissionEnum::ViewAdminPanel);
     }
 
     public function getFilamentName(): string
@@ -86,6 +86,6 @@ class User extends Authenticatable implements FilamentUser, HasName
         return $this
             ->roles()
             // @phpstan-ignore-next-line
-            ->unless(Auth::user()?->isSuperAdmin(), fn (Builder $builder) => $builder->where('name', '!=', RolesEnum::SuperAdmin));
+            ->unless(Auth::user()?->isSuperAdmin(), fn (Builder $builder) => $builder->where('name', '!=', RoleEnum::SuperAdmin));
     }
 }

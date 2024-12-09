@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-use App\Enums\PermissionsEnum;
+use App\Enums\PermissionEnum;
 use App\Models\User;
 
 class UserPolicy
@@ -14,21 +14,21 @@ class UserPolicy
 
     public function viewAny(User $user): bool
     {
-        return $user->hasAnyPermission(PermissionsEnum::ViewUser, PermissionsEnum::ViewAnyUsers);
+        return $user->hasAnyPermission(PermissionEnum::ViewUser, PermissionEnum::ViewAnyUsers);
     }
 
     public function view(User $user, User $model): bool
     {
-        if ($user->id === $model->id && $user->hasPermissionTo(PermissionsEnum::ViewUser)) {
+        if ($user->id === $model->id && $user->hasPermissionTo(PermissionEnum::ViewUser)) {
             return true;
         }
 
-        return $user->hasPermissionTo(PermissionsEnum::ViewAnyUsers);
+        return $user->hasPermissionTo(PermissionEnum::ViewAnyUsers);
     }
 
     public function create(User $user): bool
     {
-        return $user->hasPermissionTo(PermissionsEnum::CreateUsers);
+        return $user->hasPermissionTo(PermissionEnum::CreateUsers);
     }
 
     public function update(User $user, User $model): bool
@@ -37,11 +37,11 @@ class UserPolicy
             return false;
         }
 
-        if ($user->id === $model->id && $user->hasPermissionTo(PermissionsEnum::UpdateUser)) {
+        if ($user->id === $model->id && $user->hasPermissionTo(PermissionEnum::UpdateUser)) {
             return true;
         }
 
-        return $user->hasPermissionTo(PermissionsEnum::UpdateAnyUsers);
+        return $user->hasPermissionTo(PermissionEnum::UpdateAnyUsers);
     }
 
     public function delete(User $user, User $model): bool
@@ -50,7 +50,7 @@ class UserPolicy
             return false;
         }
 
-        return $user->hasPermissionTo(PermissionsEnum::DeleteAnyUsers);
+        return $user->hasPermissionTo(PermissionEnum::DeleteAnyUsers);
     }
 
     public function restore(User $user, User $model): bool

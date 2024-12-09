@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-use App\Enums\PermissionsEnum;
+use App\Enums\PermissionEnum;
 use App\Models\Permission;
 use App\Models\User;
 
@@ -10,12 +10,12 @@ class PermissionPolicy
 {
     public function viewAny(User $user): bool
     {
-        return $user->hasPermissionTo(PermissionsEnum::ViewAnyPermissions);
+        return $user->hasPermissionTo(PermissionEnum::ViewAnyPermissions);
     }
 
     public function view(User $user, Permission $permission): bool
     {
-        return $user->hasPermissionTo(PermissionsEnum::ViewAnyPermissions);
+        return $user->hasPermissionTo(PermissionEnum::ViewAnyPermissions);
     }
 
     public function create(User $user): bool

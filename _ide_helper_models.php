@@ -16,6 +16,72 @@ namespace App\Models{
  * 
  *
  * @property int $id
+ * @property string|null $model
+ * @property string $title
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Database\Factories\CategoryFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Category newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Category newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Category query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Category whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Category whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Category whereModel($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Category whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Category whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
+	#[\AllowDynamicProperties]
+	class IdeHelperCategory {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
+ * @property string $gender
+ * @property string $title
+ * @property string $short_description
+ * @property string $content
+ * @property int $min_participants
+ * @property int|null $max_participants
+ * @property int $min_age
+ * @property int|null $max_age
+ * @property string|null $started_at
+ * @property string|null $finished_at
+ * @property string $published_at
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Database\Factories\EventProgramFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram whereContent($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram whereFinishedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram whereGender($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram whereMaxAge($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram whereMaxParticipants($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram whereMinAge($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram whereMinParticipants($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram wherePublishedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram whereShortDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram whereStartedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
+	#[\AllowDynamicProperties]
+	class IdeHelperEventProgram {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
  * @property string $model_type
  * @property int $model_id
  * @property string|null $uuid
@@ -113,12 +179,17 @@ namespace App\Models{
  * @property string|null $short_description
  * @property string $content
  * @property int $required_score
+ * @property int|null $min_participants
+ * @property int|null $max_participants
  * @property string|null $published_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Category> $categories
+ * @property-read int|null $categories_count
  * @property-read \App\Models\Media|null $image
  * @property-read \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection<int, \App\Models\Media> $media
  * @property-read int|null $media_count
+ * @property-read mixed $slug
  * @method static \Database\Factories\RewardProgramFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|RewardProgram newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|RewardProgram newQuery()
@@ -126,6 +197,8 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|RewardProgram whereContent($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|RewardProgram whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|RewardProgram whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|RewardProgram whereMaxParticipants($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|RewardProgram whereMinParticipants($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|RewardProgram wherePublishedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|RewardProgram whereRequiredScore($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|RewardProgram whereShortDescription($value)
@@ -191,6 +264,8 @@ namespace App\Models{
  * @property-read int|null $permissions_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Role> $roles
  * @property-read int|null $roles_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Role> $safeRoles
+ * @property-read int|null $safe_roles_count
  * @method static \Database\Factories\UserFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User newQuery()
