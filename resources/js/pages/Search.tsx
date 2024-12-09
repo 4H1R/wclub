@@ -8,7 +8,7 @@ export default function Index() {
   const url = usePage().url;
 
   return (
-    <div className="space-y container">
+    <div className="space-y mt-page container">
       <div className="flex flex-wrap items-center justify-between gap-4">
         <h1 className="h1 text-base-content">جست و جو</h1>
         <div className="flex items-center gap-4">

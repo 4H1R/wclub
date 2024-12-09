@@ -3,7 +3,7 @@ import { useShowTooltip } from '@/hooks';
 import RewardProgramCard from '@/shared/cards/RewardProgramCard';
 import DesktopSortBy from '@/shared/filtering/DesktopSortBy';
 import MobileSortBy from '@/shared/filtering/MobileSortBy';
-import Button from '@/shared/forms/Button';
+import FilterModal from '@/shared/modals/FilterModal';
 import NoRecords from '@/shared/NoRecords';
 import Pagination from '@/shared/Pagination';
 import Search from '@/shared/Search';
@@ -13,6 +13,7 @@ import { HiOutlineSparkles } from 'react-icons/hi2';
 
 type TPage = PageProps<{
   reward_programs: PaginatedCollection<App.Data.RewardProgram.RewardProgramData>;
+  categories: App.Data.Category.CategoryData[];
 }>;
 
 const sorts = [
@@ -24,18 +25,24 @@ const sorts = [
 ];
 
 export default function Index() {
-  const { reward_programs } = usePage<TPage>().props;
+  const { reward_programs, categories } = usePage<TPage>().props;
   const showTooltip = useShowTooltip();
   const url = usePage().url;
 
   return (
     <div className="space-y container">
-      <div className="flex items-center gap-2 overflow-x-auto">
+      <div className="flex items-center gap-2 overflow-x-auto pt-4">
         <MobileSortBy options={sorts} />
-        <Button className="btn btn-sm">
-          <span>دسته بندی ها</span>
-          <HiOutlineSparkles className="size-5" />
-        </Button>
+        <FilterModal
+          ButtonIcon={HiOutlineSparkles}
+          filterId="categories_id"
+          options={categories.map((category) => ({
+            label: category.title,
+            value: category.id.toString(),
+          }))}
+          title="دسته بندی ها"
+          modalTitle="فیلتر بر اساس دسته بندی ها"
+        />
       </div>
       <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between lg:flex-col lg:items-start lg:justify-normal">
         <h1 className="h1 text-base-content">خدمات</h1>

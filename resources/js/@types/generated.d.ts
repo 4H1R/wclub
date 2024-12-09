@@ -30,6 +30,15 @@ declare namespace App.Data.RewardProgram {
     image: App.Data.Media.ImageData | null;
     categories: Array<App.Data.Category.CategoryData>;
   };
+  export type RewardProgramFullData = {
+    id: number;
+    title: string;
+    short_description: string | null;
+    required_score: number;
+    content: string;
+    image: App.Data.Media.ImageData | null;
+    categories: Array<App.Data.Category.CategoryData>;
+  };
 }
 declare namespace App.Data.Tag {
   export type TagData = {

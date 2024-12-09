@@ -2,6 +2,7 @@ import { cn, slugifyId } from '@/utils';
 import { Link } from '@inertiajs/react';
 import { addCommas, digitsEnToFa } from '@persian-tools/persian-tools';
 import { HiStar } from 'react-icons/hi2';
+import Image from '../images/Image';
 
 type RewardProgramCardProps = {
   rewardProgram: App.Data.RewardProgram.RewardProgramData;
@@ -17,7 +18,15 @@ export default function RewardProgramCard({
   return (
     <div key={rewardProgram.id} className="card h-full bg-base-100 shadow">
       <Link href={href}>
-        <figure className="h-44 w-full bg-base-200"></figure>
+        <figure className="h-44 w-full bg-base-200">
+          {rewardProgram.image && (
+            <Image
+              className="size-full"
+              src={rewardProgram.image?.original_url}
+              alt={rewardProgram.title}
+            />
+          )}
+        </figure>
       </Link>
       <div className="card-body">
         <h2 className="card-title">{rewardProgram.title}</h2>

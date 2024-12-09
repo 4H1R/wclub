@@ -24,7 +24,7 @@ export default function MainLayout({ children }: MainLayoutProps) {
         <input id={config.mobileDrawerId} type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex flex-col">
           <Navbar />
-          <main className="space-y my-4 flex-1 pb-8 md:pb-0">{children}</main>
+          <main className="space-y flex-1 pb-8 md:pb-0">{children}</main>
           <Footer />
         </div>
         <div className="drawer-side z-20">
