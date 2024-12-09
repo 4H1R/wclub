@@ -2,10 +2,6 @@
 declare module 'ziggy-js' {
   interface RouteList {
     'sanctum.csrf-cookie': [];
-    dashboard: [];
-    'profile.edit': [];
-    'profile.update': [];
-    'profile.destroy': [];
     register: [];
     login: [];
     'password.request': [];
