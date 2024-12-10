@@ -4,7 +4,4 @@ export type PageProps<T extends TRecord = TRecord> = T & {
   auth: {
     user: unknown | null;
   };
-  seo: {
-    head: string;
-  };
 };

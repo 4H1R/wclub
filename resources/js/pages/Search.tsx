@@ -1,4 +1,5 @@
 import Button from '@/shared/forms/Button';
+import Head from '@/shared/Head';
 import Search from '@/shared/Search';
 import { openModal } from '@/utils';
 import { usePage } from '@inertiajs/react';
@@ -9,6 +10,7 @@ export default function Index() {
 
   return (
     <div className="space-y mt-page container">
+      <Head title="جست و جو" description="جست و جو" />
       <div className="flex flex-wrap items-center justify-between gap-4">
         <h1 className="h1 text-base-content">جست و جو</h1>
         <div className="flex items-center gap-4">

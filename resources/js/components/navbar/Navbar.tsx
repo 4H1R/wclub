@@ -47,7 +47,7 @@ export default function Navbar() {
       <div className="container navbar">
         <MobileDrawerToggle />
         <div className="navbar-center lg:navbar-start lg:flex-shrink">
-          <Link href="/" className="btn btn-ghost text-xl font-medium">
+          <Link href="/" className="btn btn-ghost text-xl font-medium hover:bg-transparent">
             <Image
               className="!hidden md:!block"
               src="/images/logo/logo3.webp"

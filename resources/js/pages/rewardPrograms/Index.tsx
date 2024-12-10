@@ -3,6 +3,7 @@ import { useShowTooltip } from '@/hooks';
 import RewardProgramCard from '@/shared/cards/RewardProgramCard';
 import DesktopSortBy from '@/shared/filtering/DesktopSortBy';
 import MobileSortBy from '@/shared/filtering/MobileSortBy';
+import Head from '@/shared/Head';
 import FilterModal from '@/shared/modals/FilterModal';
 import NoRecords from '@/shared/NoRecords';
 import Pagination from '@/shared/Pagination';
@@ -31,6 +32,7 @@ export default function Index() {
 
   return (
     <div className="space-y container">
+      <Head title="خدمات" description="خدمات" />
       <div className="flex items-center gap-2 overflow-x-auto pt-4">
         <MobileSortBy options={sorts} />
         <FilterModal
