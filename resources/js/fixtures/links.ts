@@ -8,22 +8,25 @@ import {
   HiOutlineFilm,
   HiOutlineHome,
   HiOutlineMegaphone,
+  HiOutlineQuestionMarkCircle,
   HiOutlineSignal,
   HiOutlineSparkles,
   HiOutlineStar,
   HiOutlineTrophy,
+  HiQuestionMarkCircle,
   HiSignal,
   HiSparkles,
   HiStar,
   HiTrophy,
 } from 'react-icons/hi2';
 
-type TNavbarLink = {
+export type TNavbarLink = {
   title: string;
   href: string;
   Icon: TIcon;
   ActiveIcon: TIcon;
   showOn: 'mobile' | 'desktop' | 'all';
+  desktopSubLinks?: { title: string; href: string }[];
 };
 
 export const navbarLinks: TNavbarLink[] = [
@@ -69,7 +72,31 @@ export const navbarLinks: TNavbarLink[] = [
     href: '/contact-us',
     Icon: HiOutlineEnvelope,
     ActiveIcon: HiEnvelope,
-    showOn: 'all',
+    showOn: 'mobile',
+  },
+  {
+    title: 'درباره ما',
+    href: '/about-us',
+    Icon: HiOutlineQuestionMarkCircle,
+    ActiveIcon: HiQuestionMarkCircle,
+    showOn: 'mobile',
+  },
+  {
+    title: 'باشگاه بانوان',
+    href: '/wclub',
+    Icon: HiOutlineFilm,
+    ActiveIcon: HiFilm,
+    showOn: 'desktop',
+    desktopSubLinks: [
+      {
+        title: 'تماس با ما',
+        href: '/contact-us',
+      },
+      {
+        title: 'درباره ما',
+        href: '/about-us',
+      },
+    ],
   },
 ] as const;
 

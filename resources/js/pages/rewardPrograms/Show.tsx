@@ -32,8 +32,8 @@ export default function Show() {
         />
       )}
       <h1 className="h1">{reward_program.title}</h1>
-      <div className="flex flex-wrap items-center gap-2">
-        <div className="tooltip tooltip-top tooltip-info" data-tip="امتیاز مورد نیاز">
+      <div className="flex flex-wrap items-center gap-2 gap-y-3">
+        <div className="tooltip tooltip-top" data-tip="امتیاز مورد نیاز">
           <div className="badge badge-lg flex items-center justify-center gap-2 bg-yellow-600 text-white">
             <HiStar className="size-4" />
             <span className="font-fa-display">

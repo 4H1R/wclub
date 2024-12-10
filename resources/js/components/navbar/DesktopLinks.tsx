@@ -1,6 +1,7 @@
 import { navbarLinks } from '@/fixtures/links';
 import { cn, isUrlActive } from '@/utils';
 import { Link, usePage } from '@inertiajs/react';
+import DesktopSubLink from './DesktopSubLink';
 
 export default function DesktopLinks() {
   const url = usePage().url;
@@ -20,7 +21,11 @@ export default function DesktopLinks() {
               })}
               key={link.title}
             >
-              <Link href={link.href}>{link.title}</Link>
+              {link.desktopSubLinks ? (
+                <DesktopSubLink link={link} />
+              ) : (
+                <Link href={link.href}>{link.title}</Link>
+              )}
             </li>
           ))}
       </ul>

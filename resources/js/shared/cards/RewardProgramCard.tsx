@@ -35,7 +35,7 @@ export default function RewardProgramCard({
         )}
         <div className="mt-2 flex flex-wrap items-center gap-1">
           <div
-            className={cn('tooltip tooltip-top tooltip-info', {
+            className={cn('tooltip tooltip-top', {
               'tooltip-open animate-bounce': showTooltip,
             })}
             data-tip="امتیاز مورد نیاز"

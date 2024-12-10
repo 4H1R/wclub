@@ -47,19 +47,19 @@ export default function Navbar() {
       <div className="container navbar">
         <MobileDrawerToggle />
         <div className="navbar-center lg:navbar-start lg:flex-shrink">
-          <Link href="/" className="btn btn-ghost text-xl">
+          <Link href="/" className="btn btn-ghost text-xl font-medium">
             <Image
               className="!hidden md:!block"
               src="/images/logo/logo3.webp"
-              width={30}
-              height={30}
+              width={40}
+              height={40}
               alt="لوگو بانوان آفتاب"
             />
-            باشگاه بانوان
+            <span className="lg:hidden">باشگاه بانوان</span>
           </Link>
         </div>
         <DesktopLinks />
-        <div className="navbar-end gap-4">
+        <div className="navbar-end mr-auto">
           {auth.user ? (
             <Profile />
           ) : (

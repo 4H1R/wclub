@@ -2,6 +2,37 @@
 declare module 'ziggy-js' {
   interface RouteList {
     'sanctum.csrf-cookie': [];
+    index: [];
+    contactUs: [];
+    aboutUs: [];
+    search: [];
+    'series.index': [];
+    'series.create': [];
+    'series.store': [];
+    'series.show': [
+      {
+        name: 'series';
+        required: true;
+      },
+    ];
+    'series.edit': [
+      {
+        name: 'series';
+        required: true;
+      },
+    ];
+    'series.update': [
+      {
+        name: 'series';
+        required: true;
+      },
+    ];
+    'series.destroy': [
+      {
+        name: 'series';
+        required: true;
+      },
+    ];
     'reward-programs.index': [];
     'reward-programs.show': [
       {
@@ -9,7 +40,27 @@ declare module 'ziggy-js' {
         required: true;
       },
     ];
-    search: [];
+    'contests.index': [];
+    'contests.show': [
+      {
+        name: 'contest';
+        required: true;
+      },
+    ];
+    'campaigns.index': [];
+    'campaigns.show': [
+      {
+        name: 'campaign';
+        required: true;
+      },
+    ];
+    'event-programs.index': [];
+    'event-programs.show': [
+      {
+        name: 'event_program';
+        required: true;
+      },
+    ];
     register: [];
     login: [];
     'password.request': [];
