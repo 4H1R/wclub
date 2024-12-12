@@ -16,7 +16,7 @@ export default function RewardProgramCard({
   const href = route('reward-programs.show', [slugifyId(rewardProgram.id, rewardProgram.title)]);
 
   return (
-    <div key={rewardProgram.id} className="card h-full bg-base-100 shadow">
+    <div className="card h-full bg-base-100 shadow">
       <Link href={href}>
         <figure className="h-44 w-full bg-base-200">
           {rewardProgram.image && (
@@ -31,7 +31,9 @@ export default function RewardProgramCard({
       <div className="card-body">
         <h2 className="card-title">{rewardProgram.title}</h2>
         {rewardProgram.short_description && (
-          <p className="max-h-fit text-sm">{rewardProgram.short_description}</p>
+          <p className="max-h-fit text-sm text-base-content/80">
+            {rewardProgram.short_description}
+          </p>
         )}
         <div className="mt-2 flex flex-wrap items-center gap-1">
           <div

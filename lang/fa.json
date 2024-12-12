@@ -62,5 +62,7 @@
   "Min participants": "حداقل شرکت کنندگان",
   "Max participants": "حداکثر شرکت کنندگان",
   "Min age": "حداقل سن",
-  "Max age": "حداکثر سن"
+  "Max age": "حداکثر سن",
+  "Started at": "شروع در",
+  "Finished at": "پایان در"
 }

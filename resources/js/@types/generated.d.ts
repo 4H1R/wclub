@@ -19,6 +19,29 @@ declare namespace App.Data.ContactUs {
     description: string;
   };
 }
+declare namespace App.Data.EventProgram {
+  export type EventProgramData = {
+    id: number;
+    title: string;
+    short_description: string | null;
+    image: App.Data.Media.ImageData | null;
+    min_participants: number | null;
+    started_at: string;
+    finished_at: string;
+    categories: Array<App.Data.Category.CategoryData>;
+  };
+  export type EventProgramFullData = {
+    id: number;
+    title: string;
+    short_description: string | null;
+    content: string;
+    image: App.Data.Media.ImageData | null;
+    min_participants: number | null;
+    started_at: string;
+    finished_at: string;
+    categories: Array<App.Data.Category.CategoryData>;
+  };
+}
 declare namespace App.Data.Media {
   export type ImageData = {
     id: number;
@@ -89,11 +112,11 @@ declare namespace App.Enums {
     'DeleteAnyRoles' = 'Delete Any Roles',
     'ViewAnyPermissions' = 'View Any Permissions',
     'ViewAnyUsers' = 'View Any Users',
-    'ViewUser' = 'View User',
+    'ViewOwnedUsers' = 'View Owned Users',
     'CreateUsers' = 'Create Users',
     'DeleteAnyUsers' = 'Delete Any Users',
     'UpdateAnyUsers' = 'Update Any Users',
-    'UpdateUser' = 'Update User',
+    'UpdateOwnedUsers' = 'Update Owned Users',
     'ViewAnyRewardPrograms' = 'View Reward Programs',
     'CreateRewardPrograms' = 'Create Reward Programs',
     'DeleteAnyRewardPrograms' = 'Delete Any Reward Programs',
@@ -106,6 +129,17 @@ declare namespace App.Enums {
     'CreateTargetGroups' = 'Create Reward Target Groups',
     'DeleteAnyTargetGroups' = 'Delete Any Reward Target Groups',
     'UpdateAnyTargetGroups' = 'Update Any Reward Target Groups',
+    'ViewAnyEventProgramCategories' = 'View Event Program Categories',
+    'CreateEventProgramCategories' = 'Create Event Program Categories',
+    'DeleteAnyEventProgramCategories' = 'Delete Any Event Program Categories',
+    'UpdateAnyEventProgramCategories' = 'Update Any Event Program Categories',
+    'ViewAnyEventPrograms' = 'View Event Programs',
+    'ViewOwnedEventPrograms' = 'View Owned Event Programs',
+    'CreateEventPrograms' = 'Create Event Programs',
+    'DeleteAnyEventPrograms' = 'Delete Any Event Programs',
+    'DeleteOwnedEventPrograms' = 'Delete Owned Event Programs',
+    'UpdateAnyEventPrograms' = 'Update Any Event Programs',
+    'UpdateOwnedEventPrograms' = 'Update Owned Event Programs',
   }
   export enum RoleEnum {
     'SuperAdmin' = 'Super Admin',

@@ -26,8 +26,11 @@ class RoleSeeder extends Seeder
             ->where('name', RoleEnum::SuperAdmin)
             ->first()
             ?->syncPermissions(PermissionEnum::except([
-                PermissionEnum::ViewUser->name,
-                PermissionEnum::UpdateUser->name,
+                PermissionEnum::ViewOwnedUsers->name,
+                PermissionEnum::UpdateOwnedUsers->name,
+                PermissionEnum::ViewOwnedEventPrograms->name,
+                PermissionEnum::UpdateOwnedEventPrograms->name,
+                PermissionEnum::DeleteOwnedEventPrograms->name,
             ])->values()->toArray());
     }
 }

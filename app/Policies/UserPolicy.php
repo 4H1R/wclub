@@ -14,12 +14,12 @@ class UserPolicy
 
     public function viewAny(User $user): bool
     {
-        return $user->hasAnyPermission(PermissionEnum::ViewUser, PermissionEnum::ViewAnyUsers);
+        return $user->hasAnyPermission(PermissionEnum::ViewOwnedUsers, PermissionEnum::ViewAnyUsers);
     }
 
     public function view(User $user, User $model): bool
     {
-        if ($user->id === $model->id && $user->hasPermissionTo(PermissionEnum::ViewUser)) {
+        if ($user->id === $model->id && $user->hasPermissionTo(PermissionEnum::ViewOwnedUsers)) {
             return true;
         }
 
@@ -37,7 +37,7 @@ class UserPolicy
             return false;
         }
 
-        if ($user->id === $model->id && $user->hasPermissionTo(PermissionEnum::UpdateUser)) {
+        if ($user->id === $model->id && $user->hasPermissionTo(PermissionEnum::UpdateOwnedUsers)) {
             return true;
         }
 

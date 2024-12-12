@@ -40,17 +40,25 @@ namespace App\Models{
  * 
  *
  * @property int $id
- * @property string $gender
+ * @property int|null $user_id
  * @property string $title
- * @property string $short_description
+ * @property string|null $short_description
  * @property string $content
- * @property int $min_participants
+ * @property int|null $min_participants
  * @property int|null $max_participants
- * @property string|null $started_at
- * @property string|null $finished_at
- * @property string $published_at
+ * @property string $started_at
+ * @property string $finished_at
+ * @property string|null $published_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Category> $categories
+ * @property-read int|null $categories_count
+ * @property-read \App\Models\Media|null $image
+ * @property-read \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection<int, \App\Models\Media> $media
+ * @property-read int|null $media_count
+ * @property-read mixed $slug
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\TargetGroup> $targetGroups
+ * @property-read int|null $target_groups_count
  * @method static \Database\Factories\EventProgramFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram newQuery()
@@ -58,7 +66,6 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram whereContent($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram whereFinishedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram whereGender($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram whereMaxParticipants($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram whereMinParticipants($value)
@@ -67,6 +74,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram whereStartedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram whereUserId($value)
  * @mixin \Eloquent
  */
 	#[\AllowDynamicProperties]

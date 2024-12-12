@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\Category;
+use App\Models\EventProgram;
 use App\Models\RewardProgram;
 use App\Models\TargetGroup;
 use Illuminate\Database\Seeder;
@@ -29,6 +30,13 @@ class DatabaseSeeder extends Seeder
             ->create()
             ->each(function (RewardProgram $rewardProgram) use ($rewardProgramCategories) {
                 $rewardProgram->categories()->attach($rewardProgramCategories->random(rand(0, 5))->pluck('id'));
+            });
+
+        $eventProgramCategories = Category::factory(10)->create(['model' => EventProgram::class]);
+        EventProgram::factory(50)
+            ->create()
+            ->each(function (EventProgram $eventProgram) use ($eventProgramCategories) {
+                $eventProgram->categories()->attach($eventProgramCategories->random(rand(0, 5))->pluck('id'));
             });
     }
 }

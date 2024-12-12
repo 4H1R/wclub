@@ -58,6 +58,7 @@ class RewardProgramResource extends CustomResource
                 ->columnSpanFull()
                 ->maxLength(255),
             Forms\Components\MarkdownEditor::make('content')
+                ->disableToolbarButtons(['attachFiles'])
                 ->translateLabel()
                 ->columnSpanFull()
                 ->required(),

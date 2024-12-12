@@ -13,15 +13,15 @@ return new class extends Migration
     {
         Schema::create('event_programs', function (Blueprint $table) {
             $table->id();
-            $table->string('gender')->index();
+            $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete();
             $table->string('title');
-            $table->text('short_description');
+            $table->text('short_description')->nullable();
             $table->text('content');
-            $table->unsignedInteger('min_participants')->default(0);
+            $table->unsignedInteger('min_participants')->nullable();
             $table->unsignedInteger('max_participants')->nullable();
-            $table->timestamp('started_at')->nullable();
-            $table->timestamp('finished_at')->nullable();
-            $table->timestamp('published_at');
+            $table->timestamp('started_at');
+            $table->timestamp('finished_at');
+            $table->timestamp('published_at')->nullable();
             $table->timestamps();
         });
     }

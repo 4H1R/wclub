@@ -20,11 +20,11 @@ enum PermissionEnum: string implements HasLabel
     case ViewAnyPermissions = 'View Any Permissions';
     // Users
     case ViewAnyUsers = 'View Any Users';
-    case ViewUser = 'View User';
+    case ViewOwnedUsers = 'View Owned Users';
     case CreateUsers = 'Create Users';
     case DeleteAnyUsers = 'Delete Any Users';
     case UpdateAnyUsers = 'Update Any Users';
-    case UpdateUser = 'Update User';
+    case UpdateOwnedUsers = 'Update Owned Users';
     // Reward Programs
     case ViewAnyRewardPrograms = 'View Reward Programs';
     case CreateRewardPrograms = 'Create Reward Programs';
@@ -40,6 +40,19 @@ enum PermissionEnum: string implements HasLabel
     case CreateTargetGroups = 'Create Reward Target Groups';
     case DeleteAnyTargetGroups = 'Delete Any Reward Target Groups';
     case UpdateAnyTargetGroups = 'Update Any Reward Target Groups';
+    // Event Program Categories
+    case ViewAnyEventProgramCategories = 'View Event Program Categories';
+    case CreateEventProgramCategories = 'Create Event Program Categories';
+    case DeleteAnyEventProgramCategories = 'Delete Any Event Program Categories';
+    case UpdateAnyEventProgramCategories = 'Update Any Event Program Categories';
+    // Event Programs
+    case ViewAnyEventPrograms = 'View Event Programs';
+    case ViewOwnedEventPrograms = 'View Owned Event Programs';
+    case CreateEventPrograms = 'Create Event Programs';
+    case DeleteAnyEventPrograms = 'Delete Any Event Programs';
+    case DeleteOwnedEventPrograms = 'Delete Owned Event Programs';
+    case UpdateAnyEventPrograms = 'Update Any Event Programs';
+    case UpdateOwnedEventPrograms = 'Update Owned Event Programs';
 
     public function getLabel(): string
     {
@@ -55,9 +68,9 @@ enum PermissionEnum: string implements HasLabel
             self::ViewAnyPermissions => 'مشاهده همه دسترسی ها',
             // Users
             self::ViewAnyUsers => 'مشاهده همه کاربر ها',
-            self::ViewUser => 'مشاهده حساب کاربری خود',
+            self::ViewOwnedUsers => 'مشاهده حساب کاربری خود',
             self::UpdateAnyUsers => 'ویرایش هر کاربر',
-            self::UpdateUser => 'ویرایش حساب کاربری خود',
+            self::UpdateOwnedUsers => 'ویرایش حساب کاربری خود',
             self::CreateUsers => 'ایجاد کاربر',
             self::DeleteAnyUsers => 'حدف هر کاربر',
             // Reward Programs
@@ -66,7 +79,7 @@ enum PermissionEnum: string implements HasLabel
             self::CreateRewardPrograms => 'ایجاد خدمت',
             self::DeleteAnyRewardPrograms => 'حدف هر خدمت',
             // Reward Program Categories
-            self::ViewAnyRewardProgramCategories => 'مشاهده همه دسته بندی ها خدمات',
+            self::ViewAnyRewardProgramCategories => 'مشاهده همه دسته بندی های خدمات',
             self::UpdateAnyRewardProgramCategories => 'ویرایش هر دسته بندی خدمات',
             self::CreateRewardProgramCategories => 'ایجاد دسته بندی خدمات',
             self::DeleteAnyRewardProgramCategories => 'حدف هر دسته بندی خدمات',
@@ -75,6 +88,19 @@ enum PermissionEnum: string implements HasLabel
             self::UpdateAnyTargetGroups => 'ویرایش هر گروه هدف',
             self::CreateTargetGroups => 'ایجاد گروه هدف',
             self::DeleteAnyTargetGroups => 'حدف هر گروه هدف',
+            // Event Program Categories
+            self::ViewAnyEventProgramCategories => 'مشاهده همه دسته بندی های رویداد ها',
+            self::UpdateAnyEventProgramCategories => 'ویرایش هر دسته بندی رویداد ها',
+            self::CreateEventProgramCategories => 'ایجاد دسته بندی رویداد ها',
+            self::DeleteAnyEventProgramCategories => 'حدف هر دسته بندی رویداد ها',
+            // Event Programs
+            self::ViewAnyEventPrograms => 'مشاهده همه رویداد ها',
+            self::ViewOwnedEventPrograms => 'مشاهده رویداد های خود',
+            self::CreateEventPrograms => 'ایجاد رویداد',
+            self::UpdateAnyEventPrograms => 'ویرایش هر رویداد',
+            self::UpdateOwnedEventPrograms => 'ویرایش رویداد های خود',
+            self::DeleteAnyEventPrograms => 'حذف هر رویداد',
+            self::DeleteOwnedEventPrograms => 'حذف رویداد های خود',
         };
     }
 }
