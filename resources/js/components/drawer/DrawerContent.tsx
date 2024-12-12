@@ -28,7 +28,7 @@ export default function DrawerContent() {
             return (
               <li
                 className={cn({
-                  'font-medium text-primary': isActive,
+                  'font-medium text-primary-solo': isActive,
                 })}
                 key={link.title}
               >

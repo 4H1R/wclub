@@ -62,9 +62,11 @@ declare module 'ziggy-js' {
         required: true;
       },
     ];
+    dashboard: [];
     register: [];
     login: [];
     auth: [];
+    'auth.loginDemo': [];
     logout: [];
     'storage.local': [
       {

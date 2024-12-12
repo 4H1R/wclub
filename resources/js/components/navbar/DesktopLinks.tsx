@@ -7,14 +7,14 @@ export default function DesktopLinks() {
   const url = usePage().url;
 
   return (
-    <nav className="navbar-center hidden lg:flex">
+    <nav className="navbar-center mr-auto hidden lg:flex">
       <ul className="menu menu-horizontal px-1 lg:gap-4">
         {navbarLinks
           .filter((link) => link.showOn !== 'mobile')
           .map((link) => (
             <li
               className={cn({
-                'border-b border-primary text-primary hover:border-none': isUrlActive(
+                'border-b border-primary-solo text-primary-solo hover:border-none': isUrlActive(
                   url,
                   link.href,
                 ),

@@ -64,6 +64,22 @@ export function enumTranslationToOptions<T extends object>(options: T) {
   return Object.entries(options).map(([key, value]) => ({ value: key, label: value }));
 }
 
+export function convertNullToEmptyString<T extends object>(obj: T): T {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const newObject: any = {};
+
+  for (const key in obj) {
+    const value = obj[key];
+    if (value === null) {
+      newObject[key] = '';
+    } else {
+      newObject[key] = value;
+    }
+  }
+
+  return newObject;
+}
+
 export function isAxiosError<ResponseType>(
   error: unknown,
   statusCode?: number,

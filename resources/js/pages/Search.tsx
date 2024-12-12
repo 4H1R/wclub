@@ -1,27 +1,21 @@
-import Button from '@/shared/forms/Button';
 import Head from '@/shared/Head';
 import Search from '@/shared/Search';
-import { openModal } from '@/utils';
 import { usePage } from '@inertiajs/react';
-import { HiFunnel } from 'react-icons/hi2';
+import { useEffect } from 'react';
 
 export default function Index() {
   const url = usePage().url;
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
 
   return (
     <div className="space-y mt-page container">
       <Head title="جست و جو" description="جست و جو" />
       <div className="flex flex-wrap items-center justify-between gap-4">
         <h1 className="h1 text-base-content">جست و جو</h1>
-        <div className="flex items-center gap-4">
-          <div className="indicator md:hidden">
-            <Button onClick={() => openModal('hi')} className="btn w-[7rem]">
-              <HiFunnel className="size-5 text-base-content/90" />
-              <span>فیلتر ها</span>
-            </Button>
-          </div>
-          <Search key={url} />
-        </div>
+        <Search key={url} />
       </div>
     </div>
   );

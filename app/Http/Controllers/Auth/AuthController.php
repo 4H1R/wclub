@@ -15,6 +15,15 @@ class AuthController extends Controller
         return Inertia::render('Auth');
     }
 
+    public function loginDemo(Request $request): RedirectResponse
+    {
+        Auth::loginUsingId(1);
+
+        $request->session()->regenerate();
+
+        return to_route('index', ['auth_was_successful' => true]);
+    }
+
     public function destroy(Request $request): RedirectResponse
     {
         Auth::guard('web')->logout();

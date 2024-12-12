@@ -10,6 +10,15 @@ declare namespace App.Data.Category {
     title: string;
   };
 }
+declare namespace App.Data.ContactUs {
+  export type RequestContactUsData = {
+    full_name: string;
+    email: string | null;
+    phone: string;
+    title: string;
+    description: string;
+  };
+}
 declare namespace App.Data.Media {
   export type ImageData = {
     id: number;

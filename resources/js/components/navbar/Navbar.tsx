@@ -1,9 +1,12 @@
 import { PageProps } from '@/@types';
+import { useCurrentRoute } from '@/hooks';
 import Image from '@/shared/images/Image';
+import Search from '@/shared/Search';
 import { cn } from '@/utils';
 import { Link, usePage } from '@inertiajs/react';
 import { motion, useMotionValueEvent, useScroll } from 'framer-motion';
 import { useRef, useState } from 'react';
+import { HiOutlineMagnifyingGlass } from 'react-icons/hi2';
 import DesktopLinks from './DesktopLinks';
 import MobileDrawerToggle from './MobileDrawerToggle';
 import Profile from './Profile';
@@ -20,6 +23,8 @@ export default function Navbar() {
   const { scrollY } = useScroll();
   const lastOpenY = useRef(0);
   const prevScroll = useRef(0);
+  const currentRoute = useCurrentRoute();
+  const isInSearch = currentRoute.startsWith(route('search', undefined, false));
 
   useMotionValueEvent(scrollY, 'change', (latest: number) => {
     if (latest < prevScroll.current) {
@@ -46,7 +51,11 @@ export default function Navbar() {
     >
       <div className="container navbar">
         <MobileDrawerToggle />
-        <div className="navbar-center lg:navbar-start lg:flex-shrink">
+        <div
+          className={cn('navbar-center lg:navbar-start lg:flex-shrink', {
+            'lg:max-w-fit': !isInSearch,
+          })}
+        >
           <Link href="/" className="btn btn-ghost text-xl font-medium hover:bg-transparent">
             <Image
               className="!hidden md:!block"
@@ -59,7 +68,20 @@ export default function Navbar() {
           </Link>
         </div>
         <DesktopLinks />
-        <div className="navbar-end mr-auto">
+        <div className="navbar-end gap-4">
+          {!isInSearch && (
+            <>
+              <div className="form-control hidden xl:flex">
+                <Search url={route('search', undefined, false)} />
+              </div>
+              <Link
+                href={route('search')}
+                className="btn btn-circle btn-ghost relative hidden lg:flex xl:hidden"
+              >
+                <HiOutlineMagnifyingGlass className="size-6" />
+              </Link>
+            </>
+          )}
           {auth.user ? (
             <Profile />
           ) : (

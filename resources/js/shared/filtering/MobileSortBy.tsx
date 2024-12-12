@@ -43,7 +43,7 @@ export default function MobileSortBy({ options }: MobileSortBy) {
               <Button
                 onClick={() => handleSort(sort)}
                 className={cn('w-full pt-4 text-right font-medium', {
-                  'text-secondary': currentSort === sort.value,
+                  'text-secondary-solo': currentSort === sort.value,
                 })}
               >
                 {sort.label}

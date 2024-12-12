@@ -8,6 +8,8 @@ Route::middleware('guest')->group(function () {
     Route::get('/login', fn () => to_route('auth'))->name('login');
 
     Route::get('/auth', [AuthController::class, 'show'])->name('auth');
+
+    Route::post('/auth/login-demo', [AuthController::class, 'loginDemo'])->name('auth.loginDemo');
 });
 
 Route::middleware('auth')->group(function () {

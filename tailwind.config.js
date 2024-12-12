@@ -13,6 +13,10 @@ export default {
 
   theme: {
     extend: {
+      colors: {
+        'primary-solo': colors.cyan['700'],
+        'secondary-solo': colors.pink['600'],
+      },
       fontFamily: {
         fa: ['Vazirmatn', 'sans-serif'],
         'fa-display': ['Lalezar', 'sans-serif'],
@@ -29,7 +33,7 @@ export default {
         light: {
           ...require('daisyui/src/theming/themes')['light'],
           primary: config.primaryColor,
-          'primary-content': colors.white,
+          'primary-content': colors.gray['900'],
           secondary: colors.pink['500'],
           error: colors.rose['600'],
         },

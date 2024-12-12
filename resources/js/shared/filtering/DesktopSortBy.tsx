@@ -27,7 +27,7 @@ export default function DesktopSortBy({ options }: DesktopSortBy) {
         <Button
           onClick={() => handleSort(sort)}
           className={cn('min-w-fit text-base-content/80 hover:underline', {
-            'font-medium text-secondary': currentSort === sort.value,
+            'font-medium text-secondary-solo': currentSort === sort.value,
           })}
           key={sort.label}
         >

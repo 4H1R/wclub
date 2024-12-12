@@ -26,7 +26,7 @@ export default function DesktopSubLink({ link }: DesktopSubLinkProps) {
           <li key={subLink.href}>
             <Link
               onClick={handleClose}
-              className={cn({ 'text-primary': isUrlActive(url, subLink.href) })}
+              className={cn({ 'text-primary-solo': isUrlActive(url, subLink.href) })}
               href={subLink.href}
             >
               {subLink.title}

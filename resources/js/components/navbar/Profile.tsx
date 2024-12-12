@@ -4,6 +4,7 @@ import Button from '@/shared/forms/Button';
 import { isSsr } from '@/utils';
 import { Link, router, usePage } from '@inertiajs/react';
 import compact from 'lodash/compact';
+import { useMemo } from 'react';
 import Avatar from 'react-avatar';
 
 type TLink = {
@@ -14,10 +15,16 @@ type TLink = {
 
 export default function Profile() {
   const { auth } = usePage<PageProps>().props;
-  const fullName = `کاربر تستی`;
+  const fullName = useMemo(() => {
+    if (!auth.user) return '';
+    if (auth.user.first_name.startsWith('ک') && auth.user.last_name.startsWith('س')) {
+      return auth.user.first_name;
+    }
+    return `${auth.user.first_name} ${auth.user.last_name}`;
+  }, [auth]);
 
   const authLinks: TLink[] = compact([
-    // { title: 'حساب کاربری', href: route('dashboard') },
+    { title: 'داشبورد', href: route('dashboard') },
     auth.user?.can_access_admin_panel && {
       title: 'پنل کاربران بالا رده',
       href: `/admin`,
