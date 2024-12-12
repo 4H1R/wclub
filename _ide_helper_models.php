@@ -46,8 +46,6 @@ namespace App\Models{
  * @property string $content
  * @property int $min_participants
  * @property int|null $max_participants
- * @property int $min_age
- * @property int|null $max_age
  * @property string|null $started_at
  * @property string|null $finished_at
  * @property string $published_at
@@ -62,9 +60,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram whereFinishedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram whereGender($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram whereMaxAge($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram whereMaxParticipants($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram whereMinAge($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram whereMinParticipants($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram wherePublishedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram whereShortDescription($value)
@@ -246,17 +242,45 @@ namespace App\Models{
  * 
  *
  * @property int $id
+ * @property string $title
+ * @property int $min_age
+ * @property int $max_age
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Database\Factories\TargetGroupFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|TargetGroup newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|TargetGroup newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|TargetGroup query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|TargetGroup whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|TargetGroup whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|TargetGroup whereMaxAge($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|TargetGroup whereMinAge($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|TargetGroup whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|TargetGroup whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
+	#[\AllowDynamicProperties]
+	class IdeHelperTargetGroup {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
  * @property string $first_name
  * @property string $last_name
  * @property string $email
  * @property string $phone
  * @property string $birth_date
+ * @property int $score
  * @property \Illuminate\Support\Carbon|null $email_verified_at
  * @property \Illuminate\Support\Carbon|null $phone_verified_at
  * @property string $password
  * @property string|null $remember_token
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read mixed $age
  * @property-read mixed $full_name
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
  * @property-read int|null $notifications_count
@@ -283,6 +307,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User wherePhone($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User wherePhoneVerifiedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereRememberToken($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereScore($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User withoutPermission($permissions)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User withoutRole($roles, $guard = null)

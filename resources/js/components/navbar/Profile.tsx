@@ -1,7 +1,8 @@
 import { PageProps } from '@/@types';
 import config from '@/fixtures/config';
+import Button from '@/shared/forms/Button';
 import { isSsr } from '@/utils';
-import { Link, usePage } from '@inertiajs/react';
+import { Link, router, usePage } from '@inertiajs/react';
 import compact from 'lodash/compact';
 import Avatar from 'react-avatar';
 
@@ -15,20 +16,14 @@ export default function Profile() {
   const { auth } = usePage<PageProps>().props;
   const fullName = `کاربر تستی`;
 
-  const guestLinks: TLink[] = [
-    { title: 'ورود به حساب کاربری', href: route('login') },
-    { title: 'ایجاد حساب کاربری', href: route('register') },
-  ];
   const authLinks: TLink[] = compact([
     // { title: 'حساب کاربری', href: route('dashboard') },
-    // auth.user?.is_admin && {
-    //   title: 'پنل کاربران بالا رده',
-    //   href: `/admin`,
-    //   openOnNewTab: true,
-    // },
+    auth.user?.can_access_admin_panel && {
+      title: 'پنل کاربران بالا رده',
+      href: `/admin`,
+      openOnNewTab: true,
+    },
   ]);
-
-  const links = auth.user ? authLinks : guestLinks;
 
   return (
     <div className="dropdown dropdown-end">
@@ -41,7 +36,7 @@ export default function Profile() {
         tabIndex={0}
         className="menu dropdown-content menu-sm z-[1] mt-3 w-36 gap-2 rounded-box bg-base-100 p-2 shadow"
       >
-        {links.map((link) => (
+        {authLinks.map((link) => (
           <li key={link.title}>
             {link.openOnNewTab ? (
               <a target="_blank" href={link.href} rel="noreferrer">
@@ -52,11 +47,11 @@ export default function Profile() {
             )}
           </li>
         ))}
-        {/* {auth.user && (
+        {auth.user && (
           <li>
             <Button onClick={() => router.post(route('logout'))}>خروج</Button>
           </li>
-        )} */}
+        )}
       </ul>
     </div>
   );

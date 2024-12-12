@@ -6,7 +6,9 @@ namespace Database\Seeders;
 
 use App\Models\Category;
 use App\Models\RewardProgram;
+use App\Models\TargetGroup;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\File;
 
 class DatabaseSeeder extends Seeder
 {
@@ -17,6 +19,10 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             UserSeeder::class,
         ]);
+
+        collect(File::json('database/json/target_groups.json')['entities'])->each(function (array $targetGroup) {
+            TargetGroup::firstOrCreate($targetGroup);
+        });
 
         $rewardProgramCategories = Category::factory(10)->create(['model' => RewardProgram::class]);
         RewardProgram::factory(50)

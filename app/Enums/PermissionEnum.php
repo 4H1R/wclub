@@ -35,6 +35,11 @@ enum PermissionEnum: string implements HasLabel
     case CreateRewardProgramCategories = 'Create Reward Program Categories';
     case DeleteAnyRewardProgramCategories = 'Delete Any Reward Program Categories';
     case UpdateAnyRewardProgramCategories = 'Update Any Reward Program Categories';
+    // Target Groups
+    case ViewAnyTargetGroups = 'View Reward Target Groups';
+    case CreateTargetGroups = 'Create Reward Target Groups';
+    case DeleteAnyTargetGroups = 'Delete Any Reward Target Groups';
+    case UpdateAnyTargetGroups = 'Update Any Reward Target Groups';
 
     public function getLabel(): string
     {
@@ -65,6 +70,11 @@ enum PermissionEnum: string implements HasLabel
             self::UpdateAnyRewardProgramCategories => 'ویرایش هر دسته بندی خدمات',
             self::CreateRewardProgramCategories => 'ایجاد دسته بندی خدمات',
             self::DeleteAnyRewardProgramCategories => 'حدف هر دسته بندی خدمات',
+            // Target Groups
+            self::ViewAnyTargetGroups => ' همه گروه های هدف',
+            self::UpdateAnyTargetGroups => 'ویرایش هر گروه هدف',
+            self::CreateTargetGroups => 'ایجاد گروه هدف',
+            self::DeleteAnyTargetGroups => 'حدف هر گروه هدف',
         };
     }
 }

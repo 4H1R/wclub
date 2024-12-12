@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Traits\HasRoles;
 
@@ -65,6 +66,16 @@ class User extends Authenticatable implements FilamentUser, HasName
     public function getFilamentName(): string
     {
         return $this->full_name;
+    }
+
+    /**
+     * @return Attribute<int,int>
+     */
+    protected function age(): Attribute
+    {
+        return Attribute::make(
+            get: fn (?int $value, array $attributes) => Carbon::parse($attributes['birth_date'])->age,
+        )->shouldCache();
     }
 
     /**

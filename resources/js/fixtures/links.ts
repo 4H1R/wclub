@@ -47,7 +47,7 @@ export const navbarLinks: TNavbarLink[] = [
   },
   {
     title: 'باغ بانوان',
-    href: '/educational-stages',
+    href: '/women-garden',
     Icon: HiOutlineSparkles,
     ActiveIcon: HiSparkles,
     showOn: 'all',
@@ -105,16 +105,16 @@ export const footerLinks = [
     title: 'بخش ها',
     links: [
       { title: 'خانه', href: '/' },
-      { title: 'پویش ها', href: '/' },
-      { title: 'بازی ها', href: '/' },
-      { title: 'چالش و مسابقات', href: '/' },
-      { title: 'دوره های آموزشی', href: '/' },
+      { title: 'پویش ها', href: '/campaigns' },
+      { title: 'بازی ها', href: '/games' },
+      { title: 'چالش و مسابقات', href: '/contests' },
+      { title: 'دوره های آموزشی', href: '/series' },
     ],
   },
   {
     title: 'خدمات',
     links: [
-      { title: 'باغ بانوان', href: '/' },
+      { title: 'باغ بانوان', href: '/women-garden' },
       { title: 'همه خدمات', href: '/reward-programs' },
     ],
   },

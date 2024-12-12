@@ -63,11 +63,9 @@ export default function Navbar() {
           {auth.user ? (
             <Profile />
           ) : (
-            <>
-              <Link className="btn btn-primary" href={route('register')}>
-                حساب کاربری
-              </Link>
-            </>
+            <Link className="btn btn-primary" href={route('auth')}>
+              حساب کاربری
+            </Link>
           )}
         </div>
       </div>

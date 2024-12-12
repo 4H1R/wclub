@@ -5,6 +5,7 @@
   "Reward Programs": "خدمت|خدمات",
   "Event Programs": "رویداد|رویداد ها",
   "Categories": "دسته بندی|دسته بندی ها",
+  "Target Groups": "گروه هدف|گروه های هدف",
   "Created at": "ایجاد شده در",
   "Others": "سایر",
   "Audio": "صدا",
@@ -59,5 +60,7 @@
   "Published at": "انتشار داده شده",
   "Required score": "امتیاز مورد نیاز",
   "Min participants": "حداقل شرکت کنندگان",
-  "Max participants": "حداکثر شرکت کنندگان"
+  "Max participants": "حداکثر شرکت کنندگان",
+  "Min age": "حداقل سن",
+  "Max age": "حداکثر سن"
 }

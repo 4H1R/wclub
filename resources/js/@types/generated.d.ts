@@ -55,7 +55,7 @@ declare namespace App.Data.User {
     phone: string | null;
     email_verified_at: string | null;
     phone_verified_at: string | null;
-    is_admin: boolean;
+    can_access_admin_panel: boolean;
     created_at: string;
     updated_at: string;
   };
@@ -93,6 +93,10 @@ declare namespace App.Enums {
     'CreateRewardProgramCategories' = 'Create Reward Program Categories',
     'DeleteAnyRewardProgramCategories' = 'Delete Any Reward Program Categories',
     'UpdateAnyRewardProgramCategories' = 'Update Any Reward Program Categories',
+    'ViewAnyTargetGroups' = 'View Reward Target Groups',
+    'CreateTargetGroups' = 'Create Reward Target Groups',
+    'DeleteAnyTargetGroups' = 'Delete Any Reward Target Groups',
+    'UpdateAnyTargetGroups' = 'Update Any Reward Target Groups',
   }
   export enum RoleEnum {
     'SuperAdmin' = 'Super Admin',

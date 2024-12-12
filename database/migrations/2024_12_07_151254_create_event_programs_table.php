@@ -19,8 +19,6 @@ return new class extends Migration
             $table->text('content');
             $table->unsignedInteger('min_participants')->default(0);
             $table->unsignedInteger('max_participants')->nullable();
-            $table->unsignedInteger('min_age')->default(0);
-            $table->unsignedInteger('max_age')->nullable();
             $table->timestamp('started_at')->nullable();
             $table->timestamp('finished_at')->nullable();
             $table->timestamp('published_at');

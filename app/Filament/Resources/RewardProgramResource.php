@@ -12,6 +12,7 @@ use App\Filament\Tables\Columns\CustomTimeColumn;
 use App\Filament\Tables\Columns\ImageColumn;
 use App\Filament\Tables\Columns\TimestampsColumn;
 use App\Models\RewardProgram;
+use App\Services\AppService;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Tables;
@@ -105,6 +106,7 @@ class RewardProgramResource extends CustomResource
                     ->sortable()
                     ->badge()
                     ->toggleable()
+                    ->formatStateUsing(fn (string $state) => AppService::formatNumber($state))
                     ->toggledHiddenByDefault()
                     ->translateLabel(),
                 CustomTimeColumn::make('published_at')

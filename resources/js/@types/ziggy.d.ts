@@ -6,6 +6,7 @@ declare module 'ziggy-js' {
     contactUs: [];
     aboutUs: [];
     search: [];
+    womenGarden: [];
     'series.index': [];
     'series.create': [];
     'series.store': [];
@@ -63,29 +64,7 @@ declare module 'ziggy-js' {
     ];
     register: [];
     login: [];
-    'password.request': [];
-    'password.email': [];
-    'password.reset': [
-      {
-        name: 'token';
-        required: true;
-      },
-    ];
-    'password.store': [];
-    'verification.notice': [];
-    'verification.verify': [
-      {
-        name: 'id';
-        required: true;
-      },
-      {
-        name: 'hash';
-        required: true;
-      },
-    ];
-    'verification.send': [];
-    'password.confirm': [];
-    'password.update': [];
+    auth: [];
     logout: [];
     'storage.local': [
       {

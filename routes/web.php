@@ -9,12 +9,14 @@ use App\Http\Controllers\IndexController;
 use App\Http\Controllers\RewardProgramController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SeriesController;
+use App\Http\Controllers\WomenGardenController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', IndexController::class)->name('index');
 Route::get('/contact-us', ContactUsController::class)->name('contactUs');
 Route::get('/about-us', AboutUsController::class)->name('aboutUs');
 Route::get('/search', SearchController::class)->name('search');
+Route::get('/women-garden', WomenGardenController::class)->name('womenGarden');
 
 Route::resource('series', SeriesController::class);
 Route::resource('reward-programs', RewardProgramController::class)->only(['index', 'show']);
