@@ -38,7 +38,7 @@ export default function Show() {
           </span>
         ))}
       </div>
-      <Markdown className="prose max-w-none">{event_program.content}</Markdown>
+      <Markdown className="prose max-w-none text-base-content">{event_program.content}</Markdown>
       <Button className="btn btn-secondary">
         <span>شرکت کردن</span>
         <HiOutlineRocketLaunch className="size-6" />

@@ -3,11 +3,9 @@ import {
   HiEnvelope,
   HiFilm,
   HiHome,
-  HiMegaphone,
   HiOutlineEnvelope,
   HiOutlineFilm,
   HiOutlineHome,
-  HiOutlineMegaphone,
   HiOutlineQuestionMarkCircle,
   HiOutlineSignal,
   HiOutlineSparkles,
@@ -50,13 +48,6 @@ export const navbarLinks: TNavbarLink[] = [
     href: '/women-garden',
     Icon: HiOutlineSparkles,
     ActiveIcon: HiSparkles,
-    showOn: 'all',
-  },
-  {
-    title: 'پویش ها',
-    href: '/campaigns',
-    Icon: HiOutlineMegaphone,
-    ActiveIcon: HiMegaphone,
     showOn: 'all',
   },
   {
@@ -105,7 +96,6 @@ export const footerLinks = [
     title: 'بخش ها',
     links: [
       { title: 'خانه', href: '/' },
-      { title: 'پویش ها', href: '/campaigns' },
       { title: 'بازی ها', href: '/games' },
       { title: 'چالش و مسابقات', href: '/contests' },
       { title: 'دوره های آموزشی', href: '/series' },

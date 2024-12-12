@@ -1,5 +1,5 @@
 export const config = {
-  primaryColor: '#06b6d4',
+  primaryColor: '#ec4899',
   mobileDrawerId: 'mobileDrawer',
 };
 

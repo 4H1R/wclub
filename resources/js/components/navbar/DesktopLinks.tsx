@@ -14,10 +14,8 @@ export default function DesktopLinks() {
           .map((link) => (
             <li
               className={cn({
-                'border-b border-primary-solo text-primary-solo hover:border-none': isUrlActive(
-                  url,
-                  link.href,
-                ),
+                'border-b border-primary-solo font-medium text-primary-solo hover:border-none':
+                  isUrlActive(url, link.href),
               })}
               key={link.title}
             >

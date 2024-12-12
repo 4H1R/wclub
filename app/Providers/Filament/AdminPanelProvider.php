@@ -33,7 +33,7 @@ class AdminPanelProvider extends PanelProvider
                 trans_choice('Users', 2),
             ])
             ->colors([
-                'primary' => Color::Cyan,
+                'primary' => Color::Pink,
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')

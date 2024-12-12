@@ -42,7 +42,7 @@ export default function EventProgramCard({ eventProgram }: EventProgramCardProps
           </div>
         )}
         <Link className="btn md:mt-auto" href={href}>
-          اطلاعات بیشتر
+          <span>اطلاعات بیشتر</span>
         </Link>
       </div>
     </div>

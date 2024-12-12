@@ -14,8 +14,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        'primary-solo': colors.cyan['700'],
-        'secondary-solo': colors.pink['600'],
+        'primary-solo': colors.pink['600'],
+        'secondary-solo': colors.cyan['700'],
       },
       fontFamily: {
         fa: ['Vazirmatn', 'sans-serif'],
@@ -33,8 +33,8 @@ export default {
         light: {
           ...require('daisyui/src/theming/themes')['light'],
           primary: config.primaryColor,
-          'primary-content': colors.gray['900'],
-          secondary: colors.pink['500'],
+          'primary-content': colors.gray['50'],
+          secondary: colors.cyan['500'],
           error: colors.rose['600'],
         },
       },
