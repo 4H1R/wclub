@@ -35,7 +35,7 @@ export default function RewardProgramCard({
             {rewardProgram.short_description}
           </p>
         )}
-        <div className="mt-2 flex flex-wrap items-center gap-1">
+        <div className="flex flex-wrap items-center gap-1 pb-6 pt-2">
           <div
             className={cn('tooltip tooltip-top', {
               'tooltip-open animate-bounce': showTooltip,
@@ -50,12 +50,12 @@ export default function RewardProgramCard({
             </div>
           </div>
           {rewardProgram.categories.map((category) => (
-            <span key={category.id} className="badge badge-md mt-2 bg-base-200">
+            <span key={category.id} className="badge badge-md bg-base-200">
               {category.title}
             </span>
           ))}
         </div>
-        <Link className="btn mt-4 md:mt-auto" href={href}>
+        <Link className="btn md:mt-auto" href={href}>
           اطلاعات بیشتر
         </Link>
       </div>

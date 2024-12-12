@@ -26,6 +26,7 @@ declare namespace App.Data.EventProgram {
     short_description: string | null;
     image: App.Data.Media.ImageData | null;
     min_participants: number | null;
+    max_participants: number | null;
     started_at: string;
     finished_at: string;
     categories: Array<App.Data.Category.CategoryData>;
@@ -37,6 +38,7 @@ declare namespace App.Data.EventProgram {
     content: string;
     image: App.Data.Media.ImageData | null;
     min_participants: number | null;
+    max_participants: number | null;
     started_at: string;
     finished_at: string;
     categories: Array<App.Data.Category.CategoryData>;

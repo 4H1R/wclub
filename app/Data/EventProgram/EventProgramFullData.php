@@ -17,6 +17,7 @@ class EventProgramFullData extends Data
         public string $content,
         public ?ImageData $image,
         public ?int $min_participants,
+        public ?int $max_participants,
         public string $started_at,
         public string $finished_at,
         /** @var CategoryData[] */
