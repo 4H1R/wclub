@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Traits\HasCategories;
 use App\Models\Traits\HasSlug;
+use App\Models\Traits\HasTargetGroups;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -17,7 +18,7 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 class RewardProgram extends Model implements HasMedia
 {
     /** @use HasFactory<\Database\Factories\RewardProgramFactory> */
-    use HasCategories, HasFactory, HasSlug, InteractsWithMedia;
+    use HasCategories, HasFactory, HasSlug, HasTargetGroups, InteractsWithMedia;
 
     public function registerMediaCollections(): void
     {

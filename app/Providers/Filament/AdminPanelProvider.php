@@ -26,7 +26,6 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('admin')
-            ->login()
             ->font('Vazirmatn')
             ->navigationGroups([
                 trans_choice('Reward Programs', 2),

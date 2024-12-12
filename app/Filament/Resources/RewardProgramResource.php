@@ -12,7 +12,6 @@ use App\Filament\Tables\Columns\CustomTimeColumn;
 use App\Filament\Tables\Columns\ImageColumn;
 use App\Filament\Tables\Columns\TimestampsColumn;
 use App\Models\RewardProgram;
-use App\Services\AppService;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Tables;
@@ -66,11 +65,17 @@ class RewardProgramResource extends CustomResource
                 ->label(trans_choice('Categories', 2))
                 ->searchable()
                 ->preload()
-                ->columnSpanFull()
                 ->multiple()
                 ->optionsLimit(50)
                 ->relationship('categories', 'title')
                 ->required(),
+            Forms\Components\Select::make('target_groups')
+                ->label(trans_choice('Target Groups', 2))
+                ->searchable()
+                ->preload()
+                ->multiple()
+                ->optionsLimit(50)
+                ->relationship('targetGroups', 'title'),
             FileInput::make($form, 'image', visibility: 'public')
                 ->image()
                 ->imageEditor()
@@ -106,7 +111,6 @@ class RewardProgramResource extends CustomResource
                     ->sortable()
                     ->badge()
                     ->toggleable()
-                    ->formatStateUsing(fn (string $state) => AppService::formatNumber($state))
                     ->toggledHiddenByDefault()
                     ->translateLabel(),
                 CustomTimeColumn::make('published_at')

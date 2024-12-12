@@ -186,6 +186,8 @@ namespace App\Models{
  * @property-read \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection<int, \App\Models\Media> $media
  * @property-read int|null $media_count
  * @property-read mixed $slug
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\TargetGroup> $targetGroups
+ * @property-read int|null $target_groups_count
  * @method static \Database\Factories\RewardProgramFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|RewardProgram newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|RewardProgram newQuery()

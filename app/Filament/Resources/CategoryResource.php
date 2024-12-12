@@ -36,22 +36,22 @@ class CategoryResource extends CustomResource
 
     public static function canViewAny(): bool
     {
-        return static::$viewAny && Auth::user()->hasPermissionTo(static::$viewAny);
+        return static::$viewAny && Auth::check() && Auth::user()->hasPermissionTo(static::$viewAny);
     }
 
     public static function canCreate(): bool
     {
-        return static::$create && Auth::user()->hasPermissionTo(static::$create);
+        return static::$create && Auth::check() && Auth::user()->hasPermissionTo(static::$create);
     }
 
     public static function canUpdate(Model $record): bool
     {
-        return static::$updateAny && Auth::user()->hasPermissionTo(static::$updateAny);
+        return static::$updateAny && Auth::check() && Auth::user()->hasPermissionTo(static::$updateAny);
     }
 
     public static function canDelete(Model $record): bool
     {
-        return static::$deleteAny && Auth::user()->hasPermissionTo(static::$deleteAny);
+        return static::$deleteAny && Auth::check() && Auth::user()->hasPermissionTo(static::$deleteAny);
     }
 
     public static function getEloquentQuery(): Builder
