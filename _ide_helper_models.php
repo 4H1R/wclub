@@ -16,6 +16,37 @@ namespace App\Models{
  * 
  *
  * @property int $id
+ * @property string $title
+ * @property string $link
+ * @property int|null $order_column
+ * @property string|null $published_at
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Media|null $image
+ * @property-read \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection<int, \App\Models\Media> $media
+ * @property-read int|null $media_count
+ * @method static \Database\Factories\BannerFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Banner newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Banner newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Banner query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Banner whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Banner whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Banner whereLink($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Banner whereOrderColumn($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Banner wherePublishedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Banner whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Banner whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
+	#[\AllowDynamicProperties]
+	class IdeHelperBanner {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
  * @property string|null $model
  * @property string $title
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -257,6 +288,10 @@ namespace App\Models{
  * @property int $max_age
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Media|null $image
+ * @property-read \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection<int, \App\Models\Media> $media
+ * @property-read int|null $media_count
+ * @property-read mixed $slug
  * @method static \Database\Factories\TargetGroupFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|TargetGroup newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|TargetGroup newQuery()

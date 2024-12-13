@@ -28,12 +28,13 @@ class AdminPanelProvider extends PanelProvider
             ->path('admin')
             ->font('Vazirmatn')
             ->navigationGroups([
+                __('Index page'),
                 trans_choice('Event Programs', 2),
                 trans_choice('Reward Programs', 2),
                 trans_choice('Users', 2),
             ])
             ->colors([
-                'primary' => Color::Pink,
+                'primary' => Color::Rose,
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')

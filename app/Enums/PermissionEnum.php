@@ -53,6 +53,11 @@ enum PermissionEnum: string implements HasLabel
     case DeleteOwnedEventPrograms = 'Delete Owned Event Programs';
     case UpdateAnyEventPrograms = 'Update Any Event Programs';
     case UpdateOwnedEventPrograms = 'Update Owned Event Programs';
+    // Banners
+    case ViewAnyBanners = 'View Event Banners';
+    case CreateBanners = 'Create Event Banners';
+    case DeleteAnyBanners = 'Delete Any Event Banners';
+    case UpdateAnyBanners = 'Update Any Event Banners';
 
     public function getLabel(): string
     {
@@ -101,6 +106,11 @@ enum PermissionEnum: string implements HasLabel
             self::UpdateOwnedEventPrograms => 'ویرایش رویداد های خود',
             self::DeleteAnyEventPrograms => 'حذف هر رویداد',
             self::DeleteOwnedEventPrograms => 'حذف رویداد های خود',
+            // Banners
+            self::ViewAnyBanners => 'مشاهده همه بنر ها',
+            self::UpdateAnyBanners => 'ویرایش هر بنر',
+            self::CreateBanners => 'ایجاد بنر',
+            self::DeleteAnyBanners => 'حدف هر بنر',
         };
     }
 }

@@ -4,6 +4,14 @@ declare namespace App.Data {
     aggregate: number;
   };
 }
+declare namespace App.Data.Banner {
+  export type BannerData = {
+    id: number;
+    title: string;
+    link: string;
+    image: App.Data.Media.ImageData | null;
+  };
+}
 declare namespace App.Data.Category {
   export type CategoryData = {
     id: number;
@@ -80,6 +88,13 @@ declare namespace App.Data.Tag {
     title: string;
   };
 }
+declare namespace App.Data.TargetGroup {
+  export type TargetGroupData = {
+    id: number;
+    title: string;
+    image: App.Data.Media.ImageData | null;
+  };
+}
 declare namespace App.Data.User {
   export type AuthUserData = {
     id: number;
@@ -142,6 +157,10 @@ declare namespace App.Enums {
     'DeleteOwnedEventPrograms' = 'Delete Owned Event Programs',
     'UpdateAnyEventPrograms' = 'Update Any Event Programs',
     'UpdateOwnedEventPrograms' = 'Update Owned Event Programs',
+    'ViewAnyBanners' = 'View Event Banners',
+    'CreateBanners' = 'Create Event Banners',
+    'DeleteAnyBanners' = 'Delete Any Event Banners',
+    'UpdateAnyBanners' = 'Update Any Event Banners',
   }
   export enum RoleEnum {
     'SuperAdmin' = 'Super Admin',

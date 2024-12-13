@@ -12,7 +12,12 @@ export default function BaseLayout({ children, className }: BaseLayoutProps) {
   const theme = 'light';
 
   return (
-    <div data-theme={theme} className={cn('relative flex min-h-screen flex-col', className)}>
+    <div
+      data-theme={theme}
+      className={cn('relative flex min-h-screen flex-col', className, {
+        'debug-screens': !process.env.NODE_ENV || process.env.NODE_ENV === 'development',
+      })}
+    >
       <div id={MODAL_ROOT_ID} />
       <ToastContainer
         draggablePercent={50}

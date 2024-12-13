@@ -7,16 +7,18 @@ import Image from '../images/Image';
 type RewardProgramCardProps = {
   rewardProgram: App.Data.RewardProgram.RewardProgramData;
   showTooltip?: boolean;
+  hasWidth?: boolean;
 };
 
 export default function RewardProgramCard({
   rewardProgram,
   showTooltip = false,
+  hasWidth = false,
 }: RewardProgramCardProps) {
   const href = route('reward-programs.show', [slugifyId(rewardProgram.id, rewardProgram.title)]);
 
   return (
-    <div className="card h-full bg-base-100 shadow">
+    <div className={cn('card h-full bg-base-100 shadow', { 'w-[19rem]': hasWidth })}>
       <Link href={href}>
         <figure className="h-44 w-full bg-base-200">
           {rewardProgram.image && (
@@ -28,7 +30,7 @@ export default function RewardProgramCard({
           )}
         </figure>
       </Link>
-      <div className="card-body">
+      <div className="card-body h-full">
         <h2 className="card-title">{rewardProgram.title}</h2>
         {rewardProgram.short_description && (
           <p className="max-h-fit text-sm text-base-content/80">
@@ -55,7 +57,7 @@ export default function RewardProgramCard({
             </span>
           ))}
         </div>
-        <Link className="btn md:mt-auto" href={href}>
+        <Link className="btn mt-auto" href={href}>
           اطلاعات بیشتر
         </Link>
       </div>

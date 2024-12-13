@@ -14,7 +14,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        'primary-solo': colors.pink['600'],
+        'primary-solo': colors.rose['700'],
         'secondary-solo': colors.cyan['700'],
       },
       fontFamily: {
@@ -33,12 +33,16 @@ export default {
         light: {
           ...require('daisyui/src/theming/themes')['light'],
           primary: config.primaryColor,
-          'primary-content': colors.gray['50'],
-          secondary: colors.cyan['500'],
+          'primary-content': colors.gray['900'],
+          secondary: colors.cyan['400'],
           error: colors.rose['600'],
         },
       },
     ],
   },
-  plugins: [require('daisyui'), require('@tailwindcss/typography')],
+  plugins: [
+    require('daisyui'),
+    require('@tailwindcss/typography'),
+    require('tailwindcss-debug-screens'),
+  ],
 };

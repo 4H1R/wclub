@@ -20,9 +20,16 @@ export default function MainLayout({ children }: MainLayoutProps) {
 
   return (
     <BaseLayout>
-      <div className="drawer">
+      <div className="drawer relative">
+        <div
+          className="absolute size-full bg-contain bg-repeat"
+          style={{
+            backgroundImage: 'url(/images/bgPattern.webp)',
+            filter: 'hue-rotate(0deg) brightness(100%) saturate(200%) opacity(0.01)',
+          }}
+        />
         <input id={config.mobileDrawerId} type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content flex flex-col">
+        <div className="drawer-content z-[1] flex flex-col">
           <Navbar />
           <main className="space-y flex-1 pb-8 md:pb-0">{children}</main>
           <Footer />

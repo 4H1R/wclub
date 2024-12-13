@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    --swiper-navigation-color: theme(colors.primary);
+    --swiper-pagination-color: theme(colors.primary);
+  }
+}
+
 @layer components {
   .h1 {
     @apply font-fa-display text-4xl md:text-5xl;
