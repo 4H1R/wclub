@@ -15,7 +15,7 @@ export default function EventProgramCard({
   const href = route('event-programs.show', [slugifyId(eventProgram.id, eventProgram.title)]);
 
   return (
-    <div className={cn('card h-full bg-base-100 shadow', { 'w-[19rem]': hasWidth })}>
+    <div className={cn('card h-full bg-base-100 shadow', { 'w-[20rem]': hasWidth })}>
       <Link href={href}>
         <figure className="h-44 w-full bg-base-200">
           {eventProgram.image && (

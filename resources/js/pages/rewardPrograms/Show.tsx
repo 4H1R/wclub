@@ -2,27 +2,23 @@ import { PageProps } from '@/@types';
 import BreadCrumb from '@/shared/BreadCrumb';
 import RewardProgramCard from '@/shared/cards/RewardProgramCard';
 import Button from '@/shared/forms/Button';
+import Head from '@/shared/Head';
 import Image from '@/shared/images/Image';
+import ShareButton from '@/shared/resources/show/ShareButton';
 import { usePage } from '@inertiajs/react';
 import { addCommas, digitsEnToFa } from '@persian-tools/persian-tools';
-import { HiLink, HiOutlineCheck, HiStar } from 'react-icons/hi2';
+import { HiOutlineCheck, HiStar } from 'react-icons/hi2';
 import Markdown from 'react-markdown';
-import { toast } from 'react-toastify';
 
 type TPage = PageProps<{
   reward_program: App.Data.RewardProgram.RewardProgramFullData;
   recommended_reward_programs: App.Data.RewardProgram.RewardProgramData[];
 }>;
 
-const registerId = 'registerEvent';
+const registerId = 'registerId';
 
 export default function Show() {
   const { reward_program, recommended_reward_programs } = usePage<TPage>().props;
-
-  const handleShare = () => {
-    navigator.clipboard.writeText(route(route().current() as string, route().params));
-    toast.success('لینک اشتراک گذاری با موفقیت برای شما کپی شد.');
-  };
 
   const handleScrollToRegister = () => {
     document.getElementById(registerId)?.scrollIntoView({ behavior: 'smooth' });
@@ -30,6 +26,11 @@ export default function Show() {
 
   return (
     <div className="space-y mt-page container">
+      <Head
+        title={`خدمت ${reward_program.title}`}
+        description={reward_program.short_description ?? reward_program.title}
+        imageUrl={reward_program.image?.original_url}
+      />
       <BreadCrumb
         links={[
           { title: 'خدمات', href: route('reward-programs.index') },
@@ -48,13 +49,7 @@ export default function Show() {
           <div className="space-y-3">
             <div className="flex flex-wrap items-center justify-between gap-4">
               <h1 className="h1">{reward_program.title}</h1>
-              <Button
-                onClick={handleShare}
-                aria-label="اشتراک گذاری لینک"
-                className="btn btn-circle btn-ghost hidden md:flex"
-              >
-                <HiLink className="size-6" />
-              </Button>
+              <ShareButton predefinedStyleFor="desktop" />
             </div>
             <div className="flex flex-wrap items-center gap-2 gap-y-3">
               <div className="tooltip tooltip-top" data-tip="امتیاز مورد نیاز">
@@ -76,10 +71,7 @@ export default function Show() {
                 <HiOutlineCheck className="size-5" />
                 <span>گرفتن خدمت</span>
               </Button>
-              <Button onClick={handleShare} className="btn btn-ghost">
-                <HiLink className="size-5" />
-                <span>اشتراک گذاری</span>
-              </Button>
+              <ShareButton predefinedStyleFor="mobile" />
             </div>
           </div>
           <Markdown className="prose max-w-none text-base-content">
@@ -91,7 +83,10 @@ export default function Show() {
             <div className="card-body">
               <ul className="list-inside list-disc text-base-content/80">
                 <li>
-                  نیاز به <span className="font-medium">{reward_program.required_score}</span>{' '}
+                  نیاز به{' '}
+                  <span className="font-medium">
+                    {digitsEnToFa(addCommas(reward_program.required_score))}
+                  </span>{' '}
                   امتیاز
                 </li>
               </ul>

@@ -16,17 +16,19 @@ export default function Banners({ banners }: BannersProps) {
       id="banners"
       className="h-[15rem] w-full rounded-box sm:h-[20rem] md:h-[25rem] lg:h-[30rem]"
     >
-      {banners.map((banner) => (
-        <SwiperSlide className="relative" key={banner.id}>
-          <Link className="size-full" href={banner.link}>
-            <Image
-              src="/images/banner.png"
-              className="size-full rounded-box object-cover"
-              alt={banner.title}
-            />
-          </Link>
-        </SwiperSlide>
-      ))}
+      {banners
+        .filter((banner) => banner.image)
+        .map((banner) => (
+          <SwiperSlide className="relative" key={banner.id}>
+            <Link className="size-full" href={banner.link}>
+              <Image
+                src={banner.image?.original_url}
+                className="size-full rounded-box object-cover"
+                alt={banner.title}
+              />
+            </Link>
+          </SwiperSlide>
+        ))}
     </SwiperContainer>
   );
 }
