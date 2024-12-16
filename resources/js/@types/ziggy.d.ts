@@ -46,13 +46,7 @@ declare module 'ziggy-js' {
       {
         name: 'contest';
         required: true;
-      },
-    ];
-    'campaigns.index': [];
-    'campaigns.show': [
-      {
-        name: 'campaign';
-        required: true;
+        binding: 'id';
       },
     ];
     'event-programs.index': [];

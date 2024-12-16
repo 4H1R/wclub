@@ -42,6 +42,8 @@ class RewardProgramController extends Controller
 
     public function show(RewardProgram $rewardProgram): \Inertia\Response
     {
+        abort_unless($rewardProgram->published_at, 404);
+
         $rewardProgram->load(['categories', 'image']);
 
         $recommendedRewardPrograms = RewardProgram::query()

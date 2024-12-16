@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 
 trait HasSlug
 {
-    private function extractId(string $slug): ?int
+    private function extractId(string $slug): int
     {
         $id = last(explode('-', $slug));
 

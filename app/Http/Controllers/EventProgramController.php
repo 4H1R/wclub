@@ -43,9 +43,11 @@ class EventProgramController extends Controller
 
     public function show(EventProgram $eventProgram): \Inertia\Response
     {
+        abort_unless($eventProgram->published_at, 404);
+
         $eventProgram->load(['categories', 'image']);
 
-        $recommendedRewardPrograms = EventProgram::query()
+        $recommendedEventPrograms = EventProgram::query()
             ->with(['categories', 'image'])
             ->withGlobalScope('published', new PublishedScope)
             ->where('id', '!=', $eventProgram->id)
@@ -54,7 +56,7 @@ class EventProgramController extends Controller
 
         return Inertia::render('eventPrograms/Show', [
             'event_program' => EventProgramFullData::from($eventProgram),
-            'recommended_event_programs' => EventProgramData::collect($recommendedRewardPrograms),
+            'recommended_event_programs' => EventProgramData::collect($recommendedEventPrograms),
         ]);
     }
 }

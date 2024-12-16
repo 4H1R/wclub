@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\AboutUsController;
-use App\Http\Controllers\CampaignController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\ContestController;
 use App\Http\Controllers\DashboardController;
@@ -23,7 +22,6 @@ Route::get('/women-garden', WomenGardenController::class)->name('womenGarden');
 Route::resource('series', SeriesController::class);
 Route::resource('reward-programs', RewardProgramController::class)->only(['index', 'show']);
 Route::resource('contests', ContestController::class)->only(['index', 'show']);
-Route::resource('campaigns', CampaignController::class)->only(['index', 'show']);
 Route::resource('event-programs', EventProgramController::class)->only(['index', 'show']);
 
 Route::middleware('auth')->group(function () {

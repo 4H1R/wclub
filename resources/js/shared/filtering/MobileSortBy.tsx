@@ -19,9 +19,11 @@ export default function MobileSortBy({ options }: MobileSortBy) {
 
   const handleSort = (sort: IOption<string>) => {
     closeModal(modalId);
-    router.get(route(route().current() as string, { page: 1, sort: sort.value }), undefined, {
-      preserveState: true,
-    });
+    router.get(
+      route(route().current() as string, { ...route().params, page: 1, sort: sort.value }),
+      undefined,
+      { preserveState: true },
+    );
   };
 
   return (

@@ -40,7 +40,7 @@ export default function FilterModal({
 
   const handleClear = () => {
     const data = produce(currentParams, (draft) => {
-      draft.filter = omit(draft, filterPath);
+      draft.filter = omit(get(draft, 'filter', {}), [filterId]);
     });
     router.get(currentRoute, data, { preserveScroll: true, preserveState: true });
   };

@@ -39,4 +39,22 @@ class ContestController extends Controller
             'categories' => CategoryData::collect($categories),
         ]);
     }
+
+    public function show(Contest $contest): \Inertia\Response
+    {
+        abort_unless($contest->published_at, 404);
+
+        $contest->load(['categories', 'image']);
+
+        $recommendedContests = Contest::query()
+            ->with(['categories', 'image'])
+            ->withGlobalScope('published', new PublishedScope)
+            ->where('id', '!=', $contest->id)
+            ->take(6)
+            ->get();
+
+        return Inertia::render('contests/Show', [
+            'recommended_contests' => ContestData::collect($recommendedContests),
+        ]);
+    }
 }
