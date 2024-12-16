@@ -8,6 +8,8 @@ type LatestEventProgramsProps = {
 };
 
 export default function LatestEventPrograms({ eventPrograms }: LatestEventProgramsProps) {
+  if (eventPrograms.length < 1) return null;
+
   return (
     <SectionContainer title="رویداد ها" href={route('event-programs.index')}>
       <SwiperContainer

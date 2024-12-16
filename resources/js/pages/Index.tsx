@@ -1,5 +1,6 @@
 import { PageProps } from '@/@types';
 import Banners from '@/components/index/Banners';
+import LatestContests from '@/components/index/LatestContests';
 import LatestEventPrograms from '@/components/index/LatestEventPrograms';
 import RewardPrograms from '@/components/index/RewardPrograms';
 import TargetGroups from '@/components/index/TargetGroups';
@@ -11,10 +12,12 @@ type TPage = PageProps<{
   banners: App.Data.Banner.BannerData[];
   event_programs: App.Data.EventProgram.EventProgramData[];
   reward_programs: App.Data.RewardProgram.RewardProgramData[];
+  contests: App.Data.Contest.ContestData[];
 }>;
 
 export default function Index() {
-  const { reward_programs, event_programs, target_groups, banners } = usePage<TPage>().props;
+  const { contests, reward_programs, event_programs, target_groups, banners } =
+    usePage<TPage>().props;
 
   return (
     <div className="mt-page space-y container">
@@ -35,6 +38,7 @@ export default function Index() {
         </div>
       </section>
       <LatestEventPrograms eventPrograms={event_programs} />
+      <LatestContests contests={contests} />
       <RewardPrograms rewardPrograms={reward_programs} />
     </div>
   );

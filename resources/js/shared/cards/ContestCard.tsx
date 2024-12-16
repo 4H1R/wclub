@@ -5,13 +5,14 @@ import Image from '../images/Image';
 type ContestCardProps = {
   contest: App.Data.Contest.ContestData;
   hasWidth?: boolean;
+  className?: string;
 };
 
-export default function ContestCard({ contest, hasWidth = false }: ContestCardProps) {
+export default function ContestCard({ contest, hasWidth = false, className }: ContestCardProps) {
   const href = route('contests.show', [slugifyId(contest.id, contest.title)]);
 
   return (
-    <div className={cn('card h-full bg-base-100 shadow', { 'w-[20rem]': hasWidth })}>
+    <div className={cn('card h-full bg-base-100 shadow', { 'w-[20rem]': hasWidth }, className)}>
       <Link href={href}>
         <figure className="h-44 w-full bg-base-200">
           {contest.image && (

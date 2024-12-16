@@ -8,7 +8,7 @@ export default function Show() {
     <div className="space-y mt-page container">
       <Head title="داشبورد" description="داشبورد" titleSuffix={null} />
       <h1 className="h1 text-base-content">
-        <span className="text-secondary">
+        <span className="text-primary-solo">
           {auth.user?.first_name} {auth.user?.last_name}
         </span>{' '}
         خوش آمدید.

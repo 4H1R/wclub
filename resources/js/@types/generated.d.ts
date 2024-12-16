@@ -39,6 +39,18 @@ declare namespace App.Data.Contest {
     finished_at: string;
     categories: Array<App.Data.Category.CategoryData>;
   };
+  export type ContestFullData = {
+    id: number;
+    title: string;
+    short_description: string | null;
+    content: string;
+    image: App.Data.Media.ImageData | null;
+    min_participants: number | null;
+    max_participants: number | null;
+    started_at: string;
+    finished_at: string;
+    categories: Array<App.Data.Category.CategoryData>;
+  };
 }
 declare namespace App.Data.EventProgram {
   export type EventProgramData = {

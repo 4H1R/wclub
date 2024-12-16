@@ -8,6 +8,8 @@ type RewardProgramsProps = {
 };
 
 export default function RewardPrograms({ rewardPrograms }: RewardProgramsProps) {
+  if (rewardPrograms.length < 1) return null;
+
   return (
     <SectionContainer title="خدمات" href={route('reward-programs.index')}>
       <SwiperContainer options={{ spaceBetween: 16, slidesPerView: 'auto' }} id="rewardPrograms">

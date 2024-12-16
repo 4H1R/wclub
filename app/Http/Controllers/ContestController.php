@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Data\Category\CategoryData;
 use App\Data\Contest\ContestData;
+use App\Data\Contest\ContestFullData;
 use App\Models\Category;
 use App\Models\Contest;
 use App\Models\Scopes\PublishedScope;
@@ -54,6 +55,7 @@ class ContestController extends Controller
             ->get();
 
         return Inertia::render('contests/Show', [
+            'contest' => ContestFullData::from($contest),
             'recommended_contests' => ContestData::collect($recommendedContests),
         ]);
     }

@@ -1,3 +1,111 @@
+import { PageProps } from '@/@types';
+import BreadCrumb from '@/shared/BreadCrumb';
+import ContestCard from '@/shared/cards/ContestCard';
+import Button from '@/shared/forms/Button';
+import Head from '@/shared/Head';
+import Image from '@/shared/images/Image';
+import CategoriesBadge from '@/shared/resources/show/CategoriesBadge';
+import ShareButton from '@/shared/resources/show/ShareButton';
+import { usePage } from '@inertiajs/react';
+import { addCommas, digitsEnToFa } from '@persian-tools/persian-tools';
+import { HiOutlineCheck } from 'react-icons/hi2';
+import Markdown from 'react-markdown';
+
+type TPage = PageProps<{
+  contest: App.Data.Contest.ContestFullData;
+  recommended_contests: App.Data.Contest.ContestData[];
+}>;
+
+const registerId = 'registerId';
+
+const timeOptions = {
+  year: 'numeric',
+  month: 'numeric',
+  day: 'numeric',
+  hour: '2-digit',
+  minute: '2-digit',
+} as const;
+
 export default function Show() {
-  return <div>Show</div>;
+  const { contest, recommended_contests } = usePage<TPage>().props;
+
+  const handleScrollToRegister = () => {
+    document.getElementById(registerId)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  return (
+    <div className="space-y mt-page container">
+      <Head
+        title={`رویداد ${contest.title}`}
+        description={contest.short_description ?? contest.title}
+        imageUrl={contest.image?.original_url}
+      />
+      <BreadCrumb
+        links={[
+          { title: 'چالش ها و مسابقات', href: route('contests.index') },
+          { title: contest.title, href: '#' },
+        ]}
+      />
+      <div className="grid grid-cols-10 gap-4">
+        <div className="space-y col-span-full md:col-span-7">
+          {contest.image && (
+            <Image
+              className="w-full rounded-box object-contain"
+              src={contest.image?.original_url}
+              alt={contest.title}
+            />
+          )}
+          <div className="space-y-3">
+            <div className="flex flex-wrap items-center justify-between gap-4">
+              <h1 className="h1">{contest.title}</h1>
+              <ShareButton predefinedStyleFor="desktop" />
+            </div>
+            <CategoriesBadge categories={contest.categories} />
+            <div className="flex flex-wrap items-center justify-between gap-4 rounded-box bg-base-200 text-base-content/80 md:hidden">
+              <Button onClick={handleScrollToRegister} className="btn btn-ghost">
+                <HiOutlineCheck className="size-5" />
+                <span>ثبت نام</span>
+              </Button>
+              <ShareButton predefinedStyleFor="mobile" />
+            </div>
+          </div>
+          <Markdown className="prose max-w-none text-base-content">{contest.content}</Markdown>
+        </div>
+        <div className="col-span-full md:col-span-3">
+          <div id={registerId} className="card sticky left-0 top-3 bg-base-200">
+            <div className="card-body">
+              <ul className="list-inside list-disc text-base-content/80">
+                {contest.min_participants && (
+                  <li>حداقل {digitsEnToFa(addCommas(contest.min_participants))} فرد</li>
+                )}
+                {contest.max_participants && (
+                  <li>حداکثر {digitsEnToFa(addCommas(contest.max_participants))} فرد</li>
+                )}
+                <li>
+                  شروع از{' '}
+                  {new Intl.DateTimeFormat('fa-IR', timeOptions).format(
+                    new Date(contest.started_at),
+                  )}{' '}
+                  تا{' '}
+                  {new Intl.DateTimeFormat('fa-IR', timeOptions).format(
+                    new Date(contest.finished_at),
+                  )}
+                </li>
+              </ul>
+              <div className="card-actions mt-4">
+                <Button className="btn btn-neutral btn-block">ثبت نام</Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="divider clear-both md:pt-6" />
+      <h2 className="h2">چالش ها و مسابقات دیگر</h2>
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {recommended_contests.map((contest) => (
+          <ContestCard key={contest.id} contest={contest} />
+        ))}
+      </div>
+    </div>
+  );
 }
