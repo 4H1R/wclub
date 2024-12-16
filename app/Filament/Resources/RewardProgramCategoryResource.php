@@ -4,13 +4,10 @@ namespace App\Filament\Resources;
 
 use App\Enums\PermissionEnum;
 use App\Filament\Resources\RewardProgramCategoryResource\Pages;
-use App\Models\Category;
 use App\Models\RewardProgram;
 
 class RewardProgramCategoryResource extends CategoryResource
 {
-    protected static ?string $model = Category::class;
-
     public static ?string $categoryModel = RewardProgram::class;
 
     public static ?PermissionEnum $viewAny = PermissionEnum::ViewAnyRewardProgramCategories;

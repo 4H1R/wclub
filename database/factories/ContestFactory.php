@@ -2,13 +2,12 @@
 
 namespace Database\Factories;
 
-use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\EventProgram>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Contest>
  */
-class EventProgramFactory extends Factory
+class ContestFactory extends Factory
 {
     /**
      * @return array<string, mixed>
@@ -26,7 +25,6 @@ class EventProgramFactory extends Factory
             'started_at' => $startedAt,
             'finished_at' => fake()->dateTimeBetween($startedAt, now()),
             'published_at' => fake()->boolean(90) ? now() : null,
-            'user_id' => User::factory(),
         ];
     }
 }

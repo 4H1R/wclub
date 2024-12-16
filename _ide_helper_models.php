@@ -71,6 +71,50 @@ namespace App\Models{
  * 
  *
  * @property int $id
+ * @property string $title
+ * @property string|null $short_description
+ * @property string $content
+ * @property int|null $min_participants
+ * @property int|null $max_participants
+ * @property string $started_at
+ * @property string $finished_at
+ * @property string|null $published_at
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Category> $categories
+ * @property-read int|null $categories_count
+ * @property-read \App\Models\Media|null $image
+ * @property-read \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection<int, \App\Models\Media> $media
+ * @property-read int|null $media_count
+ * @property-read mixed $slug
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\TargetGroup> $targetGroups
+ * @property-read int|null $target_groups_count
+ * @method static \Database\Factories\ContestFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Contest newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Contest newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Contest query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Contest whereContent($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Contest whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Contest whereFinishedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Contest whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Contest whereMaxParticipants($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Contest whereMinParticipants($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Contest wherePublishedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Contest whereShortDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Contest whereStartedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Contest whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Contest whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
+	#[\AllowDynamicProperties]
+	class IdeHelperContest {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
  * @property int|null $user_id
  * @property string $title
  * @property string|null $short_description
@@ -90,6 +134,7 @@ namespace App\Models{
  * @property-read mixed $slug
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\TargetGroup> $targetGroups
  * @property-read int|null $target_groups_count
+ * @property-read \App\Models\User|null $user
  * @method static \Database\Factories\EventProgramFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram newQuery()

@@ -5,9 +5,11 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\Category;
+use App\Models\Contest;
 use App\Models\EventProgram;
 use App\Models\RewardProgram;
 use App\Models\TargetGroup;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\File;
 
@@ -25,6 +27,8 @@ class DatabaseSeeder extends Seeder
             TargetGroup::firstOrCreate($targetGroup);
         });
 
+        $firstUser = User::firstOrFail();
+
         $rewardProgramCategories = Category::factory(10)->create(['model' => RewardProgram::class]);
         RewardProgram::factory(50)
             ->create()
@@ -34,9 +38,17 @@ class DatabaseSeeder extends Seeder
 
         $eventProgramCategories = Category::factory(10)->create(['model' => EventProgram::class]);
         EventProgram::factory(50)
+            ->for($firstUser)
             ->create()
             ->each(function (EventProgram $eventProgram) use ($eventProgramCategories) {
                 $eventProgram->categories()->attach($eventProgramCategories->random(rand(0, 5))->pluck('id'));
+            });
+
+        $contestsCategories = Category::factory(10)->create(['model' => Contest::class]);
+        Contest::factory(50)
+            ->create()
+            ->each(function (Contest $contest) use ($contestsCategories) {
+                $contest->categories()->attach($contestsCategories->random(rand(0, 5))->pluck('id'));
             });
     }
 }

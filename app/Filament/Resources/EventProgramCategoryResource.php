@@ -4,13 +4,10 @@ namespace App\Filament\Resources;
 
 use App\Enums\PermissionEnum;
 use App\Filament\Resources\EventProgramCategoryResource\Pages;
-use App\Models\Category;
 use App\Models\EventProgram;
 
 class EventProgramCategoryResource extends CategoryResource
 {
-    protected static ?string $model = Category::class;
-
     public static ?string $categoryModel = EventProgram::class;
 
     public static ?PermissionEnum $viewAny = PermissionEnum::ViewAnyEventProgramCategories;

@@ -1,6 +1,5 @@
 import { cn, slugifyId } from '@/utils';
 import { Link } from '@inertiajs/react';
-import { GoDotFill } from 'react-icons/go';
 import Image from '../images/Image';
 
 type EventProgramCardProps = {
@@ -28,10 +27,10 @@ export default function EventProgramCard({
         </figure>
       </Link>
       <div className="card-body h-full">
-        <div className={cn('flex items-center gap-1 text-base-content/80', {})}>
+        {/* <div className={cn('flex items-center gap-1 text-base-content/80', {})}>
           <GoDotFill className="size-2" />
           <span className="text-xs font-bold">تمام شده</span>
-        </div>
+        </div> */}
         <h2 className="card-title">{eventProgram.title}</h2>
         {eventProgram.short_description && (
           <p className="line-clamp-4 max-h-fit text-sm text-base-content/80">

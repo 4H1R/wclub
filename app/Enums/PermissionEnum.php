@@ -36,10 +36,10 @@ enum PermissionEnum: string implements HasLabel
     case DeleteAnyRewardProgramCategories = 'Delete Any Reward Program Categories';
     case UpdateAnyRewardProgramCategories = 'Update Any Reward Program Categories';
     // Target Groups
-    case ViewAnyTargetGroups = 'View Reward Target Groups';
-    case CreateTargetGroups = 'Create Reward Target Groups';
-    case DeleteAnyTargetGroups = 'Delete Any Reward Target Groups';
-    case UpdateAnyTargetGroups = 'Update Any Reward Target Groups';
+    case ViewAnyTargetGroups = 'View Target Groups';
+    case CreateTargetGroups = 'Create Target Groups';
+    case DeleteAnyTargetGroups = 'Delete Any Target Groups';
+    case UpdateAnyTargetGroups = 'Update Any Target Groups';
     // Event Program Categories
     case ViewAnyEventProgramCategories = 'View Event Program Categories';
     case CreateEventProgramCategories = 'Create Event Program Categories';
@@ -54,10 +54,20 @@ enum PermissionEnum: string implements HasLabel
     case UpdateAnyEventPrograms = 'Update Any Event Programs';
     case UpdateOwnedEventPrograms = 'Update Owned Event Programs';
     // Banners
-    case ViewAnyBanners = 'View Event Banners';
-    case CreateBanners = 'Create Event Banners';
-    case DeleteAnyBanners = 'Delete Any Event Banners';
-    case UpdateAnyBanners = 'Update Any Event Banners';
+    case ViewAnyBanners = 'View Banners';
+    case CreateBanners = 'Create Banners';
+    case DeleteAnyBanners = 'Delete Any Banners';
+    case UpdateAnyBanners = 'Update Any Banners';
+    // Contests
+    case ViewAnyContests = 'View Contests';
+    case CreateContests = 'Create Contests';
+    case DeleteAnyContests = 'Delete Any Contests';
+    case UpdateAnyContests = 'Update Any Contests';
+    // Contest Categories
+    case ViewAnyContestCategories = 'View Contest Categories';
+    case CreateContestCategories = 'Create Contest Categories';
+    case DeleteAnyContestCategories = 'Delete Any Contest Categories';
+    case UpdateAnyContestCategories = 'Update Any Contest Categories';
 
     public function getLabel(): string
     {
@@ -111,6 +121,16 @@ enum PermissionEnum: string implements HasLabel
             self::UpdateAnyBanners => 'ویرایش هر بنر',
             self::CreateBanners => 'ایجاد بنر',
             self::DeleteAnyBanners => 'حدف هر بنر',
+            // Contests
+            self::ViewAnyContests => 'مشاهده همه چالش ها',
+            self::UpdateAnyContests => 'ویرایش هر چالش',
+            self::CreateContests => 'ایجاد چالش',
+            self::DeleteAnyContests => 'حدف هر چالش',
+            // Event Program Categories
+            self::ViewAnyContestCategories => 'مشاهده همه دسته بندی های چالش ها',
+            self::UpdateAnyContestCategories => 'ویرایش هر دسته بندی چالش ها',
+            self::CreateContestCategories => 'ایجاد دسته بندی چالش ها',
+            self::DeleteAnyContestCategories => 'حدف هر دسته بندی چالش ها',
         };
     }
 }

@@ -21,7 +21,7 @@ class AuthController extends Controller
 
         $request->session()->regenerate();
 
-        return to_route('index', ['auth_was_successful' => true]);
+        return to_route('dashboard', ['auth_was_successful' => true]);
     }
 
     public function destroy(Request $request): RedirectResponse
