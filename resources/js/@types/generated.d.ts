@@ -212,6 +212,5 @@ declare namespace App.Enums.Series {
   }
   export enum SeriesTypeEnum {
     'Free' = 'FREE',
-    'Paid' = 'PAID',
   }
 }

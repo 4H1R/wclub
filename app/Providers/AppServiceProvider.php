@@ -2,7 +2,14 @@
 
 namespace App\Providers;
 
+use App\Custom\FileSystem;
+use App\Models\Series;
+use App\Models\SeriesChapter;
+use App\Models\SeriesEpisode;
 use App\Models\User;
+use App\Observers\SeriesChapterObserver;
+use App\Observers\SeriesEpisodeObserver;
+use App\Observers\SeriesObserver;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\DB;
@@ -13,6 +20,10 @@ use Illuminate\Validation\Rules\Password;
 
 class AppServiceProvider extends ServiceProvider
 {
+    public $bindings = [
+        \Spatie\MediaLibrary\MediaCollections\Filesystem::class => FileSystem::class,
+    ];
+
     public function register(): void
     {
         //
@@ -32,6 +43,10 @@ class AppServiceProvider extends ServiceProvider
                 info("Attempted to lazy load [$relation] on model [$class].");
             });
         }
+
+        Series::observe(SeriesObserver::class);
+        SeriesEpisode::observe(SeriesEpisodeObserver::class);
+        SeriesChapter::observe(SeriesChapterObserver::class);
 
         Password::defaults(function () {
             $rule = Password::min(8)->max(28);
