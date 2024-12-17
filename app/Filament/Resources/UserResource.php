@@ -4,8 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Enums\PermissionEnum;
 use App\Filament\Custom\CustomResource;
-use App\Filament\Forms\Layouts\BasicSection;
-use App\Filament\Forms\Layouts\ComplexForm;
+use App\Filament\Forms\Layouts\BasicForm;
 use App\Filament\Resources\UserResource\Pages;
 use App\Filament\Tables\Columns\TimestampsColumn;
 use App\Models\Role;
@@ -35,14 +34,14 @@ class UserResource extends CustomResource
     public static function getEloquentQuery(): Builder
     {
         return parent::getEloquentQuery()
-            ->when(Auth::user()->hasPermissionTo(PermissionEnum::ViewUser), function (Builder $builder) {
+            ->when(Auth::user()->hasPermissionTo(PermissionEnum::ViewOwnedUsers), function (Builder $builder) {
                 return $builder->where('id', Auth::id());
             });
     }
 
     public static function form(Form $form): Form
     {
-        $basicSection = BasicSection::make([
+        return BasicForm::make($form, [
             Forms\Components\TextInput::make('first_name')
                 ->translateLabel()
                 ->required()
@@ -92,8 +91,6 @@ class UserResource extends CustomResource
                 ->optionsLimit(50)
                 ->relationship('safeRoles', 'title'),
         ]);
-
-        return ComplexForm::make($form, [$basicSection]);
     }
 
     /**

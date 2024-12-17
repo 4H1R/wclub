@@ -71,6 +71,37 @@ namespace App\Models{
  * 
  *
  * @property int $id
+ * @property string $full_name
+ * @property string|null $email
+ * @property string $phone
+ * @property string $title
+ * @property string $description
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read mixed $is_read
+ * @method static \Database\Factories\ContactUsFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ContactUs newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ContactUs newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ContactUs query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ContactUs whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ContactUs whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ContactUs whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ContactUs whereFullName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ContactUs whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ContactUs wherePhone($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ContactUs whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ContactUs whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
+	#[\AllowDynamicProperties]
+	class IdeHelperContactUs {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
  * @property string $title
  * @property string|null $short_description
  * @property string $content
@@ -328,6 +359,131 @@ namespace App\Models{
  * 
  *
  * @property int $id
+ * @property \App\Enums\Series\SeriesStatusEnum $status
+ * @property \App\Enums\Series\SeriesTypeEnum $type
+ * @property string $title
+ * @property string $short_description
+ * @property string $content
+ * @property array|null $faqs
+ * @property int $episodes_duration_seconds
+ * @property string|null $published_at
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Category> $categories
+ * @property-read int|null $categories_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\SeriesChapter> $chapters
+ * @property-read int|null $chapters_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\SeriesEpisode> $episodes
+ * @property-read int|null $episodes_count
+ * @property-read \App\Models\Media|null $image
+ * @property-read \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection<int, \App\Models\Media> $media
+ * @property-read int|null $media_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\User> $ownedUsers
+ * @property-read int|null $owned_users_count
+ * @property-read mixed $slug
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\TargetGroup> $targetGroups
+ * @property-read int|null $target_groups_count
+ * @method static \Database\Factories\SeriesFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Series newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Series newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Series query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Series whereContent($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Series whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Series whereEpisodesDurationSeconds($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Series whereFaqs($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Series whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Series wherePublishedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Series whereShortDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Series whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Series whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Series whereType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Series whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
+	#[\AllowDynamicProperties]
+	class IdeHelperSeries {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
+ * @property int $series_id
+ * @property string $title
+ * @property int|null $order_column
+ * @property string|null $published_at
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\SeriesEpisode> $episodes
+ * @property-read int|null $episodes_count
+ * @property-read \App\Models\Series $series
+ * @property-read mixed $slug
+ * @method static \Database\Factories\SeriesChapterFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SeriesChapter newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SeriesChapter newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SeriesChapter ordered(string $direction = 'asc')
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SeriesChapter query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SeriesChapter whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SeriesChapter whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SeriesChapter whereOrderColumn($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SeriesChapter wherePublishedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SeriesChapter whereSeriesId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SeriesChapter whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SeriesChapter whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
+	#[\AllowDynamicProperties]
+	class IdeHelperSeriesChapter {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
+ * @property int|null $chapter_id
+ * @property int $series_id
+ * @property string $title
+ * @property string|null $content
+ * @property int $video_duration_seconds
+ * @property int|null $order_column
+ * @property string|null $published_at
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection<int, \App\Models\Media> $attachments
+ * @property-read int|null $attachments_count
+ * @property-read \App\Models\SeriesChapter|null $chapter
+ * @property-read \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection<int, \App\Models\Media> $media
+ * @property-read int|null $media_count
+ * @property-read \App\Models\Series $series
+ * @property-read \App\Models\Media|null $video
+ * @method static \Database\Factories\SeriesEpisodeFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SeriesEpisode newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SeriesEpisode newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SeriesEpisode ordered(string $direction = 'asc')
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SeriesEpisode query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SeriesEpisode whereChapterId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SeriesEpisode whereContent($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SeriesEpisode whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SeriesEpisode whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SeriesEpisode whereOrderColumn($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SeriesEpisode wherePublishedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SeriesEpisode whereSeriesId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SeriesEpisode whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SeriesEpisode whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SeriesEpisode whereVideoDurationSeconds($value)
+ * @mixin \Eloquent
+ */
+	#[\AllowDynamicProperties]
+	class IdeHelperSeriesEpisode {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
  * @property string $title
  * @property int $min_age
  * @property int $max_age
@@ -374,6 +530,8 @@ namespace App\Models{
  * @property-read mixed $full_name
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
  * @property-read int|null $notifications_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Series> $ownedSeries
+ * @property-read int|null $owned_series_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Permission> $permissions
  * @property-read int|null $permissions_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Role> $roles

@@ -3,6 +3,7 @@ import Banners from '@/components/index/Banners';
 import LatestContests from '@/components/index/LatestContests';
 import LatestEventPrograms from '@/components/index/LatestEventPrograms';
 import RewardPrograms from '@/components/index/RewardPrograms';
+import Series from '@/components/index/Series';
 import TargetGroups from '@/components/index/TargetGroups';
 import Head from '@/shared/Head';
 import { usePage } from '@inertiajs/react';
@@ -40,6 +41,7 @@ export default function Index() {
       <LatestEventPrograms eventPrograms={event_programs} />
       <LatestContests contests={contests} />
       <RewardPrograms rewardPrograms={reward_programs} />
+      <Series contests={contests} />
     </div>
   );
 }

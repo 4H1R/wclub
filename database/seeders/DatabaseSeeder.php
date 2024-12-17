@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\Category;
+use App\Models\ContactUs;
 use App\Models\Contest;
 use App\Models\EventProgram;
 use App\Models\RewardProgram;
@@ -21,8 +22,10 @@ class DatabaseSeeder extends Seeder
             PermissionSeeder::class,
             RoleSeeder::class,
             UserSeeder::class,
+            SeriesSeeder::class,
         ]);
 
+        ContactUs::factory(30)->create();
         collect(File::json('database/json/target_groups.json')['entities'])->each(function (array $targetGroup) {
             TargetGroup::firstOrCreate($targetGroup);
         });

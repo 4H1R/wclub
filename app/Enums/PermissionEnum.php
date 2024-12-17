@@ -26,27 +26,27 @@ enum PermissionEnum: string implements HasLabel
     case UpdateAnyUsers = 'Update Any Users';
     case UpdateOwnedUsers = 'Update Owned Users';
     // Reward Programs
-    case ViewAnyRewardPrograms = 'View Reward Programs';
+    case ViewAnyRewardPrograms = 'View Any Reward Programs';
     case CreateRewardPrograms = 'Create Reward Programs';
     case DeleteAnyRewardPrograms = 'Delete Any Reward Programs';
     case UpdateAnyRewardPrograms = 'Update Any Reward Programs';
     // Reward Program Categories
-    case ViewAnyRewardProgramCategories = 'View Reward Program Categories';
+    case ViewAnyRewardProgramCategories = 'View Any Reward Program Categories';
     case CreateRewardProgramCategories = 'Create Reward Program Categories';
     case DeleteAnyRewardProgramCategories = 'Delete Any Reward Program Categories';
     case UpdateAnyRewardProgramCategories = 'Update Any Reward Program Categories';
     // Target Groups
-    case ViewAnyTargetGroups = 'View Target Groups';
+    case ViewAnyTargetGroups = 'View Any Target Groups';
     case CreateTargetGroups = 'Create Target Groups';
     case DeleteAnyTargetGroups = 'Delete Any Target Groups';
     case UpdateAnyTargetGroups = 'Update Any Target Groups';
     // Event Program Categories
-    case ViewAnyEventProgramCategories = 'View Event Program Categories';
+    case ViewAnyEventProgramCategories = 'View Any Event Program Categories';
     case CreateEventProgramCategories = 'Create Event Program Categories';
     case DeleteAnyEventProgramCategories = 'Delete Any Event Program Categories';
     case UpdateAnyEventProgramCategories = 'Update Any Event Program Categories';
     // Event Programs
-    case ViewAnyEventPrograms = 'View Event Programs';
+    case ViewAnyEventPrograms = 'View Any Event Programs';
     case ViewOwnedEventPrograms = 'View Owned Event Programs';
     case CreateEventPrograms = 'Create Event Programs';
     case DeleteAnyEventPrograms = 'Delete Any Event Programs';
@@ -54,20 +54,28 @@ enum PermissionEnum: string implements HasLabel
     case UpdateAnyEventPrograms = 'Update Any Event Programs';
     case UpdateOwnedEventPrograms = 'Update Owned Event Programs';
     // Banners
-    case ViewAnyBanners = 'View Banners';
+    case ViewAnyBanners = 'View Any Banners';
     case CreateBanners = 'Create Banners';
     case DeleteAnyBanners = 'Delete Any Banners';
     case UpdateAnyBanners = 'Update Any Banners';
     // Contests
-    case ViewAnyContests = 'View Contests';
+    case ViewAnyContests = 'View Any Contests';
     case CreateContests = 'Create Contests';
     case DeleteAnyContests = 'Delete Any Contests';
     case UpdateAnyContests = 'Update Any Contests';
     // Contest Categories
-    case ViewAnyContestCategories = 'View Contest Categories';
+    case ViewAnyContestCategories = 'View Any Contest Categories';
     case CreateContestCategories = 'Create Contest Categories';
     case DeleteAnyContestCategories = 'Delete Any Contest Categories';
     case UpdateAnyContestCategories = 'Update Any Contest Categories';
+    // Series
+    case ViewAnySeries = 'View Any Series';
+    case CreateSeries = 'Create Series';
+    case DeleteAnySeries = 'Delete Any Series';
+    case UpdateAnySeries = 'Update Any Series';
+    // ContactUs
+    case ViewAnyContactUs = 'View Any Contact Us';
+    case DeleteAnyContactUs = 'Delete Any Contact Us';
 
     public function getLabel(): string
     {
@@ -131,6 +139,14 @@ enum PermissionEnum: string implements HasLabel
             self::UpdateAnyContestCategories => 'ویرایش هر دسته بندی چالش ها',
             self::CreateContestCategories => 'ایجاد دسته بندی چالش ها',
             self::DeleteAnyContestCategories => 'حدف هر دسته بندی چالش ها',
+            // Series
+            self::ViewAnySeries => 'مشاهده همه دوره ها',
+            self::UpdateAnySeries => 'ویرایش هر دوره',
+            self::CreateSeries => 'ایجاد دوره',
+            self::DeleteAnySeries => 'حدف هر دوره',
+            // Contact Us
+            self::ViewAnyContactUs => 'مشاهده همه تماس با ما ها',
+            self::DeleteAnyContactUs => 'حذف هر تماس با ما',
         };
     }
 }

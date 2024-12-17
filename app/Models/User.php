@@ -85,7 +85,7 @@ class User extends Authenticatable implements FilamentUser, HasName
     {
         return Attribute::make(
             get: fn (?string $value, array $attributes) => $attributes['first_name'].' '.$attributes['last_name'],
-        );
+        )->shouldCache();
     }
 
     /**
@@ -93,10 +93,16 @@ class User extends Authenticatable implements FilamentUser, HasName
      */
     public function safeRoles(): BelongsToMany
     {
-        // @phpstan-ignore-next-line
         return $this
             ->roles()
-            // @phpstan-ignore-next-line
             ->unless(Auth::user()?->isSuperAdmin(), fn (Builder $builder) => $builder->where('name', '!=', RoleEnum::SuperAdmin));
+    }
+
+    /**
+     * @return BelongsToMany<Series>
+     */
+    public function ownedSeries(): BelongsToMany
+    {
+        return $this->belongsToMany(Series::class, 'user_owned_series');
     }
 }
