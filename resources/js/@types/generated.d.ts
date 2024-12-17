@@ -107,6 +107,51 @@ declare namespace App.Data.RewardProgram {
     categories: Array<App.Data.Category.CategoryData>;
   };
 }
+declare namespace App.Data.Series {
+  export type SeriesData = {
+    id: number;
+    title: string;
+    type: App.Enums.Series.SeriesTypeEnum;
+    status: App.Enums.Series.SeriesStatusEnum;
+    short_description: string;
+    episodes_duration_seconds: number;
+    image: App.Data.Media.ImageData | null;
+    categories: Array<App.Data.Category.CategoryData>;
+  };
+  export type SeriesFaqData = {
+    title: string;
+    description: string;
+  };
+  export type SeriesFullData = {
+    id: number;
+    title: string;
+    type: App.Enums.Series.SeriesTypeEnum;
+    status: App.Enums.Series.SeriesStatusEnum;
+    short_description: string;
+    content: string;
+    episodes_duration_seconds: number;
+    episodes_count: number;
+    owned_users_count: number;
+    is_owned: boolean;
+    chapters: Array<App.Data.SeriesChapter.SeriesChapterData>;
+    faqs: Array<App.Data.Series.SeriesFaqData> | null;
+    image: App.Data.Media.ImageData | null;
+  };
+}
+declare namespace App.Data.SeriesChapter {
+  export type SeriesChapterData = {
+    id: number;
+    title: string;
+    episodes: Array<App.Data.SeriesEpisode.SeriesEpisodeData>;
+  };
+}
+declare namespace App.Data.SeriesEpisode {
+  export type SeriesEpisodeData = {
+    id: number;
+    title: string;
+    video_duration_seconds: number;
+  };
+}
 declare namespace App.Data.Tag {
   export type TagData = {
     id: number;
@@ -198,6 +243,10 @@ declare namespace App.Enums {
     'CreateSeries' = 'Create Series',
     'DeleteAnySeries' = 'Delete Any Series',
     'UpdateAnySeries' = 'Update Any Series',
+    'ViewAnySeriesCategories' = 'View Any Series Categories',
+    'CreateSeriesCategories' = 'Create Series Categories',
+    'DeleteAnySeriesCategories' = 'Delete Any Series Categories',
+    'UpdateAnySeriesCategories' = 'Update Any Series Categories',
     'ViewAnyContactUs' = 'View Any Contact Us',
     'DeleteAnyContactUs' = 'Delete Any Contact Us',
   }

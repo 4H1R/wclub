@@ -73,6 +73,11 @@ enum PermissionEnum: string implements HasLabel
     case CreateSeries = 'Create Series';
     case DeleteAnySeries = 'Delete Any Series';
     case UpdateAnySeries = 'Update Any Series';
+    // Series Categories
+    case ViewAnySeriesCategories = 'View Any Series Categories';
+    case CreateSeriesCategories = 'Create Series Categories';
+    case DeleteAnySeriesCategories = 'Delete Any Series Categories';
+    case UpdateAnySeriesCategories = 'Update Any Series Categories';
     // ContactUs
     case ViewAnyContactUs = 'View Any Contact Us';
     case DeleteAnyContactUs = 'Delete Any Contact Us';
@@ -134,7 +139,7 @@ enum PermissionEnum: string implements HasLabel
             self::UpdateAnyContests => 'ویرایش هر چالش',
             self::CreateContests => 'ایجاد چالش',
             self::DeleteAnyContests => 'حدف هر چالش',
-            // Event Program Categories
+            // Contest Categories
             self::ViewAnyContestCategories => 'مشاهده همه دسته بندی های چالش ها',
             self::UpdateAnyContestCategories => 'ویرایش هر دسته بندی چالش ها',
             self::CreateContestCategories => 'ایجاد دسته بندی چالش ها',
@@ -144,6 +149,11 @@ enum PermissionEnum: string implements HasLabel
             self::UpdateAnySeries => 'ویرایش هر دوره',
             self::CreateSeries => 'ایجاد دوره',
             self::DeleteAnySeries => 'حدف هر دوره',
+            // Series Categories
+            self::ViewAnySeriesCategories => 'مشاهده همه دسته بندی های دوره ها',
+            self::UpdateAnySeriesCategories => 'ویرایش هر دسته بندی دوره ها',
+            self::CreateSeriesCategories => 'ایجاد دسته بندی دوره ها',
+            self::DeleteAnySeriesCategories => 'حدف هر دسته بندی دوره ها',
             // Contact Us
             self::ViewAnyContactUs => 'مشاهده همه تماس با ما ها',
             self::DeleteAnyContactUs => 'حذف هر تماس با ما',

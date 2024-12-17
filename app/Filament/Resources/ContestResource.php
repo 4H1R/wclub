@@ -23,7 +23,7 @@ class ContestResource extends CustomResource
 
     protected static string $translationLabel = 'Contests';
 
-    protected static ?string $navigationIcon = 'heroicon-o-fire';
+    protected static ?string $navigationIcon = 'heroicon-o-bolt';
 
     public static function getNavigationGroup(): ?string
     {

@@ -14,6 +14,7 @@ declare module 'ziggy-js' {
       {
         name: 'series';
         required: true;
+        binding: 'id';
       },
     ];
     'series.edit': [

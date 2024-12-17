@@ -25,11 +25,6 @@ class BannerResource extends CustomResource
 
     protected static ?string $navigationIcon = 'heroicon-o-photo';
 
-    public static function getNavigationGroup(): ?string
-    {
-        return __('Index page');
-    }
-
     public static function form(Form $form): Form
     {
         $basicSection = BasicSection::make([

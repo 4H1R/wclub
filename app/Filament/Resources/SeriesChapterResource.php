@@ -21,7 +21,7 @@ class SeriesChapterResource extends CustomResource
 
     protected static string $translationLabel = 'Chapters';
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-circle-stack';
 
     public static function getNavigationGroup(): ?string
     {

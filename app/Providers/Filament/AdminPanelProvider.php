@@ -28,7 +28,6 @@ class AdminPanelProvider extends PanelProvider
             ->path('admin')
             ->font('Vazirmatn')
             ->navigationGroups([
-                __('Index page'),
                 trans_choice('Event Programs', 2),
                 trans_choice('Contests', 2),
                 trans_choice('Series', 2),

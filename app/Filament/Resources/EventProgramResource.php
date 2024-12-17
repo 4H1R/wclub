@@ -23,7 +23,7 @@ class EventProgramResource extends CustomResource
 
     protected static string $translationLabel = 'Event Programs';
 
-    protected static ?string $navigationIcon = 'heroicon-o-fire';
+    protected static ?string $navigationIcon = 'heroicon-o-bolt';
 
     public static function getNavigationGroup(): ?string
     {
