@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('short_description')->nullable();
-            $table->text('content');
+            $table->text('description');
             $table->unsignedInteger('min_participants')->nullable();
             $table->unsignedInteger('max_participants')->nullable();
             $table->dateTime('started_at');

@@ -104,7 +104,7 @@ namespace App\Models{
  * @property int $id
  * @property string $title
  * @property string|null $short_description
- * @property string $content
+ * @property string $description
  * @property int|null $min_participants
  * @property int|null $max_participants
  * @property string $started_at
@@ -124,8 +124,8 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Contest newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Contest newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Contest query()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Contest whereContent($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Contest whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Contest whereDescription($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Contest whereFinishedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Contest whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Contest whereMaxParticipants($value)
@@ -149,7 +149,7 @@ namespace App\Models{
  * @property int|null $user_id
  * @property string $title
  * @property string|null $short_description
- * @property string $content
+ * @property string $description
  * @property int|null $min_participants
  * @property int|null $max_participants
  * @property string $started_at
@@ -170,8 +170,8 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram query()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram whereContent($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram whereDescription($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram whereFinishedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram whereMaxParticipants($value)
@@ -288,7 +288,7 @@ namespace App\Models{
  * @property int $id
  * @property string $title
  * @property string|null $short_description
- * @property string $content
+ * @property string $description
  * @property int $required_score
  * @property int|null $min_participants
  * @property int|null $max_participants
@@ -307,8 +307,8 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|RewardProgram newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|RewardProgram newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|RewardProgram query()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|RewardProgram whereContent($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|RewardProgram whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|RewardProgram whereDescription($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|RewardProgram whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|RewardProgram whereMaxParticipants($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|RewardProgram whereMinParticipants($value)
@@ -363,7 +363,7 @@ namespace App\Models{
  * @property \App\Enums\Series\SeriesTypeEnum $type
  * @property string $title
  * @property string $short_description
- * @property string $content
+ * @property string $description
  * @property array|null $faqs
  * @property int $episodes_duration_seconds
  * @property string|null $published_at
@@ -387,8 +387,8 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Series newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Series newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Series query()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Series whereContent($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Series whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Series whereDescription($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Series whereEpisodesDurationSeconds($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Series whereFaqs($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Series whereId($value)
@@ -445,7 +445,7 @@ namespace App\Models{
  * @property int|null $chapter_id
  * @property int $series_id
  * @property string $title
- * @property string|null $content
+ * @property string|null $description
  * @property int $video_duration_seconds
  * @property int|null $order_column
  * @property string|null $published_at
@@ -464,8 +464,8 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|SeriesEpisode ordered(string $direction = 'asc')
  * @method static \Illuminate\Database\Eloquent\Builder<static>|SeriesEpisode query()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|SeriesEpisode whereChapterId($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|SeriesEpisode whereContent($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|SeriesEpisode whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SeriesEpisode whereDescription($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|SeriesEpisode whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|SeriesEpisode whereOrderColumn($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|SeriesEpisode wherePublishedAt($value)

@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Series;
 
 use App\Data\Category\CategoryData;
 use App\Data\Series\SeriesData;
 use App\Data\Series\SeriesFullData;
+use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Scopes\PublishedScope;
 use App\Models\Series;

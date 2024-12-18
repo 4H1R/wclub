@@ -51,7 +51,7 @@ class EventProgramResource extends CustomResource
                 ->translateLabel()
                 ->columnSpanFull()
                 ->maxLength(255),
-            Forms\Components\MarkdownEditor::make('content')
+            Forms\Components\MarkdownEditor::make('description')
                 ->disableToolbarButtons(['attachFiles'])
                 ->translateLabel()
                 ->columnSpanFull()

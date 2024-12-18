@@ -16,7 +16,7 @@ export default function EventProgramCard({
   return (
     <div className={cn('card h-full bg-base-100 shadow', { 'w-[20rem]': hasWidth })}>
       <Link href={href}>
-        <figure className="h-44 w-full bg-base-200">
+        <figure className="h-44 w-full bg-base-200 lg:h-56">
           {eventProgram.image && (
             <Image
               className="size-full"
@@ -27,10 +27,6 @@ export default function EventProgramCard({
         </figure>
       </Link>
       <div className="card-body h-full">
-        {/* <div className={cn('flex items-center gap-1 text-base-content/80', {})}>
-          <GoDotFill className="size-2" />
-          <span className="text-xs font-bold">تمام شده</span>
-        </div> */}
         <h2 className="card-title">{eventProgram.title}</h2>
         {eventProgram.short_description && (
           <p className="line-clamp-4 max-h-fit text-sm text-base-content/80">

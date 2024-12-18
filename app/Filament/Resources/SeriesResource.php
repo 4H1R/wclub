@@ -64,9 +64,10 @@ class SeriesResource extends CustomResource
                 ->columnSpanFull()
                 ->maxLength(255)
                 ->required(),
-            Forms\Components\MarkdownEditor::make('content')
+            Forms\Components\MarkdownEditor::make('description')
                 ->translateLabel()
                 ->columnSpanFull()
+                ->disableToolbarButtons(['attachFiles'])
                 ->maxLength(5012)
                 ->required(),
             Forms\Components\Repeater::make('faqs')

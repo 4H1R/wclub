@@ -25,6 +25,7 @@ class SeriesService
             $series->loadCount('episodes', 'ownedUsers');
             $series->load([
                 'image',
+                'categories',
                 'chapters' => fn (HasMany $builder) => $builder
                     ->ordered()
                     ->withGlobalScope('published', new PublishedScope)

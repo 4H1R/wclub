@@ -75,7 +75,7 @@ export default function Show() {
             </div>
           </div>
           <Markdown className="prose max-w-none text-base-content">
-            {reward_program.content}
+            {reward_program.description}
           </Markdown>
         </div>
         <div className="col-span-full md:col-span-3">

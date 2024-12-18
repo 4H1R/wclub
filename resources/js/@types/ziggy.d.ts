@@ -7,6 +7,13 @@ declare module 'ziggy-js' {
     aboutUs: [];
     search: [];
     womenGarden: [];
+    'series.owns.store': [
+      {
+        name: 'series';
+        required: true;
+        binding: 'id';
+      },
+    ];
     'series.index': [];
     'series.create': [];
     'series.store': [];
@@ -32,6 +39,24 @@ declare module 'ziggy-js' {
     'series.destroy': [
       {
         name: 'series';
+        required: true;
+      },
+    ];
+    'series.episodes.index': [
+      {
+        name: 'series';
+        required: true;
+        binding: 'id';
+      },
+    ];
+    'series.episodes.show': [
+      {
+        name: 'series';
+        required: true;
+        binding: 'id';
+      },
+      {
+        name: 'episode';
         required: true;
       },
     ];

@@ -1,4 +1,5 @@
 import { PageProps } from '@/@types';
+import { timeOptions } from '@/fixtures';
 import BreadCrumb from '@/shared/BreadCrumb';
 import ContestCard from '@/shared/cards/ContestCard';
 import Button from '@/shared/forms/Button';
@@ -17,14 +18,6 @@ type TPage = PageProps<{
 }>;
 
 const registerId = 'registerId';
-
-const timeOptions = {
-  year: 'numeric',
-  month: 'numeric',
-  day: 'numeric',
-  hour: '2-digit',
-  minute: '2-digit',
-} as const;
 
 export default function Show() {
   const { contest, recommended_contests } = usePage<TPage>().props;
@@ -69,7 +62,7 @@ export default function Show() {
               <ShareButton predefinedStyleFor="mobile" />
             </div>
           </div>
-          <Markdown className="prose max-w-none text-base-content">{contest.content}</Markdown>
+          <Markdown className="prose max-w-none text-base-content">{contest.description}</Markdown>
         </div>
         <div className="col-span-full md:col-span-3">
           <div id={registerId} className="card sticky left-0 top-3 bg-base-200">

@@ -60,11 +60,11 @@ function Error() {
       <p className="text-lg text-base-content/80">{description}</p>
       <div className="flex items-center gap-4">
         {!hasReloaded && (
-          <Button onClick={handleReload} className="btn btn-outline btn-secondary">
+          <Button onClick={handleReload} className="btn btn-outline">
             تلاش دوباره
           </Button>
         )}
-        <Link className="btn btn-secondary" href="/">
+        <Link className="btn btn-primary" href="/">
           بازگشت به صفحه اصلی
         </Link>
       </div>

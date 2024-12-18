@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('type')->index();
             $table->string('title');
             $table->string('short_description');
-            $table->text('content');
+            $table->text('description');
             $table->json('faqs')->nullable();
             $table->unsignedInteger('episodes_duration_seconds')->default(0);
             $table->timestamp('published_at')->nullable();

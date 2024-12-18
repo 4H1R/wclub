@@ -2,6 +2,7 @@
 
 namespace App\Data\Series;
 
+use App\Data\Category\CategoryData;
 use App\Data\Media\ImageData;
 use App\Data\SeriesChapter\SeriesChapterData;
 use App\Enums\Series\SeriesStatusEnum;
@@ -18,7 +19,7 @@ class SeriesFullData extends Data
         public SeriesTypeEnum $type,
         public SeriesStatusEnum $status,
         public string $short_description,
-        public string $content,
+        public string $description,
         public int $episodes_duration_seconds,
         public int $episodes_count,
         public int $owned_users_count,
@@ -28,5 +29,8 @@ class SeriesFullData extends Data
         /** @var SeriesFaqData[] */
         public ?array $faqs,
         public ?ImageData $image,
+        /** @var CategoryData[] */
+        public array $categories,
+        public string $published_at,
     ) {}
 }

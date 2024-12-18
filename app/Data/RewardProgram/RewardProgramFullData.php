@@ -15,7 +15,7 @@ class RewardProgramFullData extends Data
         public string $title,
         public ?string $short_description,
         public int $required_score,
-        public string $content,
+        public string $description,
         public ?ImageData $image,
         /** @var CategoryData[] */
         public array $categories,

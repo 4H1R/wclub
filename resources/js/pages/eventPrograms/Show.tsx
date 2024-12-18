@@ -1,4 +1,5 @@
 import { PageProps } from '@/@types';
+import { timeOptions } from '@/fixtures';
 import BreadCrumb from '@/shared/BreadCrumb';
 import EventProgramCard from '@/shared/cards/EventProgramCard';
 import Button from '@/shared/forms/Button';
@@ -17,14 +18,6 @@ type TPage = PageProps<{
 }>;
 
 const registerId = 'registerId';
-
-const timeOptions = {
-  year: 'numeric',
-  month: 'numeric',
-  day: 'numeric',
-  hour: '2-digit',
-  minute: '2-digit',
-} as const;
 
 export default function Show() {
   const { event_program, recommended_event_programs } = usePage<TPage>().props;
@@ -70,7 +63,7 @@ export default function Show() {
             </div>
           </div>
           <Markdown className="prose max-w-none text-base-content">
-            {event_program.content}
+            {event_program.description}
           </Markdown>
         </div>
         <div className="col-span-full md:col-span-3">

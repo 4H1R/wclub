@@ -43,7 +43,7 @@ declare namespace App.Data.Contest {
     id: number;
     title: string;
     short_description: string | null;
-    content: string;
+    description: string;
     image: App.Data.Media.ImageData | null;
     min_participants: number | null;
     max_participants: number | null;
@@ -68,7 +68,7 @@ declare namespace App.Data.EventProgram {
     id: number;
     title: string;
     short_description: string | null;
-    content: string;
+    description: string;
     image: App.Data.Media.ImageData | null;
     min_participants: number | null;
     max_participants: number | null;
@@ -102,7 +102,7 @@ declare namespace App.Data.RewardProgram {
     title: string;
     short_description: string | null;
     required_score: number;
-    content: string;
+    description: string;
     image: App.Data.Media.ImageData | null;
     categories: Array<App.Data.Category.CategoryData>;
   };
@@ -128,7 +128,7 @@ declare namespace App.Data.Series {
     type: App.Enums.Series.SeriesTypeEnum;
     status: App.Enums.Series.SeriesStatusEnum;
     short_description: string;
-    content: string;
+    description: string;
     episodes_duration_seconds: number;
     episodes_count: number;
     owned_users_count: number;
@@ -136,6 +136,8 @@ declare namespace App.Data.Series {
     chapters: Array<App.Data.SeriesChapter.SeriesChapterData>;
     faqs: Array<App.Data.Series.SeriesFaqData> | null;
     image: App.Data.Media.ImageData | null;
+    categories: Array<App.Data.Category.CategoryData>;
+    published_at: string;
   };
 }
 declare namespace App.Data.SeriesChapter {
@@ -150,6 +152,16 @@ declare namespace App.Data.SeriesEpisode {
     id: number;
     title: string;
     video_duration_seconds: number;
+  };
+  export type SeriesEpisodeFullData = {
+    id: number;
+    episode_number: number;
+    chapter_id: number;
+    title: string;
+    description: string | null;
+    video_duration_seconds: number;
+    video: App.Data.Media.VideoData | null;
+    created_at: string;
   };
 }
 declare namespace App.Data.Tag {

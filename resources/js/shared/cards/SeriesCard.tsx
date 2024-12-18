@@ -17,7 +17,7 @@ export default function SeriesCard({ series, hasWidth = false, className }: Seri
   return (
     <div className={cn('card h-full bg-base-100 shadow', { 'w-[20rem]': hasWidth }, className)}>
       <Link href={href}>
-        <figure className="h-44 w-full bg-base-200">
+        <figure className="h-44 w-full bg-base-200 lg:h-56">
           {series.image && (
             <Image className="size-full" src={series.image?.original_url} alt={series.title} />
           )}

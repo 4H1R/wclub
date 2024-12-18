@@ -55,6 +55,7 @@ class SeriesEpisodeResource extends CustomResource
                 ->relationship('chapter', 'title', fn (Builder $query, Forms\Get $get) => $query->where('series_id', $get('series_id')))
                 ->required(),
             Forms\Components\MarkdownEditor::make('description')
+                ->disableToolbarButtons(['attachFiles'])
                 ->translateLabel()
                 ->columnSpanFull()
                 ->maxLength(2024),

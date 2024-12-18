@@ -36,7 +36,7 @@ class SeriesFactory extends Factory
             'status' => SeriesStatusEnum::randomValue(),
             'type' => $type,
             'short_description' => $this->faker->persianText(rand(150, 250), true),
-            'content' => $this->faker->persianParagraphs(rand(1, 5), true),
+            'description' => $this->faker->persianParagraphs(rand(1, 5), true),
             'faqs' => fake()->boolean() ? $this->createFaqs() : null,
             'episodes_duration_seconds' => rand(3_600, 190_000),
             'published_at' => fake()->boolean(90) ? now() : null,

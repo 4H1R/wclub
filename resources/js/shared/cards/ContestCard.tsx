@@ -14,7 +14,7 @@ export default function ContestCard({ contest, hasWidth = false, className }: Co
   return (
     <div className={cn('card h-full bg-base-100 shadow', { 'w-[20rem]': hasWidth }, className)}>
       <Link href={href}>
-        <figure className="h-44 w-full bg-base-200">
+        <figure className="h-44 w-full bg-base-200 lg:h-56">
           {contest.image && (
             <Image className="size-full" src={contest.image?.original_url} alt={contest.title} />
           )}

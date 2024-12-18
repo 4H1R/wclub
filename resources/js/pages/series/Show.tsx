@@ -1,7 +1,16 @@
 import { PageProps } from '@/@types';
+import CartAction from '@/components/series/show/CartAction';
+import CategoriesCard from '@/components/series/show/CategoriesCard';
+import ChaptersCard from '@/components/series/show/ChaptersCard';
+import Description from '@/components/series/show/Description';
+import Faqs from '@/components/series/show/Faqs';
+import SideStatsCard from '@/components/series/show/SideStatsCard';
 import BreadCrumb from '@/shared/BreadCrumb';
+import SeriesCard from '@/shared/cards/SeriesCard';
 import Head from '@/shared/Head';
+import Image from '@/shared/images/Image';
 import { usePage } from '@inertiajs/react';
+import { GoDotFill } from 'react-icons/go';
 
 type TPage = PageProps<{
   series: App.Data.Series.SeriesFullData;
@@ -9,7 +18,7 @@ type TPage = PageProps<{
 }>;
 
 export default function Show() {
-  const { series } = usePage<TPage>().props;
+  const { series, recommended_series } = usePage<TPage>().props;
 
   return (
     <div className="space-y mt-page container">
@@ -24,6 +33,55 @@ export default function Show() {
           { title: series.title, href: '#' },
         ]}
       />
+      <div className="card card-compact bg-base-200 md:card-normal">
+        <div className="card-body">
+          <div className="flex flex-col-reverse gap-4 md:flex-row md:justify-between md:gap-8">
+            <div className="flex-1 space-y-4">
+              <h1 className="h2 text-center md:text-start">{series.title}</h1>
+              <p className="text-md text-base-content/80">{series.short_description}</p>
+              <div className="flex flex-col items-center justify-between gap-4 pt-8 md:flex-row">
+                <CartAction series={series} />
+                <span className="text-2xl font-bold">رایگان</span>
+              </div>
+            </div>
+            <figure className="h-56 w-full rounded-box bg-base-300 md:w-2/6">
+              {series.image && (
+                <Image className="size-full" alt={series.title} src={series.image.original_url} />
+              )}
+            </figure>
+          </div>
+        </div>
+      </div>
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-10">
+        <div className="space-y-4 lg:col-span-7">
+          <div className="card card-compact bg-base-200 md:card-normal">
+            <div className="card-body">
+              <div className="space-y-4">
+                <div className="flex items-center justify-center gap-2 md:justify-start">
+                  <GoDotFill className="hidden size-4 md:block" />
+                  <h2 className="h2 text-base-content md:text-start">توضیحات</h2>
+                </div>
+                <Description description={series.description} />
+                <Faqs faqs={series.faqs} />
+              </div>
+            </div>
+          </div>
+          <ChaptersCard series={series} />
+        </div>
+        <div className="space-y-4 lg:col-span-3">
+          <SideStatsCard series={series} />
+          <CategoriesCard categories={series.categories} />
+        </div>
+      </div>
+      <div className="divider" />
+      <div className="space-y-4">
+        <h2 className="h2 text-base-content md:text-start">دوره های پیشنهادی</h2>
+      </div>
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {recommended_series.map((series) => (
+          <SeriesCard key={series.id} series={series} />
+        ))}
+      </div>
     </div>
   );
 }

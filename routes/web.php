@@ -8,7 +8,9 @@ use App\Http\Controllers\EventProgramController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\RewardProgramController;
 use App\Http\Controllers\SearchController;
-use App\Http\Controllers\SeriesController;
+use App\Http\Controllers\Series\SeriesController;
+use App\Http\Controllers\Series\SeriesOwnController;
+use App\Http\Controllers\SeriesEpisodeController;
 use App\Http\Controllers\WomenGardenController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,7 +21,12 @@ Route::get('/about-us', AboutUsController::class)->name('aboutUs');
 Route::get('/search', SearchController::class)->name('search');
 Route::get('/women-garden', WomenGardenController::class)->name('womenGarden');
 
+Route::middleware('auth')->group(function () {
+    Route::resource('series.owns', SeriesOwnController::class)->only(['store']);
+});
+
 Route::resource('series', SeriesController::class);
+Route::resource('series.episodes', SeriesEpisodeController::class)->only(['index', 'show'])->whereNumber('episode');
 Route::resource('reward-programs', RewardProgramController::class)->only(['index', 'show']);
 Route::resource('contests', ContestController::class)->only(['index', 'show']);
 Route::resource('event-programs', EventProgramController::class)->only(['index', 'show']);
