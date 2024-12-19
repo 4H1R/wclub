@@ -2,6 +2,6 @@
 ./vendor/bin/sail artisan ide-helper:models -M
 ./vendor/bin/sail artisan typescript:transform
 ./vendor/bin/sail pint --dirty
-npm run ts:check
-npm run lint
-npm run format && git add -A .
+./vendor/bin/sail npm run ts:check
+./vendor/bin/sail npm run lint
+./vendor/bin/sail npm run format && git add -A .

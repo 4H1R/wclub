@@ -193,6 +193,46 @@ namespace App\Models{
  * 
  *
  * @property int $id
+ * @property string $title
+ * @property string $description
+ * @property string $address
+ * @property float $latitude
+ * @property float $longitude
+ * @property int $max_participants
+ * @property string|null $published_at
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Media|null $image
+ * @property-read \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection<int, \App\Models\Media> $images
+ * @property-read int|null $images_count
+ * @property-read \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection<int, \App\Models\Media> $media
+ * @property-read int|null $media_count
+ * @property-read mixed $slug
+ * @method static \Database\Factories\GardenFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Garden newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Garden newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Garden query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Garden whereAddress($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Garden whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Garden whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Garden whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Garden whereLatitude($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Garden whereLongitude($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Garden whereMaxParticipants($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Garden wherePublishedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Garden whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Garden whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
+	#[\AllowDynamicProperties]
+	class IdeHelperGarden {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
  * @property string $model_type
  * @property int $model_id
  * @property string|null $uuid

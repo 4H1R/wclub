@@ -6,10 +6,17 @@ declare module 'ziggy-js' {
     contactUs: [];
     aboutUs: [];
     search: [];
-    womenGarden: [];
     'series.owns.store': [
       {
         name: 'series';
+        required: true;
+        binding: 'id';
+      },
+    ];
+    'gardens.index': [];
+    'gardens.show': [
+      {
+        name: 'garden';
         required: true;
         binding: 'id';
       },

@@ -5,13 +5,13 @@ use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\ContestController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EventProgramController;
+use App\Http\Controllers\GardenController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\RewardProgramController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\Series\SeriesController;
 use App\Http\Controllers\Series\SeriesOwnController;
 use App\Http\Controllers\SeriesEpisodeController;
-use App\Http\Controllers\WomenGardenController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', IndexController::class)->name('index');
@@ -19,12 +19,12 @@ Route::get('/contact-us', [ContactUsController::class, 'create'])->name('contact
 Route::post('/contact-us', [ContactUsController::class, 'store']);
 Route::get('/about-us', AboutUsController::class)->name('aboutUs');
 Route::get('/search', SearchController::class)->name('search');
-Route::get('/women-garden', WomenGardenController::class)->name('womenGarden');
 
 Route::middleware('auth')->group(function () {
     Route::resource('series.owns', SeriesOwnController::class)->only(['store']);
 });
 
+Route::resource('gardens', GardenController::class)->only(['index', 'show']);
 Route::resource('series', SeriesController::class);
 Route::resource('series.episodes', SeriesEpisodeController::class)->only(['index', 'show'])->whereNumber('episode');
 Route::resource('reward-programs', RewardProgramController::class)->only(['index', 'show']);

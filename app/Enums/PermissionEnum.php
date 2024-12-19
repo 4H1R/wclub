@@ -81,6 +81,11 @@ enum PermissionEnum: string implements HasLabel
     // ContactUs
     case ViewAnyContactUs = 'View Any Contact Us';
     case DeleteAnyContactUs = 'Delete Any Contact Us';
+    // Gardens
+    case ViewAnyGardens = 'View Any Gardens';
+    case CreateGardens = 'Create Gardens';
+    case DeleteAnyGardens = 'Delete Any Gardens';
+    case UpdateAnyGardens = 'Update Any Gardens';
 
     public function getLabel(): string
     {
@@ -157,6 +162,11 @@ enum PermissionEnum: string implements HasLabel
             // Contact Us
             self::ViewAnyContactUs => 'مشاهده همه تماس با ما ها',
             self::DeleteAnyContactUs => 'حذف هر تماس با ما',
+            // Gardens
+            self::ViewAnyGardens => 'مشاهده همه باغ های بانوان',
+            self::UpdateAnyGardens => 'ویرایش هر باغ بانوان',
+            self::CreateGardens => 'ایجاد باغ بانوان',
+            self::DeleteAnyGardens => 'حدف هر باغ بانوان',
         };
     }
 }

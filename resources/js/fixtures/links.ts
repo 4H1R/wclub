@@ -44,8 +44,8 @@ export const navbarLinks: TNavbarLink[] = [
     showOn: 'all',
   },
   {
-    title: 'باغ بانوان',
-    href: '/women-garden',
+    title: 'باغ های بانوان',
+    href: '/gardens',
     Icon: HiOutlineSparkles,
     ActiveIcon: HiSparkles,
     showOn: 'all',
@@ -104,7 +104,7 @@ export const footerLinks = [
   {
     title: 'خدمات',
     links: [
-      { title: 'باغ بانوان', href: '/women-garden' },
+      { title: 'باغ های بانوان', href: '/gardens' },
       { title: 'همه خدمات', href: '/reward-programs' },
     ],
   },

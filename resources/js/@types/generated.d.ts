@@ -77,6 +77,15 @@ declare namespace App.Data.EventProgram {
     categories: Array<App.Data.Category.CategoryData>;
   };
 }
+declare namespace App.Data.Garden {
+  export type GardenData = {
+    id: number;
+    title: string;
+    address: string;
+    max_participants: number;
+    images: Array<App.Data.Media.ImageData>;
+  };
+}
 declare namespace App.Data.Media {
   export type ImageData = {
     id: number;
@@ -261,6 +270,10 @@ declare namespace App.Enums {
     'UpdateAnySeriesCategories' = 'Update Any Series Categories',
     'ViewAnyContactUs' = 'View Any Contact Us',
     'DeleteAnyContactUs' = 'Delete Any Contact Us',
+    'ViewAnyGardens' = 'View Any Gardens',
+    'CreateGardens' = 'Create Gardens',
+    'DeleteAnyGardens' = 'Delete Any Gardens',
+    'UpdateAnyGardens' = 'Update Any Gardens',
   }
   export enum RoleEnum {
     'SuperAdmin' = 'Super Admin',

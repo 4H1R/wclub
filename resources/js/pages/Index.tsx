@@ -14,10 +14,11 @@ type TPage = PageProps<{
   event_programs: App.Data.EventProgram.EventProgramData[];
   reward_programs: App.Data.RewardProgram.RewardProgramData[];
   contests: App.Data.Contest.ContestData[];
+  series: App.Data.Series.SeriesData[];
 }>;
 
 export default function Index() {
-  const { contests, reward_programs, event_programs, target_groups, banners } =
+  const { contests, reward_programs, series, event_programs, target_groups, banners } =
     usePage<TPage>().props;
 
   return (
@@ -41,7 +42,7 @@ export default function Index() {
       <LatestEventPrograms eventPrograms={event_programs} />
       <LatestContests contests={contests} />
       <RewardPrograms rewardPrograms={reward_programs} />
-      <Series contests={contests} />
+      <Series series={series} />
     </div>
   );
 }

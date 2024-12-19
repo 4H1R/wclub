@@ -30,6 +30,7 @@ class AdminPanelProvider extends PanelProvider
             ->navigationGroups([
                 trans_choice('Event Programs', 2),
                 trans_choice('Contests', 2),
+                trans_choice('Gardens', 2),
                 trans_choice('Series', 2),
                 trans_choice('Reward Programs', 2),
                 trans_choice('Users', 2),

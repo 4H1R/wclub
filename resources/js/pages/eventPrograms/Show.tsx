@@ -70,11 +70,15 @@ export default function Show() {
           <div id={registerId} className="card sticky left-0 top-3 bg-base-200">
             <div className="card-body">
               <ul className="list-inside list-disc text-base-content/80">
-                {event_program.min_participants && (
-                  <li>حداقل {digitsEnToFa(addCommas(event_program.min_participants))} فرد</li>
+                {Boolean(event_program.min_participants) && (
+                  <li>
+                    حداقل {digitsEnToFa(addCommas(event_program.min_participants as number))} فرد
+                  </li>
                 )}
-                {event_program.max_participants && (
-                  <li>حداکثر {digitsEnToFa(addCommas(event_program.max_participants))} فرد</li>
+                {Boolean(event_program.max_participants) && (
+                  <li>
+                    حداکثر {digitsEnToFa(addCommas(event_program.max_participants as number))} فرد
+                  </li>
                 )}
                 <li>
                   شروع از{' '}

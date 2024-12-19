@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\ContactUs;
 use App\Models\Contest;
 use App\Models\EventProgram;
+use App\Models\Garden;
 use App\Models\RewardProgram;
 use App\Models\TargetGroup;
 use App\Models\User;
@@ -53,5 +54,7 @@ class DatabaseSeeder extends Seeder
             ->each(function (Contest $contest) use ($contestsCategories) {
                 $contest->categories()->attach($contestsCategories->random(rand(0, 5))->pluck('id'));
             });
+
+        Garden::factory(50)->create();
     }
 }
