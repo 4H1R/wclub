@@ -12,7 +12,7 @@ export default function TargetGroups({ targetGroups }: TargetGroupsProps) {
       {targetGroups.map((targetGroup) => (
         <div
           key={targetGroup.id}
-          className="relative rounded-box border-2 border-black bg-primary py-4 pr-[10%] text-center text-xl font-medium text-gray-50 transition-transform hover:scale-105 md:py-8 md:pr-[23%] lg:text-2xl"
+          className="relative rounded-box border-2 border-black bg-primary py-4 pr-[10%] text-center text-xl font-medium text-gray-50 transition-transform hover:scale-105 md:py-8 md:pr-[23%] lg:min-w-[15.625rem] lg:text-2xl"
         >
           <span>{targetGroup.title}</span>
           {targetGroup.image && (

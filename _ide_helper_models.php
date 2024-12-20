@@ -195,6 +195,29 @@ namespace App\Models{
  * 
  *
  * @property int $id
+ * @property string|null $title
+ * @property string|null $slug
+ * @property string|null $image
+ * @property string|null $short_description
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Game newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Game newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Game query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Game whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Game whereImage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Game whereShortDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Game whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Game whereTitle($value)
+ * @mixin \Eloquent
+ */
+	#[\AllowDynamicProperties]
+	class IdeHelperGame {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
  * @property string $title
  * @property string $description
  * @property string $address

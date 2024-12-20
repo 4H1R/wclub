@@ -78,6 +78,14 @@ declare namespace App.Data.EventProgram {
     categories: Array<App.Data.Category.CategoryData>;
   };
 }
+declare namespace App.Data.Game {
+  export type GameData = {
+    title: string;
+    slug: string;
+    short_description: string | null;
+    image: string;
+  };
+}
 declare namespace App.Data.Garden {
   export type GardenData = {
     id: number;

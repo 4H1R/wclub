@@ -6,6 +6,8 @@ use App\Http\Controllers\Contest\ContestController;
 use App\Http\Controllers\Contest\ContestRegistrationController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EventProgramController;
+use App\Http\Controllers\Game\GameController;
+use App\Http\Controllers\Game\RollTheDiceGameController;
 use App\Http\Controllers\GardenController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\RewardProgramController;
@@ -31,6 +33,8 @@ Route::resource('series.episodes', SeriesEpisodeController::class)->only(['index
 Route::resource('reward-programs', RewardProgramController::class)->only(['index', 'show']);
 Route::resource('event-programs', EventProgramController::class)->only(['index', 'show']);
 Route::resource('contests', ContestController::class)->only(['index', 'show']);
+Route::resource('games', GameController::class)->only(['index']);
+Route::get('/games/roll-the-dice', RollTheDiceGameController::class)->name('games.roll-the-dice');
 
 Route::middleware('auth')->group(function () {
     Route::resource('contests.registrations', ContestRegistrationController::class)->only(['store']);

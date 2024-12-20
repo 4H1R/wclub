@@ -89,6 +89,8 @@ declare module 'ziggy-js' {
         binding: 'id';
       },
     ];
+    'games.index': [];
+    'games.roll-the-dice': [];
     'contests.registrations.store': [
       {
         name: 'contest';
