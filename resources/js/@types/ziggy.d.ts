@@ -74,6 +74,13 @@ declare module 'ziggy-js' {
         required: true;
       },
     ];
+    'event-programs.index': [];
+    'event-programs.show': [
+      {
+        name: 'event_program';
+        required: true;
+      },
+    ];
     'contests.index': [];
     'contests.show': [
       {
@@ -82,10 +89,9 @@ declare module 'ziggy-js' {
         binding: 'id';
       },
     ];
-    'event-programs.index': [];
-    'event-programs.show': [
+    'contests.registrations.store': [
       {
-        name: 'event_program';
+        name: 'contest';
         required: true;
       },
     ];

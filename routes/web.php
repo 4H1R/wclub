@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\ContactUsController;
-use App\Http\Controllers\ContestController;
+use App\Http\Controllers\Contest\ContestController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EventProgramController;
 use App\Http\Controllers\GardenController;
@@ -28,8 +28,9 @@ Route::resource('gardens', GardenController::class)->only(['index', 'show']);
 Route::resource('series', SeriesController::class);
 Route::resource('series.episodes', SeriesEpisodeController::class)->only(['index', 'show'])->whereNumber('episode');
 Route::resource('reward-programs', RewardProgramController::class)->only(['index', 'show']);
-Route::resource('contests', ContestController::class)->only(['index', 'show']);
 Route::resource('event-programs', EventProgramController::class)->only(['index', 'show']);
+Route::resource('contests', ContestController::class)->only(['index', 'show']);
+Route::resource('contests.registrations', ContestController::class)->only(['store']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'show'])->name('dashboard');

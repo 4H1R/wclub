@@ -8,12 +8,10 @@ import {
   HiOutlineHome,
   HiOutlineQuestionMarkCircle,
   HiOutlineSignal,
-  HiOutlineSparkles,
   HiOutlineStar,
   HiOutlineTrophy,
   HiQuestionMarkCircle,
   HiSignal,
-  HiSparkles,
   HiStar,
   HiTrophy,
 } from 'react-icons/hi2';
@@ -43,13 +41,13 @@ export const navbarLinks: TNavbarLink[] = [
     ActiveIcon: HiStar,
     showOn: 'all',
   },
-  {
-    title: 'باغ های بانوان',
-    href: '/gardens',
-    Icon: HiOutlineSparkles,
-    ActiveIcon: HiSparkles,
-    showOn: 'all',
-  },
+  // {
+  //   title: 'باغ های بانوان',
+  //   href: '/gardens',
+  //   Icon: HiOutlineSparkles,
+  //   ActiveIcon: HiSparkles,
+  //   showOn: 'all',
+  // },
   {
     title: 'چالش و مسابقات',
     href: '/contests',
@@ -104,7 +102,7 @@ export const footerLinks = [
   {
     title: 'خدمات',
     links: [
-      { title: 'باغ های بانوان', href: '/gardens' },
+      // { title: 'باغ های بانوان', href: '/gardens' },
       { title: 'همه خدمات', href: '/reward-programs' },
     ],
   },

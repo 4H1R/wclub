@@ -18,6 +18,7 @@ class SeriesEpisodeFactory extends Factory
             'title' => $this->faker->persianWords(rand(4, 8), true),
             'description' => fake()->boolean() ? $this->faker->persianParagraphs(rand(1, 5), true) : null,
             'video_duration_seconds' => rand(60, 21600),
+            'watch_score' => rand(5, 100),
             'published_at' => fake()->boolean(90) ? now() : null,
         ];
     }

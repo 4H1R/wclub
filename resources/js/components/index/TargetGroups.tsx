@@ -1,5 +1,4 @@
 import Image from '@/shared/images/Image';
-import { Link } from '@inertiajs/react';
 
 type TargetGroupsProps = {
   targetGroups: App.Data.TargetGroup.TargetGroupData[];
@@ -11,10 +10,9 @@ export default function TargetGroups({ targetGroups }: TargetGroupsProps) {
   return (
     <section className="grid grid-cols-1 gap-4 gap-y-10 py-8 sm:grid-cols-2 md:gap-y-14 lg:grid-cols-3 xl:grid-cols-4">
       {targetGroups.map((targetGroup) => (
-        <Link
+        <div
           key={targetGroup.id}
           className="relative rounded-box border-2 border-black bg-primary py-4 pr-[10%] text-center text-xl font-medium text-gray-50 transition-transform hover:scale-105 md:py-8 md:pr-[23%] lg:text-2xl"
-          href="/"
         >
           <span>{targetGroup.title}</span>
           {targetGroup.image && (
@@ -24,7 +22,7 @@ export default function TargetGroups({ targetGroups }: TargetGroupsProps) {
               src={targetGroup.image?.original_url}
             />
           )}
-        </Link>
+        </div>
       ))}
     </section>
   );

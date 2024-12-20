@@ -487,6 +487,7 @@ namespace App\Models{
  * @property string $title
  * @property string|null $description
  * @property int $video_duration_seconds
+ * @property int $watch_score
  * @property int|null $order_column
  * @property string|null $published_at
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -513,6 +514,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|SeriesEpisode whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|SeriesEpisode whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|SeriesEpisode whereVideoDurationSeconds($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SeriesEpisode whereWatchScore($value)
  * @mixin \Eloquent
  */
 	#[\AllowDynamicProperties]

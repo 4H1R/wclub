@@ -9,7 +9,7 @@ import CategoriesBadge from '@/shared/resources/show/CategoriesBadge';
 import ShareButton from '@/shared/resources/show/ShareButton';
 import { usePage } from '@inertiajs/react';
 import { addCommas, digitsEnToFa } from '@persian-tools/persian-tools';
-import { HiOutlineCheck } from 'react-icons/hi2';
+import { HiOutlineInformationCircle } from 'react-icons/hi2';
 import Markdown from 'react-markdown';
 
 type TPage = PageProps<{
@@ -56,8 +56,8 @@ export default function Show() {
             <CategoriesBadge categories={event_program.categories} />
             <div className="flex flex-wrap items-center justify-between gap-4 rounded-box bg-base-200 text-base-content/80 md:hidden">
               <Button onClick={handleScrollToRegister} className="btn btn-ghost">
-                <HiOutlineCheck className="size-5" />
-                <span>ثبت نام</span>
+                <HiOutlineInformationCircle className="size-5" />
+                <span>اطلاعات بیشتر</span>
               </Button>
               <ShareButton predefinedStyleFor="mobile" />
             </div>
@@ -91,9 +91,9 @@ export default function Show() {
                   )}
                 </li>
               </ul>
-              <div className="card-actions mt-4">
-                <Button className="btn btn-neutral btn-block">ثبت نام</Button>
-              </div>
+              {/*<div className="card-actions mt-4">*/}
+              {/*  <Button className="btn btn-neutral btn-block">ثبت نام</Button>*/}
+              {/*</div>*/}
             </div>
           </div>
         </div>

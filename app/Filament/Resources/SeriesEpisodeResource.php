@@ -59,16 +59,21 @@ class SeriesEpisodeResource extends CustomResource
                 ->translateLabel()
                 ->columnSpanFull()
                 ->maxLength(2024),
-            FileInput::make($form, 'video')
-                ->previewable(false)
-                ->reorderable(false)
-                ->helperText('لطفا فایل های بزرگ تر از ۵۰ مگابایت رو با روش دستی اپلود و با اضافه کردن ویدیو در بالا ان را وصل کنید')
-                ->acceptedFileTypes(['video/mp4']),
             Forms\Components\TextInput::make('video_duration_seconds')
                 ->translateLabel()
                 ->integer()
                 ->minValue(0)
                 ->required(),
+            Forms\Components\TextInput::make('watch_score')
+                ->translateLabel()
+                ->integer()
+                ->minValue(0)
+                ->required(),
+            FileInput::make($form, 'video')
+                ->previewable(false)
+                ->reorderable(false)
+                ->helperText('لطفا فایل های بزرگ تر از ۵۰ مگابایت رو با روش دستی اپلود و با اضافه کردن ویدیو در بالا ان را وصل کنید')
+                ->acceptedFileTypes(['video/mp4']),
         ]);
 
         $statusSection = StatusSection::make(includePublishedAt: true);

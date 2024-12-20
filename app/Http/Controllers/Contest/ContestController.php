@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Contest;
 
 use App\Data\Category\CategoryData;
 use App\Data\Contest\ContestData;
 use App\Data\Contest\ContestFullData;
+use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Contest;
 use App\Models\Scopes\PublishedScope;

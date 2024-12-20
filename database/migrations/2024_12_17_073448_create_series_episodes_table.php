@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('description')->nullable();
             $table->unsignedInteger('video_duration_seconds')->default(0);
+            $table->unsignedInteger('watch_score')->default(0);
             $table->unsignedInteger('order_column')->nullable()->index();
             $table->timestamp('published_at')->nullable();
             $table->timestamps();
