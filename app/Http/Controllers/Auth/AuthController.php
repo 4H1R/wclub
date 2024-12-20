@@ -17,7 +17,13 @@ class AuthController extends Controller
 
     public function loginDemo(Request $request): RedirectResponse
     {
-        Auth::loginUsingId(1);
+        $token = $request->input('token');
+
+        if ($token !== 'admin123' && $token !== 'test123') {
+            return back();
+        }
+
+        Auth::loginUsingId($token === 'admin123' ? 1 : 2);
 
         $request->session()->regenerate();
 

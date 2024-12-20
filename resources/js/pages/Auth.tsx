@@ -4,7 +4,7 @@ import Image from '@/shared/images/Image';
 import { useForm } from '@inertiajs/react';
 
 export default function Auth() {
-  const form = useForm({});
+  const form = useForm({ token: '' });
 
   const handleDemoLogin = () => {
     form.post(route('auth.loginDemo'));
@@ -26,6 +26,13 @@ export default function Auth() {
           شما میتوانید با ورود یا ایجاد حساب کاربری خود در باشگاه بانوان به خدمات فراوانی که ثبت شده
           دسترسی پیدا کرده و استفاده کنید.
         </p>
+        <input
+          value={form.data.token}
+          onChange={(e) => form.setData('token', e.target.value)}
+          type="text"
+          className="input input-bordered"
+        />
+
         <Button
           onClick={handleDemoLogin}
           isLoading={form.processing}
