@@ -1,8 +1,7 @@
 {
   "entities": [
-    { "title": "کودکان", "min_age": 1, "max_age": 12 },
-    { "title": "نوجوانان", "min_age": 13, "max_age": 19 },
-    { "title": "جوانان", "min_age": 20, "max_age": 39 },
-    { "title": "بزرگسالان", "min_age": 40, "max_age": 150 }
+    { "title": "شهردخت", "min_age": 1, "max_age": 12 },
+    { "title": "شهربانو", "min_age": 13, "max_age": 39 },
+    { "title": "شهرزاد", "min_age": 40, "max_age": 150 }
   ]
 }
