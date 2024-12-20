@@ -35,7 +35,7 @@ class AppServiceProvider extends ServiceProvider
         Model::shouldBeStrict(! app()->isProduction());
         JsonResource::withoutWrapping();
         Vite::prefetch(concurrency: 3);
-        DB::prohibitDestructiveCommands(app()->isProduction());
+        // DB::prohibitDestructiveCommands(app()->isProduction());
         if (! app()->isProduction()) {
             Model::handleLazyLoadingViolationUsing(function ($model, $relation) {
                 $class = get_class($model);
