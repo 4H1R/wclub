@@ -59,10 +59,10 @@ export default function Navbar() {
           <Link href="/" className="btn btn-ghost text-xl font-medium hover:bg-transparent">
             <Image
               className="!hidden md:!block"
-              src="/images/logo/logo3.webp"
+              src="/images/logo/logo.png"
               width={40}
               height={40}
-              alt="لوگو بانوان آفتاب"
+              alt="لوگو باشگاه بانوان"
             />
             <span className="lg:hidden">باشگاه بانوان</span>
           </Link>

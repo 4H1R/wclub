@@ -1,4 +1,5 @@
 import { PageProps } from '@/@types';
+import RegisterContest from '@/components/contests/RegisterContest';
 import { timeOptions } from '@/fixtures';
 import BreadCrumb from '@/shared/BreadCrumb';
 import ContestCard from '@/shared/cards/ContestCard';
@@ -86,7 +87,7 @@ export default function Show() {
                 </li>
               </ul>
               <div className="card-actions mt-4">
-                <Button className="btn btn-neutral btn-block">ثبت نام</Button>
+                <RegisterContest contest={contest} />
               </div>
             </div>
           </div>

@@ -30,7 +30,12 @@ export default function Footer() {
       <footer className="bg-base-200">
         <div className="container footer py-10">
           <aside className="max-w-none space-y-2 md:max-w-[20rem] lg:max-w-sm">
-            <Image src="/images/logo/logo3.webp" width={150} height={150} alt="لوگو بانوان آفتاب" />
+            <Image
+              src="/images/logo/logoFull.png"
+              width={150}
+              height={150}
+              alt="لوگو باشگاه بانوان"
+            />
             <p>
               لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
               گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای

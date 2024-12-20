@@ -93,6 +93,7 @@ declare module 'ziggy-js' {
       {
         name: 'contest';
         required: true;
+        binding: 'id';
       },
     ];
     dashboard: [];

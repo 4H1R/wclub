@@ -15,11 +15,11 @@ export default function Auth() {
       <Head title="حساب کاربری" description="حساب کاربری" />
       <div className="w-full space-y-4 rounded-box bg-base-200 p-6 md:max-w-xl">
         <Image
-          src="/images/logo/logo3.webp"
+          src="/images/logo/logoFull.png"
           width={200}
           height={200}
           className="mx-auto"
-          alt="لوگو بانوان آفتاب"
+          alt="لوگو باشگاه بانوان"
         />
         <h1 className="sr-only">ورود یا ایجاد حساب کاربری خود</h1>
         <p className="text-center text-base-content/80">

@@ -12,6 +12,7 @@ class AuthUserData extends Data
         public int $id,
         public string $first_name,
         public string $last_name,
+        public int $score,
         public ?string $email,
         public ?string $phone,
         public ?string $email_verified_at,

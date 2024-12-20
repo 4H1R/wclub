@@ -13,8 +13,8 @@ export default function DrawerContent() {
         className="mx-auto"
         width={150}
         height={150}
-        alt="لوگو بانوان آفتاب"
-        src="/images/logo/logo3.webp"
+        alt="لوگو باشگاه بانوان"
+        src="/images/logo/logoFull.png"
       />
       <Search key={url} url={route('search', undefined, false)} />
       <div className="divider" />

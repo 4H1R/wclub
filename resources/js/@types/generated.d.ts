@@ -47,6 +47,7 @@ declare namespace App.Data.Contest {
     image: App.Data.Media.ImageData | null;
     min_participants: number | null;
     max_participants: number | null;
+    has_registered: boolean;
     started_at: string;
     finished_at: string;
     categories: Array<App.Data.Category.CategoryData>;
@@ -191,6 +192,7 @@ declare namespace App.Data.User {
     id: number;
     first_name: string;
     last_name: string;
+    score: number;
     email: string | null;
     phone: string | null;
     email_verified_at: string | null;
@@ -277,6 +279,7 @@ declare namespace App.Enums {
   }
   export enum RoleEnum {
     'SuperAdmin' = 'Super Admin',
+    'Test' = 'Test',
   }
 }
 declare namespace App.Enums.Series {

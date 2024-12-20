@@ -10,6 +10,7 @@ use App\Models\Category;
 use App\Models\Contest;
 use App\Models\Scopes\PublishedScope;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use Spatie\LaravelData\PaginatedDataCollection;
 use Spatie\QueryBuilder\AllowedFilter;
@@ -47,6 +48,7 @@ class ContestController extends Controller
         abort_unless($contest->published_at, 404);
 
         $contest->load(['categories', 'image']);
+        $contest->has_registered = Auth::check() && $contest->registrations()->where('user_id', Auth::id())->exists();
 
         $recommendedContests = Contest::query()
             ->with(['categories', 'image'])

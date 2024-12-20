@@ -18,6 +18,7 @@ class ContestFullData extends Data
         public ?ImageData $image,
         public ?int $min_participants,
         public ?int $max_participants,
+        public bool $has_registered,
         public string $started_at,
         public string $finished_at,
         /** @var CategoryData[] */

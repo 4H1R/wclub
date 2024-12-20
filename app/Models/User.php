@@ -99,6 +99,14 @@ class User extends Authenticatable implements FilamentUser, HasName
     }
 
     /**
+     * @return BelongsToMany<Contest>
+     */
+    public function contestRegistrations(): BelongsToMany
+    {
+        return $this->belongsToMany(Contest::class, 'contest_user_registrations');
+    }
+
+    /**
      * @return BelongsToMany<Series>
      */
     public function ownedSeries(): BelongsToMany
