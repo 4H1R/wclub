@@ -8,7 +8,7 @@ export default function TargetGroups({ targetGroups }: TargetGroupsProps) {
   if (targetGroups.length < 1) return null;
 
   return (
-    <section className="mx-auto grid grid-cols-1 gap-4 gap-y-10 py-8 sm:grid-cols-2 md:gap-y-14 lg:grid-cols-3 xl:w-[64rem]">
+    <section className="grid grid-cols-1 gap-4 gap-y-10 py-8 sm:grid-cols-2 md:gap-y-14 lg:mx-auto lg:grid-cols-3 xl:w-[64rem]">
       {targetGroups.map((targetGroup) => (
         <div
           key={targetGroup.id}
