@@ -12,7 +12,7 @@ services:
       POSTGRES_PASSWORD: '${DB_PASSWORD}'
       PGPASSWORD: '${DB_PASSWORD}'
     networks:
-      - smartiz
+      - wclub
     healthcheck:
       test:
         - CMD
@@ -28,7 +28,7 @@ services:
     image: redis:alpine
     restart: unless-stopped
     networks:
-      - smartiz
+      - wclub
     volumes:
       - redis-data:/data
     ports:
@@ -46,7 +46,7 @@ services:
       context: .
       dockerfile: api.dockerfile
     networks:
-      - smartiz
+      - wclub
     environment:
       - CONTAINER_MODE=http
       - WITH_HORIZON=true
@@ -59,22 +59,22 @@ services:
     depends_on:
       - pgsql
       - redis
-  api-fallback:
-    restart: unless-stopped
-    build:
-      context: .
-      dockerfile: api.dockerfile
-    networks:
-      - smartiz
-    environment:
-      - CONTAINER_MODE=http
-    env_file:
-      - .env
-    ports:
-      - "8005:8000"
-    depends_on:
-      - pgsql
-      - redis
+  # api-fallback:
+  #   restart: unless-stopped
+  #   build:
+  #     context: .
+  #     dockerfile: api.dockerfile
+  #   networks:
+  #     - wclub
+  #   environment:
+  #     - CONTAINER_MODE=http
+  #   env_file:
+  #     - .env
+  #   ports:
+  #     - "8005:8000"
+  #   depends_on:
+  #     - pgsql
+  #     - redis
 
 volumes:
   storage:
@@ -82,6 +82,6 @@ volumes:
   redis-data:
 
 networks:
-  smartiz:
-    name: smartiz
+  wclub:
+    name: wclub
     external: true
