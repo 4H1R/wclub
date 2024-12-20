@@ -18,7 +18,7 @@ export default function Show() {
     `${digitsEnToFa(20)} امتیاز بابت شرکت در رویداد`,
     `${digitsEnToFa(40)} امتیاز بابت ورود به باشگاه بانوان به مدت ${digitsEnToFa(30)} روز`,
     `${digitsEnToFa(30)} امتیاز بابت دیدن دوره`,
-    `مجموع ${digitsEnToFa(155)} امتیاز`,
+    `مجموع ${digitsEnToFa(150)} امتیاز`,
   ];
 
   useEffect(() => {
