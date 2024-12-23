@@ -9,6 +9,7 @@ import Head from '@/shared/Head';
 import Image from '@/shared/images/Image';
 import { cn } from '@/utils';
 import { useForm } from '@inertiajs/react';
+import { motion } from 'framer-motion';
 import get from 'lodash/get';
 import React, { useEffect, useState } from 'react';
 import OTPInput from 'react-otp-input';
@@ -28,6 +29,10 @@ export default function Auth() {
     token: '',
     birth_date: '',
   });
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [step]);
 
   useEffect(() => {
     if (step !== 'verify' || form.data.token.length !== 4) return;
@@ -193,11 +198,16 @@ export default function Auth() {
         title="حساب کاربری"
         description="ورود یا ایجاد حساب کاربری خود در باشگاه بانوان اصفهان "
       />
-      <div className="w-full space-y-4 rounded-box bg-base-200 p-6 md:max-w-xl">
+      <motion.div
+        key={step}
+        initial={{ opacity: 0, top: -1000 }}
+        animate={{ opacity: 1, top: 0 }}
+        className="w-full space-y-4 rounded-box bg-base-200 p-6 md:max-w-xl"
+      >
         <Form onSubmit={handleSubmit} form={form} styleMode="base">
           {stepsComponents[step]}
         </Form>
-      </div>
+      </motion.div>
     </div>
   );
 }
