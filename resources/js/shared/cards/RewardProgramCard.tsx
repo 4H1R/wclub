@@ -32,11 +32,7 @@ export default function RewardProgramCard({
       </Link>
       <div className="card-body h-full">
         <h2 className="card-title">{rewardProgram.title}</h2>
-        {rewardProgram.short_description && (
-          <p className="max-h-fit text-sm text-base-content/80">
-            {rewardProgram.short_description}
-          </p>
-        )}
+        <p className="max-h-fit text-sm text-base-content/80">{rewardProgram.short_description}</p>
         <div className="flex flex-wrap items-center gap-1 pb-6 pt-2">
           <div
             className={cn('tooltip tooltip-top', {

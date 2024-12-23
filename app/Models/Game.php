@@ -18,9 +18,18 @@ class Game extends Model
         return [
             [
                 'id' => 1,
+                'title' => 'نردبان شادی',
+                'slug' => 'nardeban-shadi',
+                'image' => asset('images/games/nardebanShadi.webp'),
+                'image_type' => 'cover',
+                'short_description' => 'بازی مار و پله با طعم نردبان شادی.',
+            ],
+            [
+                'id' => 2,
                 'title' => 'تاس سی',
                 'slug' => 'roll-the-dice',
-                'image' => asset('images/games/rollTheDice.png'),
+                'image' => asset('images/games/rollTheDice.webp'),
+                'image_type' => 'contain',
                 'short_description' => 'با ربات باشگاه بانوان مسابقه تاس اندازی بده و هرکی عدد سی رو زودتر اورد برندست.',
             ],
         ];

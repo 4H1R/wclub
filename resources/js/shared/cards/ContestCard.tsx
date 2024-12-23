@@ -22,11 +22,9 @@ export default function ContestCard({ contest, hasWidth = false, className }: Co
       </Link>
       <div className="card-body h-full">
         <h2 className="card-title">{contest.title}</h2>
-        {contest.short_description && (
-          <p className="line-clamp-4 max-h-fit text-sm text-base-content/80">
-            {contest.short_description}
-          </p>
-        )}
+        <p className="line-clamp-4 max-h-fit text-sm text-base-content/80">
+          {contest.short_description}
+        </p>
         {contest.categories.length > 0 && (
           <div className="flex flex-wrap items-center gap-1 pb-6 pt-2">
             {contest.categories.map((category) => (

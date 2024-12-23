@@ -30,7 +30,7 @@ export default function Show() {
     <div className="space-y mt-page container">
       <Head
         title={`رویداد ${event_program.title}`}
-        description={event_program.short_description ?? event_program.title}
+        description={event_program.short_description}
         imageUrl={event_program.image?.original_url}
       />
       <BreadCrumb
@@ -40,7 +40,7 @@ export default function Show() {
         ]}
       />
       <div className="grid grid-cols-10 gap-4">
-        <div className="space-y col-span-full md:col-span-7">
+        <div className="space-y col-span-full lg:col-span-7">
           {event_program.image && (
             <Image
               className="w-full rounded-box object-contain"
@@ -66,7 +66,7 @@ export default function Show() {
             {event_program.description}
           </Markdown>
         </div>
-        <div className="col-span-full md:col-span-3">
+        <div className="col-span-full lg:col-span-3">
           <div id={registerId} className="card sticky left-0 top-3 bg-base-200">
             <div className="card-body">
               <ul className="list-inside list-disc text-base-content/80">

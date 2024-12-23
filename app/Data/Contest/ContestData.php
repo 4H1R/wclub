@@ -13,7 +13,7 @@ class ContestData extends Data
     public function __construct(
         public int $id,
         public string $title,
-        public ?string $short_description,
+        public string $short_description,
         public ?ImageData $image,
         public ?int $min_participants,
         public ?int $max_participants,

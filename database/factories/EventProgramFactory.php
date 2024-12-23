@@ -19,7 +19,7 @@ class EventProgramFactory extends Factory
 
         return [
             'title' => $this->faker->persianWords(random_int(2, 7), true),
-            'short_description' => fake()->boolean() ? $this->faker->persianText(random_int(160, 210)) : null,
+            'short_description' => $this->faker->persianText(random_int(160, 210)),
             'description' => $this->faker->persianParagraphs(3, true),
             'min_participants' => fake()->numberBetween(0, 50),
             'max_participants' => fake()->boolean() ? fake()->numberBetween(100, 500) : null,

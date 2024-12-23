@@ -31,7 +31,7 @@ declare namespace App.Data.Contest {
   export type ContestData = {
     id: number;
     title: string;
-    short_description: string | null;
+    short_description: string;
     image: App.Data.Media.ImageData | null;
     min_participants: number | null;
     max_participants: number | null;
@@ -42,7 +42,7 @@ declare namespace App.Data.Contest {
   export type ContestFullData = {
     id: number;
     title: string;
-    short_description: string | null;
+    short_description: string;
     description: string;
     image: App.Data.Media.ImageData | null;
     min_participants: number | null;
@@ -57,7 +57,7 @@ declare namespace App.Data.EventProgram {
   export type EventProgramData = {
     id: number;
     title: string;
-    short_description: string | null;
+    short_description: string;
     image: App.Data.Media.ImageData | null;
     min_participants: number | null;
     max_participants: number | null;
@@ -68,7 +68,7 @@ declare namespace App.Data.EventProgram {
   export type EventProgramFullData = {
     id: number;
     title: string;
-    short_description: string | null;
+    short_description: string;
     description: string;
     image: App.Data.Media.ImageData | null;
     min_participants: number | null;
@@ -84,6 +84,7 @@ declare namespace App.Data.Game {
     slug: string;
     short_description: string | null;
     image: string;
+    image_type: string;
   };
 }
 declare namespace App.Data.Garden {
@@ -110,7 +111,7 @@ declare namespace App.Data.RewardProgram {
   export type RewardProgramData = {
     id: number;
     title: string;
-    short_description: string | null;
+    short_description: string;
     required_score: number;
     image: App.Data.Media.ImageData | null;
     categories: Array<App.Data.Category.CategoryData>;
@@ -118,7 +119,7 @@ declare namespace App.Data.RewardProgram {
   export type RewardProgramFullData = {
     id: number;
     title: string;
-    short_description: string | null;
+    short_description: string;
     required_score: number;
     description: string;
     image: App.Data.Media.ImageData | null;

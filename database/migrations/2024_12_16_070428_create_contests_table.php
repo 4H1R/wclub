@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('contests', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('short_description')->nullable();
+            $table->text('short_description');
             $table->text('description');
             $table->unsignedInteger('min_participants')->nullable();
             $table->unsignedInteger('max_participants')->nullable();

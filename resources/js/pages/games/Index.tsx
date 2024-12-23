@@ -14,7 +14,7 @@ export default function Index() {
     <div className="space-y mt-page container">
       <Head title="بازی ها" description="بازی ها" />
       <h1 className="h1">بازی ها</h1>
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {games.map((game) => (
           <GameCard key={game.slug} game={game} />
         ))}

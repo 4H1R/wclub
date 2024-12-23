@@ -103,7 +103,7 @@ namespace App\Models{
  *
  * @property int $id
  * @property string $title
- * @property string|null $short_description
+ * @property string $short_description
  * @property string $description
  * @property int|null $min_participants
  * @property int|null $max_participants
@@ -150,7 +150,7 @@ namespace App\Models{
  * @property int $id
  * @property int|null $user_id
  * @property string $title
- * @property string|null $short_description
+ * @property string $short_description
  * @property string $description
  * @property int|null $min_participants
  * @property int|null $max_participants
@@ -198,12 +198,14 @@ namespace App\Models{
  * @property string|null $title
  * @property string|null $slug
  * @property string|null $image
+ * @property string|null $image_type
  * @property string|null $short_description
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Game newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Game newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Game query()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Game whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Game whereImage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Game whereImageType($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Game whereShortDescription($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Game whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Game whereTitle($value)
@@ -352,7 +354,7 @@ namespace App\Models{
  *
  * @property int $id
  * @property string $title
- * @property string|null $short_description
+ * @property string $short_description
  * @property string $description
  * @property int $required_score
  * @property int|null $min_participants

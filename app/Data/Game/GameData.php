@@ -13,5 +13,6 @@ class GameData extends Data
         public string $slug,
         public ?string $short_description,
         public string $image,
+        public string $image_type,
     ) {}
 }

@@ -37,4 +37,8 @@
   .auth-link {
     @apply btn btn-link text-base-content/90 no-underline disabled:bg-transparent;
   }
+
+  .side-grid-container {
+    @apply grid grid-cols-1 gap-4 lg:grid-cols-10 lg:gap-8;
+  }
 }

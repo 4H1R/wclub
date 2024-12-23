@@ -15,12 +15,18 @@ export default function GameCard({ game, className, hasWidth = false }: GameCard
     <div className={cn('card h-full bg-base-100 shadow', { 'w-[20rem]': hasWidth }, className)}>
       <Link href={href}>
         <figure className="h-44 w-full bg-base-200 lg:h-56">
-          <Image className="size-full object-contain" src={game.image} alt={game.title} />
+          <Image
+            className={cn('size-full object-contain', {
+              'object-cover': game.image_type === 'cover',
+            })}
+            src={game.image}
+            alt={game.title}
+          />
         </figure>
       </Link>
       <div className="card-body h-full">
         <h2 className="card-title">{game.title}</h2>
-        <p className="line-clamp-4 max-h-fit text-sm text-base-content/80">
+        <p className="line-clamp-4 max-h-fit pb-4 text-sm text-base-content/80">
           {game.short_description}
         </p>
         <Link className="btn mt-auto" href={href}>

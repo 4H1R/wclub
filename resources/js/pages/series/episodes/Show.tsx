@@ -58,7 +58,7 @@ export default function Show() {
           />
         </div>
       </div>
-      <div className="grid grid-cols-1 gap-4 lg:grid-cols-10">
+      <div className="side-grid-container">
         <div className="space-y-4 lg:col-span-7">
           <EpisodePagination
             isFirstEpisode={isFirstEpisode}

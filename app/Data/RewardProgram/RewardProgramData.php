@@ -13,7 +13,7 @@ class RewardProgramData extends Data
     public function __construct(
         public int $id,
         public string $title,
-        public ?string $short_description,
+        public string $short_description,
         public int $required_score,
         public ?ImageData $image,
         /** @var CategoryData[] */

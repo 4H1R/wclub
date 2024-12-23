@@ -34,11 +34,9 @@ export default function SeriesCard({ series, hasWidth = false, className }: Seri
           <span className="text-xs font-bold">{seriesStatusTranslation[series.status]}</span>
         </div>
         <h2 className="card-title">{series.title}</h2>
-        {series.short_description && (
-          <p className="line-clamp-4 max-h-fit text-sm text-base-content/80">
-            {series.short_description}
-          </p>
-        )}
+        <p className="line-clamp-4 max-h-fit text-sm text-base-content/80">
+          {series.short_description}
+        </p>
         {series.categories.length > 0 && (
           <div className="flex flex-wrap items-center gap-1 pb-6 pt-2">
             {series.categories.map((category) => (

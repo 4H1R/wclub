@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('reward_programs', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('short_description')->nullable();
+            $table->text('short_description');
             $table->text('description');
             $table->unsignedInteger('required_score');
             $table->unsignedBigInteger('min_participants')->nullable();

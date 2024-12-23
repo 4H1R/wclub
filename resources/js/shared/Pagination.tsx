@@ -3,6 +3,7 @@ import Button from '@/shared/forms/Button';
 import { PaginatedCollection } from '@/types';
 import { cn } from '@/utils';
 import { router } from '@inertiajs/react';
+import { digitsEnToFa } from '@persian-tools/persian-tools';
 
 type PaginationProps = {
   data: PaginatedCollection<object>;
@@ -30,7 +31,7 @@ export default function Pagination({ data }: PaginationProps) {
             'btn-primary': link.active,
           })}
         >
-          {link.label}
+          {isNaN(parseInt(link.label, 10)) ? link.label : digitsEnToFa(link.label)}
         </Button>
       ))}
     </div>

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete();
             $table->string('title');
-            $table->text('short_description')->nullable();
+            $table->text('short_description');
             $table->text('description');
             $table->unsignedInteger('min_participants')->nullable();
             $table->unsignedInteger('max_participants')->nullable();

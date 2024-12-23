@@ -56,7 +56,8 @@ class RewardProgramResource extends CustomResource
             Forms\Components\Textarea::make('short_description')
                 ->translateLabel()
                 ->columnSpanFull()
-                ->maxLength(255),
+                ->maxLength(255)
+                ->required(),
             Forms\Components\MarkdownEditor::make('description')
                 ->disableToolbarButtons(['attachFiles'])
                 ->translateLabel()

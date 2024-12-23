@@ -24,7 +24,7 @@ export default function Show() {
     <div className="space-y mt-page container">
       <Head
         title={`دوره ${series.title}`}
-        description={series.short_description ?? series.title}
+        description={series.short_description}
         imageUrl={series.image?.original_url}
       />
       <BreadCrumb
@@ -52,7 +52,7 @@ export default function Show() {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-1 gap-4 lg:grid-cols-10">
+      <div className="side-grid-container">
         <div className="space-y-4 lg:col-span-7">
           <div className="card card-compact bg-base-200 md:card-normal">
             <div className="card-body">

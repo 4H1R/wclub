@@ -90,7 +90,6 @@ declare module 'ziggy-js' {
       },
     ];
     'games.index': [];
-    'games.roll-the-dice': [];
     'contests.registrations.store': [
       {
         name: 'contest';

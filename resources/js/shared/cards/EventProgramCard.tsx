@@ -28,11 +28,9 @@ export default function EventProgramCard({
       </Link>
       <div className="card-body h-full">
         <h2 className="card-title">{eventProgram.title}</h2>
-        {eventProgram.short_description && (
-          <p className="line-clamp-4 max-h-fit text-sm text-base-content/80">
-            {eventProgram.short_description}
-          </p>
-        )}
+        <p className="line-clamp-4 max-h-fit text-sm text-base-content/80">
+          {eventProgram.short_description}
+        </p>
         {eventProgram.categories.length > 0 && (
           <div className="flex flex-wrap items-center gap-1 pb-6 pt-2">
             {eventProgram.categories.map((category) => (
