@@ -5,7 +5,7 @@ services:
     volumes:
       - pgsql-data:/var/lib/postgresql/data
     ports:
-      - "54322:5432"
+      - "127.0.0.1:5432:5432"
     environment:
       POSTGRES_DB: '${DB_DATABASE}'
       POSTGRES_USER: '${DB_USERNAME}'
@@ -32,7 +32,7 @@ services:
     volumes:
       - redis-data:/data
     ports:
-      - "6384:6379"
+      - "127.0.0.1:6379:6379"
     healthcheck:
       test:
         - CMD
@@ -55,26 +55,26 @@ services:
     env_file:
       - .env
     ports:
-      - "8004:8000"
+      - "127.0.0.1:8000:8000"
     depends_on:
       - pgsql
       - redis
-  # api-fallback:
-  #   restart: unless-stopped
-  #   build:
-  #     context: .
-  #     dockerfile: api.dockerfile
-  #   networks:
-  #     - wclub
-  #   environment:
-  #     - CONTAINER_MODE=http
-  #   env_file:
-  #     - .env
-  #   ports:
-  #     - "8005:8000"
-  #   depends_on:
-  #     - pgsql
-  #     - redis
+  api-fallback:
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: api.dockerfile
+    networks:
+      - wclub
+    environment:
+      - CONTAINER_MODE=http
+    env_file:
+      - .env
+    ports:
+      - "127.0.0.1:8001:8000"
+    depends_on:
+      - pgsql
+      - redis
 
 volumes:
   storage:

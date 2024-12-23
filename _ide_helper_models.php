@@ -103,7 +103,7 @@ namespace App\Models{
  *
  * @property int $id
  * @property string $title
- * @property string $short_description
+ * @property string|null $short_description
  * @property string $description
  * @property int|null $min_participants
  * @property int|null $max_participants
@@ -150,7 +150,7 @@ namespace App\Models{
  * @property int $id
  * @property int|null $user_id
  * @property string $title
- * @property string $short_description
+ * @property string|null $short_description
  * @property string $description
  * @property int|null $min_participants
  * @property int|null $max_participants
@@ -354,7 +354,7 @@ namespace App\Models{
  *
  * @property int $id
  * @property string $title
- * @property string $short_description
+ * @property string|null $short_description
  * @property string $description
  * @property int $required_score
  * @property int|null $min_participants
@@ -585,12 +585,12 @@ namespace App\Models{
  * @property int $id
  * @property string $first_name
  * @property string $last_name
+ * @property string $email
  * @property string $phone
- * @property string|null $email
  * @property string $birth_date
  * @property int $score
- * @property \Illuminate\Support\Carbon|null $phone_verified_at
  * @property \Illuminate\Support\Carbon|null $email_verified_at
+ * @property \Illuminate\Support\Carbon|null $phone_verified_at
  * @property string $password
  * @property string|null $remember_token
  * @property \Illuminate\Support\Carbon|null $created_at
