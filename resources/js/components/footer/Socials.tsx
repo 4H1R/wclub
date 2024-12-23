@@ -15,7 +15,7 @@ export default function Socials() {
   return (
     <nav className="grid grid-flow-col gap-4">
       {socials.map((social) => (
-        <a key={social.name} target="_blank" href={social.href} rel="noopener noreferrer">
+        <a key={social.name} target="_blank" href={social.href} rel="noopener nofollow noreferrer">
           <Image alt={social.alt} src={social.src} width={24} height={24} />
         </a>
       ))}

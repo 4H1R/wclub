@@ -69,8 +69,8 @@ export default function SwiperContainer({
       >
         <div className="swiper-wrapper">{children}</div>
         <div className="swiper-pagination" />
-        <div className="swiper-button-prev" />
-        <div className="swiper-button-next" />
+        {/*<div className="swiper-button-prev" />*/}
+        {/*<div className="swiper-button-next" />*/}
         <div className="swiper-scrollbar" />
       </div>
     </>
