@@ -1,4 +1,4 @@
-import { MODAL_ROOT_ID } from '@/shared/modals/BaseModal';
+import config from '@/fixtures/config';
 import { THasChildren } from '@/types';
 import { cn } from '@/utils';
 import { ToastContainer } from 'react-toastify';
@@ -18,7 +18,7 @@ export default function BaseLayout({ children, className }: BaseLayoutProps) {
         'debug-screens': !process.env.NODE_ENV || process.env.NODE_ENV === 'development',
       })}
     >
-      <div id={MODAL_ROOT_ID} />
+      <div id={config.modalsId} />
       <ToastContainer
         draggablePercent={50}
         rtl

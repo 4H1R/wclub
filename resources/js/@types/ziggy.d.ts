@@ -105,6 +105,12 @@ declare module 'ziggy-js' {
     'sms.verify': [];
     'sms.register': [];
     logout: [];
+    telescope: [
+      {
+        name: 'view';
+        required: false;
+      },
+    ];
     'storage.local': [
       {
         name: 'path';
