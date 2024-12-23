@@ -10,6 +10,8 @@ use App\Models\User;
 use App\Observers\SeriesChapterObserver;
 use App\Observers\SeriesEpisodeObserver;
 use App\Observers\SeriesObserver;
+use Filament\Support\Assets\Css;
+use Filament\Support\Facades\FilamentAsset;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\DB;
@@ -64,5 +66,9 @@ class AppServiceProvider extends ServiceProvider
         Gate::define('viewLogViewer', static function (?User $user) {
             return app()->isLocal() || $user?->isSuperAdmin();
         });
+
+        FilamentAsset::register([
+            Css::make('custom-stylesheet', __DIR__.'/../../resources/css/filament.css'),
+        ]);
     }
 }
