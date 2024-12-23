@@ -23,38 +23,38 @@ class DatabaseSeeder extends Seeder
             PermissionSeeder::class,
             RoleSeeder::class,
             UserSeeder::class,
-            SeriesSeeder::class,
+            // SeriesSeeder::class,
         ]);
 
-        ContactUs::factory(30)->create();
         collect(File::json('database/json/target_groups.json')['entities'])->each(function (array $targetGroup) {
             TargetGroup::firstOrCreate($targetGroup);
         });
 
-        $firstUser = User::firstOrFail();
+        // $firstUser = User::firstOrFail();
 
-        $rewardProgramCategories = Category::factory(10)->create(['model' => RewardProgram::class]);
-        RewardProgram::factory(50)
-            ->create()
-            ->each(function (RewardProgram $rewardProgram) use ($rewardProgramCategories) {
-                $rewardProgram->categories()->attach($rewardProgramCategories->random(rand(0, 5))->pluck('id'));
-            });
+        // ContactUs::factory(30)->create();
+        // $rewardProgramCategories = Category::factory(10)->create(['model' => RewardProgram::class]);
+        // RewardProgram::factory(50)
+        //     ->create()
+        //     ->each(function (RewardProgram $rewardProgram) use ($rewardProgramCategories) {
+        //         $rewardProgram->categories()->attach($rewardProgramCategories->random(rand(0, 5))->pluck('id'));
+        //     });
 
-        $eventProgramCategories = Category::factory(10)->create(['model' => EventProgram::class]);
-        EventProgram::factory(50)
-            ->for($firstUser)
-            ->create()
-            ->each(function (EventProgram $eventProgram) use ($eventProgramCategories) {
-                $eventProgram->categories()->attach($eventProgramCategories->random(rand(0, 5))->pluck('id'));
-            });
+        // $eventProgramCategories = Category::factory(10)->create(['model' => EventProgram::class]);
+        // EventProgram::factory(50)
+        //     ->for($firstUser)
+        //     ->create()
+        //     ->each(function (EventProgram $eventProgram) use ($eventProgramCategories) {
+        //         $eventProgram->categories()->attach($eventProgramCategories->random(rand(0, 5))->pluck('id'));
+        //     });
 
-        $contestsCategories = Category::factory(10)->create(['model' => Contest::class]);
-        Contest::factory(50)
-            ->create()
-            ->each(function (Contest $contest) use ($contestsCategories) {
-                $contest->categories()->attach($contestsCategories->random(rand(0, 5))->pluck('id'));
-            });
+        // $contestsCategories = Category::factory(10)->create(['model' => Contest::class]);
+        // Contest::factory(50)
+        //     ->create()
+        //     ->each(function (Contest $contest) use ($contestsCategories) {
+        //         $contest->categories()->attach($contestsCategories->random(rand(0, 5))->pluck('id'));
+        //     });
 
-        Garden::factory(50)->create();
+        // Garden::factory(50)->create();
     }
 }
