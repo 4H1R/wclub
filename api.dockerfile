@@ -151,7 +151,7 @@ RUN composer install \
     --audit
 
 COPY --link --chown=${USER}:${USER} package.json package-lock.json ./
-RUN npm ci --loglevel=error --no-audit;
+RUN npm ci --loglevel=error --no-audit --force;
 
 COPY --link --chown=${USER}:${USER} . .
 COPY --link --chown=${USER}:${USER} --from=build ${ROOT}/public public
