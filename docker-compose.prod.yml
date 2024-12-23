@@ -79,7 +79,7 @@ services:
     image: 'minio/minio:latest'
     ports:
       - '127.0.01:9000:9000'
-      - '1127.0.0.1:8900:8900'
+      - '127.0.0.1:8900:8900'
     environment:
       MINIO_ROOT_USER: '${PRIVATE_AWS_ACCESS_KEY_ID}'
       MINIO_ROOT_PASSWORD: '${PRIVATE_AWS_SECRET_ACCESS_KEY}'

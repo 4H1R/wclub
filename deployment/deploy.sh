@@ -8,7 +8,7 @@ if ! sudo -v; then
    exit 1
 fi
 
-cd /var/www/smartiz
+cd /var/www/wclub
 
 echo "Running Fallback API"
 docker compose -f docker-compose.prod.yml up -d api-fallback
