@@ -143,7 +143,7 @@ COPY --link --chown=${USER}:${USER} --from=vendor /usr/bin/composer /usr/bin/com
 COPY --link --chown=${USER}:${USER} composer.json composer.lock ./
 
 RUN composer install \
-    # --no-dev \
+    --no-dev \
     --no-interaction \
     --no-autoloader \
     --no-ansi \
@@ -172,7 +172,7 @@ RUN composer install \
     --classmap-authoritative \
     --no-interaction \
     --no-ansi \
-    # --no-dev \
+    --no-dev \
     && composer clear-cache
 
 RUN npm run build:fast
