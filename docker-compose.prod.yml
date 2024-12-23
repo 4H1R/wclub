@@ -84,7 +84,7 @@ services:
       MINIO_ROOT_USER: '${PRIVATE_AWS_ACCESS_KEY_ID}'
       MINIO_ROOT_PASSWORD: '${PRIVATE_AWS_SECRET_ACCESS_KEY}'
     volumes:
-      - 'minio-dat:/data'
+      - 'minio-data:/data'
     networks:
       - wclub
     command: 'minio server /data --console-address ":8900"'
