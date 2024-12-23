@@ -27,6 +27,7 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('admin')
+            ->login()
             ->font('Vazirmatn', provider: GoogleFontProvider::class)
             ->navigationGroups([
                 trans_choice('Event Programs', 2),

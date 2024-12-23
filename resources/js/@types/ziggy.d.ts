@@ -102,7 +102,9 @@ declare module 'ziggy-js' {
     register: [];
     login: [];
     auth: [];
-    'auth.loginDemo': [];
+    'sms.send': [];
+    'sms.verify': [];
+    'sms.register': [];
     logout: [];
     'storage.local': [
       {

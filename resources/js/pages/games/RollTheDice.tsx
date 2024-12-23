@@ -28,7 +28,7 @@ export default function RollTheDice() {
 
   useEffect(() => {
     if (winner === 'user') {
-      toast.success(`${digitsEnToFa(20)} امتیاز به حساب کاربری شما اضافه خواهد شد`);
+      toast.success('شما برنده بازی شدید.');
     }
   }, [winner]);
 

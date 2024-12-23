@@ -15,21 +15,6 @@ class AuthController extends Controller
         return Inertia::render('Auth');
     }
 
-    public function loginDemo(Request $request): RedirectResponse
-    {
-        $token = $request->input('token');
-
-        if ($token !== 'admin123' && $token !== 'test123') {
-            return back();
-        }
-
-        Auth::loginUsingId($token === 'admin123' ? 1 : 2);
-
-        $request->session()->regenerate();
-
-        return to_route('dashboard', ['auth_was_successful' => true]);
-    }
-
     public function destroy(Request $request): RedirectResponse
     {
         Auth::guard('web')->logout();

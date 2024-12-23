@@ -33,4 +33,8 @@
   .mt-page {
     @apply mt-4;
   }
+
+  .auth-link {
+    @apply btn btn-link text-base-content/90 no-underline disabled:bg-transparent;
+  }
 }

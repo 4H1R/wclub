@@ -583,12 +583,12 @@ namespace App\Models{
  * @property int $id
  * @property string $first_name
  * @property string $last_name
- * @property string $email
  * @property string $phone
+ * @property string|null $email
  * @property string $birth_date
  * @property int $score
- * @property \Illuminate\Support\Carbon|null $email_verified_at
  * @property \Illuminate\Support\Carbon|null $phone_verified_at
+ * @property \Illuminate\Support\Carbon|null $email_verified_at
  * @property string $password
  * @property string|null $remember_token
  * @property \Illuminate\Support\Carbon|null $created_at

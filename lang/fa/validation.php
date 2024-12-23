@@ -211,11 +211,11 @@ return [
         'price' => 'قیمت',
         'previous_price' => 'قیمت قدیم',
         'short_description' => 'توضیحات کوتاه',
-        'description' => 'توضیحات',
         'category_id' => 'دسته بندی',
         'tag_ids' => 'تگ ها',
         'instagram' => 'اینستاگرام',
         'telegram' => 'تلگرام',
+        'birth_date' => 'تاریخ تولد',
     ],
 
 ];

@@ -9,6 +9,7 @@ import { usePage } from '@inertiajs/react';
 import { addCommas, digitsEnToFa } from '@persian-tools/persian-tools';
 import { HiOutlineCheck, HiStar } from 'react-icons/hi2';
 import Markdown from 'react-markdown';
+import { toast } from 'react-toastify';
 
 type TPage = PageProps<{
   reward_program: App.Data.RewardProgram.RewardProgramFullData;
@@ -22,6 +23,10 @@ export default function Show() {
 
   const handleScrollToRegister = () => {
     document.getElementById(registerId)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const handleRegister = () => {
+    toast.warning('گرفتن خدمات فعلا امکان پذیر نیست لطفا چند روز دیگر لطفا دوباره تلاش کنید.');
   };
 
   return (
@@ -91,7 +96,9 @@ export default function Show() {
                 </li>
               </ul>
               <div className="card-actions mt-4">
-                <Button className="btn btn-neutral btn-block">گرفتن خدمت</Button>
+                <Button onClick={handleRegister} className="btn btn-neutral btn-block">
+                  گرفتن خدمت
+                </Button>
               </div>
             </div>
           </div>
