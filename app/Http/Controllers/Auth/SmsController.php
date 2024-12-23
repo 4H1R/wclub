@@ -128,7 +128,7 @@ class SmsController extends Controller
             'token' => ['required', 'numeric', 'digits:4'],
             'first_name' => ['required', 'string', 'min:3', 'max:255'],
             'last_name' => ['required', 'string', 'min:3', 'max:255'],
-            'birth_date' => ['required', 'date', 'before:today'],
+            'birth_date' => ['required', 'date', 'before:'.now()->subYears(5)->toDateString()],
             'email' => ['bail', 'nullable', 'string', 'lowercase', 'email', 'max:255', Rule::unique(User::class)],
         ]);
     }

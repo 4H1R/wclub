@@ -216,6 +216,7 @@ return [
         'instagram' => 'اینستاگرام',
         'telegram' => 'تلگرام',
         'birth_date' => 'تاریخ تولد',
+        'today' => 'امروز',
     ],
 
 ];
