@@ -318,6 +318,42 @@ namespace App\Models{
  * 
  *
  * @property int $id
+ * @property string $title
+ * @property string $short_description
+ * @property string $description
+ * @property string|null $published_at
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Category> $categories
+ * @property-read int|null $categories_count
+ * @property-read \App\Models\Media|null $image
+ * @property-read \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection<int, \App\Models\Media> $media
+ * @property-read int|null $media_count
+ * @property-read mixed $slug
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\TargetGroup> $targetGroups
+ * @property-read int|null $target_groups_count
+ * @method static \Database\Factories\NewsFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|News newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|News newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|News query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|News whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|News whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|News whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|News wherePublishedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|News whereShortDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|News whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|News whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
+	#[\AllowDynamicProperties]
+	class IdeHelperNews {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
  * @property string $name
  * @property string $title
  * @property string $guard_name

@@ -11,6 +11,7 @@ use App\Http\Controllers\Game\NardebanShadiController;
 use App\Http\Controllers\Game\RollTheDiceGameController;
 use App\Http\Controllers\GardenController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\RewardProgramController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\Series\SeriesController;
@@ -28,6 +29,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('series.owns', SeriesOwnController::class)->only(['store']);
 });
 
+Route::resource('news', NewsController::class)->only(['index', 'show']);
 Route::resource('gardens', GardenController::class)->only(['index', 'show']);
 Route::resource('series', SeriesController::class);
 Route::resource('series.episodes', SeriesEpisodeController::class)->only(['index', 'show'])->whereNumber('episode');

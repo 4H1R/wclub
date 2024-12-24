@@ -9,6 +9,7 @@ use App\Models\ContactUs;
 use App\Models\Contest;
 use App\Models\EventProgram;
 use App\Models\Garden;
+use App\Models\News;
 use App\Models\RewardProgram;
 use App\Models\TargetGroup;
 use App\Models\User;
@@ -22,13 +23,13 @@ class DatabaseSeeder extends Seeder
         $this->call([
             PermissionSeeder::class,
             RoleSeeder::class,
-            UserSeeder::class,
+            // UserSeeder::class,
             // SeriesSeeder::class,
         ]);
 
-        collect(File::json('database/json/target_groups.json')['entities'])->each(function (array $targetGroup) {
-            TargetGroup::firstOrCreate($targetGroup);
-        });
+        // collect(File::json('database/json/target_groups.json')['entities'])->each(function (array $targetGroup) {
+        //     TargetGroup::firstOrCreate($targetGroup);
+        // });
 
         // $firstUser = User::firstOrFail();
 
@@ -53,6 +54,13 @@ class DatabaseSeeder extends Seeder
         //     ->create()
         //     ->each(function (Contest $contest) use ($contestsCategories) {
         //         $contest->categories()->attach($contestsCategories->random(rand(0, 5))->pluck('id'));
+        //     });
+
+        // $newsCategories = Category::factory(10)->create(['model' => News::class]);
+        // News::factory(50)
+        //     ->create()
+        //     ->each(function (News $news) use ($newsCategories) {
+        //         $news->categories()->attach($newsCategories->random(rand(0, 5))->pluck('id'));
         //     });
 
         // Garden::factory(50)->create();

@@ -34,6 +34,7 @@ class AdminPanelProvider extends PanelProvider
                 trans_choice('Contests', 2),
                 trans_choice('Gardens', 2),
                 trans_choice('Series', 2),
+                trans_choice('News', 2),
                 trans_choice('Reward Programs', 2),
                 trans_choice('Users', 2),
             ])

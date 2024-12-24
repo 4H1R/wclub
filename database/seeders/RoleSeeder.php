@@ -14,13 +14,13 @@ class RoleSeeder extends Seeder
      */
     public function run(): void
     {
-        RoleEnum::all()->each(function (string $name) {
-            if (Role::where('name', $name)->exists()) {
-                return;
-            }
+        // RoleEnum::all()->each(function (string $name) {
+        //     if (Role::where('name', $name)->exists()) {
+        //         return;
+        //     }
 
-            Role::create(['name' => $name, 'title' => RoleEnum::from($name)->getLabel()]);
-        });
+        //     Role::create(['name' => $name, 'title' => RoleEnum::from($name)->getLabel()]);
+        // });
 
         Role::query()
             ->where('name', RoleEnum::SuperAdmin)
