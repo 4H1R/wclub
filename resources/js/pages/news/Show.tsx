@@ -37,31 +37,29 @@ export default function Show() {
           { title: news.title, href: '#' },
         ]}
       />
-      <div className="grid grid-cols-10 gap-4">
-        <div className="space-y col-span-full lg:col-span-7">
-          {news.image && (
-            <Image
-              className="w-full rounded-box object-contain"
-              src={news.image?.original_url}
-              alt={news.title}
-            />
-          )}
-          <div className="space-y-3">
-            <div className="flex flex-wrap items-center justify-between gap-4">
-              <h1 className="h1">{news.title}</h1>
-              <ShareButton predefinedStyleFor="desktop" />
-            </div>
-            <CategoriesBadge categories={news.categories} />
-            <div className="flex flex-wrap items-center justify-between gap-4 rounded-box bg-base-200 text-base-content/80 md:hidden">
-              <Button onClick={handleScrollToRegister} className="btn btn-ghost">
-                <HiOutlineInformationCircle className="size-5" />
-                <span>اطلاعات بیشتر</span>
-              </Button>
-              <ShareButton predefinedStyleFor="mobile" />
-            </div>
+      <div className="space-y lg:mx-auto lg:max-w-[70%]">
+        {news.image && (
+          <Image
+            className="w-full rounded-box object-contain"
+            src={news.image?.original_url}
+            alt={news.title}
+          />
+        )}
+        <div className="space-y-3">
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <h1 className="h1">{news.title}</h1>
+            <ShareButton predefinedStyleFor="desktop" />
           </div>
-          <Markdown className="prose max-w-none text-base-content">{news.description}</Markdown>
+          <CategoriesBadge categories={news.categories} />
+          <div className="flex flex-wrap items-center justify-between gap-4 rounded-box bg-base-200 text-base-content/80 md:hidden">
+            <Button onClick={handleScrollToRegister} className="btn btn-ghost">
+              <HiOutlineInformationCircle className="size-5" />
+              <span>اطلاعات بیشتر</span>
+            </Button>
+            <ShareButton predefinedStyleFor="mobile" />
+          </div>
         </div>
+        <Markdown className="prose max-w-none text-base-content">{news.description}</Markdown>
       </div>
       <div className="divider clear-both md:pt-6" />
       <h2 className="h2">اخبار های دیگر</h2>

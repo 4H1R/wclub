@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use App\Data\Banner\BannerData;
 use App\Data\Contest\ContestData;
 use App\Data\EventProgram\EventProgramData;
+use App\Data\News\NewsData;
 use App\Data\RewardProgram\RewardProgramData;
 use App\Data\Series\SeriesData;
 use App\Data\TargetGroup\TargetGroupData;
 use App\Models\Banner;
 use App\Models\Contest;
 use App\Models\EventProgram;
+use App\Models\News;
 use App\Models\RewardProgram;
 use App\Models\Scopes\PublishedScope;
 use App\Models\Series;
@@ -57,6 +59,12 @@ class IndexController extends Controller
                 ->take(8)
                 ->get();
 
+            $news = News::query()
+                ->with(['categories', 'image'])
+                ->latest('id')
+                ->take(8)
+                ->get();
+
             return [
                 'target_groups' => TargetGroupData::collect($targetGroups),
                 'banners' => BannerData::collect($banners),
@@ -64,6 +72,7 @@ class IndexController extends Controller
                 'reward_programs' => RewardProgramData::collect($rewardPrograms),
                 'contests' => ContestData::collect($contests),
                 'series' => SeriesData::collect($series),
+                'news' => NewsData::collect($news),
             ];
         });
 
