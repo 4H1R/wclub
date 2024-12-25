@@ -17,7 +17,7 @@ class SendAuthSms implements ShouldQueue
 
     public function handle(): void
     {
-        Http::post('https://ippanel.com/api/select', [
+        $response = Http::post('https://ippanel.com/api/select', [
             'op' => 'pattern',
             'user' => config('services.sms.username'),
             'pass' => config('services.sms.password'),
@@ -28,5 +28,7 @@ class SendAuthSms implements ShouldQueue
                 ['code' => $this->token],
             ],
         ]);
+
+        info($response->body());
     }
 }
