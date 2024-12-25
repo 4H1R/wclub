@@ -13,6 +13,14 @@ declare module 'ziggy-js' {
         binding: 'id';
       },
     ];
+    'news.index': [];
+    'news.show': [
+      {
+        name: 'news';
+        required: true;
+        binding: 'id';
+      },
+    ];
     'gardens.index': [];
     'gardens.show': [
       {

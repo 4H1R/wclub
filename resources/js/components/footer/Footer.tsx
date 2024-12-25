@@ -1,7 +1,6 @@
 import { footerLinks } from '@/fixtures/links';
 import Image from '@/shared/images/Image';
 import { Link } from '@inertiajs/react';
-import Socials from './Socials';
 
 export default function Footer() {
   return (
@@ -37,12 +36,10 @@ export default function Footer() {
               alt="لوگو باشگاه بانوان"
             />
             <p>
-              لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
-              گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای
-              شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.
-              کتابهای زیادی در شصت و سه درصد گذشته،
+              باشگاه بانوان برای بانوان از کودک تا بزرگسال توسط شهرداری اصفهان تدارک دیده شده که
+              بیشترین استفاده را از شهر زیبای اصفهان ببرند.
             </p>
-            <Socials />
+            {/* <Socials /> */}
           </aside>
           {footerLinks.map((link) => (
             <nav key={link.title}>

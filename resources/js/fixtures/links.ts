@@ -3,9 +3,11 @@ import {
   HiEnvelope,
   HiFilm,
   HiHome,
+  HiNewspaper,
   HiOutlineEnvelope,
   HiOutlineFilm,
   HiOutlineHome,
+  HiOutlineNewspaper,
   HiOutlinePlayCircle,
   HiOutlineQuestionMarkCircle,
   HiOutlineSignal,
@@ -41,6 +43,13 @@ export const navbarLinks: TNavbarLink[] = [
     href: '/reward-programs',
     Icon: HiOutlineStar,
     ActiveIcon: HiStar,
+    showOn: 'all',
+  },
+  {
+    title: 'اخبار',
+    href: '/news',
+    Icon: HiOutlineNewspaper,
+    ActiveIcon: HiNewspaper,
     showOn: 'all',
   },
   {
@@ -103,6 +112,7 @@ export const footerLinks = [
     title: 'بخش ها',
     links: [
       { title: 'خانه', href: '/' },
+      { title: 'اخبار', href: '/news' },
       { title: 'بازی ها', href: '/games' },
       { title: 'چالش و مسابقات', href: '/contests' },
       { title: 'دوره های آموزشی', href: '/series' },

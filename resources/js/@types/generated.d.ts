@@ -107,6 +107,23 @@ declare namespace App.Data.Media {
     url: string | null;
   };
 }
+declare namespace App.Data.News {
+  export type NewsData = {
+    id: number;
+    title: string;
+    short_description: string;
+    image: App.Data.Media.ImageData | null;
+    categories: Array<App.Data.Category.CategoryData>;
+  };
+  export type NewsFullData = {
+    id: number;
+    title: string;
+    short_description: string;
+    description: string;
+    image: App.Data.Media.ImageData | null;
+    categories: Array<App.Data.Category.CategoryData>;
+  };
+}
 declare namespace App.Data.RewardProgram {
   export type RewardProgramData = {
     id: number;
@@ -285,6 +302,10 @@ declare namespace App.Enums {
     'CreateGardens' = 'Create Gardens',
     'DeleteAnyGardens' = 'Delete Any Gardens',
     'UpdateAnyGardens' = 'Update Any Gardens',
+    'ViewAnyNews' = 'View Any News',
+    'CreateNews' = 'Create News',
+    'DeleteAnyNews' = 'Delete Any News',
+    'UpdateAnyNews' = 'Update Any News',
   }
   export enum RoleEnum {
     'SuperAdmin' = 'Super Admin',

@@ -2,6 +2,7 @@ import { PageProps } from '@/@types';
 import Banners from '@/components/index/Banners';
 import LatestContests from '@/components/index/LatestContests';
 import LatestEventPrograms from '@/components/index/LatestEventPrograms';
+import LatestNews from '@/components/index/LatestNews';
 import RewardPrograms from '@/components/index/RewardPrograms';
 import Series from '@/components/index/Series';
 import TargetGroups from '@/components/index/TargetGroups';
@@ -15,10 +16,11 @@ type TPage = PageProps<{
   reward_programs: App.Data.RewardProgram.RewardProgramData[];
   contests: App.Data.Contest.ContestData[];
   series: App.Data.Series.SeriesData[];
+  news: App.Data.News.NewsData[];
 }>;
 
 export default function Index() {
-  const { contests, reward_programs, series, event_programs, target_groups, banners } =
+  const { contests, reward_programs, news, series, event_programs, target_groups, banners } =
     usePage<TPage>().props;
 
   return (
@@ -39,6 +41,7 @@ export default function Index() {
           <TargetGroups targetGroups={target_groups} />
         </div>
       </section>
+      <LatestNews news={news} />
       <LatestEventPrograms eventPrograms={event_programs} />
       <LatestContests contests={contests} />
       <RewardPrograms rewardPrograms={reward_programs} />

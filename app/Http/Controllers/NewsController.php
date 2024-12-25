@@ -1,26 +1,24 @@
 <?php
 
-namespace App\Http\Controllers\Contest;
+namespace App\Http\Controllers;
 
 use App\Data\Category\CategoryData;
-use App\Data\Contest\ContestData;
-use App\Data\Contest\ContestFullData;
-use App\Http\Controllers\Controller;
+use App\Data\News\NewsData;
+use App\Data\News\NewsFullData;
 use App\Models\Category;
-use App\Models\Contest;
+use App\Models\News;
 use App\Models\Scopes\PublishedScope;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use Spatie\LaravelData\PaginatedDataCollection;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
-class ContestController extends Controller
+class NewsController extends Controller
 {
     public function index(): \Inertia\Response
     {
-        $news = QueryBuilder::for(Contest::class)
+        $news = QueryBuilder::for(News::class)
             ->allowedFilters([
                 AllowedFilter::scope('query'),
                 AllowedFilter::callback('categories_id', function (Builder $query, array $ids) {
@@ -28,38 +26,37 @@ class ContestController extends Controller
                 }),
             ], )
             ->defaultSort('-created_at')
-            ->allowedSorts(['created_at', 'min_participants', 'max_participants'])
+            ->allowedSorts(['created_at'])
             ->withGlobalScope('published', new PublishedScope)
             ->with(['image', 'categories'])
             ->fastPaginate(15);
 
         $categories = Category::query()
-            ->where('model', Contest::class)
+            ->where('model', News::class)
             ->get();
 
-        return Inertia::render('contests/Index', [
-            'contests' => ContestData::collect($news, PaginatedDataCollection::class),
+        return Inertia::render('news/Index', [
+            'news' => NewsData::collect($news, PaginatedDataCollection::class),
             'categories' => CategoryData::collect($categories),
         ]);
     }
 
-    public function show(Contest $contest): \Inertia\Response
+    public function show(News $news): \Inertia\Response
     {
-        abort_unless($contest->published_at, 404);
+        abort_unless($news->published_at, 404);
 
-        $contest->load(['categories', 'image']);
-        $contest->has_registered = Auth::check() && $contest->registrations()->where('user_id', Auth::id())->exists();
+        $news->load(['categories', 'image']);
 
-        $recommendedContests = Contest::query()
+        $recommendedNews = News::query()
             ->with(['categories', 'image'])
             ->withGlobalScope('published', new PublishedScope)
-            ->where('id', '!=', $contest->id)
+            ->where('id', '!=', $news->id)
             ->take(6)
             ->get();
 
-        return Inertia::render('contests/Show', [
-            'contest' => ContestFullData::from($contest),
-            'recommended_contests' => ContestData::collect($recommendedContests),
+        return Inertia::render('news/Show', [
+            'news' => NewsFullData::from($news),
+            'recommended_news' => NewsData::collect($recommendedNews),
         ]);
     }
 }
