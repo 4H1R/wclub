@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutUsController;
+use App\Http\Controllers\ChatbotController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\Contest\ContestController;
 use App\Http\Controllers\Contest\ContestRegistrationController;
@@ -37,6 +38,7 @@ Route::resource('contests', ContestController::class)->only(['index', 'show']);
 Route::resource('games', GameController::class)->only(['index']);
 Route::get('/games/roll-the-dice', RollTheDiceGameController::class);
 Route::get('/games/nardeban-shadi', NardebanShadiController::class);
+Route::get('/chatbot', ChatbotController::class)->name('chatbot');
 
 Route::middleware('auth')->group(function () {
     Route::resource('contests.registrations', ContestRegistrationController::class)->only(['store']);

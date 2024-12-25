@@ -90,6 +90,7 @@ declare module 'ziggy-js' {
       },
     ];
     'games.index': [];
+    chatbot: [];
     'contests.registrations.store': [
       {
         name: 'contest';

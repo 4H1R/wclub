@@ -106,6 +106,7 @@ export const footerLinks = [
       { title: 'بازی ها', href: '/games' },
       { title: 'چالش و مسابقات', href: '/contests' },
       { title: 'دوره های آموزشی', href: '/series' },
+      { title: 'چت بات هوشمند', href: '/chatbot' },
     ],
   },
   {
