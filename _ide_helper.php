@@ -20022,32 +20022,6 @@ namespace Illuminate\Database\Eloquent\Relations {
         {
                         return \Illuminate\Database\Eloquent\Relations\Relation::getPowerJoinExistenceCompareKey();
         }
-                    /**
-         * 
-         *
-         * @see \Hammerstone\FastPaginate\RelationMixin::fastPaginate()
-         * @param mixed $perPage
-         * @param mixed $columns
-         * @param mixed $pageName
-         * @param mixed $page
-         * @static 
-         */        public static function fastPaginate($perPage = null, $columns = [], $pageName = 'page', $page = null)
-        {
-                        return \Illuminate\Database\Eloquent\Relations\Relation::fastPaginate($perPage, $columns, $pageName, $page);
-        }
-                    /**
-         * 
-         *
-         * @see \Hammerstone\FastPaginate\RelationMixin::simpleFastPaginate()
-         * @param mixed $perPage
-         * @param mixed $columns
-         * @param mixed $pageName
-         * @param mixed $page
-         * @static 
-         */        public static function simpleFastPaginate($perPage = null, $columns = [], $pageName = 'page', $page = null)
-        {
-                        return \Illuminate\Database\Eloquent\Relations\Relation::simpleFastPaginate($perPage, $columns, $pageName, $page);
-        }
             }
     }
 
@@ -24443,32 +24417,6 @@ namespace  {
              */            public static function getRelationWithoutConstraintsProxy($relation)
             {
                                 return \Illuminate\Database\Eloquent\Builder::getRelationWithoutConstraintsProxy($relation);
-            }
-                            /**
-             * 
-             *
-             * @see \Hammerstone\FastPaginate\FastPaginate::paginate()
-             * @param mixed $perPage
-             * @param mixed $columns
-             * @param mixed $pageName
-             * @param mixed $page
-             * @static 
-             */            public static function simpleFastPaginate($perPage = null, $columns = [], $pageName = 'page', $page = null)
-            {
-                                return \Illuminate\Database\Eloquent\Builder::simpleFastPaginate($perPage, $columns, $pageName, $page);
-            }
-                            /**
-             * 
-             *
-             * @see \Hammerstone\FastPaginate\FastPaginate::paginate()
-             * @param mixed $perPage
-             * @param mixed $columns
-             * @param mixed $pageName
-             * @param mixed $page
-             * @static 
-             */            public static function fastPaginate($perPage = null, $columns = [], $pageName = 'page', $page = null)
-            {
-                                return \Illuminate\Database\Eloquent\Builder::fastPaginate($perPage, $columns, $pageName, $page);
             }
                             /**
              * Set the columns to be selected.
