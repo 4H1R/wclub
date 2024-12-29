@@ -9,13 +9,15 @@ export default function DrawerContent() {
 
   return (
     <>
-      <Image
-        className="mx-auto"
-        width={150}
-        height={150}
-        alt="لوگو باشگاه بانوان"
-        src="/images/logo/logoFull.png"
-      />
+      <Link href="/">
+        <Image
+          className="mx-auto"
+          width={150}
+          height={150}
+          alt="لوگو باشگاه بانوان"
+          src="/images/logo/logoFull.png"
+        />
+      </Link>
       <Search key={url} url={route('search', undefined, false)} />
       <div className="divider" />
       <ul>

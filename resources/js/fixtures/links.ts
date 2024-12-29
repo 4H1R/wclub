@@ -11,11 +11,13 @@ import {
   HiOutlinePlayCircle,
   HiOutlineQuestionMarkCircle,
   HiOutlineSignal,
+  HiOutlineSparkles,
   HiOutlineStar,
   HiOutlineTrophy,
   HiPlayCircle,
   HiQuestionMarkCircle,
   HiSignal,
+  HiSparkles,
   HiStar,
   HiTrophy,
 } from 'react-icons/hi2';
@@ -38,13 +40,7 @@ export const navbarLinks: TNavbarLink[] = [
     ActiveIcon: HiSignal,
     showOn: 'all',
   },
-  {
-    title: 'خدمات',
-    href: '/reward-programs',
-    Icon: HiOutlineStar,
-    ActiveIcon: HiStar,
-    showOn: 'all',
-  },
+
   {
     title: 'اخبار',
     href: '/news',
@@ -52,28 +48,70 @@ export const navbarLinks: TNavbarLink[] = [
     ActiveIcon: HiNewspaper,
     showOn: 'all',
   },
+
   {
-    title: 'بازی ها',
-    href: '/games',
-    Icon: HiOutlinePlayCircle,
-    ActiveIcon: HiPlayCircle,
-    showOn: 'all',
+    title: 'باغ های بانوان',
+    href: '/gardens',
+    Icon: HiOutlineSparkles,
+    ActiveIcon: HiSparkles,
+    showOn: 'mobile',
   },
-  // {
-  //   title: 'باغ های بانوان',
-  //   href: '/gardens',
-  //   Icon: HiOutlineSparkles,
-  //   ActiveIcon: HiSparkles,
-  //   showOn: 'all',
-  // },
+  {
+    title: 'خدمات',
+    href: '/reward-programs',
+    Icon: HiOutlineStar,
+    ActiveIcon: HiStar,
+    showOn: 'mobile',
+  },
+  { title: 'دوره ها', href: '/series', Icon: HiOutlineFilm, ActiveIcon: HiFilm, showOn: 'all' },
+  {
+    title: 'خدمات',
+    href: '/services-group',
+    Icon: HiOutlineSparkles,
+    ActiveIcon: HiSparkles,
+    showOn: 'desktop',
+    desktopSubLinks: [
+      {
+        title: 'خدمات',
+        href: '/reward-programs',
+      },
+      {
+        title: 'باغ های بانوان',
+        href: '/gardens',
+      },
+    ],
+  },
+  {
+    title: 'چالش ها و مسابقات',
+    href: '/contests',
+    Icon: HiOutlineTrophy,
+    ActiveIcon: HiTrophy,
+    showOn: 'desktop',
+    desktopSubLinks: [
+      {
+        title: 'چالش و مسابقات',
+        href: '/contests',
+      },
+      {
+        title: 'بازی ها',
+        href: '/games',
+      },
+    ],
+  },
   {
     title: 'چالش و مسابقات',
     href: '/contests',
     Icon: HiOutlineTrophy,
     ActiveIcon: HiTrophy,
-    showOn: 'all',
+    showOn: 'mobile',
   },
-  { title: 'دوره ها', href: '/series', Icon: HiOutlineFilm, ActiveIcon: HiFilm, showOn: 'all' },
+  {
+    title: 'بازی ها',
+    href: '/games',
+    Icon: HiOutlinePlayCircle,
+    ActiveIcon: HiPlayCircle,
+    showOn: 'mobile',
+  },
   {
     title: 'تماس با ما',
     href: '/contact-us',
@@ -122,7 +160,7 @@ export const footerLinks = [
   {
     title: 'خدمات',
     links: [
-      // { title: 'باغ های بانوان', href: '/gardens' },
+      { title: 'باغ های بانوان', href: '/gardens' },
       { title: 'همه خدمات', href: '/reward-programs' },
     ],
   },

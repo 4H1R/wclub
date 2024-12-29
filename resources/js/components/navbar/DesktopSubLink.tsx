@@ -19,14 +19,16 @@ export default function DesktopSubLink({ link }: DesktopSubLinkProps) {
   if (!link.desktopSubLinks) return null;
 
   return (
-    <details ref={ref} id={id}>
+    <details className="desktop-sub-links" ref={ref} id={id}>
       <summary>{link.title}</summary>
-      <ul className="rounded-t-none bg-base-100">
+      <ul className="w-32 min-w-full rounded-t-none bg-base-100">
         {link.desktopSubLinks.map((subLink) => (
           <li key={subLink.href}>
             <Link
               onClick={handleClose}
-              className={cn({ 'text-primary-solo': isUrlActive(url, subLink.href) })}
+              className={cn('text-base-content', {
+                'text-primary-solo': isUrlActive(url, subLink.href),
+              })}
               href={subLink.href}
             >
               {subLink.title}
