@@ -44,8 +44,8 @@ export default function Show() {
         <div className="space-y col-span-full lg:col-span-7">
           {contest.image && (
             <Image
-              className="w-full rounded-box object-contain"
-              src={contest.image?.original_url}
+              className="w-full rounded-box object-cover lg:hidden"
+              src={contest.image.original_url}
               alt={contest.title}
             />
           )}
@@ -68,6 +68,16 @@ export default function Show() {
         <div className="col-span-full lg:col-span-3">
           <div id={registerId} className="card sticky left-0 top-3 bg-base-200">
             <div className="card-body">
+              {contest.image && (
+                <>
+                  <Image
+                    className="hidden w-full rounded-box object-cover lg:block"
+                    src={contest.image.original_url}
+                    alt={contest.title}
+                  />
+                  <div className="divider" />
+                </>
+              )}
               <ul className="list-inside list-disc text-base-content/80">
                 {Boolean(contest.min_participants) && (
                   <li>حداقل {digitsEnToFa(addCommas(contest.min_participants as number))} فرد</li>

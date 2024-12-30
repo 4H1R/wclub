@@ -39,30 +39,35 @@ class IndexController extends Controller
                 ->with(['categories', 'image'])
                 ->latest('id')
                 ->take(8)
+                ->withGlobalScope('published', new PublishedScope)
                 ->get();
 
             $rewardPrograms = RewardProgram::query()
                 ->with(['categories', 'image'])
                 ->inRandomOrder()
                 ->take(8)
+                ->withGlobalScope('published', new PublishedScope)
                 ->get();
 
             $contests = Contest::query()
                 ->with(['categories', 'image'])
                 ->latest('id')
                 ->take(8)
+                ->withGlobalScope('published', new PublishedScope)
                 ->get();
 
             $series = Series::query()
                 ->with(['categories', 'image'])
                 ->inRandomOrder()
                 ->take(8)
+                ->withGlobalScope('published', new PublishedScope)
                 ->get();
 
             $news = News::query()
                 ->with(['categories', 'image'])
                 ->latest('id')
                 ->take(8)
+                ->withGlobalScope('published', new PublishedScope)
                 ->get();
 
             return [
