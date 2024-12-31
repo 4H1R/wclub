@@ -76,7 +76,7 @@ export default function Show() {
                     src={event_program.image.original_url}
                     alt={event_program.title}
                   />
-                  <div className="divider" />
+                  <div className="divider hidden lg:block" />
                 </>
               )}
               <ul className="list-inside list-disc text-base-content/80">

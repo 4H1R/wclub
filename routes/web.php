@@ -22,10 +22,11 @@ use Illuminate\Support\Facades\Route;
 use Spatie\Honeypot\ProtectAgainstSpam;
 
 Route::get('/', IndexController::class)->name('index');
-Route::get('/contact-us', [ContactUsController::class, 'create'])->name('contactUs');
+Route::get('/contact-us', [ContactUsController::class, 'create'])->name('contact-us');
 Route::post('/contact-us', [ContactUsController::class, 'store'])->middleware(ProtectAgainstSpam::class);
-Route::get('/about-us', AboutUsController::class)->name('aboutUs');
+Route::get('/about-us', AboutUsController::class)->name('about-us');
 Route::get('/search', SearchController::class)->name('search');
+Route::get('/chatbot', ChatbotController::class)->name('chatbot');
 
 Route::middleware('auth')->group(function () {
     Route::resource('series.owns', SeriesOwnController::class)->only(['store']);
@@ -41,7 +42,6 @@ Route::resource('contests', ContestController::class)->only(['index', 'show']);
 Route::resource('games', GameController::class)->only(['index']);
 Route::get('/games/roll-the-dice', RollTheDiceGameController::class);
 Route::get('/games/nardeban-shadi', NardebanShadiController::class);
-Route::get('/chatbot', ChatbotController::class)->name('chatbot');
 
 Route::middleware('auth')->group(function () {
     Route::resource('contests.registrations', ContestRegistrationController::class)->only(['store']);

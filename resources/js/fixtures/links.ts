@@ -48,13 +48,13 @@ export const navbarLinks: TNavbarLink[] = [
     ActiveIcon: HiNewspaper,
     showOn: 'all',
   },
-  // {
-  //   title: 'باغ های بانوان',
-  //   href: '/gardens',
-  //   Icon: HiOutlineSparkles,
-  //   ActiveIcon: HiSparkles,
-  //   showOn: 'mobile',
-  // },
+  {
+    title: 'باغ های بانوان',
+    href: '/gardens',
+    Icon: HiOutlineSparkles,
+    ActiveIcon: HiSparkles,
+    showOn: 'mobile',
+  },
   {
     title: 'خدمات',
     href: '/reward-programs',
@@ -74,10 +74,10 @@ export const navbarLinks: TNavbarLink[] = [
         title: 'خدمات',
         href: '/reward-programs',
       },
-      // {
-      //   title: 'باغ های بانوان',
-      //   href: '/gardens',
-      // },
+      {
+        title: 'باغ های بانوان',
+        href: '/gardens',
+      },
     ],
   },
   {
@@ -159,7 +159,7 @@ export const footerLinks = [
   {
     title: 'خدمات',
     links: [
-      // { title: 'باغ های بانوان', href: '/gardens' },
+      { title: 'باغ های بانوان', href: '/gardens' },
       { title: 'همه خدمات', href: '/reward-programs' },
     ],
   },

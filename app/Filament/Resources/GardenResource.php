@@ -12,6 +12,7 @@ use App\Filament\Tables\Columns\CustomTimeColumn;
 use App\Filament\Tables\Columns\ImageColumn;
 use App\Filament\Tables\Columns\TimestampsColumn;
 use App\Models\Garden;
+use Dotswan\MapPicker\Fields\Map;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Tables;
@@ -54,9 +55,47 @@ class GardenResource extends CustomResource
                 ->translateLabel()
                 ->columnSpanFull()
                 ->required(),
+            Forms\Components\TextInput::make('longitude')
+                ->translateLabel()
+                ->readOnly()
+                ->required(),
+            Forms\Components\TextInput::make('latitude')
+                ->translateLabel()
+                ->readOnly()
+                ->required(),
+            Map::make('location')
+                ->translateLabel()
+                ->columnSpanFull()
+                ->afterStateUpdated(function (Forms\Set $set, ?array $state): void {
+                    $set('latitude', $state['lat']);
+                    $set('longitude', $state['lng']);
+                })
+                ->afterStateHydrated(function ($state, $record, Forms\Set $set): void {
+                    $set('location', ['lat' => $record?->latitude, 'lng' => $record?->longitude]);
+                })
+                ->extraStyles([
+                    'min-height: 100vh',
+                    'border-radius: 50px',
+                ])
+                ->liveLocation()
+                ->showMarker()
+                ->markerColor('#e11d48')
+                ->showFullscreenControl()
+                ->showZoomControl()
+                ->draggable()
+                ->tilesUrl('https://tile.openstreetmap.de/{z}/{x}/{y}.png')
+                ->zoom(15)
+                ->detectRetina()
+                ->showMyLocationButton()
+                ->extraTileControl([])
+                ->extraControl([
+                    'zoomDelta' => 1,
+                    'zoomSnap' => 2,
+                ]),
             FileInput::make($form, 'images', visibility: 'public')
                 ->image()
                 ->imageEditor()
+                ->reorderable()
                 ->multiple()
                 ->maxFiles(10)
                 ->required(),

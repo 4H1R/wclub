@@ -3,9 +3,10 @@ declare module 'ziggy-js' {
   interface RouteList {
     'sanctum.csrf-cookie': [];
     index: [];
-    contactUs: [];
-    aboutUs: [];
+    'contact-us': [];
+    'about-us': [];
     search: [];
+    chatbot: [];
     'series.owns.store': [
       {
         name: 'series';
@@ -98,7 +99,6 @@ declare module 'ziggy-js' {
       },
     ];
     'games.index': [];
-    chatbot: [];
     'contests.registrations.store': [
       {
         name: 'contest';

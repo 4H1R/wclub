@@ -8,6 +8,7 @@
     "require": {
         "php": "^8.2",
         "calebporzio/sushi": "^2.5",
+        "dotswan/filament-map-picker": "^1.7",
         "emreyarligan/enum-concern": "^1.0",
         "filament/filament": "^3.2",
         "filament/spatie-laravel-media-library-plugin": "^3.2",

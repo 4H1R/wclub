@@ -10,6 +10,13 @@ class EditGarden extends EditRecord
 {
     protected static string $resource = GardenResource::class;
 
+    protected function mutateFormDataBeforeSave(array $data): array
+    {
+        unset($data['location']);
+
+        return $data;
+    }
+
     protected function getHeaderActions(): array
     {
         return [
