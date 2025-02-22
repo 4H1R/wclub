@@ -15,7 +15,7 @@ docker compose -f docker-compose.prod.yml up -d api-fallback
 sleep $TIMEOUT
 
 echo "Replacing Caddy to use Fallback API"
-sudo sed -i 's/localhost:8000/localhost:8001/g' "$CADDY_PATH"
+sudo sed -i 's/localhost:8008/localhost:8009/g' "$CADDY_PATH"
 sudo systemctl reload caddy
 
 git pull
@@ -26,7 +26,7 @@ docker compose -f docker-compose.prod.yml up -d api
 sleep $TIMEOUT
 
 echo "Replacing Caddy to use API"
-sudo sed -i 's/localhost:8001/localhost:8000/g' "$CADDY_PATH"
+sudo sed -i 's/localhost:8009/localhost:8008/g' "$CADDY_PATH"
 sudo systemctl reload caddy
 
 echo "Stopping Fallback API"
