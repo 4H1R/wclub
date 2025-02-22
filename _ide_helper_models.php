@@ -270,10 +270,10 @@ namespace App\Models{
  * @property string $disk
  * @property string|null $conversions_disk
  * @property int $size
- * @property array $manipulations
- * @property array $custom_properties
- * @property array $generated_conversions
- * @property array $responsive_images
+ * @property array<array-key, mixed> $manipulations
+ * @property array<array-key, mixed> $custom_properties
+ * @property array<array-key, mixed> $generated_conversions
+ * @property array<array-key, mixed> $responsive_images
  * @property int|null $order_column
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
@@ -467,7 +467,7 @@ namespace App\Models{
  * @property string $title
  * @property string $short_description
  * @property string $description
- * @property array|null $faqs
+ * @property array<array-key, mixed>|null $faqs
  * @property int $episodes_duration_seconds
  * @property string|null $published_at
  * @property \Illuminate\Support\Carbon|null $created_at
