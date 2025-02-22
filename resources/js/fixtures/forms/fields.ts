@@ -35,7 +35,7 @@ const fields = {
     isRequired: true,
     name: 'phone',
     label: { text: 'شماره تلفن' },
-    attributes: { type: 'phone', placeholder: '*********09' },
+    attributes: { type: 'number', placeholder: '*********09' },
   },
   fullName: { isRequired: true, name: 'full_name', label: { text: 'نام و نام خانوادگی' } },
   firstName: { isRequired: true, name: 'first_name', label: { text: 'نام ' } },
