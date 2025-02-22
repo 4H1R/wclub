@@ -34,7 +34,7 @@ class SmsController extends Controller
             function () use ($validated) {
                 $token = $this->authService->generateNumericToken();
 
-                SendAuthSms::dispatch($validated['phone'], (string) $token);
+                // SendAuthSms::dispatch($validated['phone'], (string) $token);
 
                 DB::table('generated_tokens')->updateOrInsert(
                     ['id' => $validated['phone']],
