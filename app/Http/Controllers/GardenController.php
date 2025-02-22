@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Data\Garden\GardenData;
+use App\Data\Garden\GardenFullData;
 use App\Models\Garden;
 use App\Models\Scopes\PublishedScope;
 use Inertia\Inertia;
@@ -18,8 +19,8 @@ class GardenController extends Controller
             ->allowedFilters([AllowedFilter::scope('query')])
             ->allowedSorts(['created_at', 'max_participants'])
             ->withGlobalScope('published', new PublishedScope)
-            ->with('images')
-            ->fastPaginate(15);
+            ->with('image')
+            ->paginate(15);
 
         return Inertia::render('gardens/Index', [
             'gardens' => GardenData::collect($gardens, PaginatedDataCollection::class),
@@ -32,8 +33,16 @@ class GardenController extends Controller
 
         $garden->load('images');
 
+        $recommendedGardens = Garden::query()
+            ->with('image')
+            ->withGlobalScope('published', new PublishedScope)
+            ->where('id', '!=', $garden->id)
+            ->take(6)
+            ->get();
+
         return Inertia::render('gardens/Show', [
-            'garden' => GardenData::from($garden),
+            'garden' => GardenFullData::from($garden),
+            'recommended_gardens' => GardenData::collect($recommendedGardens),
         ]);
     }
 }

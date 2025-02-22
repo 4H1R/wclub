@@ -7,13 +7,17 @@ use Spatie\LaravelData\Data;
 use Spatie\TypeScriptTransformer\Attributes\TypeScript;
 
 #[TypeScript]
-class GardenData extends Data
+class GardenFullData extends Data
 {
     public function __construct(
         public int $id,
         public string $title,
+        public string $description,
         public string $address,
+        public float $longitude,
+        public float $latitude,
         public int $max_participants,
-        public ?ImageData $image,
+        /** @var ImageData[] */
+        public array $images,
     ) {}
 }

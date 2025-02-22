@@ -28,7 +28,7 @@ class RewardProgramController extends Controller
             ->allowedSorts(['created_at', 'required_score'])
             ->withGlobalScope('published', new PublishedScope)
             ->with(['image', 'categories'])
-            ->fastPaginate(15);
+            ->paginate(15);
 
         $categories = Category::query()
             ->where('model', RewardProgram::class)

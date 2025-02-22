@@ -29,7 +29,7 @@ export default function FormContactUs() {
   const successMessage = 'اطلاعات شما با موفقیت ثبت شد. به زودی با شما تماس میگیریم';
 
   const handleSubmit = () => {
-    post(route('contactUs'), {
+    post(route('contact-us'), {
       onSuccess: () => {
         reset();
         toast.success(successMessage);

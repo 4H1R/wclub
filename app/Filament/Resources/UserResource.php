@@ -125,8 +125,7 @@ class UserResource extends CustomResource
                 ...TimestampsColumn::make(),
             ])
             ->filters([
-                Tables\Filters\TernaryFilter::make('is_admin')
-                    ->translateLabel(),
+                //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

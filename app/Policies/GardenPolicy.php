@@ -10,36 +10,26 @@ class GardenPolicy
 {
     public function viewAny(User $user): bool
     {
-        return false;
-
         return $user->hasPermissionTo(PermissionEnum::ViewAnyGardens);
     }
 
     public function view(User $user, Garden $garden): bool
     {
-        return false;
-
         return $user->hasPermissionTo(PermissionEnum::ViewAnyGardens);
     }
 
     public function create(User $user): bool
     {
-        return false;
-
         return $user->hasPermissionTo(PermissionEnum::CreateGardens);
     }
 
     public function update(User $user, Garden $garden): bool
     {
-        return false;
-
         return $user->hasPermissionTo(PermissionEnum::UpdateAnyGardens);
     }
 
     public function delete(User $user, Garden $garden): bool
     {
-        return false;
-
         return $user->hasPermissionTo(PermissionEnum::DeleteAnyGardens);
     }
 

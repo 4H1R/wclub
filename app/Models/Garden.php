@@ -30,7 +30,8 @@ class Garden extends Model implements HasMedia
     public function images(): MorphMany
     {
         return $this->morphMany(Media::class, 'model')
-            ->where('collection_name', 'images');
+            ->where('collection_name', 'images')
+            ->latest('order_column');
     }
 
     /**

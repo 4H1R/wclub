@@ -31,7 +31,7 @@ class ContestController extends Controller
             ->allowedSorts(['created_at', 'min_participants', 'max_participants'])
             ->withGlobalScope('published', new PublishedScope)
             ->with(['image', 'categories'])
-            ->fastPaginate(15);
+            ->paginate(15);
 
         $categories = Category::query()
             ->where('model', Contest::class)

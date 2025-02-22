@@ -8,17 +8,11 @@ use Illuminate\Queue\InteractsWithQueue;
 
 class {{ class }}
 {
-    /**
-     * Create the event listener.
-     */
     public function __construct()
     {
         //
     }
 
-    /**
-     * Handle the event.
-     */
     public function handle({{ event }} $event): void
     {
         //

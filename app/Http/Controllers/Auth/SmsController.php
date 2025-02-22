@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\SendAuthSms;
 use App\Models\User;
 use App\Services\AuthService;
 use Illuminate\Auth\Events\Registered;
@@ -32,6 +33,8 @@ class SmsController extends Controller
             2,
             function () use ($validated) {
                 $token = $this->authService->generateNumericToken();
+
+                SendAuthSms::dispatch($validated['phone'], (string) $token);
 
                 DB::table('generated_tokens')->updateOrInsert(
                     ['id' => $validated['phone']],

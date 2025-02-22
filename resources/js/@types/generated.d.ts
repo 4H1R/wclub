@@ -93,6 +93,16 @@ declare namespace App.Data.Garden {
     title: string;
     address: string;
     max_participants: number;
+    image: App.Data.Media.ImageData | null;
+  };
+  export type GardenFullData = {
+    id: number;
+    title: string;
+    description: string;
+    address: string;
+    longitude: number;
+    latitude: number;
+    max_participants: number;
     images: Array<App.Data.Media.ImageData>;
   };
 }

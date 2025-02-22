@@ -5,7 +5,7 @@ import Search from '@/shared/Search';
 import { cn } from '@/utils';
 import { Link, usePage } from '@inertiajs/react';
 import { motion, useMotionValueEvent, useScroll } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { HiOutlineMagnifyingGlass } from 'react-icons/hi2';
 import DesktopLinks from './DesktopLinks';
 import MobileDrawerToggle from './MobileDrawerToggle';
@@ -25,6 +25,23 @@ export default function Navbar() {
   const prevScroll = useRef(0);
   const currentRoute = useCurrentRoute();
   const isInSearch = currentRoute.startsWith(route('search', undefined, false));
+
+  useEffect(() => {
+    const handleEvent = (e: MouseEvent) => {
+      document.querySelectorAll('.desktop-sub-links').forEach((dropdown) => {
+        if (!dropdown.contains(e.target as Node)) {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-expect-error
+          dropdown.open = false;
+        }
+      });
+    };
+
+    window.addEventListener('click', handleEvent);
+    return () => {
+      window.removeEventListener('click', handleEvent);
+    };
+  }, []);
 
   useMotionValueEvent(scrollY, 'change', (latest: number) => {
     if (latest < prevScroll.current) {

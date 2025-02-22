@@ -82,8 +82,8 @@ class EventProgramResource extends CustomResource
                 ->optionsLimit(50)
                 ->relationship('targetGroups', 'title'),
             FileInput::make($form, 'image', visibility: 'public')
-                ->image()
-                ->imageEditor()
+                // ->image()
+                // ->imageEditor()
                 ->required(),
         ]);
 

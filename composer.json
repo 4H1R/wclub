@@ -8,10 +8,10 @@
     "require": {
         "php": "^8.2",
         "calebporzio/sushi": "^2.5",
+        "dotswan/filament-map-picker": "^1.7",
         "emreyarligan/enum-concern": "^1.0",
         "filament/filament": "^3.2",
         "filament/spatie-laravel-media-library-plugin": "^3.2",
-        "hammerstone/fast-paginate": "^1.1",
         "hekmatinasser/verta": "^8.4",
         "inertiajs/inertia-laravel": "^1.0",
         "kasraghoreyshi/persian-faker": "^1.04",

@@ -15,7 +15,7 @@ export default function BaseLayout({ children, className }: BaseLayoutProps) {
     <div
       data-theme={theme}
       className={cn('relative flex min-h-screen flex-col', className, {
-        'debug-screens': !process.env.NODE_ENV || process.env.NODE_ENV === 'development',
+        'debug-screens': false || (process.env.NODE_ENV && process.env.NODE_ENV === 'development'),
       })}
     >
       <div id={config.modalsId} />

@@ -29,7 +29,7 @@ class NewsController extends Controller
             ->allowedSorts(['created_at'])
             ->withGlobalScope('published', new PublishedScope)
             ->with(['image', 'categories'])
-            ->fastPaginate(15);
+            ->paginate(15);
 
         $categories = Category::query()
             ->where('model', News::class)

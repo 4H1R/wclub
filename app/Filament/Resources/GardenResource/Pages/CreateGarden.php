@@ -7,5 +7,12 @@ use Filament\Resources\Pages\CreateRecord;
 
 class CreateGarden extends CreateRecord
 {
+    protected function mutateFormDataBeforeCreate(array $data): array
+    {
+        unset($data['location']);
+
+        return $data;
+    }
+
     protected static string $resource = GardenResource::class;
 }
