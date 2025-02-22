@@ -130,6 +130,7 @@ export default function Auth() {
         </p>
         <div dir="ltr" className="flex flex-col items-center justify-center gap-4">
           <OTPInput
+            inputType="number"
             containerStyle={{ width: '100%' }}
             value={form.data.token}
             onChange={(otp) => form.setData('token', otp)}
