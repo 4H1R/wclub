@@ -1,11 +1,11 @@
 services:
   pgsql:
-    image: postgres:16
+    image: postgres:17
     restart: unless-stopped
     volumes:
       - pgsql-data:/var/lib/postgresql/data
     ports:
-      - "127.0.0.1:5432:5432"
+      - "127.0.0.1:5437:5432"
     environment:
       POSTGRES_DB: '${DB_DATABASE}'
       POSTGRES_USER: '${DB_USERNAME}'
@@ -32,7 +32,7 @@ services:
     volumes:
       - redis-data:/data
     ports:
-      - "127.0.0.1:6379:6379"
+      - "127.0.0.1:7978:6379"
     healthcheck:
       test:
         - CMD
@@ -55,10 +55,11 @@ services:
     env_file:
       - .env
     ports:
-      - "127.0.0.1:8000:8000"
+      - "127.0.0.1:8008:8000"
     depends_on:
       - pgsql
       - redis
+      - minio
   api-fallback:
     restart: unless-stopped
     build:
@@ -71,15 +72,39 @@ services:
     env_file:
       - .env
     ports:
-      - "127.0.0.1:8001:8000"
+      - "127.0.0.1:8009:8000"
     depends_on:
       - pgsql
       - redis
+      - minio
+  minio:
+    image: 'minio/minio:latest'
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:9002:9000"
+      - "127.0.0.1:8902:8900"
+    environment:
+      MINIO_ROOT_USER: '${PUBLIC_AWS_ACCESS_KEY_ID}'
+      MINIO_ROOT_PASSWORD: '${PUBLIC_AWS_SECRET_ACCESS_KEY}'
+    volumes:
+      - 'minio-data:/data/minio'
+    networks:
+      - wclub
+    command: 'minio server /data/minio --console-address ":8900"'
+    healthcheck:
+      test:
+        - CMD
+        - curl
+        - '-f'
+        - 'http://localhost:9000/minio/health/live'
+      retries: 3
+      timeout: 5s
 
 volumes:
   storage:
   pgsql-data:
   redis-data:
+  minio-data:
 
 
 networks:

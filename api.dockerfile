@@ -72,7 +72,7 @@ RUN apt-get update; \
     apt-utils \
     curl \
     wget \
-    nano \
+    vim \
     ncdu \
     procps \
     ca-certificates \
