@@ -8,7 +8,7 @@ import { FaExclamation } from 'react-icons/fa6';
 
 export default function Index() {
   const url = usePage().url;
-  const query = get(route().params, 'filter.query', '');
+  const query = get(route().queryParams, 'filter.query', '');
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });

@@ -22,7 +22,7 @@ export default function Show() {
   // ];
 
   useEffect(() => {
-    if (route().params['auth_was_successful']) {
+    if (route().queryParams['auth_was_successful']) {
       toast.success('شما با موفقیت وارد حساب کاربری خود شدید.');
     }
   }, []);

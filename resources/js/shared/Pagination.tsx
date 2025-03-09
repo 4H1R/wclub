@@ -12,7 +12,7 @@ type PaginationProps = {
 export default function Pagination({ data }: PaginationProps) {
   const currentRoute = useCurrentRoute();
   const handleChangePage = (page: string | number) => {
-    router.get(currentRoute, { ...route().params, page }, { preserveState: true });
+    router.get(currentRoute, { ...route().queryParams, page }, { preserveState: true });
   };
 
   if (data.meta.total <= 0) return null;
