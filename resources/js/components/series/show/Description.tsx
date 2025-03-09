@@ -4,18 +4,16 @@ import { useState } from 'react';
 import { HiOutlinePlusCircle } from 'react-icons/hi2';
 import Markdown from 'react-markdown';
 
-type DescriptionProps = {
-  description: string;
-};
+type DescriptionProps = { description: string };
 
 export default function Description({ description }: DescriptionProps) {
   const [showAll, setShowAll] = useState(description.length < 480);
 
   return (
     <div className="flex flex-col gap-4">
-      <Markdown className={cn('prose max-w-none', { 'line-clamp-6': !showAll })}>
-        {description}
-      </Markdown>
+      <div className={cn('prose max-w-none', { 'line-clamp-6': !showAll })}>
+        <Markdown>{description}</Markdown>
+      </div>
       {!showAll && (
         <Button onClick={() => setShowAll(true)} className="btn btn-outline mx-auto max-w-fit">
           <span>مشاهده همه توضیحات</span>

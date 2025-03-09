@@ -59,7 +59,9 @@ export default function Show() {
             <ShareButton predefinedStyleFor="mobile" />
           </div>
         </div>
-        <Markdown className="prose max-w-none text-base-content">{news.description}</Markdown>
+        <div className="prose max-w-none text-base-content">
+          <Markdown>{news.description}</Markdown>
+        </div>
       </div>
       <div className="divider clear-both md:pt-6" />
       <h2 className="h2">اخبار های دیگر</h2>

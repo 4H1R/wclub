@@ -62,9 +62,9 @@ export default function Show() {
               <ShareButton predefinedStyleFor="mobile" />
             </div>
           </div>
-          <Markdown className="prose max-w-none text-base-content">
-            {event_program.description}
-          </Markdown>
+          <div className="prose max-w-none text-base-content">
+            <Markdown>{event_program.description}</Markdown>
+          </div>
         </div>
         <div className="col-span-full lg:col-span-3">
           <div id={registerId} className="card sticky left-0 top-3 bg-base-200">

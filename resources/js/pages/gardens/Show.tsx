@@ -70,7 +70,9 @@ export default function Show() {
               <ShareButton predefinedStyleFor="mobile" />
             </div>
           </div>
-          <Markdown className="prose max-w-none text-base-content">{garden.description}</Markdown>
+          <div className="prose max-w-none text-base-content">
+            <Markdown>{garden.description}</Markdown>
+          </div>
           <Map longitude={garden.longitude} latitude={garden.latitude} />
         </div>
         <div className="col-span-full lg:col-span-3">
