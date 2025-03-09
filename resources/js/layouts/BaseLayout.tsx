@@ -2,7 +2,6 @@ import config from '@/fixtures/config';
 import { THasChildren } from '@/types';
 import { cn } from '@/utils';
 import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 type BaseLayoutProps = THasChildren & {
   className?: string;
