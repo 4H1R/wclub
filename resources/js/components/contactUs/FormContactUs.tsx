@@ -5,7 +5,6 @@ import Form from '@/shared/forms/Form';
 import HoneyPot from '@/shared/forms/Honeypot';
 import { InputLists } from '@/shared/forms/Input';
 import Textarea from '@/shared/forms/Textarea';
-import { THoneypot } from '@/types';
 import { convertNullToEmptyString } from '@/utils';
 import { useForm, usePage } from '@inertiajs/react';
 import { HiOutlineCheckCircle } from 'react-icons/hi2';
@@ -13,7 +12,7 @@ import { toast } from 'react-toastify';
 
 type TPage = PageProps<{
   data: object;
-  hp: THoneypot;
+  hp: App.Data.Honeypot.HoneypotData;
 }>;
 
 export default function FormContactUs() {
@@ -21,8 +20,8 @@ export default function FormContactUs() {
   const form = useForm(
     convertNullToEmptyString({
       ...data,
-      [hp.nameFieldName]: '',
-      [hp.validFromFieldName]: hp.encryptedValidFrom,
+      [hp.name_field_name]: '',
+      [hp.valid_from_field_name]: hp.encrypted_valid_from,
     }),
   );
   const { post, processing, reset } = form;

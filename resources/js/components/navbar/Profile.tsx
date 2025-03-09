@@ -1,11 +1,9 @@
 import { PageProps } from '@/@types';
-import config from '@/fixtures/config';
 import Button from '@/shared/forms/Button';
-import { isSsr } from '@/utils';
 import { Link, router, usePage } from '@inertiajs/react';
 import compact from 'lodash/compact';
 import { useMemo } from 'react';
-import Avatar from 'react-avatar';
+import Avatar from './Avatar';
 
 type TLink = {
   title: string;
@@ -35,9 +33,7 @@ export default function Profile() {
   return (
     <div className="dropdown dropdown-end">
       <label tabIndex={0} className="avatar btn btn-circle btn-ghost">
-        {!isSsr() && (
-          <Avatar color={config.primaryColor} round size="40" name={auth.user ? fullName : '?'} />
-        )}
+        <Avatar title={auth.user ? fullName : '?'} />
       </label>
       <ul
         tabIndex={0}
