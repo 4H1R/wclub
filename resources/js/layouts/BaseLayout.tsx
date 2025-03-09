@@ -2,11 +2,8 @@ import config from '@/fixtures/config';
 import { THasChildren } from '@/types';
 import { cn } from '@/utils';
 import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
-type BaseLayoutProps = THasChildren & {
-  className?: string;
-};
+type BaseLayoutProps = THasChildren & { className?: string };
 
 export default function BaseLayout({ children, className }: BaseLayoutProps) {
   const theme = 'light';
@@ -15,7 +12,7 @@ export default function BaseLayout({ children, className }: BaseLayoutProps) {
     <div
       data-theme={theme}
       className={cn('relative flex min-h-screen flex-col', className, {
-        'debug-screens': false || (process.env.NODE_ENV && process.env.NODE_ENV === 'development'),
+        'debug-screens': process.env.NODE_ENV && process.env.NODE_ENV === 'development',
       })}
     >
       <div id={config.modalsId} />

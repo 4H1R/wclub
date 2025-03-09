@@ -11,10 +11,7 @@ import { useForm, usePage } from '@inertiajs/react';
 import { HiOutlineCheckCircle } from 'react-icons/hi2';
 import { toast } from 'react-toastify';
 
-type TPage = PageProps<{
-  data: object;
-  hp: THoneypot;
-}>;
+type TPage = PageProps<{ data: object; hp: THoneypot }>;
 
 export default function FormContactUs() {
   const { data, hp } = usePage<TPage>().props;
