@@ -6,7 +6,7 @@ export interface ImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
 }
 
 export default function Image({ className, hasLoadingBlur = true, ...props }: ImageProps) {
-  const [isLoading, setLoading] = useState(true);
+  const [isLoading, setLoading] = useState(false);
 
   return (
     <img
@@ -15,6 +15,8 @@ export default function Image({ className, hasLoadingBlur = true, ...props }: Im
       className={cn('object-cover duration-75 ease-in-out', className, {
         'blur-lg grayscale': hasLoadingBlur && isLoading,
       })}
+      // eslint-disable-next-line react/no-unknown-property
+      onLoadStart={() => setLoading(true)}
       onLoad={() => setLoading(false)}
     />
   );

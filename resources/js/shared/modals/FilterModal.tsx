@@ -58,12 +58,7 @@ export default function FilterModal({
           <ButtonIcon className="size-5" />
         </Button>
       </div>
-      <DialogModal
-        parentClassName="h-4/5"
-        dialogClassName="modal-bottom md:modal-middle"
-        closeOnClickOutside
-        id={modalId}
-      >
+      <DialogModal dialogClassName="modal-bottom md:modal-middle" closeOnClickOutside id={modalId}>
         <div className="flex items-center justify-between">
           <h3 className="h3">{modalTitle ?? title}</h3>
           <Button onClick={() => closeModal(modalId)} className="btn btn-circle btn-sm">
