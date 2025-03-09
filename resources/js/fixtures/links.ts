@@ -21,6 +21,7 @@ import {
   HiStar,
   HiTrophy,
 } from 'react-icons/hi2';
+import config from './config';
 
 export type TNavbarLink = {
   title: string;
@@ -126,7 +127,7 @@ export const navbarLinks: TNavbarLink[] = [
     showOn: 'mobile',
   },
   {
-    title: 'باشگاه بانوان',
+    title: config.websiteTitle,
     href: '/wclub',
     Icon: HiOutlineFilm,
     ActiveIcon: HiFilm,
@@ -164,7 +165,7 @@ export const footerLinks = [
     ],
   },
   {
-    title: 'باشگاه بانوان',
+    title: config.websiteTitle,
     links: [
       { title: 'درباره ما', href: '/about-us' },
       { title: 'تماس با ما', href: '/contact-us' },

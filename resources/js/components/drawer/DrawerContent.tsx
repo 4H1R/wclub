@@ -1,3 +1,4 @@
+import config from '@/fixtures/config';
 import { navbarLinks } from '@/fixtures/links';
 import Image from '@/shared/images/Image';
 import Search from '@/shared/Search';
@@ -14,7 +15,7 @@ export default function DrawerContent() {
           className="mx-auto"
           width={150}
           height={150}
-          alt="لوگو باشگاه بانوان"
+          alt={`لوگو ${config.websiteTitle}`}
           src="/images/logo/logoFull.png"
         />
       </Link>

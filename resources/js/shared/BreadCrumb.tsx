@@ -1,3 +1,4 @@
+import config from '@/fixtures/config';
 import { Link } from '@inertiajs/react';
 
 export type TBreadcrumb = {
@@ -12,7 +13,7 @@ type BreadCrumbProps = {
 
 export default function BreadCrumb({ links, addBaseToLinks = true }: BreadCrumbProps) {
   if (addBaseToLinks) {
-    links.unshift({ href: '/', title: 'باشگاه بانوان' });
+    links.unshift({ href: '/', title: config.websiteTitle });
   }
 
   return (

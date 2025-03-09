@@ -6,6 +6,7 @@ import LatestNews from '@/components/index/LatestNews';
 import RewardPrograms from '@/components/index/RewardPrograms';
 import Series from '@/components/index/Series';
 import TargetGroups from '@/components/index/TargetGroups';
+import config from '@/fixtures/config';
 import Head from '@/shared/Head';
 import { usePage } from '@inertiajs/react';
 
@@ -25,7 +26,7 @@ export default function Index() {
 
   return (
     <div className="mt-page space-y container">
-      <Head title="باشگاه بانوان" description="باشگاه بانوان" titleSuffix={null} />
+      <Head title={config.websiteTitle} description={config.websiteTitle} titleSuffix={null} />
       <Banners banners={banners} />
       <section className="card bg-gradient-to-b from-primary/40 to-secondary/40">
         <div className="card-body md:gap-8">
