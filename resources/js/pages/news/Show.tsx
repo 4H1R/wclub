@@ -37,7 +37,7 @@ export default function Show() {
           { title: news.title, href: '#' },
         ]}
       />
-      <div className="space-y lg:mx-auto lg:max-w-[70%]">
+      <div className="space-y">
         {news.image && (
           <Image
             className="w-full rounded-box object-contain"
