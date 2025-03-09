@@ -4,7 +4,7 @@ import { cn } from '@/utils';
 import { useForm } from '@inertiajs/react';
 import React, { createContext } from 'react';
 
-export type TInertiaForm<TForm extends object> = ReturnType<typeof useForm<TForm>>;
+export type TInertiaForm<TForm extends Record<string, any>> = ReturnType<typeof useForm<TForm>>;
 
 export const formContext = createContext<TInertiaForm<any>>({} as any);
 

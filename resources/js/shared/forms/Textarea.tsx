@@ -19,7 +19,7 @@ export default function Textarea({ attributes, textareaClassName, ...props }: In
         <textarea
           {...fieldProps}
           {...attributes}
-          value={value}
+          value={value as string}
           onChange={(e) => {
             if (hasError) clearErrors(props.name);
             setData(props.name, e.target.value);

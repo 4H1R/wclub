@@ -24,14 +24,14 @@ class Game extends Model
                 'image_type' => 'cover',
                 'short_description' => 'بازی مار و پله با طعم نردبان شادی.',
             ],
-            [
-                'id' => 2,
-                'title' => 'تاس سی',
-                'slug' => 'roll-the-dice',
-                'image' => asset('images/games/rollTheDice.webp'),
-                'image_type' => 'contain',
-                'short_description' => 'با ربات باشگاه بانوان مسابقه تاس اندازی بده و هرکی عدد سی رو زودتر اورد برندست.',
-            ],
+            // [
+            //     'id' => 2,
+            //     'title' => 'تاس سی',
+            //     'slug' => 'roll-the-dice',
+            //     'image' => asset('images/games/rollTheDice.webp'),
+            //     'image_type' => 'contain',
+            //     'short_description' => 'با ربات باشگاه بانوان مسابقه تاس اندازی بده و هرکی عدد سی رو زودتر اورد برندست.',
+            // ],
         ];
     }
 }

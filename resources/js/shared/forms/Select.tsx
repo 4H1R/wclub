@@ -21,7 +21,7 @@ export default function Select({ attributes, selectClassName, options, ...props 
         <select
           {...attributes}
           {...fieldProps}
-          value={value}
+          value={value as string}
           onChange={(e) => {
             if (hasError) clearErrors(props.name);
             setData(props.name, e.target.value);

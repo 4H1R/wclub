@@ -31,7 +31,7 @@ export default function Input({ attributes, inputClassName, ...props }: InputPro
             {...fieldProps}
             {...attributes}
             type={isPassword ? (showPassword ? 'text' : 'password') : attributes?.type}
-            value={value}
+            value={value as string}
             onChange={(e) => {
               if (hasError) clearErrors(props.name);
               setData(props.name, e.target.value);
@@ -54,9 +54,7 @@ export default function Input({ attributes, inputClassName, ...props }: InputPro
   );
 }
 
-type InputListsProps = {
-  fields: InputProps[];
-};
+type InputListsProps = { fields: InputProps[] };
 
 export function InputLists({ fields }: InputListsProps) {
   return fields.map((input) => <Input key={input.name} {...input} />);

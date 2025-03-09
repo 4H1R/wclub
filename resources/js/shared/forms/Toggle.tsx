@@ -14,15 +14,13 @@ export default function Toggle({ ...props }: ToggleProps) {
         <input
           {...fieldProps}
           {...props.attributes}
-          checked={data[props.name]}
+          checked={data[props.name] as boolean}
           onChange={(e) => {
             if (hasError) clearErrors(props.name);
             setData(props.name, e.target.checked);
           }}
           type="checkbox"
-          className={cn('toggle toggle-primary toggle-md block', {
-            'toggle-error': hasError,
-          })}
+          className={cn('toggle toggle-primary toggle-md block', { 'toggle-error': hasError })}
         />
       )}
     </FieldWrapper>
