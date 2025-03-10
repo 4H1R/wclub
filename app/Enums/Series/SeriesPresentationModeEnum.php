@@ -17,7 +17,7 @@ enum SeriesPresentationModeEnum: string implements HasColor, HasLabel
     public function getLabel(): string
     {
         return match ($this) {
-            self::InPerson => 'رایگان',
+            self::InPerson => 'حضوری',
             self::Online => 'آنلاین',
             self::Platform => 'پلتفرم',
         };
