@@ -1,3 +1,4 @@
+import config from '@/fixtures/config';
 import { footerLinks } from '@/fixtures/links';
 import Image from '@/shared/images/Image';
 import { Link } from '@inertiajs/react';
@@ -33,7 +34,7 @@ export default function Footer() {
               src="/images/logo/logoFull.png"
               width={150}
               height={150}
-              alt="لوگو باشگاه بانوان"
+              alt={`لوگو ${config.websiteTitle}`}
             />
             <p>
               باشگاه بانوان برای بانوان از کودک تا بزرگسال توسط شهرداری اصفهان تدارک دیده شده که

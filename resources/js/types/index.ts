@@ -7,14 +7,6 @@ export type THasChildren = {
 
 export type TIcon = typeof HiMoon;
 
-export type THoneypot = {
-  enabled: boolean;
-  encryptedValidFrom: string;
-  nameFieldName: string;
-  unrandomizedNameFieldName: string;
-  validFromFieldName: string;
-};
-
 export type PaginatedCollection<T extends object> = {
   data: Array<T>;
   links: {

@@ -106,6 +106,14 @@ declare namespace App.Data.Garden {
     images: Array<App.Data.Media.ImageData>;
   };
 }
+declare namespace App.Data.Honeypot {
+  export type HoneypotData = {
+    name_field_name: string;
+    valid_from_field_name: string;
+    encrypted_valid_from: string;
+    enabled: boolean;
+  };
+}
 declare namespace App.Data.Media {
   export type ImageData = {
     id: number;

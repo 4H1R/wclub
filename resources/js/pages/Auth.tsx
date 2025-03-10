@@ -100,7 +100,7 @@ export default function Auth() {
           height={100}
           className="mx-auto mb-4"
           src="/images/logo/logoFull.png"
-          alt="لوگو باشگاه بانوان اصفهان"
+          alt={`لوگو ${config.websiteTitle}`}
         />
         <h1 className="text-center text-3xl font-black">
           <span className="text-primary-solo">ورود یا ایجاد</span> حساب کاربری خود

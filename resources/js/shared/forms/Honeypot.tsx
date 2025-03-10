@@ -1,8 +1,7 @@
-import { THoneypot } from '@/types';
 import { InputLists } from './Input';
 
 type HoneyPotProps = {
-  honeypot: THoneypot;
+  honeypot: App.Data.Honeypot.HoneypotData;
 };
 
 export default function HoneyPot({ honeypot }: HoneyPotProps) {
@@ -14,13 +13,13 @@ export default function HoneyPot({ honeypot }: HoneyPotProps) {
         fields={[
           {
             isRequired: true,
-            label: { text: honeypot.nameFieldName },
-            name: honeypot.nameFieldName,
+            label: { text: honeypot.name_field_name },
+            name: honeypot.name_field_name,
           },
           {
             isRequired: true,
-            label: { text: honeypot.validFromFieldName },
-            name: honeypot.validFromFieldName,
+            label: { text: honeypot.valid_from_field_name },
+            name: honeypot.valid_from_field_name,
           },
         ]}
       />

@@ -9,11 +9,11 @@ type DesktopSortBy = {
   options: IOption<string>[];
 };
 export default function DesktopSortBy({ options }: DesktopSortBy) {
-  const currentSort = get(route().params, 'sort', options.at(0)?.value);
+  const currentSort = get(route().queryParams, 'sort', options.at(0)?.value);
 
   const handleSort = (sort: IOption<string>) => {
     router.get(
-      route(route().current() as string, { ...route().params, page: 1, sort: sort.value }),
+      route(route().current() as string, { ...route().queryParams, page: 1, sort: sort.value }),
       undefined,
       { preserveState: true },
     );

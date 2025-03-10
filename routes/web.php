@@ -19,11 +19,10 @@ use App\Http\Controllers\Series\SeriesController;
 use App\Http\Controllers\Series\SeriesOwnController;
 use App\Http\Controllers\SeriesEpisodeController;
 use Illuminate\Support\Facades\Route;
-use Spatie\Honeypot\ProtectAgainstSpam;
 
 Route::get('/', IndexController::class)->name('index');
 Route::get('/contact-us', [ContactUsController::class, 'create'])->name('contact-us');
-Route::post('/contact-us', [ContactUsController::class, 'store'])->middleware(ProtectAgainstSpam::class);
+Route::post('/contact-us', [ContactUsController::class, 'store']);
 Route::get('/about-us', AboutUsController::class)->name('about-us');
 Route::get('/search', SearchController::class)->name('search');
 Route::get('/chatbot', ChatbotController::class)->name('chatbot');

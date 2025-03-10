@@ -1,3 +1,4 @@
+import config from '@/fixtures/config';
 import { Head as InertiaHead } from '@inertiajs/react';
 
 type HeadProps = {
@@ -10,7 +11,7 @@ export default function Head({
   title,
   description,
   imageUrl,
-  titleSuffix = 'باشگاه بانوان',
+  titleSuffix = config.websiteTitle,
 }: HeadProps) {
   const finalTitle = titleSuffix ? `${title} - ${titleSuffix}` : title;
 
@@ -22,7 +23,7 @@ export default function Head({
       <meta property="og:description" content={description} />
       {imageUrl && <meta property="og:image" content={imageUrl} />}
       <meta property="og:locale" content="fa_IR" />
-      <meta property="og:site_name" content="باشگاه بانوان" />
+      <meta property="og:site_name" content={config.websiteTitle} />
       <meta property="twitter:title" content={finalTitle} />
       <meta property="twitter:description" content={description} />
       {imageUrl && <meta property="twitter:image" content={imageUrl} />}

@@ -1,4 +1,5 @@
 import { PageProps } from '@/@types';
+import config from '@/fixtures/config';
 import { useCurrentRoute } from '@/hooks';
 import Image from '@/shared/images/Image';
 import Search from '@/shared/Search';
@@ -79,9 +80,9 @@ export default function Navbar() {
               src="/images/logo/logo.png"
               width={40}
               height={40}
-              alt="لوگو باشگاه بانوان"
+              alt={`لوگو ${config.websiteTitle}`}
             />
-            <span className="lg:hidden">باشگاه بانوان</span>
+            <span className="lg:hidden">{config.websiteTitle}</span>
           </Link>
         </div>
         <DesktopLinks />
