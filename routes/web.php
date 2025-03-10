@@ -40,7 +40,7 @@ Route::resource('event-programs', EventProgramController::class)->only(['index',
 Route::resource('contests', ContestController::class)->only(['index', 'show']);
 Route::resource('games', GameController::class)->only(['index']);
 Route::get('/games/nardeban-shadi', NardebanShadiController::class);
-// Route::get('/games/roll-the-dice', RollTheDiceGameController::class);
+Route::get('/games/roll-the-dice', RollTheDiceGameController::class);
 
 Route::middleware('auth')->group(function () {
     Route::resource('contests.registrations', ContestRegistrationController::class)->only(['store']);

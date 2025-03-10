@@ -3015,10 +3015,10 @@ namespace PHPSTORM_META {
 'series.index','series.create','series.store','series.show','series.edit',
 'series.update','series.destroy','series.episodes.index','series.episodes.show','reward-programs.index',
 'reward-programs.show','event-programs.index','event-programs.show','contests.index','contests.show',
-'games.index','contests.registrations.store','dashboard',
-'register','login','auth','sms.send','sms.verify',
-'sms.register','logout',
-'telescope','storage.local',);
+'games.index','contests.registrations.store','dashboard','register',
+'login','auth','sms.send','sms.verify','sms.register',
+'logout','telescope',
+'storage.local',);
         registerArgumentsSet('views', 
 'app','filament-actions::badge-action','filament-actions::badge-group','filament-actions::button-action','filament-actions::button-group',
 'filament-actions::components.action','filament-actions::components.actions','filament-actions::components.group','filament-actions::components.modals','filament-actions::grouped-action',

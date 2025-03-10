@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { PageProps } from '@/@types';
 import Starter from '@/components/games/rollTheDice/Starter';
 import BreadCrumb from '@/shared/BreadCrumb';
@@ -9,7 +8,7 @@ import { usePage } from '@inertiajs/react';
 import { digitsEnToFa } from '@persian-tools/persian-tools';
 import { motion } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
-// import Dice from 'react-dice-roll';
+import Dice from 'react-dice-roll';
 import { toast } from 'react-toastify';
 
 type TPage = PageProps<{ game: App.Data.Game.GameData }>;
@@ -92,7 +91,7 @@ export default function RollTheDice() {
                 })}
                 data-tip="لطفا روی تاس کلیک کنید"
               >
-                {/* <Dice disabled={!isCurrentTurnLegit} onRoll={handleRoll} size={100} /> */}
+                <Dice disabled={!isCurrentTurnLegit} onRoll={handleRoll} size={100} />
               </div>
             )}
             {winner && (
