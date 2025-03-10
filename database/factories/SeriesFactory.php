@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\Series\SeriesPresentationModeEnum;
 use App\Enums\Series\SeriesStatusEnum;
 use App\Enums\Series\SeriesTypeEnum;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -34,6 +35,7 @@ class SeriesFactory extends Factory
         return [
             'title' => $this->faker->persianWords(rand(4, 8), true),
             'status' => SeriesStatusEnum::randomValue(),
+            'presentation_mode' => SeriesPresentationModeEnum::randomValue(),
             'type' => $type,
             'short_description' => $this->faker->persianText(rand(150, 250), true),
             'description' => $this->faker->persianParagraphs(rand(1, 5), true),

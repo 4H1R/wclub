@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Enums\Series\SeriesPresentationModeEnum;
 use App\Enums\Series\SeriesStatusEnum;
 use App\Enums\Series\SeriesTypeEnum;
 use App\Filament\Custom\CustomResource;
@@ -52,6 +53,12 @@ class SeriesResource extends CustomResource
                 ->reactive()
                 ->options(SeriesTypeEnum::class)
                 ->required(),
+            Forms\Components\Select::make('presentation_mode')
+                ->translateLabel()
+                ->searchable()
+                ->reactive()
+                ->options(SeriesPresentationModeEnum::class)
+                ->required(),
             FileInput::make($form, 'image', visibility: 'public')
                 ->image()
                 ->imageEditor()
@@ -99,6 +106,9 @@ class SeriesResource extends CustomResource
                     ->translateLabel()
                     ->sortable()
                     ->searchable(),
+                Tables\Columns\TextColumn::make('presentation_mode')
+                    ->translateLabel()
+                    ->badge(),
                 Tables\Columns\TextColumn::make('status')
                     ->translateLabel()
                     ->badge(),
@@ -117,6 +127,9 @@ class SeriesResource extends CustomResource
                 Tables\Filters\SelectFilter::make('type')
                     ->translateLabel()
                     ->options(SeriesTypeEnum::class),
+                Tables\Filters\SelectFilter::make('presentation_mode')
+                    ->translateLabel()
+                    ->options(SeriesPresentationModeEnum::class),
                 Tables\Filters\SelectFilter::make('status')
                     ->translateLabel()
                     ->options(SeriesStatusEnum::class),

@@ -331,6 +331,11 @@ declare namespace App.Enums {
   }
 }
 declare namespace App.Enums.Series {
+  export enum SeriesPresentationModeEnum {
+    'InPerson' = 'IN_PERSON',
+    'Online' = 'ONLINE',
+    'Platform' = 'PLATFORM',
+  }
   export enum SeriesStatusEnum {
     'InProgress' = 'IN_PROGRESS',
     'Finished' = 'FINISHED',

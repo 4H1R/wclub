@@ -472,6 +472,7 @@ namespace App\Models{
  * @property string|null $published_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property \App\Enums\Series\SeriesPresentationModeEnum $presentation_mode
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Category> $categories
  * @property-read int|null $categories_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\SeriesChapter> $chapters
@@ -495,6 +496,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Series whereEpisodesDurationSeconds($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Series whereFaqs($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Series whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Series wherePresentationMode($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Series wherePublishedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Series whereShortDescription($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Series whereStatus($value)
