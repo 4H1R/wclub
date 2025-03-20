@@ -233,6 +233,7 @@ declare namespace App.Data.TargetGroup {
 }
 declare namespace App.Data.User {
   export type AuthUserData = {
+    hash_id: string;
     id: number;
     first_name: string;
     last_name: string;

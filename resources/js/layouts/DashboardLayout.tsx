@@ -1,10 +1,12 @@
 import { useCurrentRoute, useShowTooltip } from '@/hooks';
+import Button from '@/shared/forms/Button';
 import Head from '@/shared/Head';
 import { THasChildren } from '@/types';
 import { cn } from '@/utils';
 import { Link, usePage } from '@inertiajs/react';
 import { addCommas, digitsEnToFa } from '@persian-tools/persian-tools';
-import { HiStar } from 'react-icons/hi2';
+import { HiStar, HiUsers } from 'react-icons/hi2';
+import { toast } from 'react-toastify';
 import MainLayout from './MainLayout';
 
 const tabs = [
@@ -20,6 +22,11 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
   const showTooltip = useShowTooltip();
   const currentRoute = useCurrentRoute();
 
+  const handleCopyReferer = () => {
+    window.navigator.clipboard.writeText(auth.user!.hash_id);
+    toast.success('کد معرف شما با موفقیت کپی شد');
+  };
+
   return (
     <MainLayout>
       <div className="space-y mt-page container">
@@ -31,15 +38,24 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
             </span>{' '}
             خوش آمدید.
           </h1>
-          <div
-            className={cn('tooltip tooltip-bottom', {
-              'tooltip-open animate-bounce': showTooltip,
-            })}
-            data-tip="امتیاز شما"
-          >
-            <div className="badge badge-lg flex items-center justify-center gap-2 bg-yellow-600 text-white">
-              <HiStar className="size-4" />
-              <span className="font-fa-display">{digitsEnToFa(addCommas(auth.user!.score))}</span>
+          <div className="flex flex-wrap items-center gap-2">
+            <Button
+              onClick={handleCopyReferer}
+              className="btn btn-xs flex items-center justify-center gap-2"
+            >
+              <HiUsers className="size-4" />
+              <span>کپی کد معرف شما</span>
+            </Button>
+            <div
+              className={cn('tooltip tooltip-bottom', {
+                'tooltip-open animate-bounce': showTooltip,
+              })}
+              data-tip="امتیاز شما"
+            >
+              <div className="badge badge-lg flex items-center justify-center gap-2 bg-yellow-600 text-white">
+                <HiStar className="size-4" />
+                <span className="font-fa-display">{digitsEnToFa(addCommas(auth.user!.score))}</span>
+              </div>
             </div>
           </div>
         </div>
