@@ -28,14 +28,15 @@ export default function ConvertToCouponCard({ logic }: ConvertToCouponCardProps)
 
     setIsLoading(true);
     router.post(
-      route('coupons.convert'),
+      route('me.score.convert-to-coupon'),
       { index: selectedIndex },
       {
         preserveScroll: true,
         preserveState: true,
         onSuccess: () => {
-          toast.success('کد تخفیف با موفقیت تبدیل شد');
-          router.get(route('dashboard.coupons'));
+          toast.success(
+            'کد تخفیف با موفقیت ساخته شد. هنگام خرید ما کد تخفیف را به شما پیشنهاد میکنیم',
+          );
         },
         onError: handleServerMessage,
         onFinish: () => setIsLoading(false),
@@ -51,6 +52,10 @@ export default function ConvertToCouponCard({ logic }: ConvertToCouponCardProps)
           شما میتوانید با{' '}
           <span className="font-bold underline">{digitsEnToFa(addCommas(auth.user!.score))}</span>{' '}
           امتیاز کد تخفیف بخرید و در بانوان اصفهان آن را استفاده کنید!
+        </p>
+        <p className="text-base-content/80">
+          کد های تخفیف فقط یک <span className="underline">بار مصرف</span> و تا{' '}
+          <span className="underline">یک ماه</span> قابل استفاده میباشند.
         </p>
         {showList && (
           <div className="mt-2 space-y-2">

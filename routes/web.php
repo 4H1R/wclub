@@ -5,7 +5,6 @@ use App\Http\Controllers\ChatbotController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\Contest\ContestController;
 use App\Http\Controllers\Contest\ContestRegistrationController;
-use App\Http\Controllers\CouponController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EventProgramController;
 use App\Http\Controllers\Game\GameController;
@@ -13,6 +12,7 @@ use App\Http\Controllers\Game\NardebanShadiController;
 use App\Http\Controllers\Game\RollTheDiceGameController;
 use App\Http\Controllers\GardenController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\Me\ScoreController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\RewardProgramController;
 use App\Http\Controllers\SearchController;
@@ -44,7 +44,10 @@ Route::middleware(['auth', DisableInertiaSSR::class])->group(function () {
     Route::resource('contests.registrations', ContestRegistrationController::class)->only(['store']);
     Route::resource('series.owns', SeriesOwnController::class)->only(['store']);
 
-    Route::post('/coupons/convert', [CouponController::class, 'convert'])->name('coupons.convert');
+    Route::prefix('/me')->name('me.')->group(function () {
+        Route::post('/score/convert-to-coupon', [ScoreController::class, 'convertToCoupon'])->name('score.convert-to-coupon');
+        Route::post('/score/transfer-to-my-isfahan', [ScoreController::class, 'transferToMyIsfahan'])->name('score.transfer-to-my-isfahan');
+    });
 
     Route::get('/dashboard', [DashboardController::class, 'show'])->name('dashboard');
     Route::get('/dashboard/score', [DashboardController::class, 'score'])->name('dashboard.score');

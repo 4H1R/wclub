@@ -106,7 +106,8 @@ declare module 'ziggy-js' {
         binding: 'id';
       },
     ];
-    'coupons.convert': [];
+    'me.score.convert-to-coupon': [];
+    'me.score.transfer-to-my-isfahan': [];
     dashboard: [];
     'dashboard.score': [];
     'dashboard.account': [];

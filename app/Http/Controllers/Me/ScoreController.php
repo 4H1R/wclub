@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Me;
 
 use App\Enums\Coupon\CouponTypeEnum;
+use App\Http\Controllers\Controller;
 use App\Models\Coupon;
 use App\Models\User;
 use App\Settings\ScoreSettings;
@@ -13,9 +14,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 
-class CouponController extends Controller
+class ScoreController extends Controller
 {
-    public function convert(Request $request, ScoreSettings $scoreSettings): RedirectResponse
+    public function convertToCoupon(Request $request, ScoreSettings $scoreSettings): RedirectResponse
     {
         $request->validate([
             'index' => ['required', 'integer', 'min:0', 'max:'.count($scoreSettings->score_to_coupon_logic)],
@@ -53,4 +54,6 @@ class CouponController extends Controller
 
         return back();
     }
+
+    public function transferToMyIsfahan() {}
 }
