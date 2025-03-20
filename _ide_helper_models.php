@@ -647,6 +647,8 @@ namespace App\Models{
  * @property-read int|null $roles_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Role> $safeRoles
  * @property-read int|null $safe_roles_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\UserScoreLog> $scoreLogs
+ * @property-read int|null $score_logs_count
  * @method static \Database\Factories\UserFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User newQuery()
@@ -672,5 +674,20 @@ namespace App\Models{
  */
 	#[\AllowDynamicProperties]
 	class IdeHelperUser {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property-read \App\Models\User|null $user
+ * @method static \Database\Factories\UserScoreLogFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|UserScoreLog newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|UserScoreLog newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|UserScoreLog query()
+ * @mixin \Eloquent
+ */
+	#[\AllowDynamicProperties]
+	class IdeHelperUserScoreLog {}
 }
 

@@ -4,6 +4,7 @@ namespace App\Filament\Resources\SeriesEpisodeResource\Pages;
 
 use App\Filament\Resources\SeriesEpisodeResource;
 use App\Jobs\AddVideoToSeriesEpisode;
+use App\Models\SeriesEpisode;
 use Filament\Actions;
 use Filament\Forms;
 use Filament\Notifications\Notification;
@@ -35,7 +36,13 @@ class EditSeriesEpisode extends EditRecord
                     $filePath = sprintf('manual/%s.mp4', Str::replace('.mp4', '', $data['name']));
                     $disk = 's3_private';
 
-                    if ($this->getRecord()->video) {
+                    $record = $this->getRecord();
+
+                    if (! $record instanceof SeriesEpisode) {
+                        return;
+                    }
+
+                    if ($record->video) {
                         Notification::make()
                             ->danger()
                             ->title('این قسمت دارای ویدیو است')

@@ -7,6 +7,7 @@ import { Link, usePage } from '@inertiajs/react';
 
 export default function DrawerContent() {
   const url = usePage().url;
+  const { auth } = usePage().props;
 
   return (
     <>
@@ -23,7 +24,11 @@ export default function DrawerContent() {
       <div className="divider" />
       <ul>
         {navbarLinks
-          .filter((link) => link.showOn !== 'desktop')
+          .filter((link) => {
+            if (link.middleware === 'auth' && !auth.user) return false;
+
+            return link.showOn !== 'desktop';
+          })
           .map((link) => {
             const isActive = isUrlActive(url, link.href);
             const Icon = isActive ? link.ActiveIcon : link.Icon;

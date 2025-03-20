@@ -14,12 +14,14 @@ import {
   HiOutlineSparkles,
   HiOutlineStar,
   HiOutlineTrophy,
+  HiOutlineUser,
   HiPlayCircle,
   HiQuestionMarkCircle,
   HiSignal,
   HiSparkles,
   HiStar,
   HiTrophy,
+  HiUser,
 } from 'react-icons/hi2';
 import config from './config';
 
@@ -29,11 +31,20 @@ export type TNavbarLink = {
   Icon: TIcon;
   ActiveIcon: TIcon;
   showOn: 'mobile' | 'desktop' | 'all';
+  middleware?: 'auth';
   desktopSubLinks?: { title: string; href: string }[];
 };
 
 export const navbarLinks: TNavbarLink[] = [
   { title: 'خانه', href: '/', Icon: HiOutlineHome, ActiveIcon: HiHome, showOn: 'mobile' },
+  {
+    title: 'حساب کاربری',
+    href: '/dashboard',
+    Icon: HiOutlineUser,
+    ActiveIcon: HiUser,
+    showOn: 'mobile',
+    middleware: 'auth',
+  },
   {
     title: 'رویداد ها',
     href: '/event-programs',

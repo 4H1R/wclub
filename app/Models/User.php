@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Carbon;
@@ -112,5 +113,13 @@ class User extends Authenticatable implements FilamentUser, HasName
     public function ownedSeries(): BelongsToMany
     {
         return $this->belongsToMany(Series::class, 'user_owned_series');
+    }
+
+    /**
+     * @return HasMany<UserScoreLog>
+     */
+    public function scoreLogs(): HasMany
+    {
+        return $this->hasMany(UserScoreLog::class);
     }
 }

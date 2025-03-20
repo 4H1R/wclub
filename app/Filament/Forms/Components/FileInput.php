@@ -17,8 +17,11 @@ class FileInput
                     return;
                 }
 
-                /** @var HasMedia $record */
                 $record = $form->getRecord();
+                if (! $record instanceof HasMedia) {
+                    return;
+                }
+
                 $record
                     ->media()
                     ->where('collection_name', $name)
