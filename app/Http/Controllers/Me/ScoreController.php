@@ -55,5 +55,25 @@ class ScoreController extends Controller
         return back();
     }
 
-    public function transferToMyIsfahan() {}
+    public function transferToMyIsfahan(Request $request): RedirectResponse
+    {
+        $validated = $request->validate([
+            'amount' => ['required', 'integer', 'min:1', 'max:'.Auth::user()->score],
+        ]);
+
+        DB::transaction(function () use ($validated) {
+            User::query()
+                ->where('id', Auth::id())
+                ->decrement('score', $validated['amount']);
+
+            Auth::user()->scoreLogs()->create([
+                'score' => $validated['amount'] * -1,
+                'text' => sprintf('انتقال %s امتیاز به اصفهان من', $validated['amount']),
+            ]);
+
+            // handle transfer
+        }, 3);
+
+        return back();
+    }
 }
