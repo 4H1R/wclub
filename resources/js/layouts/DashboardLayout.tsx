@@ -1,0 +1,62 @@
+import { useCurrentRoute, useShowTooltip } from '@/hooks';
+import Head from '@/shared/Head';
+import { THasChildren } from '@/types';
+import { cn } from '@/utils';
+import { Link, usePage } from '@inertiajs/react';
+import { addCommas, digitsEnToFa } from '@persian-tools/persian-tools';
+import { HiStar } from 'react-icons/hi2';
+import MainLayout from './MainLayout';
+
+const tabs = [
+  { title: 'امتیازات', href: route('dashboard.score', undefined, false) },
+  { title: 'سفارشات', href: route('dashboard.orders', undefined, false) },
+  { title: 'حساب من', href: route('dashboard.account', undefined, false) },
+];
+
+type DashboardLayoutProps = THasChildren;
+
+export default function DashboardLayout({ children }: DashboardLayoutProps) {
+  const { auth } = usePage().props;
+  const showTooltip = useShowTooltip();
+  const currentRoute = useCurrentRoute();
+
+  return (
+    <MainLayout>
+      <div className="space-y mt-page container">
+        <Head title="داشبورد" description="داشبورد" titleSuffix={null} />
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <h1 className="h2 text-base-content">
+            <span className="text-primary-solo">
+              {auth.user?.first_name} {auth.user?.last_name}
+            </span>{' '}
+            خوش آمدید.
+          </h1>
+          <div
+            className={cn('tooltip tooltip-bottom', {
+              'tooltip-open animate-bounce': showTooltip,
+            })}
+            data-tip="امتیاز شما"
+          >
+            <div className="badge badge-lg flex items-center justify-center gap-2 bg-yellow-600 text-white">
+              <HiStar className="size-4" />
+              <span className="font-fa-display">{digitsEnToFa(addCommas(auth.user!.score))}</span>
+            </div>
+          </div>
+        </div>
+        <div role="tablist" className="tabs tabs-bordered">
+          {tabs.map((tab) => (
+            <Link
+              href={tab.href}
+              key={tab.href}
+              role="tab"
+              className={cn('tab', { 'tab-active': currentRoute === tab.href })}
+            >
+              {tab.title}
+            </Link>
+          ))}
+        </div>
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">{children}</div>
+      </div>
+    </MainLayout>
+  );
+}

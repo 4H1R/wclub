@@ -7,13 +7,6 @@ declare module 'ziggy-js' {
     'about-us': [];
     search: [];
     chatbot: [];
-    'series.owns.store': [
-      {
-        name: 'series';
-        required: true;
-        binding: 'id';
-      },
-    ];
     'news.index': [];
     'news.show': [
       {
@@ -106,7 +99,18 @@ declare module 'ziggy-js' {
         binding: 'id';
       },
     ];
+    'series.owns.store': [
+      {
+        name: 'series';
+        required: true;
+        binding: 'id';
+      },
+    ];
+    'coupons.convert': [];
     dashboard: [];
+    'dashboard.score': [];
+    'dashboard.account': [];
+    'dashboard.orders': [];
     register: [];
     login: [];
     auth: [];

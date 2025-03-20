@@ -150,6 +150,43 @@ namespace App\Models{
  * @property int $id
  * @property int|null $user_id
  * @property string $title
+ * @property string $code
+ * @property \App\Enums\Coupon\CouponTypeEnum $type
+ * @property int|null $amount
+ * @property int|null $percentage
+ * @property int|null $max_percentage_amount
+ * @property \Illuminate\Support\Carbon $expired_at
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\User|null $user
+ * @method static \Database\Factories\CouponFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Coupon newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Coupon newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Coupon query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Coupon whereAmount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Coupon whereCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Coupon whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Coupon whereExpiredAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Coupon whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Coupon whereMaxPercentageAmount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Coupon wherePercentage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Coupon whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Coupon whereType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Coupon whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Coupon whereUserId($value)
+ * @mixin \Eloquent
+ */
+	#[\AllowDynamicProperties]
+	class IdeHelperCoupon {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
+ * @property int|null $user_id
+ * @property string $title
  * @property string $short_description
  * @property string $description
  * @property int|null $min_participants
@@ -680,11 +717,23 @@ namespace App\Models{
 /**
  * 
  *
- * @property-read \App\Models\User|null $user
+ * @property int $id
+ * @property int $user_id
+ * @property int $score
+ * @property string $text
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\User $user
  * @method static \Database\Factories\UserScoreLogFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UserScoreLog newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UserScoreLog newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UserScoreLog query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|UserScoreLog whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|UserScoreLog whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|UserScoreLog whereScore($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|UserScoreLog whereText($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|UserScoreLog whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|UserScoreLog whereUserId($value)
  * @mixin \Eloquent
  */
 	#[\AllowDynamicProperties]

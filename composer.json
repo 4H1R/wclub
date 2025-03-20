@@ -12,6 +12,7 @@
         "emreyarligan/enum-concern": "^1.0",
         "filament/filament": "^3.2",
         "filament/spatie-laravel-media-library-plugin": "^3.2",
+        "filament/spatie-laravel-settings-plugin": "^3.2",
         "hekmatinasser/verta": "^8.4",
         "inertiajs/inertia-laravel": "^2.0",
         "kasraghoreyshi/persian-faker": "^1.04",
@@ -31,9 +32,11 @@
         "spatie/laravel-medialibrary": "^11.10",
         "spatie/laravel-permission": "^6.10",
         "spatie/laravel-query-builder": "^6.2",
+        "spatie/laravel-settings": "^3.4",
         "spatie/laravel-typescript-transformer": "^2.5",
         "spatie/typescript-transformer": "^2.4",
-        "tightenco/ziggy": "^2.4"
+        "tightenco/ziggy": "^2.4",
+        "vinkla/hashids": "^12.0"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^3.2",

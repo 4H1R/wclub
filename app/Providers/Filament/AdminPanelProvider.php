@@ -37,6 +37,7 @@ class AdminPanelProvider extends PanelProvider
                 trans_choice('News', 2),
                 trans_choice('Reward Programs', 2),
                 trans_choice('Users', 2),
+                __('Settings'),
             ])
             ->colors([
                 'primary' => Color::Rose,

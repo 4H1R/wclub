@@ -5,7 +5,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 11.44.1.
+ * Generated for Laravel 11.44.2.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -22707,6 +22707,17 @@ namespace Livewire {
          *
          * @static 
          */
+        public static function findSynth($keyOrTarget, $component)
+        {
+            /** @var \Livewire\LivewireManager $instance */
+            return $instance->findSynth($keyOrTarget, $component);
+        }
+
+        /**
+         * 
+         *
+         * @static 
+         */
         public static function update($snapshot, $diff, $calls)
         {
             /** @var \Livewire\LivewireManager $instance */
@@ -23306,6 +23317,157 @@ namespace Opcodes\LogViewer\Facades {
         {
             /** @var \Opcodes\LogViewer\LogViewerService $instance */
             return $instance->version();
+        }
+
+            }
+    }
+
+namespace Vinkla\Hashids\Facades {
+    /**
+     * 
+     *
+     * @method static string encode(mixed ...$numbers)
+     * @method static array decode(string $hash)
+     * @method static string encodeHex(string $str)
+     * @method static string decodeHex(string $hash)
+     */
+    class Hashids {
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function getFactory()
+        {
+            /** @var \Vinkla\Hashids\HashidsManager $instance */
+            return $instance->getFactory();
+        }
+
+        /**
+         * Get a connection instance.
+         *
+         * @param string|null $name
+         * @throws \InvalidArgumentException
+         * @return object 
+         * @static 
+         */
+        public static function connection($name = null)
+        {
+            //Method inherited from \GrahamCampbell\Manager\AbstractManager 
+            /** @var \Vinkla\Hashids\HashidsManager $instance */
+            return $instance->connection($name);
+        }
+
+        /**
+         * Reconnect to the given connection.
+         *
+         * @param string|null $name
+         * @throws \InvalidArgumentException
+         * @return object 
+         * @static 
+         */
+        public static function reconnect($name = null)
+        {
+            //Method inherited from \GrahamCampbell\Manager\AbstractManager 
+            /** @var \Vinkla\Hashids\HashidsManager $instance */
+            return $instance->reconnect($name);
+        }
+
+        /**
+         * Disconnect from the given connection.
+         *
+         * @param string|null $name
+         * @return void 
+         * @static 
+         */
+        public static function disconnect($name = null)
+        {
+            //Method inherited from \GrahamCampbell\Manager\AbstractManager 
+            /** @var \Vinkla\Hashids\HashidsManager $instance */
+            $instance->disconnect($name);
+        }
+
+        /**
+         * Get the configuration for a connection.
+         *
+         * @param string|null $name
+         * @throws \InvalidArgumentException
+         * @return array 
+         * @static 
+         */
+        public static function getConnectionConfig($name = null)
+        {
+            //Method inherited from \GrahamCampbell\Manager\AbstractManager 
+            /** @var \Vinkla\Hashids\HashidsManager $instance */
+            return $instance->getConnectionConfig($name);
+        }
+
+        /**
+         * Get the default connection name.
+         *
+         * @return string 
+         * @static 
+         */
+        public static function getDefaultConnection()
+        {
+            //Method inherited from \GrahamCampbell\Manager\AbstractManager 
+            /** @var \Vinkla\Hashids\HashidsManager $instance */
+            return $instance->getDefaultConnection();
+        }
+
+        /**
+         * Set the default connection name.
+         *
+         * @param string $name
+         * @return void 
+         * @static 
+         */
+        public static function setDefaultConnection($name)
+        {
+            //Method inherited from \GrahamCampbell\Manager\AbstractManager 
+            /** @var \Vinkla\Hashids\HashidsManager $instance */
+            $instance->setDefaultConnection($name);
+        }
+
+        /**
+         * Register an extension connection resolver.
+         *
+         * @param string $name
+         * @param callable $resolver
+         * @return void 
+         * @static 
+         */
+        public static function extend($name, $resolver)
+        {
+            //Method inherited from \GrahamCampbell\Manager\AbstractManager 
+            /** @var \Vinkla\Hashids\HashidsManager $instance */
+            $instance->extend($name, $resolver);
+        }
+
+        /**
+         * Return all of the created connections.
+         *
+         * @return array<string,object> 
+         * @static 
+         */
+        public static function getConnections()
+        {
+            //Method inherited from \GrahamCampbell\Manager\AbstractManager 
+            /** @var \Vinkla\Hashids\HashidsManager $instance */
+            return $instance->getConnections();
+        }
+
+        /**
+         * Get the config instance.
+         *
+         * @return \Illuminate\Contracts\Config\Repository 
+         * @static 
+         */
+        public static function getConfig()
+        {
+            //Method inherited from \GrahamCampbell\Manager\AbstractManager 
+            /** @var \Vinkla\Hashids\HashidsManager $instance */
+            return $instance->getConfig();
         }
 
             }
@@ -27501,7 +27663,7 @@ namespace  {
          * @param string $pageName
          * @param int|null $page
          * @param \Closure|int|null $total
-         * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator 
+         * @return \Illuminate\Pagination\LengthAwarePaginator 
          * @throws \InvalidArgumentException
          * @static 
          */
@@ -32059,6 +32221,7 @@ namespace  {
     class Octane extends \Laravel\Octane\Facades\Octane {}
     class Livewire extends \Livewire\Livewire {}
     class LogViewer extends \Opcodes\LogViewer\Facades\LogViewer {}
+    class Hashids extends \Vinkla\Hashids\Facades\Hashids {}
 }
 
 

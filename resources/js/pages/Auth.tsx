@@ -7,10 +7,9 @@ import Form from '@/shared/forms/Form';
 import Input, { InputLists } from '@/shared/forms/Input';
 import Head from '@/shared/Head';
 import Image from '@/shared/images/Image';
-import { cn } from '@/utils';
+import { cn, handleServerMessage } from '@/utils';
 import { useForm } from '@inertiajs/react';
 import { motion } from 'framer-motion';
-import get from 'lodash/get';
 import React, { useEffect, useState } from 'react';
 import OTPInput from 'react-otp-input';
 import { toast } from 'react-toastify';
@@ -39,22 +38,17 @@ export default function Auth() {
     form.post(route('sms.verify'), {
       preserveState: true,
       preserveScroll: true,
-      onError: handleServerError,
+      onError: handleServerMessage,
       onSuccess: () => setStep('register'),
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [form.data.token, step]);
 
-  const handleServerError = (e: unknown) => {
-    const message = get(e, 'message', '') as string;
-    if (message) toast.error(message);
-  };
-
   const handleSendAgain = () => {
     form.post(route('sms.send'), {
       preserveState: true,
       preserveScroll: true,
-      onError: handleServerError,
+      onError: handleServerMessage,
       onSuccess: () => {
         toast.success('کد جدیدی برای شما ارسال شد.');
         handleActiveTimeout();
@@ -67,7 +61,7 @@ export default function Auth() {
       form.post(route('sms.send'), {
         preserveState: true,
         preserveScroll: true,
-        onError: handleServerError,
+        onError: handleServerMessage,
         onSuccess: () => {
           handleActiveTimeout();
           setStep('verify');
@@ -80,13 +74,10 @@ export default function Auth() {
         preserveScroll: true,
         preserveState: true,
         onError: (e) => {
-          const message = get(e, 'message', '');
-          if (message) {
-            // code is expired
-            toast.error(message);
+          handleServerMessage(e, () => {
             form.reset();
             setStep('send');
-          }
+          });
         },
       });
     }

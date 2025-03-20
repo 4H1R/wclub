@@ -5,6 +5,7 @@ use App\Http\Controllers\ChatbotController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\Contest\ContestController;
 use App\Http\Controllers\Contest\ContestRegistrationController;
+use App\Http\Controllers\CouponController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EventProgramController;
 use App\Http\Controllers\Game\GameController;
@@ -18,6 +19,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\Series\SeriesController;
 use App\Http\Controllers\Series\SeriesOwnController;
 use App\Http\Controllers\SeriesEpisodeController;
+use App\Http\Middleware\DisableInertiaSSR;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', IndexController::class)->name('index');
@@ -26,10 +28,6 @@ Route::post('/contact-us', [ContactUsController::class, 'store']);
 Route::get('/about-us', AboutUsController::class)->name('about-us');
 Route::get('/search', SearchController::class)->name('search');
 Route::get('/chatbot', ChatbotController::class)->name('chatbot');
-
-Route::middleware('auth')->group(function () {
-    Route::resource('series.owns', SeriesOwnController::class)->only(['store']);
-});
 
 Route::resource('news', NewsController::class)->only(['index', 'show']);
 Route::resource('gardens', GardenController::class)->only(['index', 'show']);
@@ -42,9 +40,16 @@ Route::resource('games', GameController::class)->only(['index']);
 Route::get('/games/nardeban-shadi', NardebanShadiController::class);
 Route::get('/games/roll-the-dice', RollTheDiceGameController::class);
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', DisableInertiaSSR::class])->group(function () {
     Route::resource('contests.registrations', ContestRegistrationController::class)->only(['store']);
+    Route::resource('series.owns', SeriesOwnController::class)->only(['store']);
+
+    Route::post('/coupons/convert', [CouponController::class, 'convert'])->name('coupons.convert');
+
     Route::get('/dashboard', [DashboardController::class, 'show'])->name('dashboard');
+    Route::get('/dashboard/score', [DashboardController::class, 'score'])->name('dashboard.score');
+    Route::get('/dashboard/account', [DashboardController::class, 'account'])->name('dashboard.account');
+    Route::get('/dashboard/orders', [DashboardController::class, 'orders'])->name('dashboard.orders');
 });
 
 require __DIR__.'/auth.php';

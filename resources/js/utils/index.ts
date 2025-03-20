@@ -1,6 +1,8 @@
 import axios, { AxiosError } from 'axios';
 import { ClassValue, clsx } from 'clsx';
+import get from 'lodash/get';
 import kebabCase from 'lodash/kebabCase';
+import { toast } from 'react-toastify';
 import { twMerge } from 'tailwind-merge';
 
 const appName = import.meta.env.VITE_APP_NAME;
@@ -29,6 +31,14 @@ export async function downloadFile(url: string, fileName: string) {
   link.click();
   link.remove();
 }
+
+export const handleServerMessage = (e: unknown, callback?: () => void) => {
+  const message = get(e, 'message', '') as string;
+  if (message) {
+    toast.error(message);
+    if (callback) callback();
+  }
+};
 
 export function convertSecondsToTime(seconds: number, omitHoursIfZero: boolean = false): string {
   const hours = Math.floor(seconds / 3600);

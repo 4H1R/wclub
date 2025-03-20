@@ -330,6 +330,12 @@ declare namespace App.Enums {
     'Test' = 'Test',
   }
 }
+declare namespace App.Enums.Coupon {
+  export enum CouponTypeEnum {
+    'Amount' = 'AMOUNT',
+    'Percentage' = 'PERCENTAGE',
+  }
+}
 declare namespace App.Enums.Series {
   export enum SeriesPresentationModeEnum {
     'InPerson' = 'IN_PERSON',
