@@ -1,13 +1,11 @@
 import { PageProps } from '@/@types';
 import BreadCrumb from '@/shared/BreadCrumb';
 import NewsCard from '@/shared/cards/NewsCard';
-import Button from '@/shared/forms/Button';
 import Head from '@/shared/Head';
 import Image from '@/shared/images/Image';
 import CategoriesBadge from '@/shared/resources/show/CategoriesBadge';
 import ShareButton from '@/shared/resources/show/ShareButton';
 import { usePage } from '@inertiajs/react';
-import { HiOutlineInformationCircle } from 'react-icons/hi2';
 import Markdown from 'react-markdown';
 
 type TPage = PageProps<{
@@ -15,14 +13,8 @@ type TPage = PageProps<{
   recommended_news: App.Data.News.NewsData[];
 }>;
 
-const registerId = 'registerId';
-
 export default function Show() {
   const { news, recommended_news } = usePage<TPage>().props;
-
-  const handleScrollToRegister = () => {
-    document.getElementById(registerId)?.scrollIntoView({ behavior: 'smooth' });
-  };
 
   return (
     <div className="space-y mt-page container">
@@ -51,13 +43,6 @@ export default function Show() {
             <ShareButton predefinedStyleFor="desktop" />
           </div>
           <CategoriesBadge categories={news.categories} />
-          <div className="flex flex-wrap items-center justify-between gap-4 rounded-box bg-base-200 text-base-content/80 md:hidden">
-            <Button onClick={handleScrollToRegister} className="btn btn-ghost">
-              <HiOutlineInformationCircle className="size-5" />
-              <span>اطلاعات بیشتر</span>
-            </Button>
-            <ShareButton predefinedStyleFor="mobile" />
-          </div>
         </div>
         <div className="prose max-w-none text-base-content">
           <Markdown>{news.description}</Markdown>
