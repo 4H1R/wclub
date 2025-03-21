@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('status')->index();
             $table->string('type')->index();
+            $table->string('presentation_mode')->index();
             $table->string('title');
             $table->string('short_description');
             $table->text('description');

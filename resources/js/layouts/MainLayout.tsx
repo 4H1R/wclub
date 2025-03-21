@@ -39,7 +39,7 @@ export default function MainLayout({ children }: MainLayoutProps) {
             key={currentRoute}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="space-y flex-1 pb-8 md:pb-6"
+            className="space-y flex flex-1 flex-col pb-8 md:pb-6"
           >
             {children}
           </motion.main>

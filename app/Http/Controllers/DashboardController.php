@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Settings\ScoreSettings;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class DashboardController extends Controller
 {
-    public function show(): RedirectResponse
+    public function show(Request $request): RedirectResponse
     {
-        return to_route('dashboard.score');
+        return to_route('dashboard.score', $request->all());
     }
 
     public function score(ScoreSettings $scoreSettings): \Inertia\Response

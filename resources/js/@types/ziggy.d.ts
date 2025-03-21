@@ -114,6 +114,7 @@ declare module 'ziggy-js' {
     'dashboard.orders': [];
     register: [];
     login: [];
+    'auth.my-isfahan': [];
     auth: [];
     'sms.send': [];
     'sms.verify': [];

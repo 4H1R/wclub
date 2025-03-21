@@ -5,6 +5,7 @@ import { THasChildren } from '@/types';
 import { cn } from '@/utils';
 import { Link, usePage } from '@inertiajs/react';
 import { addCommas, digitsEnToFa } from '@persian-tools/persian-tools';
+import { useEffect } from 'react';
 import { HiStar, HiUsers } from 'react-icons/hi2';
 import { toast } from 'react-toastify';
 import MainLayout from './MainLayout';
@@ -26,6 +27,12 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
     window.navigator.clipboard.writeText(auth.user!.hash_id);
     toast.success('کد معرف شما با موفقیت کپی شد');
   };
+
+  useEffect(() => {
+    if (route().params['auth_was_successful']) {
+      toast.success('شما با موفقیت وارد حساب کاربری خود شدید.');
+    }
+  }, []);
 
   return (
     <MainLayout>

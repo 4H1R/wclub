@@ -501,6 +501,7 @@ namespace App\Models{
  * @property int $id
  * @property \App\Enums\Series\SeriesStatusEnum $status
  * @property \App\Enums\Series\SeriesTypeEnum $type
+ * @property \App\Enums\Series\SeriesPresentationModeEnum $presentation_mode
  * @property string $title
  * @property string $short_description
  * @property string $description
@@ -509,7 +510,6 @@ namespace App\Models{
  * @property string|null $published_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property \App\Enums\Series\SeriesPresentationModeEnum $presentation_mode
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Category> $categories
  * @property-read int|null $categories_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\SeriesChapter> $chapters
