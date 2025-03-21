@@ -33,13 +33,13 @@ class RoleSeeder extends Seeder
                 PermissionEnum::DeleteOwnedEventPrograms->name,
             ])->values()->toArray());
 
-        // Role::query()
-        //     ->where('name', RoleEnum::Test)
-        //     ->first()
-        //     ?->syncPermissions([
-        //         PermissionEnum::ViewAdminPanel->value,
-        //         PermissionEnum::ViewAnyContests->value,
-        //         PermissionEnum::UpdateAnyContests->value,
-        //     ]);
+        Role::query()
+            ->where('name', RoleEnum::Test)
+            ->first()
+            ?->syncPermissions([
+                PermissionEnum::ViewAdminPanel->value,
+                PermissionEnum::ViewAnyContests->value,
+                PermissionEnum::UpdateAnyContests->value,
+            ]);
     }
 }

@@ -2,10 +2,10 @@
 
 namespace App\Data\User;
 
-use Hashids;
 use Spatie\LaravelData\Attributes\Computed;
 use Spatie\LaravelData\Data;
 use Spatie\TypeScriptTransformer\Attributes\TypeScript;
+use Vinkla\Hashids\Facades\Hashids;
 
 #[TypeScript]
 class AuthUserData extends Data

@@ -7,12 +7,12 @@ use App\Http\Controllers\Controller;
 use App\Models\Coupon;
 use App\Models\User;
 use App\Settings\ScoreSettings;
-use Hashids;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
+use Vinkla\Hashids\Facades\Hashids;
 
 class ScoreController extends Controller
 {

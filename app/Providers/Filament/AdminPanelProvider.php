@@ -36,6 +36,7 @@ class AdminPanelProvider extends PanelProvider
                 trans_choice('Series', 2),
                 trans_choice('News', 2),
                 trans_choice('Reward Programs', 2),
+                trans_choice('Orders', 2),
                 trans_choice('Users', 2),
                 __('Settings'),
             ])

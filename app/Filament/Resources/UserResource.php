@@ -58,12 +58,6 @@ class UserResource extends CustomResource
                 ->translateLabel()
                 ->regex('/^[0][9][0-9]{9,9}$/')
                 ->required(),
-            Forms\Components\TextInput::make('score')
-                ->translateLabel()
-                ->integer()
-                ->minValue(0)
-                ->default(0)
-                ->required(),
             Forms\Components\DateTimePicker::make('email_verified_at')
                 ->jalali()
                 ->translateLabel(),
@@ -132,7 +126,7 @@ class UserResource extends CustomResource
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                    // Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
     }

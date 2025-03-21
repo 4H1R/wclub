@@ -91,6 +91,11 @@ enum PermissionEnum: string implements HasLabel
     case CreateNews = 'Create News';
     case DeleteAnyNews = 'Delete Any News';
     case UpdateAnyNews = 'Update Any News';
+    // Coupons
+    case ViewAnyCoupons = 'View Any Coupons';
+    case CreateCoupons = 'Create Coupons';
+    case DeleteAnyCoupons = 'Delete Any Coupons';
+    case UpdateAnyCoupons = 'Update Any Coupons';
 
     public function getLabel(): string
     {
@@ -177,6 +182,11 @@ enum PermissionEnum: string implements HasLabel
             self::UpdateAnyNews => 'ویرایش هر خبر',
             self::CreateNews => 'ایجاد خبر',
             self::DeleteAnyNews => 'حدف هر خبر',
+            // Coupons
+            self::ViewAnyCoupons => 'مشاهده همه کد های تخفیف',
+            self::UpdateAnyCoupons => 'ویرایش هر کد تخفیف',
+            self::CreateCoupons => 'ایجاد کد تخفیف',
+            self::DeleteAnyCoupons => 'حدف هر کد تخفیف',
         };
     }
 }

@@ -7,6 +7,7 @@ namespace Database\Seeders;
 use App\Models\Category;
 use App\Models\ContactUs;
 use App\Models\Contest;
+use App\Models\Coupon;
 use App\Models\EventProgram;
 use App\Models\Garden;
 use App\Models\News;
@@ -34,6 +35,8 @@ class DatabaseSeeder extends Seeder
         $firstUser = User::firstOrFail();
 
         ContactUs::factory(30)->create();
+        Coupon::factory(30)->create();
+
         $rewardProgramCategories = Category::factory(10)->create(['model' => RewardProgram::class]);
         RewardProgram::factory(50)
             ->create()

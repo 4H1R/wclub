@@ -325,6 +325,10 @@ declare namespace App.Enums {
     'CreateNews' = 'Create News',
     'DeleteAnyNews' = 'Delete Any News',
     'UpdateAnyNews' = 'Update Any News',
+    'ViewAnyCoupons' = 'View Any Coupons',
+    'CreateCoupons' = 'Create Coupons',
+    'DeleteAnyCoupons' = 'Delete Any Coupons',
+    'UpdateAnyCoupons' = 'Update Any Coupons',
   }
   export enum RoleEnum {
     'SuperAdmin' = 'Super Admin',
