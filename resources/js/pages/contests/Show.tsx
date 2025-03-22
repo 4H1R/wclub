@@ -107,7 +107,7 @@ export default function Show() {
       </div>
       <div className="divider clear-both md:pt-6" />
       <h2 className="h2">چالش ها و مسابقات دیگر</h2>
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="content-grid-container">
         {recommended_contests.map((contest) => (
           <ContestCard key={contest.id} contest={contest} />
         ))}

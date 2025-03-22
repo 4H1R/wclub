@@ -31,7 +31,7 @@ class SeriesController extends Controller
             )
             ->withGlobalScope('published', new PublishedScope)
             ->with(['image', 'categories'])
-            ->paginate(15);
+            ->paginate(12);
 
         $categories = Category::query()
             ->where('model', Series::class)

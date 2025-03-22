@@ -20,7 +20,7 @@ class GardenController extends Controller
             ->allowedSorts(['created_at', 'max_participants'])
             ->withGlobalScope('published', new PublishedScope)
             ->with('image')
-            ->paginate(15);
+            ->paginate(12);
 
         return Inertia::render('gardens/Index', [
             'gardens' => GardenData::collect($gardens, PaginatedDataCollection::class),

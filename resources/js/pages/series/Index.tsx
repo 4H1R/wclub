@@ -52,7 +52,7 @@ export default function Index() {
         </div>
       </div>
       {series.meta.total < 1 && <NoRecords />}
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="content-grid-container">
         {series.data.map((data) => (
           <SeriesCard key={data.id} series={data} />
         ))}
