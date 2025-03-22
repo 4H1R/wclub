@@ -25,12 +25,14 @@ class FileSystem extends \Spatie\MediaLibrary\MediaCollections\Filesystem
         }
 
         $storage = Storage::disk($file->getDisk());
+
         // Change: Prevent using readStream when moving moving file if source and destination disk are identical.
         if ($file->getDisk() === $media->disk) {
             $storage->move($file->getKey(), $destination);
 
             return;
         }
+
         $headers = $diskDriverName === 'local'
             ? []
             : $this->getRemoteHeadersForFile(

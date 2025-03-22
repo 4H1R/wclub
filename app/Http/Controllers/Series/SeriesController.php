@@ -10,6 +10,7 @@ use App\Models\Category;
 use App\Models\Scopes\PublishedScope;
 use App\Models\Series;
 use App\Services\SeriesService;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Cache;
 use Inertia\Inertia;
 use Spatie\LaravelData\PaginatedDataCollection;
@@ -27,7 +28,10 @@ class SeriesController extends Controller
             ->allowedFilters(
                 AllowedFilter::exact('status'),
                 AllowedFilter::exact('type'),
-                AllowedFilter::scope('query')
+                AllowedFilter::scope('query'),
+                AllowedFilter::callback('categories_id', function (Builder $query, array $ids) {
+                    $query->whereHas('categories', fn (Builder $builder) => $builder->whereIn('category_id', $ids));
+                }),
             )
             ->withGlobalScope('published', new PublishedScope)
             ->with(['image', 'categories'])

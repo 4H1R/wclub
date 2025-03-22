@@ -95,7 +95,7 @@ export default function FilterModal({
                       );
                     }}
                     type="checkbox"
-                    className="checkbox-primary checkbox"
+                    className="checkbox"
                   />
                 </label>
               </div>
