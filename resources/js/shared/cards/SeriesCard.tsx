@@ -1,4 +1,4 @@
-import { SeriesStatusEnum, seriesStatusTranslation } from '@/enums';
+import { seriesStatusTranslation } from '@/enums';
 import { cn, convertSecondsToTime, slugifyId } from '@/utils';
 import { Link } from '@inertiajs/react';
 import { digitsEnToFa } from '@persian-tools/persian-tools';
@@ -26,8 +26,10 @@ export default function SeriesCard({ series, hasWidth = false, className }: Seri
       <div className="card-body h-full">
         <div
           className={cn('flex items-center gap-1', {
-            'text-base-content/80': series.status === SeriesStatusEnum.InProgress,
-            'text-secondary-solo': series.status === SeriesStatusEnum.Finished,
+            'text-base-content/80':
+              series.status === ('IN_PROGRESS' satisfies App.Enums.Series.SeriesStatusEnum),
+            'text-secondary-solo':
+              series.status === ('FINISHED' satisfies App.Enums.Series.SeriesStatusEnum),
           })}
         >
           <GoDotFill className="size-2" />

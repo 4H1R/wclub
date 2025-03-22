@@ -53,6 +53,19 @@ declare namespace App.Data.Contest {
     categories: Array<App.Data.Category.CategoryData>;
   };
 }
+declare namespace App.Data.Coupon {
+  export type CouponData = {
+    id: number;
+    user_id: number;
+    title: string;
+    code: string;
+    type: App.Enums.Coupon.CouponTypeEnum;
+    amount: number | null;
+    percentage: number | null;
+    max_percentage_amount: number | null;
+    expired_at: string;
+  };
+}
 declare namespace App.Data.EventProgram {
   export type EventProgramData = {
     id: number;
@@ -255,103 +268,84 @@ declare namespace App.Data.User {
   };
 }
 declare namespace App.Enums {
-  export enum GenderEnum {
-    'Male' = 'MALE',
-    'Female' = 'FEMALE',
-  }
-  export enum PermissionEnum {
-    'ViewAdminPanel' = 'View Admin Panel',
-    'ViewAnyRoles' = 'View Any Roles',
-    'CreateRoles' = 'Create Roles',
-    'UpdateAnyRoles' = 'Update Any Roles',
-    'DeleteAnyRoles' = 'Delete Any Roles',
-    'ViewAnyPermissions' = 'View Any Permissions',
-    'ViewAnyUsers' = 'View Any Users',
-    'ViewOwnedUsers' = 'View Owned Users',
-    'CreateUsers' = 'Create Users',
-    'DeleteAnyUsers' = 'Delete Any Users',
-    'UpdateAnyUsers' = 'Update Any Users',
-    'UpdateOwnedUsers' = 'Update Owned Users',
-    'ViewAnyRewardPrograms' = 'View Any Reward Programs',
-    'CreateRewardPrograms' = 'Create Reward Programs',
-    'DeleteAnyRewardPrograms' = 'Delete Any Reward Programs',
-    'UpdateAnyRewardPrograms' = 'Update Any Reward Programs',
-    'ViewAnyRewardProgramCategories' = 'View Any Reward Program Categories',
-    'CreateRewardProgramCategories' = 'Create Reward Program Categories',
-    'DeleteAnyRewardProgramCategories' = 'Delete Any Reward Program Categories',
-    'UpdateAnyRewardProgramCategories' = 'Update Any Reward Program Categories',
-    'ViewAnyTargetGroups' = 'View Any Target Groups',
-    'CreateTargetGroups' = 'Create Target Groups',
-    'DeleteAnyTargetGroups' = 'Delete Any Target Groups',
-    'UpdateAnyTargetGroups' = 'Update Any Target Groups',
-    'ViewAnyEventProgramCategories' = 'View Any Event Program Categories',
-    'CreateEventProgramCategories' = 'Create Event Program Categories',
-    'DeleteAnyEventProgramCategories' = 'Delete Any Event Program Categories',
-    'UpdateAnyEventProgramCategories' = 'Update Any Event Program Categories',
-    'ViewAnyEventPrograms' = 'View Any Event Programs',
-    'ViewOwnedEventPrograms' = 'View Owned Event Programs',
-    'CreateEventPrograms' = 'Create Event Programs',
-    'DeleteAnyEventPrograms' = 'Delete Any Event Programs',
-    'DeleteOwnedEventPrograms' = 'Delete Owned Event Programs',
-    'UpdateAnyEventPrograms' = 'Update Any Event Programs',
-    'UpdateOwnedEventPrograms' = 'Update Owned Event Programs',
-    'ViewAnyBanners' = 'View Any Banners',
-    'CreateBanners' = 'Create Banners',
-    'DeleteAnyBanners' = 'Delete Any Banners',
-    'UpdateAnyBanners' = 'Update Any Banners',
-    'ViewAnyContests' = 'View Any Contests',
-    'CreateContests' = 'Create Contests',
-    'DeleteAnyContests' = 'Delete Any Contests',
-    'UpdateAnyContests' = 'Update Any Contests',
-    'ViewAnyContestCategories' = 'View Any Contest Categories',
-    'CreateContestCategories' = 'Create Contest Categories',
-    'DeleteAnyContestCategories' = 'Delete Any Contest Categories',
-    'UpdateAnyContestCategories' = 'Update Any Contest Categories',
-    'ViewAnySeries' = 'View Any Series',
-    'CreateSeries' = 'Create Series',
-    'DeleteAnySeries' = 'Delete Any Series',
-    'UpdateAnySeries' = 'Update Any Series',
-    'ViewAnySeriesCategories' = 'View Any Series Categories',
-    'CreateSeriesCategories' = 'Create Series Categories',
-    'DeleteAnySeriesCategories' = 'Delete Any Series Categories',
-    'UpdateAnySeriesCategories' = 'Update Any Series Categories',
-    'ViewAnyContactUs' = 'View Any Contact Us',
-    'DeleteAnyContactUs' = 'Delete Any Contact Us',
-    'ViewAnyGardens' = 'View Any Gardens',
-    'CreateGardens' = 'Create Gardens',
-    'DeleteAnyGardens' = 'Delete Any Gardens',
-    'UpdateAnyGardens' = 'Update Any Gardens',
-    'ViewAnyNews' = 'View Any News',
-    'CreateNews' = 'Create News',
-    'DeleteAnyNews' = 'Delete Any News',
-    'UpdateAnyNews' = 'Update Any News',
-    'ViewAnyCoupons' = 'View Any Coupons',
-    'CreateCoupons' = 'Create Coupons',
-    'DeleteAnyCoupons' = 'Delete Any Coupons',
-    'UpdateAnyCoupons' = 'Update Any Coupons',
-  }
-  export enum RoleEnum {
-    'SuperAdmin' = 'Super Admin',
-    'Test' = 'Test',
-  }
+  export type GenderEnum = 'MALE' | 'FEMALE';
+  export type PermissionEnum =
+    | 'View Admin Panel'
+    | 'View Any Roles'
+    | 'Create Roles'
+    | 'Update Any Roles'
+    | 'Delete Any Roles'
+    | 'View Any Permissions'
+    | 'View Any Users'
+    | 'View Owned Users'
+    | 'Create Users'
+    | 'Delete Any Users'
+    | 'Update Any Users'
+    | 'Update Owned Users'
+    | 'View Any Reward Programs'
+    | 'Create Reward Programs'
+    | 'Delete Any Reward Programs'
+    | 'Update Any Reward Programs'
+    | 'View Any Reward Program Categories'
+    | 'Create Reward Program Categories'
+    | 'Delete Any Reward Program Categories'
+    | 'Update Any Reward Program Categories'
+    | 'View Any Target Groups'
+    | 'Create Target Groups'
+    | 'Delete Any Target Groups'
+    | 'Update Any Target Groups'
+    | 'View Any Event Program Categories'
+    | 'Create Event Program Categories'
+    | 'Delete Any Event Program Categories'
+    | 'Update Any Event Program Categories'
+    | 'View Any Event Programs'
+    | 'View Owned Event Programs'
+    | 'Create Event Programs'
+    | 'Delete Any Event Programs'
+    | 'Delete Owned Event Programs'
+    | 'Update Any Event Programs'
+    | 'Update Owned Event Programs'
+    | 'View Any Banners'
+    | 'Create Banners'
+    | 'Delete Any Banners'
+    | 'Update Any Banners'
+    | 'View Any Contests'
+    | 'Create Contests'
+    | 'Delete Any Contests'
+    | 'Update Any Contests'
+    | 'View Any Contest Categories'
+    | 'Create Contest Categories'
+    | 'Delete Any Contest Categories'
+    | 'Update Any Contest Categories'
+    | 'View Any Series'
+    | 'Create Series'
+    | 'Delete Any Series'
+    | 'Update Any Series'
+    | 'View Any Series Categories'
+    | 'Create Series Categories'
+    | 'Delete Any Series Categories'
+    | 'Update Any Series Categories'
+    | 'View Any Contact Us'
+    | 'Delete Any Contact Us'
+    | 'View Any Gardens'
+    | 'Create Gardens'
+    | 'Delete Any Gardens'
+    | 'Update Any Gardens'
+    | 'View Any News'
+    | 'Create News'
+    | 'Delete Any News'
+    | 'Update Any News'
+    | 'View Any Coupons'
+    | 'Create Coupons'
+    | 'Delete Any Coupons'
+    | 'Update Any Coupons';
+  export type RoleEnum = 'Super Admin' | 'Test';
 }
 declare namespace App.Enums.Coupon {
-  export enum CouponTypeEnum {
-    'Amount' = 'AMOUNT',
-    'Percentage' = 'PERCENTAGE',
-  }
+  export type CouponTypeEnum = 'AMOUNT' | 'PERCENTAGE';
 }
 declare namespace App.Enums.Series {
-  export enum SeriesPresentationModeEnum {
-    'InPerson' = 'IN_PERSON',
-    'Online' = 'ONLINE',
-    'Platform' = 'PLATFORM',
-  }
-  export enum SeriesStatusEnum {
-    'InProgress' = 'IN_PROGRESS',
-    'Finished' = 'FINISHED',
-  }
-  export enum SeriesTypeEnum {
-    'Free' = 'FREE',
-  }
+  export type SeriesPresentationModeEnum = 'IN_PERSON' | 'ONLINE' | 'PLATFORM';
+  export type SeriesStatusEnum = 'IN_PROGRESS' | 'FINISHED';
+  export type SeriesTypeEnum = 'FREE';
 }

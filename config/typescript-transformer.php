@@ -31,7 +31,7 @@ return [
     'transformers' => [
         Spatie\LaravelTypeScriptTransformer\Transformers\SpatieStateTransformer::class,
         Spatie\TypeScriptTransformer\Transformers\EnumTransformer::class,
-        Spatie\TypeScriptTransformer\Transformers\SpatieEnumTransformer::class,
+        // Spatie\TypeScriptTransformer\Transformers\SpatieEnumTransformer::class,
         Spatie\LaravelTypeScriptTransformer\Transformers\DtoTransformer::class,
     ],
 
@@ -76,5 +76,5 @@ return [
      * the package will transform them to types.
      */
 
-    'transform_to_native_enums' => true,
+    'transform_to_native_enums' => false,
 ];

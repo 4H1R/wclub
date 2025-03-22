@@ -35,7 +35,7 @@ export default function ConvertToCouponCard({ logic }: ConvertToCouponCardProps)
         preserveState: true,
         onSuccess: () => {
           toast.success(
-            'کد تخفیف با موفقیت ساخته شد. هنگام خرید ما کد تخفیف را به شما پیشنهاد میکنیم',
+            'کد تخفیف با موفقیت ساخته شد. میتوانید کد تخفیف خود را در پایین صفحه ببینید',
           );
         },
         onError: handleServerMessage,
