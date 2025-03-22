@@ -24,7 +24,7 @@ export default function Index() {
       {query ? (
         <SearchResults />
       ) : (
-        <div className="card-bordered col-span-full flex h-44 flex-col items-center justify-center gap-4 rounded-box bg-base-100 px-2 text-center shadow">
+        <div className="card-bordered col-span-full flex h-44 flex-col items-center justify-center gap-4 rounded-box bg-base-100 px-2 text-center shadow-sm">
           <div className="rounded-full bg-base-200 p-4">
             <FaExclamation className="size-6" />
           </div>

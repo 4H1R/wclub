@@ -15,7 +15,7 @@ export default function SeriesCard({ series, hasWidth = false, className }: Seri
   const href = route('series.show', [slugifyId(series.id, series.title)]);
 
   return (
-    <div className={cn('card h-full bg-base-100 shadow', { 'w-[20rem]': hasWidth }, className)}>
+    <div className={cn('card h-full bg-base-100 shadow', { 'w-[22rem]': hasWidth }, className)}>
       <Link href={href}>
         <figure className="h-44 w-full bg-base-200 lg:h-56">
           {series.image && (

@@ -11,7 +11,7 @@ export default function NewsCard({ news, hasWidth = false }: NewsCardProps) {
   const href = route('news.show', [slugifyId(news.id, news.title)]);
 
   return (
-    <div className={cn('card h-full bg-base-100 shadow', { 'w-[20rem]': hasWidth })}>
+    <div className={cn('card h-full bg-base-100 shadow', { 'w-[22rem]': hasWidth })}>
       <Link href={href}>
         <figure className="h-44 w-full bg-base-200 lg:h-56">
           {news.image && (

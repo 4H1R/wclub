@@ -12,7 +12,7 @@ export default function ContestCard({ contest, hasWidth = false, className }: Co
   const href = route('contests.show', [slugifyId(contest.id, contest.title)]);
 
   return (
-    <div className={cn('card h-full bg-base-100 shadow', { 'w-[20rem]': hasWidth }, className)}>
+    <div className={cn('card h-full bg-base-100 shadow', { 'w-[22rem]': hasWidth }, className)}>
       <Link href={href}>
         <figure className="h-44 w-full bg-base-200 lg:h-56">
           {contest.image && (
