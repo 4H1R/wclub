@@ -9,6 +9,7 @@ import BreadCrumb from '@/shared/BreadCrumb';
 import SeriesCard from '@/shared/cards/SeriesCard';
 import Head from '@/shared/Head';
 import Image from '@/shared/images/Image';
+import Price from '@/shared/Price';
 import { usePage } from '@inertiajs/react';
 import { GoDotFill } from 'react-icons/go';
 
@@ -41,7 +42,13 @@ export default function Show() {
               <p className="text-md text-base-content/80">{series.short_description}</p>
               <div className="flex flex-col items-center justify-between gap-4 pt-8 md:flex-row">
                 <CartAction series={series} />
-                <span className="text-2xl font-bold">رایگان</span>
+                <Price
+                  tomanClassName="size-5"
+                  priceClassName="text-2xl"
+                  previousPriceClassName="text-xl"
+                  price={series.price}
+                  previousPrice={series.previous_price}
+                />
               </div>
             </div>
             <figure className="h-56 w-full rounded-box bg-base-300 md:w-2/6">

@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
+use App\Enums\PaymentTypeEnum;
 use App\Enums\Series\SeriesPresentationModeEnum;
 use App\Enums\Series\SeriesStatusEnum;
-use App\Enums\Series\SeriesTypeEnum;
 use App\Models\Traits\HasCategories;
 use App\Models\Traits\HasSlug;
 use App\Models\Traits\HasTargetGroups;
@@ -27,7 +27,7 @@ class Series extends Model implements HasMedia
 
     protected $casts = [
         'status' => SeriesStatusEnum::class,
-        'type' => SeriesTypeEnum::class,
+        'payment_type' => PaymentTypeEnum::class,
         'presentation_mode' => SeriesPresentationModeEnum::class,
         'faqs' => 'array',
     ];

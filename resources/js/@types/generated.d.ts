@@ -178,8 +178,10 @@ declare namespace App.Data.Series {
   export type SeriesData = {
     id: number;
     title: string;
-    type: App.Enums.Series.SeriesTypeEnum;
+    payment_type: App.Enums.PaymentTypeEnum;
     status: App.Enums.Series.SeriesStatusEnum;
+    price: number | null;
+    previous_price: number | null;
     short_description: string;
     episodes_duration_seconds: number;
     image: App.Data.Media.ImageData | null;
@@ -192,8 +194,10 @@ declare namespace App.Data.Series {
   export type SeriesFullData = {
     id: number;
     title: string;
-    type: App.Enums.Series.SeriesTypeEnum;
+    payment_type: App.Enums.PaymentTypeEnum;
     status: App.Enums.Series.SeriesStatusEnum;
+    price: number | null;
+    previous_price: number | null;
     short_description: string;
     description: string;
     episodes_duration_seconds: number;
@@ -269,6 +273,7 @@ declare namespace App.Data.User {
 }
 declare namespace App.Enums {
   export type GenderEnum = 'MALE' | 'FEMALE';
+  export type PaymentTypeEnum = 'FREE' | 'PAID';
   export type PermissionEnum =
     | 'View Admin Panel'
     | 'View Any Roles'
@@ -347,5 +352,4 @@ declare namespace App.Enums.Coupon {
 declare namespace App.Enums.Series {
   export type SeriesPresentationModeEnum = 'IN_PERSON' | 'ONLINE' | 'PLATFORM';
   export type SeriesStatusEnum = 'IN_PROGRESS' | 'FINISHED';
-  export type SeriesTypeEnum = 'FREE';
 }

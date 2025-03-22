@@ -1,28 +1,27 @@
 <?php
 
-namespace App\Enums\Series;
+namespace App\Enums;
 
 use EmreYarligan\EnumConcern\EnumConcern;
-use Filament\Support\Contracts\HasColor;
 use Filament\Support\Contracts\HasLabel;
 
-enum SeriesTypeEnum: string implements HasColor, HasLabel
+enum PaymentTypeEnum: string implements HasLabel
 {
     use EnumConcern;
 
     case Free = 'FREE';
+    case Paid = 'PAID';
 
     public function getLabel(): string
     {
         return match ($this) {
             self::Free => 'رایگان',
+            self::Paid => 'غیر رایگان',
         };
     }
 
-    public function getColor(): string|array|null
+    public function getColor(): string
     {
-        return match ($this) {
-            self::Free => 'success',
-        };
+        return 'success';
     }
 }

@@ -14,11 +14,13 @@ return new class extends Migration
         Schema::create('series', function (Blueprint $table) {
             $table->id();
             $table->string('status')->index();
-            $table->string('type')->index();
+            $table->string('payment_type')->index();
             $table->string('presentation_mode')->index();
             $table->string('title');
             $table->string('short_description');
             $table->text('description');
+            $table->unsignedInteger('price')->nullable();
+            $table->unsignedInteger('previous_price')->nullable();
             $table->json('faqs')->nullable();
             $table->unsignedInteger('episodes_duration_seconds')->default(0);
             $table->timestamp('published_at')->nullable();

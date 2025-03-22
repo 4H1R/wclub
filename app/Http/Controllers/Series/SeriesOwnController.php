@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Series;
 
-use App\Enums\Series\SeriesTypeEnum;
+use App\Enums\PaymentTypeEnum;
 use App\Http\Controllers\Controller;
 use App\Models\Series;
 use App\Services\SeriesService;
@@ -18,7 +18,7 @@ class SeriesOwnController extends Controller
     {
         $this->seriesService->ensureSeriesIsPublished($series);
 
-        abort_if($series->type !== SeriesTypeEnum::Free, 403);
+        abort_if($series->type !== PaymentTypeEnum::Free, 403);
 
         Auth::user()->ownedSeries()->syncWithoutDetaching([$series->id]);
 

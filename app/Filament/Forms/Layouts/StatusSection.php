@@ -15,7 +15,7 @@ class StatusSection
         if ($includePublishedAt) {
             array_unshift(
                 $components,
-                DateTimePicker::make('published_at'),
+                DateTimePicker::make('published_at')
             );
         }
 

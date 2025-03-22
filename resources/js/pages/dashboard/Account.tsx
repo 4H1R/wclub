@@ -23,7 +23,7 @@ export default function Account() {
               disabled={isLoggingOut}
               isLoading={isLoggingOut}
               onClick={handleLogout}
-              className="btn btn-primary btn-sm"
+              className="btn btn-sm"
             >
               خروج
             </Button>

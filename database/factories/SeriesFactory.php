@@ -2,9 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Enums\PaymentTypeEnum;
 use App\Enums\Series\SeriesPresentationModeEnum;
 use App\Enums\Series\SeriesStatusEnum;
-use App\Enums\Series\SeriesTypeEnum;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -30,13 +30,19 @@ class SeriesFactory extends Factory
      */
     public function definition(): array
     {
-        $type = SeriesTypeEnum::randomValue();
+        $paymentType = PaymentTypeEnum::randomValue();
+        $price = fake()->numberBetween(500_000, 5_000_000);
+
+        $isFree = PaymentTypeEnum::from($paymentType) === PaymentTypeEnum::Free;
+        $previousPrice = fake()->boolean() ? fake()->numberBetween($price, $price + fake()->numberBetween(10_000, 500_000)) : null;
 
         return [
             'title' => $this->faker->persianWords(rand(4, 8), true),
             'status' => SeriesStatusEnum::randomValue(),
             'presentation_mode' => SeriesPresentationModeEnum::randomValue(),
-            'type' => $type,
+            'payment_type' => $paymentType,
+            'price' => $isFree ? null : $price,
+            'previous_price' => $isFree ? null : $previousPrice,
             'short_description' => $this->faker->persianText(rand(150, 250), true),
             'description' => $this->faker->persianParagraphs(rand(1, 5), true),
             'faqs' => fake()->boolean() ? $this->createFaqs() : null,

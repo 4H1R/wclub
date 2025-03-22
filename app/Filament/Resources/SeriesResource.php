@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
+use App\Enums\PaymentTypeEnum;
 use App\Enums\Series\SeriesPresentationModeEnum;
 use App\Enums\Series\SeriesStatusEnum;
-use App\Enums\Series\SeriesTypeEnum;
 use App\Filament\Custom\CustomResource;
 use App\Filament\Forms\Components\FileInput;
 use App\Filament\Forms\Layouts\BasicSection;
@@ -18,6 +18,7 @@ use App\Filament\Tables\Columns\TimestampsColumn;
 use App\Models\Series;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Support\RawJs;
 use Filament\Tables;
 use Filament\Tables\Table;
 
@@ -47,12 +48,34 @@ class SeriesResource extends CustomResource
                 ->searchable()
                 ->options(SeriesStatusEnum::class)
                 ->required(),
-            Forms\Components\Select::make('type')
+            Forms\Components\Select::make('payment_type')
                 ->translateLabel()
                 ->searchable()
                 ->reactive()
-                ->options(SeriesTypeEnum::class)
+                ->options(PaymentTypeEnum::class)
                 ->required(),
+            Forms\Components\Group::make()
+                ->columnSpanFull()
+                ->visible(fn (Forms\Get $get) => PaymentTypeEnum::tryFrom($get('payment_type')) === PaymentTypeEnum::Paid)
+                ->columns(2)
+                ->schema([
+                    Forms\Components\TextInput::make('price')
+                        ->translateLabel()
+                        ->integer()
+                        ->minValue(0)
+                        ->suffix('تومان')
+                        ->mask(RawJs::make('$money($input)'))
+                        ->stripCharacters(',')
+                        ->required(),
+                    Forms\Components\TextInput::make('previous_price')
+                        ->translateLabel()
+                        ->integer()
+                        ->gt('price')
+                        ->suffix('تومان')
+                        ->mask(RawJs::make('$money($input)'))
+                        ->stripCharacters(',')
+                        ->minValue(0),
+                ]),
             Forms\Components\Select::make('presentation_mode')
                 ->translateLabel()
                 ->searchable()
@@ -105,6 +128,7 @@ class SeriesResource extends CustomResource
                 Tables\Columns\TextColumn::make('title')
                     ->translateLabel()
                     ->sortable()
+                    ->limit(30)
                     ->searchable(),
                 Tables\Columns\TextColumn::make('presentation_mode')
                     ->translateLabel()
@@ -112,7 +136,7 @@ class SeriesResource extends CustomResource
                 Tables\Columns\TextColumn::make('status')
                     ->translateLabel()
                     ->badge(),
-                Tables\Columns\TextColumn::make('type')
+                Tables\Columns\TextColumn::make('payment_type')
                     ->translateLabel()
                     ->badge(),
                 CustomTimeColumn::make('published_at')
@@ -124,9 +148,9 @@ class SeriesResource extends CustomResource
                 Tables\Filters\TernaryFilter::make('published_at')
                     ->nullable()
                     ->translateLabel(),
-                Tables\Filters\SelectFilter::make('type')
+                Tables\Filters\SelectFilter::make('payment_type')
                     ->translateLabel()
-                    ->options(SeriesTypeEnum::class),
+                    ->options(PaymentTypeEnum::class),
                 Tables\Filters\SelectFilter::make('presentation_mode')
                     ->translateLabel()
                     ->options(SeriesPresentationModeEnum::class),

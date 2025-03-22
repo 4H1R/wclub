@@ -4,6 +4,7 @@ import { Link } from '@inertiajs/react';
 import { digitsEnToFa } from '@persian-tools/persian-tools';
 import { GoDotFill } from 'react-icons/go';
 import Image from '../images/Image';
+import Price from '../Price';
 
 type SeriesCardProps = {
   series: App.Data.Series.SeriesData;
@@ -52,7 +53,7 @@ export default function SeriesCard({ series, hasWidth = false, className }: Seri
           <span className="badge rounded-none bg-base-200 text-base-content/80">
             {digitsEnToFa(convertSecondsToTime(series.episodes_duration_seconds))}
           </span>
-          <span className="text-lg font-bold">رایگان!</span>
+          <Price price={series.price} previousPrice={series.previous_price} />
         </div>
         <Link className="btn mt-auto" href={href}>
           <span>اطلاعات بیشتر</span>

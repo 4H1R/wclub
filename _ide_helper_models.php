@@ -500,11 +500,13 @@ namespace App\Models{
  *
  * @property int $id
  * @property \App\Enums\Series\SeriesStatusEnum $status
- * @property \App\Enums\Series\SeriesTypeEnum $type
+ * @property \App\Enums\PaymentTypeEnum $payment_type
  * @property \App\Enums\Series\SeriesPresentationModeEnum $presentation_mode
  * @property string $title
  * @property string $short_description
  * @property string $description
+ * @property int|null $price
+ * @property int|null $previous_price
  * @property array<array-key, mixed>|null $faqs
  * @property int $episodes_duration_seconds
  * @property string|null $published_at
@@ -533,12 +535,14 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Series whereEpisodesDurationSeconds($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Series whereFaqs($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Series whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Series wherePaymentType($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Series wherePresentationMode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Series wherePreviousPrice($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Series wherePrice($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Series wherePublishedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Series whereShortDescription($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Series whereStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Series whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Series whereType($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Series whereUpdatedAt($value)
  * @mixin \Eloquent
  */
