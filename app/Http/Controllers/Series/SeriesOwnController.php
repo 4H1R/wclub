@@ -18,7 +18,7 @@ class SeriesOwnController extends Controller
     {
         $this->seriesService->ensureSeriesIsPublished($series);
 
-        abort_if($series->type !== PaymentTypeEnum::Free, 403);
+        abort_if($series->payment_type !== PaymentTypeEnum::Free, 403);
 
         Auth::user()->ownedSeries()->syncWithoutDetaching([$series->id]);
 

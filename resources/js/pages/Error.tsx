@@ -6,16 +6,15 @@ import error503 from '@/assets/svg/errors/503.svg';
 import Button from '@/shared/forms/Button';
 import Head from '@/shared/Head';
 import Image from '@/shared/images/Image';
-import { Link, router, usePage } from '@inertiajs/react';
+import { Link, usePage } from '@inertiajs/react';
 import { digitsEnToFa } from '@persian-tools/persian-tools';
-import React, { useState } from 'react';
+import React from 'react';
 
 type TPage = PageProps<{
   status: number;
 }>;
 
 function Error() {
-  const [hasReloaded, setHasReloaded] = useState(false);
   const { status } = usePage<TPage>().props;
 
   const title = {
@@ -39,9 +38,8 @@ function Error() {
     403: 'شما دسترسی لازم برای دیدن این صفحه را ندارید.',
   }[status]!;
 
-  const handleReload = () => {
-    router.reload();
-    setHasReloaded(true);
+  const handleBack = () => {
+    window.history.back();
   };
 
   return (
@@ -59,11 +57,9 @@ function Error() {
       </h1>
       <p className="text-lg text-base-content/80">{description}</p>
       <div className="flex items-center gap-4">
-        {!hasReloaded && (
-          <Button onClick={handleReload} className="btn btn-outline">
-            تلاش دوباره
-          </Button>
-        )}
+        <Button onClick={handleBack} className="btn btn-outline">
+          بازگشت به صفحه قبلی
+        </Button>
         <Link className="btn btn-primary" href="/">
           بازگشت به صفحه اصلی
         </Link>
