@@ -5,17 +5,27 @@ namespace App\Http\Controllers;
 use App\Data\Category\CategoryData;
 use App\Data\News\NewsData;
 use App\Data\News\NewsFullData;
+use App\Http\Middleware\FixSlugMiddleware;
 use App\Models\Category;
 use App\Models\News;
 use App\Models\Scopes\PublishedScope;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 use Inertia\Inertia;
 use Spatie\LaravelData\PaginatedDataCollection;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
-class NewsController extends Controller
+class NewsController extends Controller implements HasMiddleware
 {
+    public static function middleware(): array
+    {
+        return [
+            new Middleware(FixSlugMiddleware::class, only: ['show']),
+        ];
+    }
+
     public function index(): \Inertia\Response
     {
         $news = QueryBuilder::for(News::class)

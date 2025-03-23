@@ -5,17 +5,27 @@ namespace App\Http\Controllers;
 use App\Data\Category\CategoryData;
 use App\Data\EventProgram\EventProgramData;
 use App\Data\EventProgram\EventProgramFullData;
+use App\Http\Middleware\FixSlugMiddleware;
 use App\Models\Category;
 use App\Models\EventProgram;
 use App\Models\Scopes\PublishedScope;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 use Inertia\Inertia;
 use Spatie\LaravelData\PaginatedDataCollection;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
-class EventProgramController extends Controller
+class EventProgramController extends Controller implements HasMiddleware
 {
+    public static function middleware(): array
+    {
+        return [
+            new Middleware(FixSlugMiddleware::class, only: ['show']),
+        ];
+    }
+
     public function index(): \Inertia\Response
     {
         $eventPrograms = QueryBuilder::for(EventProgram::class)

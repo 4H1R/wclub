@@ -4,15 +4,25 @@ namespace App\Http\Controllers;
 
 use App\Data\Garden\GardenData;
 use App\Data\Garden\GardenFullData;
+use App\Http\Middleware\FixSlugMiddleware;
 use App\Models\Garden;
 use App\Models\Scopes\PublishedScope;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 use Inertia\Inertia;
 use Spatie\LaravelData\PaginatedDataCollection;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
-class GardenController extends Controller
+class GardenController extends Controller implements HasMiddleware
 {
+    public static function middleware(): array
+    {
+        return [
+            new Middleware(FixSlugMiddleware::class, only: ['show']),
+        ];
+    }
+
     public function index(): \Inertia\Response
     {
         $gardens = QueryBuilder::for(Garden::class)

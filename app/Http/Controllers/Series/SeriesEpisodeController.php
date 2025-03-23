@@ -1,20 +1,31 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Series;
 
 use App\Data\Series\SeriesFullData;
 use App\Data\SeriesEpisode\SeriesEpisodeFullData;
+use App\Http\Controllers\Controller;
+use App\Http\Middleware\FixSlugMiddleware;
 use App\Models\Series;
 use App\Models\SeriesChapter;
 use App\Services\SeriesService;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 use Inertia\Inertia;
 
-class SeriesEpisodeController extends Controller
+class SeriesEpisodeController extends Controller implements HasMiddleware
 {
     public function __construct(
         private readonly SeriesService $seriesService,
     ) {}
+
+    public static function middleware(): array
+    {
+        return [
+            new Middleware(FixSlugMiddleware::class, only: ['show']),
+        ];
+    }
 
     public function index(Series $series): RedirectResponse
     {

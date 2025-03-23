@@ -17,8 +17,8 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\RewardProgramController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\Series\SeriesController;
+use App\Http\Controllers\Series\SeriesEpisodeController;
 use App\Http\Controllers\Series\SeriesOwnController;
-use App\Http\Controllers\SeriesEpisodeController;
 use App\Http\Middleware\DisableInertiaSSR;
 use Illuminate\Support\Facades\Route;
 
