@@ -2,8 +2,10 @@
 
 namespace App\Filament\Resources;
 
+use App\Enums\PaymentTypeEnum;
 use App\Filament\Custom\CustomResource;
 use App\Filament\Forms\Components\FileInput;
+use App\Filament\Forms\Components\MoneyInput;
 use App\Filament\Forms\Layouts\BasicSection;
 use App\Filament\Forms\Layouts\ComplexForm;
 use App\Filament\Forms\Layouts\StatusSection;
@@ -38,6 +40,21 @@ class EventProgramResource extends CustomResource
                 ->required()
                 ->columnSpanFull()
                 ->maxLength(255),
+            Forms\Components\Select::make('payment_type')
+                ->translateLabel()
+                ->searchable()
+                ->reactive()
+                ->options(PaymentTypeEnum::class)
+                ->columnSpanFull()
+                ->required(),
+            Forms\Components\Group::make()
+                ->columnSpanFull()
+                ->visible(fn (Forms\Get $get) => PaymentTypeEnum::tryFrom($get('payment_type')) === PaymentTypeEnum::Paid)
+                ->columns(2)
+                ->schema([
+                    MoneyInput::make('price'),
+                    MoneyInput::make('previous_price')->gt('price'),
+                ]),
             Forms\Components\TextInput::make('min_participants')
                 ->translateLabel()
                 ->minValue(0)
@@ -47,11 +64,6 @@ class EventProgramResource extends CustomResource
                 ->gt('min_participants')
                 ->minValue(0)
                 ->integer(),
-            Forms\Components\Textarea::make('short_description')
-                ->translateLabel()
-                ->columnSpanFull()
-                ->maxLength(255)
-                ->required(),
             Forms\Components\MarkdownEditor::make('description')
                 ->disableToolbarButtons(['attachFiles'])
                 ->translateLabel()
@@ -81,9 +93,14 @@ class EventProgramResource extends CustomResource
                 ->multiple()
                 ->optionsLimit(50)
                 ->relationship('targetGroups', 'title'),
+            Forms\Components\Textarea::make('short_description')
+                ->translateLabel()
+                ->columnSpanFull()
+                ->maxLength(255)
+                ->required(),
             FileInput::make($form, 'image', visibility: 'public')
-                // ->image()
-                // ->imageEditor()
+                ->image()
+                ->imageEditor()
                 ->required(),
         ]);
 

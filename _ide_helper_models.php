@@ -186,9 +186,12 @@ namespace App\Models{
  *
  * @property int $id
  * @property int|null $user_id
+ * @property string $payment_type
  * @property string $title
  * @property string $short_description
  * @property string $description
+ * @property int|null $price
+ * @property int|null $previous_price
  * @property int|null $min_participants
  * @property int|null $max_participants
  * @property string $started_at
@@ -215,6 +218,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram whereMaxParticipants($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram whereMinParticipants($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram wherePaymentType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram wherePreviousPrice($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram wherePrice($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram wherePublishedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram whereShortDescription($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram whereStartedAt($value)

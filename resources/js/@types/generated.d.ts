@@ -83,6 +83,9 @@ declare namespace App.Data.EventProgram {
     title: string;
     short_description: string;
     description: string;
+    payment_type: App.Enums.PaymentTypeEnum;
+    price: number | null;
+    previous_price: number | null;
     image: App.Data.Media.ImageData | null;
     min_participants: number | null;
     max_participants: number | null;

@@ -14,9 +14,12 @@ return new class extends Migration
         Schema::create('event_programs', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete();
+            $table->string('payment_type')->index();
             $table->string('title');
             $table->text('short_description');
             $table->text('description');
+            $table->unsignedInteger('price')->nullable();
+            $table->unsignedInteger('previous_price')->nullable();
             $table->unsignedInteger('min_participants')->nullable();
             $table->unsignedInteger('max_participants')->nullable();
             $table->dateTime('started_at');

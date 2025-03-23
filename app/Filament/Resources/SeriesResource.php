@@ -60,7 +60,7 @@ class SeriesResource extends CustomResource
                 ->columns(2)
                 ->schema([
                     MoneyInput::make('price'),
-                    MoneyInput::make('previous_price'),
+                    MoneyInput::make('previous_price')->gt('price'),
                 ]),
             Forms\Components\Select::make('presentation_mode')
                 ->translateLabel()
