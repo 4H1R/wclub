@@ -53,6 +53,7 @@ Route::middleware(['auth', DisableInertiaSSR::class])->group(function () {
     Route::get('/dashboard/score', [DashboardController::class, 'score'])->name('dashboard.score');
     Route::get('/dashboard/account', [DashboardController::class, 'account'])->name('dashboard.account');
     Route::get('/dashboard/orders', [DashboardController::class, 'orders'])->name('dashboard.orders');
+    Route::get('/dashboard/series', [DashboardController::class, 'series'])->name('dashboard.series');
 });
 
 require __DIR__.'/auth.php';

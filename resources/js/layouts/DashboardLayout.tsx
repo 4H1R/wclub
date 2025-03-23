@@ -13,6 +13,7 @@ import MainLayout from './MainLayout';
 const tabs = [
   { title: 'امتیازات', href: route('dashboard.score', undefined, false) },
   { title: 'سفارشات', href: route('dashboard.orders', undefined, false) },
+  { title: 'دوره ها', href: route('dashboard.series', undefined, false) },
   { title: 'حساب من', href: route('dashboard.account', undefined, false) },
 ];
 
@@ -66,7 +67,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
             </div>
           </div>
         </div>
-        <div role="tablist" className="tabs tabs-bordered">
+        <div role="tablist" className="tabs tabs-bordered overflow-x-auto">
           {tabs.map((tab) => (
             <Link
               href={tab.href}

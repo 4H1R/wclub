@@ -1,5 +1,6 @@
 import { PageProps } from '@/@types';
 import Button from '@/shared/forms/Button';
+import Head from '@/shared/Head';
 import { router, usePage } from '@inertiajs/react';
 import React, { useState } from 'react';
 
@@ -14,6 +15,7 @@ export default function Account() {
 
   return (
     <>
+      <Head title="حساب من" description="حساب من" />
       {auth.user?.can_access_admin_panel && (
         <div className="card card-bordered card-compact bg-base-100">
           <div className="card-body">
