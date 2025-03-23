@@ -26,7 +26,12 @@ export default function Index() {
 
   return (
     <div className="mt-page space-y container">
-      <Head title={config.websiteTitle} description={config.websiteTitle} titleSuffix={null} />
+      <Head
+        canonicalUrl={route('index')}
+        title={config.websiteTitle}
+        description={config.websiteTitle}
+        titleSuffix={null}
+      />
       <Banners banners={banners} />
       <section className="card bg-gradient-to-b from-primary/40 to-secondary/40">
         <div className="card-body md:gap-8">

@@ -8,6 +8,7 @@ import Head from '@/shared/Head';
 import Image from '@/shared/images/Image';
 import CategoriesBadge from '@/shared/resources/show/CategoriesBadge';
 import ShareButton from '@/shared/resources/show/ShareButton';
+import { slugifyId } from '@/utils';
 import { usePage } from '@inertiajs/react';
 import { addCommas, digitsEnToFa } from '@persian-tools/persian-tools';
 import { HiOutlineCheck } from 'react-icons/hi2';
@@ -30,7 +31,8 @@ export default function Show() {
   return (
     <div className="space-y mt-page container">
       <Head
-        title={`رویداد ${contest.title}`}
+        canonicalUrl={route('contests.show', [slugifyId(contest.id, contest.title)])}
+        title={`چالش ${contest.title}`}
         description={contest.short_description}
         imageUrl={contest.image?.original_url}
       />

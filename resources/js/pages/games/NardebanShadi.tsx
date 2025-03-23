@@ -12,7 +12,12 @@ export default function NardebanShadi() {
 
   return (
     <div className="mt-page space-y container">
-      <Head title={game.title} description={game.title} imageUrl={game.image} />
+      <Head
+        canonicalUrl={route('games.nardeban-shadi')}
+        title={game.title}
+        description={game.title}
+        imageUrl={game.image}
+      />
       <BreadCrumb
         links={[
           { title: 'بازی ها', href: route('games.index') },

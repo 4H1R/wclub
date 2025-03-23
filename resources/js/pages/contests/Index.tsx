@@ -29,7 +29,11 @@ export default function Index() {
 
   return (
     <div className="space-y container">
-      <Head title="جالش ها و مسابفات" description="جالش ها و مسابفات" />
+      <Head
+        canonicalUrl={route('contests.index')}
+        title="جالش ها و مسابفات"
+        description="جالش ها و مسابفات"
+      />
       <div className="flex items-center gap-2 overflow-x-auto pt-4">
         <MobileSortBy options={sorts} />
         <FilterModal

@@ -5,6 +5,7 @@ export default function Auth() {
   return (
     <div className="container relative mt-10 flex flex-1 items-center justify-center">
       <Head
+        canonicalUrl={route('auth')}
         title="حساب کاربری"
         description="ورود یا ایجاد حساب کاربری خود در باشگاه بانوان اصفهان"
       />

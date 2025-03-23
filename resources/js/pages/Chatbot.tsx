@@ -121,7 +121,7 @@ export default function Chatbot() {
 
   return (
     <div className="space-y mt-page container">
-      <Head title="چت بات هوشمند" description="چت بات هوشمند" />
+      <Head canonicalUrl={route('chatbot')} title="چت بات هوشمند" description="چت بات هوشمند" />
       <div className="space-y-4 text-center">
         <h1 className="h1 text-base-content">چت بات هوشمند</h1>
         <p className="text-base-content/80">

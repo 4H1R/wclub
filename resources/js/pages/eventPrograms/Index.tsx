@@ -29,7 +29,11 @@ export default function Index() {
 
   return (
     <div className="space-y container">
-      <Head title="رویداد ها" description="رویداد ها" />
+      <Head
+        canonicalUrl={route('event-programs.index')}
+        title="رویداد ها"
+        description="رویداد ها"
+      />
       <div className="flex items-center gap-2 overflow-x-auto pt-4">
         <MobileSortBy options={sorts} />
         <FilterModal

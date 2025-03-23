@@ -10,6 +10,7 @@ import SeriesCard from '@/shared/cards/SeriesCard';
 import Head from '@/shared/Head';
 import Image from '@/shared/images/Image';
 import Price from '@/shared/Price';
+import { slugifyId } from '@/utils';
 import { usePage } from '@inertiajs/react';
 import { GoDotFill } from 'react-icons/go';
 
@@ -24,6 +25,7 @@ export default function Show() {
   return (
     <div className="space-y mt-page container">
       <Head
+        canonicalUrl={route('series.show', [slugifyId(series.id, series.title)])}
         title={`دوره ${series.title}`}
         description={series.short_description}
         imageUrl={series.image?.original_url}

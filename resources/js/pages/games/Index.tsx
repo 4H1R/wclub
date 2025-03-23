@@ -12,7 +12,7 @@ export default function Index() {
 
   return (
     <div className="space-y mt-page container">
-      <Head title="بازی ها" description="بازی ها" />
+      <Head canonicalUrl={route('games.index')} title="بازی ها" description="بازی ها" />
       <h1 className="h1">بازی ها</h1>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {games.map((game) => (

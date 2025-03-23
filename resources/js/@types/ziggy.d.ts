@@ -92,6 +92,8 @@ declare module 'ziggy-js' {
       },
     ];
     'games.index': [];
+    'games.nardeban-shadi': [];
+    'games.roll-the-dice': [];
     'contests.registrations.store': [
       {
         name: 'contest';

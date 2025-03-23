@@ -30,6 +30,7 @@ export default function Show() {
   return (
     <div className="space-y mt-page container">
       <Head
+        canonicalUrl={route('series.episodes.show', [seriesSlug, current_episode.episode_number])}
         title={current_episode.title}
         description={current_episode.title}
         titleSuffix={null}

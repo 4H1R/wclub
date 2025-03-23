@@ -26,7 +26,11 @@ export default function Index() {
 
   return (
     <div className="space-y container">
-      <Head title="باغ های بانوان" description="باغ های بانوان" />
+      <Head
+        canonicalUrl={route('gardens.index')}
+        title="باغ های بانوان"
+        description="باغ های بانوان"
+      />
       <div className="flex items-center gap-2 overflow-x-auto pt-4">
         <MobileSortBy options={sorts} />
       </div>

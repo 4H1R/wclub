@@ -7,6 +7,7 @@ import Head from '@/shared/Head';
 import Image from '@/shared/images/Image';
 import CategoriesBadge from '@/shared/resources/show/CategoriesBadge';
 import ShareButton from '@/shared/resources/show/ShareButton';
+import { slugifyId } from '@/utils';
 import { usePage } from '@inertiajs/react';
 import { addCommas, digitsEnToFa } from '@persian-tools/persian-tools';
 import { HiOutlineInformationCircle } from 'react-icons/hi2';
@@ -29,6 +30,9 @@ export default function Show() {
   return (
     <div className="space-y mt-page container">
       <Head
+        canonicalUrl={route('event-programs.show', [
+          slugifyId(event_program.id, event_program.title),
+        ])}
         title={`رویداد ${event_program.title}`}
         description={event_program.short_description}
         imageUrl={event_program.image?.original_url}

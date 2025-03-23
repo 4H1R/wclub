@@ -5,6 +5,7 @@ import Button from '@/shared/forms/Button';
 import Head from '@/shared/Head';
 import Image from '@/shared/images/Image';
 import ShareButton from '@/shared/resources/show/ShareButton';
+import { slugifyId } from '@/utils';
 import { usePage } from '@inertiajs/react';
 import { addCommas, digitsEnToFa } from '@persian-tools/persian-tools';
 import { HiOutlineCheck, HiStar } from 'react-icons/hi2';
@@ -31,6 +32,9 @@ export default function Show() {
   return (
     <div className="space-y mt-page container">
       <Head
+        canonicalUrl={route('reward-programs.show', [
+          slugifyId(reward_program.id, reward_program.title),
+        ])}
         title={`خدمت ${reward_program.title}`}
         description={reward_program.short_description}
         imageUrl={reward_program.image?.original_url}

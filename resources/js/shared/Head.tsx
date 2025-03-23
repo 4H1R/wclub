@@ -4,6 +4,7 @@ import { Head as InertiaHead } from '@inertiajs/react';
 type HeadProps = {
   title: string;
   description: string;
+  canonicalUrl?: string;
   titleSuffix?: string | null;
   imageUrl?: string;
 };
@@ -11,12 +12,14 @@ export default function Head({
   title,
   description,
   imageUrl,
+  canonicalUrl,
   titleSuffix = config.websiteTitle,
 }: HeadProps) {
   const finalTitle = titleSuffix ? `${title} - ${titleSuffix}` : title;
 
   return (
     <InertiaHead>
+      <link rel="canonical" href={canonicalUrl} />
       <title>{finalTitle}</title>
       <meta name="description" content={description} />
       <meta property="og:title" content={finalTitle} />

@@ -8,6 +8,7 @@ import Image from '@/shared/images/Image';
 import ShareButton from '@/shared/resources/show/ShareButton';
 import SwiperContainer from '@/shared/swiper/SwiperContainer';
 import SwiperSlide from '@/shared/swiper/SwiperSlide';
+import { slugifyId } from '@/utils';
 import { usePage } from '@inertiajs/react';
 import { addCommas, digitsEnToFa, numberToWords } from '@persian-tools/persian-tools';
 import { HiOutlineInformationCircle } from 'react-icons/hi2';
@@ -30,6 +31,7 @@ export default function Show() {
   return (
     <div className="space-y mt-page container">
       <Head
+        canonicalUrl={route('gardens.show', [slugifyId(garden.id, garden.title)])}
         title={`باغ بانوان ${garden.title}`}
         description={garden.address}
         imageUrl={garden.images.at(0)?.original_url}

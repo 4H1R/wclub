@@ -58,7 +58,12 @@ export default function RollTheDice() {
 
   return (
     <div className="mt-page space-y container">
-      <Head title={game.title} description={game.title} imageUrl={game.image} />
+      <Head
+        canonicalUrl={route('games.roll-the-dice')}
+        title={game.title}
+        description={game.title}
+        imageUrl={game.image}
+      />
       <BreadCrumb
         links={[
           { title: 'بازی ها', href: route('games.index') },

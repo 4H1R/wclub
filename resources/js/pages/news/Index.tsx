@@ -27,7 +27,7 @@ export default function Index() {
 
   return (
     <div className="space-y container">
-      <Head title="اخبار" description="اخبار" />
+      <Head canonicalUrl={route('news.index')} title="اخبار" description="اخبار" />
       <div className="flex items-center gap-2 overflow-x-auto pt-4">
         <MobileSortBy options={sorts} />
         <FilterModal

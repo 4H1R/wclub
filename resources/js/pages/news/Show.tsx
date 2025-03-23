@@ -5,6 +5,7 @@ import Head from '@/shared/Head';
 import Image from '@/shared/images/Image';
 import CategoriesBadge from '@/shared/resources/show/CategoriesBadge';
 import ShareButton from '@/shared/resources/show/ShareButton';
+import { slugifyId } from '@/utils';
 import { usePage } from '@inertiajs/react';
 import Markdown from 'react-markdown';
 
@@ -19,6 +20,7 @@ export default function Show() {
   return (
     <div className="space-y mt-page container">
       <Head
+        canonicalUrl={route('news.show', [slugifyId(news.id, news.title)])}
         title={`خبر ${news.title}`}
         description={news.short_description}
         imageUrl={news.image?.original_url}

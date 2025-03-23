@@ -30,7 +30,7 @@ export default function Index() {
 
   return (
     <div className="space-y container">
-      <Head title="دوره ها" description="دوره ها" />
+      <Head canonicalUrl={route('series.index')} title="دوره ها" description="دوره ها" />
       <div className="flex items-center gap-2 overflow-x-auto pt-4">
         <MobileSortBy options={sorts} />
         <FilterModal
