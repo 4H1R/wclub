@@ -3,9 +3,10 @@
 namespace App\Enums;
 
 use EmreYarligan\EnumConcern\EnumConcern;
+use Filament\Support\Contracts\HasColor;
 use Filament\Support\Contracts\HasLabel;
 
-enum PaymentTypeEnum: string implements HasLabel
+enum PaymentTypeEnum: string implements HasColor, HasLabel
 {
     use EnumConcern;
 

@@ -96,6 +96,16 @@ enum PermissionEnum: string implements HasLabel
     case CreateCoupons = 'Create Coupons';
     case DeleteAnyCoupons = 'Delete Any Coupons';
     case UpdateAnyCoupons = 'Update Any Coupons';
+    // Orders
+    case ViewAnyOrders = 'View Any Orders';
+    case CreateOrders = 'Create Orders';
+    case DeleteAnyOrders = 'Delete Any Orders';
+    case UpdateAnyOrders = 'Update Any Orders';
+    // Transactions
+    case ViewAnyTransactions = 'View Any Transactions';
+    case CreateTransactions = 'Create Transactions';
+    case DeleteAnyTransactions = 'Delete Any Transactions';
+    case UpdateAnyTransactions = 'Update Any Transactions';
 
     public function getLabel(): string
     {
@@ -187,6 +197,16 @@ enum PermissionEnum: string implements HasLabel
             self::UpdateAnyCoupons => 'ویرایش هر کد تخفیف',
             self::CreateCoupons => 'ایجاد کد تخفیف',
             self::DeleteAnyCoupons => 'حدف هر کد تخفیف',
+            // Orders
+            self::ViewAnyOrders => 'مشاهده همه سفارشات',
+            self::UpdateAnyOrders => 'ویرایش هر سفارش',
+            self::CreateOrders => 'ایجاد سفارش',
+            self::DeleteAnyOrders => 'حدف هر سفارش',
+            // Transactions
+            self::ViewAnyTransactions => 'مشاهده همه تراکنش ها',
+            self::UpdateAnyTransactions => 'ویرایش هر تراکنش',
+            self::CreateTransactions => 'ایجاد تراکنش',
+            self::DeleteAnyTransactions => 'حدف هر تراکنش',
         };
     }
 }

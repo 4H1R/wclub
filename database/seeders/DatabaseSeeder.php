@@ -11,8 +11,12 @@ use App\Models\Coupon;
 use App\Models\EventProgram;
 use App\Models\Garden;
 use App\Models\News;
+use App\Models\Order;
+use App\Models\OrderItem;
 use App\Models\RewardProgram;
+use App\Models\Series;
 use App\Models\TargetGroup;
+use App\Models\Transaction;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\File;
@@ -67,5 +71,25 @@ class DatabaseSeeder extends Seeder
             });
 
         Garden::factory(50)->create();
+
+        $users = User::pluck('id');
+        $series = Series::pluck('id');
+        Order::factory(20)->sequence(fn () => ['user_id' => $users->random()])
+            ->create()
+            ->each(function (Order $order) use ($series) {
+                $series->random(random_int(1, 5))
+                    ->each(function ($series_id) use ($order) {
+                        OrderItem::factory(random_int(1, 5))->create([
+                            'order_id' => $order->id,
+                            'model_type' => Series::class,
+                            'model_id' => $series_id,
+                        ]);
+                    });
+
+                Transaction::factory(random_int(1, 5))->create([
+                    'order_id' => $order->id,
+                    'user_id' => $order->user_id,
+                ]);
+            });
     }
 }

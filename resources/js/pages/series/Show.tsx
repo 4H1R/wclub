@@ -84,7 +84,7 @@ export default function Show() {
       <div className="space-y-4">
         <h2 className="h2 text-base-content md:text-start">دوره های پیشنهادی</h2>
       </div>
-      <div className="content-grid-container">
+      <div className="content-grid-container show-content-grid-container">
         {recommended_series.map((series) => (
           <SeriesCard key={series.id} series={series} />
         ))}

@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Enums\Coupon\CouponTypeEnum;
 use App\Filament\Custom\CustomResource;
+use App\Filament\Forms\Components\MoneyInput;
 use App\Filament\Forms\Layouts\BasicForm;
 use App\Filament\Resources\CouponResource\Pages;
 use App\Filament\Tables\Columns\CustomTimeColumn;
@@ -11,7 +12,6 @@ use App\Filament\Tables\Columns\TimestampsColumn;
 use App\Models\Coupon;
 use Filament\Forms;
 use Filament\Forms\Form;
-use Filament\Support\RawJs;
 use Filament\Tables;
 use Filament\Tables\Table;
 
@@ -52,13 +52,7 @@ class CouponResource extends CustomResource
             Forms\Components\Group::make()
                 ->visible(fn (Forms\Get $get): bool => $get('type') === CouponTypeEnum::Amount->value)
                 ->schema([
-                    Forms\Components\TextInput::make('amount')
-                        ->translateLabel()
-                        ->integer()
-                        ->suffix('تومان')
-                        ->mask(RawJs::make('$money($input)'))
-                        ->stripCharacters(',')
-                        ->minValue(0),
+                    MoneyInput::make('amount'),
                 ]),
             Forms\Components\Group::make()
                 ->visible(fn (Forms\Get $get): bool => $get('type') === CouponTypeEnum::Percentage->value)
@@ -72,13 +66,7 @@ class CouponResource extends CustomResource
                         ->minValue(0)
                         ->maxValue(100)
                         ->required(),
-                    Forms\Components\TextInput::make('max_percentage_amount')
-                        ->translateLabel()
-                        ->integer()
-                        ->suffix('تومان')
-                        ->mask(RawJs::make('$money($input)'))
-                        ->stripCharacters(',')
-                        ->minValue(0),
+                    MoneyInput::make('max_percentage_amount'),
                 ]),
             Forms\Components\Select::make('user_id')
                 ->label(trans_choice('Users', 1))

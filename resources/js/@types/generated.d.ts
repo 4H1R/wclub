@@ -343,13 +343,35 @@ declare namespace App.Enums {
     | 'View Any Coupons'
     | 'Create Coupons'
     | 'Delete Any Coupons'
-    | 'Update Any Coupons';
+    | 'Update Any Coupons'
+    | 'View Any Orders'
+    | 'Create Orders'
+    | 'Delete Any Orders'
+    | 'Update Any Orders'
+    | 'View Any Transactions'
+    | 'Create Transactions'
+    | 'Delete Any Transactions'
+    | 'Update Any Transactions';
   export type RoleEnum = 'Super Admin' | 'Test';
 }
 declare namespace App.Enums.Coupon {
   export type CouponTypeEnum = 'AMOUNT' | 'PERCENTAGE';
 }
+declare namespace App.Enums.Order {
+  export type OrderPaymentStatusEnum = 'WAITING_FOR_PAYMENT' | 'FAILURE' | 'SUCCESSFUL';
+  export type OrderStatusEnum =
+    | 'WAITING_FOR_PAYMENT'
+    | 'PAID'
+    | 'CANCELED'
+    | 'READY'
+    | 'SENT'
+    | 'FINISHED';
+}
 declare namespace App.Enums.Series {
   export type SeriesPresentationModeEnum = 'IN_PERSON' | 'ONLINE' | 'PLATFORM';
   export type SeriesStatusEnum = 'IN_PROGRESS' | 'FINISHED';
+}
+declare namespace App.Enums.Transaction {
+  export type TransactionGatewayNameEnum = 'MELLAT';
+  export type TransactionStatusEnum = 'FAILURE' | 'SUCCESSFUL';
 }

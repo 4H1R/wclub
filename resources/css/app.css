@@ -9,6 +9,16 @@
   }
 }
 
+@media (min-width: 1536px) {
+  .show-content-grid-container > :nth-child(5) {
+    display: none;
+  }
+
+  .show-content-grid-container > :nth-child(6) {
+    display: none;
+  }
+}
+
 @layer components {
   .h1 {
     @apply font-fa-display text-4xl md:text-5xl;

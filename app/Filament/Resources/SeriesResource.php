@@ -7,6 +7,7 @@ use App\Enums\Series\SeriesPresentationModeEnum;
 use App\Enums\Series\SeriesStatusEnum;
 use App\Filament\Custom\CustomResource;
 use App\Filament\Forms\Components\FileInput;
+use App\Filament\Forms\Components\MoneyInput;
 use App\Filament\Forms\Layouts\BasicSection;
 use App\Filament\Forms\Layouts\ComplexForm;
 use App\Filament\Forms\Layouts\StatusSection;
@@ -18,7 +19,6 @@ use App\Filament\Tables\Columns\TimestampsColumn;
 use App\Models\Series;
 use Filament\Forms;
 use Filament\Forms\Form;
-use Filament\Support\RawJs;
 use Filament\Tables;
 use Filament\Tables\Table;
 
@@ -59,22 +59,8 @@ class SeriesResource extends CustomResource
                 ->visible(fn (Forms\Get $get) => PaymentTypeEnum::tryFrom($get('payment_type')) === PaymentTypeEnum::Paid)
                 ->columns(2)
                 ->schema([
-                    Forms\Components\TextInput::make('price')
-                        ->translateLabel()
-                        ->integer()
-                        ->minValue(0)
-                        ->suffix('تومان')
-                        ->mask(RawJs::make('$money($input)'))
-                        ->stripCharacters(',')
-                        ->required(),
-                    Forms\Components\TextInput::make('previous_price')
-                        ->translateLabel()
-                        ->integer()
-                        ->gt('price')
-                        ->suffix('تومان')
-                        ->mask(RawJs::make('$money($input)'))
-                        ->stripCharacters(',')
-                        ->minValue(0),
+                    MoneyInput::make('price'),
+                    MoneyInput::make('previous_price'),
                 ]),
             Forms\Components\Select::make('presentation_mode')
                 ->translateLabel()

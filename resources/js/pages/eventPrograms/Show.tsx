@@ -110,7 +110,7 @@ export default function Show() {
       </div>
       <div className="divider clear-both md:pt-6" />
       <h2 className="h2">رویداد های دیگر</h2>
-      <div className="content-grid-container">
+      <div className="content-grid-container show-content-grid-container">
         {recommended_event_programs.map((eventProgram) => (
           <EventProgramCard key={eventProgram.id} eventProgram={eventProgram} />
         ))}

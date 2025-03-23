@@ -391,6 +391,82 @@ namespace App\Models{
  * 
  *
  * @property int $id
+ * @property int|null $user_id
+ * @property int|null $coupon_id
+ * @property \App\Enums\Order\OrderStatusEnum $status
+ * @property \App\Enums\Order\OrderPaymentStatusEnum $payment_status
+ * @property int $total_amount
+ * @property int $coupon_amount
+ * @property int $paying_amount
+ * @property string|null $description
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Coupon|null $coupon
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\OrderItem> $items
+ * @property-read int|null $items_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Transaction> $transactions
+ * @property-read int|null $transactions_count
+ * @property-read \App\Models\User|null $user
+ * @method static \Database\Factories\OrderFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Order newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Order newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Order query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Order whereCouponAmount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Order whereCouponId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Order whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Order whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Order whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Order wherePayingAmount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Order wherePaymentStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Order whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Order whereTotalAmount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Order whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Order whereUserId($value)
+ * @mixin \Eloquent
+ */
+	#[\AllowDynamicProperties]
+	class IdeHelperOrder {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
+ * @property int $order_id
+ * @property string $model_type
+ * @property int $model_id
+ * @property int $price
+ * @property int $quantity
+ * @property int $subtotal
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $model
+ * @property-read \App\Models\Order $order
+ * @method static \Database\Factories\OrderItemFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|OrderItem newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|OrderItem newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|OrderItem query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|OrderItem whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|OrderItem whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|OrderItem whereModelId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|OrderItem whereModelType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|OrderItem whereOrderId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|OrderItem wherePrice($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|OrderItem whereQuantity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|OrderItem whereSubtotal($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|OrderItem whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
+	#[\AllowDynamicProperties]
+	class IdeHelperOrderItem {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
  * @property string $name
  * @property string $title
  * @property string $guard_name
@@ -655,6 +731,44 @@ namespace App\Models{
  */
 	#[\AllowDynamicProperties]
 	class IdeHelperTargetGroup {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
+ * @property int|null $user_id
+ * @property int|null $order_id
+ * @property \App\Enums\Transaction\TransactionStatusEnum $status
+ * @property \App\Enums\Transaction\TransactionGatewayNameEnum $gateway_name
+ * @property int $amount
+ * @property string|null $ref_id
+ * @property string|null $token
+ * @property string|null $description
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Order|null $order
+ * @property-read \App\Models\User|null $user
+ * @method static \Database\Factories\TransactionFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transaction newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transaction newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transaction query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transaction whereAmount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transaction whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transaction whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transaction whereGatewayName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transaction whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transaction whereOrderId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transaction whereRefId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transaction whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transaction whereToken($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transaction whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transaction whereUserId($value)
+ * @mixin \Eloquent
+ */
+	#[\AllowDynamicProperties]
+	class IdeHelperTransaction {}
 }
 
 namespace App\Models{

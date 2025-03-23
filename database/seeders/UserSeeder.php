@@ -15,5 +15,7 @@ class UserSeeder extends Seeder
 
         User::factory()->create(['email' => 'test@email.com'])
             ->assignRole(RoleEnum::Test);
+
+        User::factory(30)->create();
     }
 }

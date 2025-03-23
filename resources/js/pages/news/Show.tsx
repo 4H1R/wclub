@@ -50,7 +50,7 @@ export default function Show() {
       </div>
       <div className="divider clear-both md:pt-6" />
       <h2 className="h2">اخبار های دیگر</h2>
-      <div className="content-grid-container">
+      <div className="content-grid-container show-content-grid-container">
         {recommended_news.map((data) => (
           <NewsCard key={data.id} news={data} />
         ))}

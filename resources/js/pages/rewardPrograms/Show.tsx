@@ -9,7 +9,6 @@ import { usePage } from '@inertiajs/react';
 import { addCommas, digitsEnToFa } from '@persian-tools/persian-tools';
 import { HiOutlineCheck, HiStar } from 'react-icons/hi2';
 import Markdown from 'react-markdown';
-import { toast } from 'react-toastify';
 
 type TPage = PageProps<{
   reward_program: App.Data.RewardProgram.RewardProgramFullData;
@@ -25,9 +24,9 @@ export default function Show() {
     document.getElementById(registerId)?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const handleRegister = () => {
-    toast.warning('گرفتن خدمات فعلا امکان پذیر نیست لطفا چند روز دیگر لطفا دوباره تلاش کنید.');
-  };
+  // const handleRegister = () => {
+  //   toast.warning('گرفتن خدمات فعلا امکان پذیر نیست لطفا چند روز دیگر لطفا دوباره تلاش کنید.');
+  // };
 
   return (
     <div className="space-y mt-page container">
@@ -105,18 +104,18 @@ export default function Show() {
                   امتیاز
                 </li>
               </ul>
-              <div className="card-actions mt-4">
+              {/* <div className="card-actions mt-4">
                 <Button onClick={handleRegister} className="btn btn-neutral btn-block">
                   گرفتن خدمت
                 </Button>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
       </div>
       <div className="divider clear-both md:pt-6" />
       <h2 className="h2">خدمات دیگر</h2>
-      <div className="content-grid-container">
+      <div className="content-grid-container show-content-grid-container show-content-grid-container show-content-grid-container">
         {recommended_reward_programs.map((rewardProgram) => (
           <RewardProgramCard key={rewardProgram.id} rewardProgram={rewardProgram} />
         ))}
