@@ -7,6 +7,7 @@ declare module 'ziggy-js' {
     'about-us': [];
     search: [];
     chatbot: [];
+    'mellat.callback': [];
     'news.index': [];
     'news.show': [
       {

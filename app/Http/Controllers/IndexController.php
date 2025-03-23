@@ -17,6 +17,7 @@ use App\Models\RewardProgram;
 use App\Models\Scopes\PublishedScope;
 use App\Models\Series;
 use App\Models\TargetGroup;
+use App\Services\MellatService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Inertia\Inertia;
@@ -25,6 +26,8 @@ class IndexController extends Controller
 {
     public function __invoke(Request $request): \Inertia\Response
     {
+        app(MellatService::class)->sendPaymentRequest(100, 1, 1);
+
         $data = Cache::remember('index', 60, function () {
             $targetGroups = TargetGroup::query()
                 ->with('image')

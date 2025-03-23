@@ -90,6 +90,7 @@ RUN apt-get update; \
     # Install PHP extensions
     && install-php-extensions \
     bz2 \
+    soap \
     pcntl \
     mbstring \
     bcmath \

@@ -41,4 +41,10 @@ return [
         'phone' => env('SMS_PHONE'),
     ],
 
+    'mellat' => [
+        'username' => env('MELLAT_USERNAME'),
+        'password' => env('MELLAT_PASSWORD'),
+        'terminal_id' => env('MELLAT_TERMINAL_ID'),
+        'wsdl_url' => env('MELLAT_WSDL_URL', 'https://bpm.shaparak.ir/pgwchannel/services/pgw?wsdl'),
+    ],
 ];

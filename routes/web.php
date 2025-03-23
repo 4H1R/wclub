@@ -13,6 +13,7 @@ use App\Http\Controllers\Game\RollTheDiceGameController;
 use App\Http\Controllers\GardenController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\Me\ScoreController;
+use App\Http\Controllers\MellatController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\RewardProgramController;
 use App\Http\Controllers\SearchController;
@@ -28,6 +29,8 @@ Route::post('/contact-us', [ContactUsController::class, 'store']);
 Route::get('/about-us', AboutUsController::class)->name('about-us');
 Route::get('/search', SearchController::class)->name('search');
 Route::get('/chatbot', ChatbotController::class)->name('chatbot');
+
+Route::post('/mellat/callback', [MellatController::class, 'callback'])->name('mellat.callback');
 
 Route::resource('news', NewsController::class)->only(['index', 'show']);
 Route::resource('gardens', GardenController::class)->only(['index', 'show']);
