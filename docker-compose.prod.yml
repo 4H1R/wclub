@@ -120,7 +120,7 @@ services:
       DB_NAME: '${DB_DATABASE}'
       AUTH_TYPE: scram-sha-256
       POOL_MODE: transaction
-      ADMIN_USERS: postgres,'${DB_USERNAME}'
+      ADMIN_USERS: '${DB_USERNAME}'
     networks:
       - wclub
     # ports:
