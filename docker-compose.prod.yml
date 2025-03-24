@@ -83,8 +83,8 @@ services:
       - wclub
     volumes:
       - redis-data:/data
-    ports:
-      - '127.0.0.1:7978:6379'
+    # ports:
+    #   - '127.0.0.1:7978:6379'
     healthcheck:
       test: [ 'CMD', 'redis-cli', 'ping' ]
       retries: 3
@@ -123,8 +123,8 @@ services:
       ADMIN_USERS: postgres,'${DB_USERNAME}'
     networks:
       - wclub
-    ports:
-      - '127.0.0.1:5437:5432'
+    # ports:
+    #   - '127.0.0.1:5437:5432'
     depends_on:
       pgsql:
         condition: service_healthy
