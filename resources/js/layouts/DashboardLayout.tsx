@@ -5,21 +5,24 @@ import { THasChildren } from '@/types';
 import { cn } from '@/utils';
 import { Link, usePage } from '@inertiajs/react';
 import { addCommas, digitsEnToFa } from '@persian-tools/persian-tools';
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { HiStar, HiUsers } from 'react-icons/hi2';
 import { toast } from 'react-toastify';
 import MainLayout from './MainLayout';
 
-const tabs = [
-  { title: 'امتیازات', href: route('dashboard.score', undefined, false) },
-  { title: 'سفارشات', href: route('dashboard.orders', undefined, false) },
-  { title: 'دوره ها', href: route('dashboard.series', undefined, false) },
-  { title: 'حساب من', href: route('dashboard.account', undefined, false) },
-];
-
 type DashboardLayoutProps = THasChildren;
 
 export default function DashboardLayout({ children }: DashboardLayoutProps) {
+  const tabs = useMemo(
+    () => [
+      { title: 'امتیازات', href: route('dashboard.score', undefined, false) },
+      { title: 'سفارشات', href: route('dashboard.orders', undefined, false) },
+      { title: 'دوره ها', href: route('dashboard.series', undefined, false) },
+      { title: 'حساب من', href: route('dashboard.account', undefined, false) },
+    ],
+    [],
+  );
+
   const { auth } = usePage().props;
   const showTooltip = useShowTooltip();
   const currentRoute = useCurrentRoute();
