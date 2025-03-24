@@ -121,6 +121,8 @@ services:
       AUTH_TYPE: scram-sha-256
       POOL_MODE: transaction
       ADMIN_USERS: postgres,'${DB_USERNAME}'
+    networks:
+      - wclub
     ports:
       - '127.0.0.1:5437:5432'
     depends_on:
