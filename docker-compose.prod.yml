@@ -1,7 +1,7 @@
 x-logging: &default-logging
   driver: 'json-file'
   options:
-    max-size: "50m"
+    max-size: '50m'
     max-file: 6
 
 x-base: &base
@@ -22,7 +22,7 @@ x-base: &base
       WWWUSER: ${HOST_UID:-1000}
       WWWGROUP: ${HOST_GID:-1000}
   image: laravel/app
-  user: "${HOST_UID:-1000}:${HOST_GID:-1000}"
+  user: '${HOST_UID:-1000}:${HOST_GID:-1000}'
   ulimits:
     nofile:
       soft: 20000
@@ -50,8 +50,8 @@ services:
       - no-new-privileges:true
     volumes:
       - pgsql-data:/var/lib/postgresql/data
-    ports:
-      - "127.0.0.1:5437:5432"
+    # ports:
+    #   - "127.0.0.1:5437:5432"
     environment:
       POSTGRES_DB: '${DB_DATABASE}'
       POSTGRES_USER: '${DB_USERNAME}'
@@ -61,7 +61,7 @@ services:
     networks:
       - wclub
     healthcheck:
-      test: [ "CMD", "pg_isready", "-q", "-d", "${DB_DATABASE}", "-U", "${DB_USERNAME}" ]
+      test: [ 'CMD', 'pg_isready', '-q', '-d', '${DB_DATABASE}', '-U', '${DB_USERNAME}' ]
       interval: 15s
       retries: 12
       timeout: 20s
@@ -69,7 +69,7 @@ services:
     profiles: [ app ]
     image: redis:alpine
     restart: unless-stopped
-    command: [ "redis-server", "--requirepass", "${REDIS_PASSWORD}", "--maxmemory", "2gb" ]
+    command: [ 'redis-server', '--maxmemory', '2gb' ]
     ulimits:
       nofile:
         soft: 20000
@@ -82,17 +82,17 @@ services:
     volumes:
       - redis-data:/data
     ports:
-      - "127.0.0.1:7978:6379"
+      - '127.0.0.1:7978:6379'
     healthcheck:
-      test: [ "CMD", "redis-cli", "ping" ]
+      test: [ 'CMD', 'redis-cli', 'ping' ]
       retries: 3
       timeout: 5s
   minio:
     profiles: [ app ]
     image: 'minio/minio:latest'
     ports:
-      - "127.0.0.1:9002:9000"
-      - "127.0.0.1:8902:8900"
+      - '127.0.0.1:9002:9000'
+      - '127.0.0.1:8902:8900'
     security_opt:
       - no-new-privileges:true
     environment:
@@ -106,24 +106,41 @@ services:
     restart: always
     logging: *default-logging
     healthcheck:
-      test: [ "CMD", "mc", "ready", "local" ]
+      test: [ 'CMD', 'mc', 'ready', 'local' ]
       retries: 3
       timeout: 5s
+  pgbouncer:
+    image: edoburu/pgbouncer:latest
+    environment:
+      DB_USER: dbuser
+      DB_PASSWORD: hbZkzny5xrvVH
+      DB_HOST: db
+      DB_NAME: test
+      AUTH_TYPE: scram-sha-256
+      POOL_MODE: transaction
+      ADMIN_USERS: postgres,dbuser
+    ports:
+      - '127.0.0.1:5437:5432'
+    depends_on:
+      pgsql:
+        condition: service_healthy
+    healthcheck:
+      test: [ 'CMD', 'pg_isready', '-h', 'localhost' ]
   app:
     <<: *base
     environment:
-      - CONTAINER_MODE=http
-      - WITH_HORIZON=true
-      - WITH_SCHEDULER=true
-      - WITH_INERTIA_SSR=true
+      CONTAINER_MODE: http
+      WITH_HORIZON: true
+      WITH_SCHEDULER: true
+      WITH_INERTIA_SSR: true
     ports:
-      - "127.0.0.1:8008:8000"
+      - '127.0.0.1:8008:8000'
   app-fallback:
     <<: *base
     environment:
-      - CONTAINER_MODE=http
+      CONTAINER_MODE: http
     ports:
-      - "127.0.0.1:8009:8000"
+      - '127.0.0.1:8009:8000'
 
 volumes:
   storage:
