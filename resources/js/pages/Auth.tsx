@@ -16,7 +16,7 @@ export default function Auth() {
           کنید.
         </p>
         <div className="divider" />
-        <Link href={route('auth.my-isfahan')} className="btn btn-primary btn-block mt-4">
+        <Link disabled href={route('auth.my-isfahan')} className="btn btn-primary btn-block mt-4">
           <span>ورود با اصفهان من</span>
         </Link>
       </div>

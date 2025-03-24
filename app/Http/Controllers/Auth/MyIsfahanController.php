@@ -19,6 +19,7 @@ class MyIsfahanController extends Controller
     public function callback(Request $request): RedirectResponse
     {
         // Todo handle callback
+        abort(404);
 
         Auth::loginUsingId(1, true);
 

@@ -31,6 +31,7 @@
         "spatie/laravel-medialibrary": "^11.10",
         "spatie/laravel-permission": "^6.10",
         "spatie/laravel-query-builder": "^6.2",
+        "spatie/laravel-responsecache": "^7.6",
         "spatie/laravel-settings": "^3.4",
         "spatie/laravel-typescript-transformer": "^2.5",
         "spatie/typescript-transformer": "^2.4",
