@@ -64,6 +64,7 @@ RUN apk update; \
     mbstring \
     bcmath \
     sockets \
+    soap \
     pgsql \
     pdo_pgsql \
     opcache \
