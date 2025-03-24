@@ -9,6 +9,8 @@ x-base: &base
   depends_on:
     pgsql:
       condition: service_healthy
+    pgbouncer:
+      condition: service_healthy
     redis:
       condition: service_healthy
     minio:
@@ -50,8 +52,8 @@ services:
       - no-new-privileges:true
     volumes:
       - pgsql-data:/var/lib/postgresql/data
-    ports:
-      - "127.0.0.1:5437:5432"
+    # ports:
+    #   - "127.0.0.1:5437:5432"
     environment:
       POSTGRES_DB: '${DB_DATABASE}'
       POSTGRES_USER: '${DB_USERNAME}'
@@ -109,23 +111,23 @@ services:
       test: [ 'CMD', 'mc', 'ready', 'local' ]
       retries: 3
       timeout: 5s
-  # pgbouncer:
-  #   image: edoburu/pgbouncer:latest
-  #   environment:
-  #     DB_USER: dbuser
-  #     DB_PASSWORD: hbZkzny5xrvVH
-  #     DB_HOST: db
-  #     DB_NAME: test
-  #     AUTH_TYPE: scram-sha-256
-  #     POOL_MODE: transaction
-  #     ADMIN_USERS: postgres,dbuser
-  #   ports:
-  #     - '127.0.0.1:5437:5432'
-  #   depends_on:
-  #     pgsql:
-  #       condition: service_healthy
-  #   healthcheck:
-  #     test: [ 'CMD', 'pg_isready', '-h', 'localhost' ]
+  pgbouncer:
+    image: edoburu/pgbouncer:latest
+    environment:
+      DB_USER: '${DB_USERNAME}'
+      DB_PASSWORD: '${DB_PASSWORD}'
+      DB_HOST: pgsql
+      DB_NAME: '${DB_DATABASE}'
+      AUTH_TYPE: scram-sha-256
+      POOL_MODE: transaction
+      ADMIN_USERS: postgres,'${DB_USERNAME}'
+    ports:
+      - '127.0.0.1:5437:5432'
+    depends_on:
+      pgsql:
+        condition: service_healthy
+    healthcheck:
+      test: [ 'CMD', 'pg_isready', '-h', 'localhost' ]
   app:
     <<: *base
     environment:
