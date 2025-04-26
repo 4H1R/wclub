@@ -19,11 +19,11 @@ export default function Head({
 
   return (
     <InertiaHead>
-      <link rel="canonical" href={canonicalUrl} />
       <title>{finalTitle}</title>
       <meta name="description" content={description} />
       <meta property="og:title" content={finalTitle} />
       <meta property="og:description" content={description} />
+      {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
       {imageUrl && <meta property="og:image" content={imageUrl} />}
       <meta property="og:locale" content="fa_IR" />
       <meta property="og:site_name" content={config.websiteTitle} />
