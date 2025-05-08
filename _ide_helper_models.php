@@ -71,6 +71,41 @@ namespace App\Models{
  * 
  *
  * @property int $id
+ * @property int|null $parent_id
+ * @property int $user_id
+ * @property string $model_type
+ * @property int $model_id
+ * @property string $body
+ * @property string|null $published_at
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $model
+ * @property-read Comment|null $parent
+ * @property-read \App\Models\User $user
+ * @method static \Database\Factories\CommentFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Comment newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Comment newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Comment query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Comment whereBody($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Comment whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Comment whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Comment whereModelId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Comment whereModelType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Comment whereParentId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Comment wherePublishedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Comment whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Comment whereUserId($value)
+ * @mixin \Eloquent
+ */
+	#[\AllowDynamicProperties]
+	class IdeHelperComment {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
  * @property string $full_name
  * @property string|null $email
  * @property string $phone

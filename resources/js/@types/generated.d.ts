@@ -354,7 +354,11 @@ declare namespace App.Enums {
     | 'View Any Transactions'
     | 'Create Transactions'
     | 'Delete Any Transactions'
-    | 'Update Any Transactions';
+    | 'Update Any Transactions'
+    | 'View Any Comments'
+    | 'Create Comments'
+    | 'Delete Any Comments'
+    | 'Update Any Comments';
   export type RoleEnum = 'Super Admin' | 'Test';
 }
 declare namespace App.Enums.Coupon {
