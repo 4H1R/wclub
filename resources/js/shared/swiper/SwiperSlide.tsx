@@ -6,5 +6,6 @@ type SwiperSlideProps = THasChildren & {
 };
 
 export default function SwiperSlide({ children, className }: SwiperSlideProps) {
-  return <div className={cn('swiper-slide', className)}>{children}</div>;
+  // py-[1px] is for fixing the padding issue
+  return <div className={cn('swiper-slide py-[1px]', className)}>{children}</div>;
 }
