@@ -48,7 +48,6 @@ function Error() {
       <Image
         className="mb-8 max-w-xs sm:max-w-md md:max-w-xl"
         loading="eager"
-        hasLoadingBlur={false}
         src={illustration}
         alt={title}
       />
