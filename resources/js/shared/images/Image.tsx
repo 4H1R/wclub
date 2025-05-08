@@ -1,12 +1,16 @@
 import { cn } from '@/utils';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 export interface ImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   hasLoadingBlur?: boolean;
 }
 
 export default function Image({ className, hasLoadingBlur = true, ...props }: ImageProps) {
-  const [isLoading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    setIsLoading(true);
+  }, []);
 
   return (
     <img
@@ -15,9 +19,7 @@ export default function Image({ className, hasLoadingBlur = true, ...props }: Im
       className={cn('object-cover duration-75 ease-in-out', className, {
         'blur-lg grayscale': hasLoadingBlur && isLoading,
       })}
-      // eslint-disable-next-line react/no-unknown-property
-      onLoadStart={() => setLoading(true)}
-      onLoad={() => setLoading(false)}
+      onLoad={() => setIsLoading(false)}
     />
   );
 }
