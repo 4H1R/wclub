@@ -2,18 +2,14 @@ import DrawerContent from '@/components/drawer/DrawerContent';
 import Footer from '@/components/footer/Footer';
 import Navbar from '@/components/navbar/Navbar';
 import config from '@/fixtures/config';
-import { useCurrentRoute } from '@/hooks';
 import BaseLayout from '@/layouts/BaseLayout';
 import { THasChildren } from '@/types';
 import { router } from '@inertiajs/react';
-import { motion } from 'framer-motion';
 import { useEffect } from 'react';
 
 type MainLayoutProps = THasChildren;
 
 export default function MainLayout({ children }: MainLayoutProps) {
-  const currentRoute = useCurrentRoute();
-
   useEffect(() => {
     router.on('success', () => {
       // close drawer
@@ -35,14 +31,7 @@ export default function MainLayout({ children }: MainLayoutProps) {
         <input id={config.mobileDrawerId} type="checkbox" className="drawer-toggle" />
         <div className="drawer-content z-[1] flex flex-col">
           <Navbar />
-          <motion.main
-            key={currentRoute}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="space-y flex flex-1 flex-col pb-8 md:pb-6"
-          >
-            {children}
-          </motion.main>
+          <main className="space-y flex flex-1 flex-col pb-8 md:pb-6">{children}</main>
           <Footer />
         </div>
         <div className="drawer-side z-20">

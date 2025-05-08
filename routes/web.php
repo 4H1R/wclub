@@ -20,7 +20,6 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\Series\SeriesController;
 use App\Http\Controllers\Series\SeriesEpisodeController;
 use App\Http\Controllers\Series\SeriesOwnController;
-use App\Http\Middleware\DisableInertiaSSR;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', IndexController::class)->name('index');
@@ -43,7 +42,7 @@ Route::resource('games', GameController::class)->only(['index']);
 Route::get('/games/nardeban-shadi', NardebanShadiController::class)->name('games.nardeban-shadi');
 Route::get('/games/roll-the-dice', RollTheDiceGameController::class)->name('games.roll-the-dice');
 
-Route::middleware(['auth', DisableInertiaSSR::class])->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::resource('contests.registrations', ContestRegistrationController::class)->only(['store']);
     Route::resource('series.owns', SeriesOwnController::class)->only(['store']);
 
