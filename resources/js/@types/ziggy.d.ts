@@ -25,31 +25,11 @@ declare module 'ziggy-js' {
       },
     ];
     'series.index': [];
-    'series.create': [];
-    'series.store': [];
     'series.show': [
       {
         name: 'series';
         required: true;
         binding: 'id';
-      },
-    ];
-    'series.edit': [
-      {
-        name: 'series';
-        required: true;
-      },
-    ];
-    'series.update': [
-      {
-        name: 'series';
-        required: true;
-      },
-    ];
-    'series.destroy': [
-      {
-        name: 'series';
-        required: true;
       },
     ];
     'series.episodes.index': [

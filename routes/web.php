@@ -33,7 +33,7 @@ Route::post('/mellat/callback', [MellatController::class, 'callback'])->name('me
 
 Route::resource('news', NewsController::class)->only(['index', 'show']);
 Route::resource('gardens', GardenController::class)->only(['index', 'show']);
-Route::resource('series', SeriesController::class);
+Route::resource('series', SeriesController::class)->only(['index', 'show']);
 Route::resource('series.episodes', SeriesEpisodeController::class)->only(['index', 'show'])->whereNumber('episode');
 Route::resource('reward-programs', RewardProgramController::class)->only(['index', 'show']);
 Route::resource('event-programs', EventProgramController::class)->only(['index', 'show']);
