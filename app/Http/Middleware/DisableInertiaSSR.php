@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use Auth;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
@@ -11,7 +12,9 @@ class DisableInertiaSSR
 {
     public function handle(Request $request, Closure $next): Response
     {
-        Config::set('inertia.ssr.enabled', false);
+        if (Auth::check()) {
+            Config::set('inertia.ssr.enabled', false);
+        }
 
         return $next($request);
     }

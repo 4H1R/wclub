@@ -4,18 +4,21 @@ import { cn } from '@/utils';
 import { useForm } from '@inertiajs/react';
 import React, { createContext } from 'react';
 
-export type TInertiaForm<TForm extends Record<string, any>> = ReturnType<typeof useForm<TForm>>;
+type TFormRecord = Record<string, any>;
+export type TInertiaForm<TForm extends TFormRecord> = ReturnType<typeof useForm<TForm>>;
 
-export const formContext = createContext<TInertiaForm<any>>({} as any);
+export const formContext = createContext<TInertiaForm<TFormRecord>>(
+  {} as TInertiaForm<TFormRecord>,
+);
 
-type FormProps<TForm extends object> = THasChildren &
+type FormProps<TForm extends TFormRecord> = THasChildren &
   React.FormHTMLAttributes<HTMLFormElement> & {
     onSubmit: () => void;
     form: TInertiaForm<TForm>;
     styleMode: 'grid' | 'base' | 'none';
   };
 
-export default function Form<TForm extends Record<string, unknown>>({
+export default function Form<TForm extends TFormRecord>({
   children,
   onSubmit,
   className,
@@ -38,7 +41,7 @@ export default function Form<TForm extends Record<string, unknown>>({
         onSubmit();
       }}
     >
-      <formContext.Provider value={form}>{children}</formContext.Provider>
+      <formContext.Provider value={form as any}>{children}</formContext.Provider>
     </form>
   );
 }
