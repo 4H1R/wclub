@@ -55,9 +55,9 @@ export default function SeriesCard({ series, hasWidth = false, className }: Seri
           </span>
           <Price price={series.price} previousPrice={series.previous_price} />
         </div>
-        <Link className="btn mt-auto" href={href}>
+        {/* <Link className="btn mt-auto" href={href}>
           <span>اطلاعات بیشتر</span>
-        </Link>
+        </Link> */}
       </div>
     </div>
   );

@@ -1,3 +1,4 @@
+import { formatDatetime } from '@/utils';
 import { digitsEnToFa } from '@persian-tools/persian-tools';
 import React from 'react';
 import { HiOutlineClipboard } from 'react-icons/hi2';
@@ -37,7 +38,7 @@ export default function CouponsTable({ coupons }: CouponsTableProps) {
                 <th>{digitsEnToFa(i + 1)}</th>
                 <td>{digitsEnToFa(coupon.title)}</td>
                 <td>{coupon.code}</td>
-                <td>{new Intl.DateTimeFormat('fa-IR').format(new Date(coupon.expired_at))}</td>
+                <td>{formatDatetime(coupon.expired_at)}</td>
                 <th>
                   <button
                     onClick={() => handleCopy(coupon.code)}

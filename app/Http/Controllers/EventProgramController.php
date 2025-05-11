@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Data\Category\CategoryData;
 use App\Data\EventProgram\EventProgramData;
 use App\Data\EventProgram\EventProgramFullData;
+use App\Data\Faq\FaqData;
+use App\Enums\Faq\FaqStatusEnum;
 use App\Http\Middleware\FixSlugMiddleware;
 use App\Models\Category;
 use App\Models\EventProgram;
@@ -64,8 +66,15 @@ class EventProgramController extends Controller implements HasMiddleware
             ->take(6)
             ->get();
 
+        $faqs = $eventProgram->faqs()
+            ->where('status', FaqStatusEnum::Approved)
+            ->latest('id')
+            ->limit(20)
+            ->get();
+
         return Inertia::render('eventPrograms/Show', [
             'event_program' => EventProgramFullData::from($eventProgram),
+            'faqs' => FaqData::collect($faqs),
             'recommended_event_programs' => EventProgramData::collect($recommendedEventPrograms),
         ]);
     }

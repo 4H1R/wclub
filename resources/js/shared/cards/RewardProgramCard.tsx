@@ -53,9 +53,9 @@ export default function RewardProgramCard({
             </span>
           ))}
         </div>
-        <Link className="btn mt-auto" href={href}>
+        {/* <Link className="btn mt-auto" href={href}>
           اطلاعات بیشتر
-        </Link>
+        </Link> */}
       </div>
     </div>
   );

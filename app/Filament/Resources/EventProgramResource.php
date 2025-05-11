@@ -10,6 +10,7 @@ use App\Filament\Forms\Layouts\BasicSection;
 use App\Filament\Forms\Layouts\ComplexForm;
 use App\Filament\Forms\Layouts\StatusSection;
 use App\Filament\Resources\EventProgramResource\Pages;
+use App\Filament\Resources\EventProgramResource\RelationManagers;
 use App\Filament\Tables\Columns\CustomTimeColumn;
 use App\Filament\Tables\Columns\ImageColumn;
 use App\Filament\Tables\Columns\TimestampsColumn;
@@ -161,7 +162,7 @@ class EventProgramResource extends CustomResource
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\FaqsRelationManager::class,
         ];
     }
 

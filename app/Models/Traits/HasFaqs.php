@@ -3,6 +3,7 @@
 namespace App\Models\Traits;
 
 use App\Models\Faq;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 trait HasFaqs
@@ -17,9 +18,8 @@ trait HasFaqs
     /**
      * @return MorphToMany<Faq>
      */
-    public function faqs(): MorphToMany
+    public function faqs(): MorphMany
     {
-        return $this->morphToMany(Faq::class, 'model', 'faq_model')
-            ->where('comments.model', self::class);
+        return $this->morphMany(Faq::class, 'model');
     }
 }

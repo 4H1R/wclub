@@ -94,6 +94,14 @@ declare namespace App.Data.EventProgram {
     categories: Array<App.Data.Category.CategoryData>;
   };
 }
+declare namespace App.Data.Faq {
+  export type FaqData = {
+    id: number;
+    question: string;
+    answer: string | null;
+    created_at: string;
+  };
+}
 declare namespace App.Data.Game {
   export type GameData = {
     title: string;

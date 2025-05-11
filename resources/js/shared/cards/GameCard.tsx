@@ -29,9 +29,9 @@ export default function GameCard({ game, className, hasWidth = false }: GameCard
         <p className="line-clamp-4 max-h-fit pb-4 text-sm text-base-content/80">
           {game.short_description}
         </p>
-        <Link className="btn mt-auto" href={href}>
+        {/* <Link className="btn mt-auto" href={href}>
           <span>اطلاعات بیشتر</span>
-        </Link>
+        </Link> */}
       </div>
     </div>
   );

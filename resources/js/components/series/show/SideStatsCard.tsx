@@ -1,5 +1,5 @@
 import { seriesStatusTranslation } from '@/enums';
-import { convertSecondsToTime } from '@/utils';
+import { convertSecondsToTime, formatDatetime } from '@/utils';
 import { addCommas, digitsEnToFa } from '@persian-tools/persian-tools';
 import {
   HiCalendarDateRange,
@@ -44,7 +44,7 @@ export default function SideStatsCard({ series }: SideStatsCardProps) {
     {
       Icon: HiCalendarDateRange,
       title: 'منتشر شده در',
-      value: new Intl.DateTimeFormat('fa-IR').format(new Date(series.published_at)),
+      value: formatDatetime(series.published_at),
     },
   ];
 
