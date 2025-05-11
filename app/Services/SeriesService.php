@@ -13,10 +13,6 @@ use Illuminate\Support\Facades\Cache;
 
 class SeriesService
 {
-    const REVIEWS_PER_PAGE = 20;
-
-    const COMMENTS_PER_PAGE = 10;
-
     const TEMP_URL_HOURS = 5;
 
     public function loadShowRelations(Series $series): Series

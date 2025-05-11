@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Filament\Resources\CommentResource\Pages;
+namespace App\Filament\Resources\FaqResource\Pages;
 
-use App\Filament\Resources\CommentResource;
+use App\Filament\Resources\FaqResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 
-class ListComments extends ListRecords
+class ListFaqs extends ListRecords
 {
-    protected static string $resource = CommentResource::class;
+    protected static string $resource = FaqResource::class;
 
     protected function getHeaderActions(): array
     {

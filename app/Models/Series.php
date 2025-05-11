@@ -29,7 +29,7 @@ class Series extends Model implements HasMedia
         'status' => SeriesStatusEnum::class,
         'payment_type' => PaymentTypeEnum::class,
         'presentation_mode' => SeriesPresentationModeEnum::class,
-        'faqs' => 'array',
+        'faqs_array' => 'array',
     ];
 
     public function registerMediaCollections(): void

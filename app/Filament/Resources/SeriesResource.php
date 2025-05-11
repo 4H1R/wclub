@@ -88,7 +88,7 @@ class SeriesResource extends CustomResource
                 ->disableToolbarButtons(['attachFiles'])
                 ->maxLength(5012)
                 ->required(),
-            Forms\Components\Repeater::make('faqs')
+            Forms\Components\Repeater::make('faqs_array')
                 ->translateLabel()
                 ->columnSpanFull()
                 ->schema([

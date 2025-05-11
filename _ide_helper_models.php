@@ -71,41 +71,6 @@ namespace App\Models{
  * 
  *
  * @property int $id
- * @property int|null $parent_id
- * @property int $user_id
- * @property string $model_type
- * @property int $model_id
- * @property string $body
- * @property string|null $published_at
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $model
- * @property-read Comment|null $parent
- * @property-read \App\Models\User $user
- * @method static \Database\Factories\CommentFactory factory($count = null, $state = [])
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Comment newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Comment newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Comment query()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Comment whereBody($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Comment whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Comment whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Comment whereModelId($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Comment whereModelType($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Comment whereParentId($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Comment wherePublishedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Comment whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Comment whereUserId($value)
- * @mixin \Eloquent
- */
-	#[\AllowDynamicProperties]
-	class IdeHelperComment {}
-}
-
-namespace App\Models{
-/**
- * 
- *
- * @property int $id
  * @property string $full_name
  * @property string|null $email
  * @property string $phone
@@ -236,6 +201,8 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Category> $categories
  * @property-read int|null $categories_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Faq> $faqs
+ * @property-read int|null $faqs_count
  * @property-read \App\Models\Media|null $image
  * @property-read \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection<int, \App\Models\Media> $media
  * @property-read int|null $media_count
@@ -266,6 +233,40 @@ namespace App\Models{
  */
 	#[\AllowDynamicProperties]
 	class IdeHelperEventProgram {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
+ * @property \App\Enums\Faq\FaqStatusEnum $status
+ * @property int $user_id
+ * @property string $model_type
+ * @property int $model_id
+ * @property string $question
+ * @property string|null $answer
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $model
+ * @property-read \App\Models\User $user
+ * @method static \Database\Factories\FaqFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Faq newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Faq newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Faq query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Faq whereAnswer($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Faq whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Faq whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Faq whereModelId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Faq whereModelType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Faq whereQuestion($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Faq whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Faq whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Faq whereUserId($value)
+ * @mixin \Eloquent
+ */
+	#[\AllowDynamicProperties]
+	class IdeHelperFaq {}
 }
 
 namespace App\Models{
@@ -624,7 +625,7 @@ namespace App\Models{
  * @property string $description
  * @property int|null $price
  * @property int|null $previous_price
- * @property array<array-key, mixed>|null $faqs
+ * @property array<array-key, mixed>|null $faqs_array
  * @property int $episodes_duration_seconds
  * @property string|null $published_at
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -650,7 +651,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Series whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Series whereDescription($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Series whereEpisodesDurationSeconds($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Series whereFaqs($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Series whereFaqsArray($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Series whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Series wherePaymentType($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Series wherePresentationMode($value)

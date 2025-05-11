@@ -21,7 +21,7 @@ return new class extends Migration
             $table->text('description');
             $table->unsignedInteger('price')->nullable();
             $table->unsignedInteger('previous_price')->nullable();
-            $table->json('faqs')->nullable();
+            $table->json('faqs_array')->nullable();
             $table->unsignedInteger('episodes_duration_seconds')->default(0);
             $table->timestamp('published_at')->nullable();
             $table->timestamps();

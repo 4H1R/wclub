@@ -2,18 +2,23 @@
 
 namespace App\Models;
 
+use App\Enums\Faq\FaqStatusEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 /**
- * @mixin IdeHelperComment
+ * @mixin IdeHelperFaq
  */
-class Comment extends Model
+class Faq extends Model
 {
-    /** @use HasFactory<\Database\Factories\CommentFactory> */
+    /** @use HasFactory<\Database\Factories\FaqFactory> */
     use HasFactory;
+
+    protected $casts = [
+        'status' => FaqStatusEnum::class,
+    ];
 
     public function model(): MorphTo
     {
@@ -23,10 +28,5 @@ class Comment extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
-    }
-
-    public function parent(): BelongsTo
-    {
-        return $this->belongsTo(Comment::class, 'parent_id');
     }
 }

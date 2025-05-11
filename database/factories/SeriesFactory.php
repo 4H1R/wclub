@@ -45,7 +45,7 @@ class SeriesFactory extends Factory
             'previous_price' => $isFree ? null : $previousPrice,
             'short_description' => $this->faker->persianText(rand(150, 250), true),
             'description' => $this->faker->persianParagraphs(rand(1, 5), true),
-            'faqs' => fake()->boolean() ? $this->createFaqs() : null,
+            'faqs_array' => fake()->boolean() ? $this->createFaqs() : null,
             'episodes_duration_seconds' => rand(3_600, 190_000),
             'published_at' => fake()->boolean(90) ? now() : null,
         ];

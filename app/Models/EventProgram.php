@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Traits\HasCategories;
+use App\Models\Traits\HasFaqs;
 use App\Models\Traits\HasSlug;
 use App\Models\Traits\HasTargetGroups;
 use Illuminate\Database\Eloquent\Builder;
@@ -19,7 +20,7 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 class EventProgram extends Model implements HasMedia
 {
     /** @use HasFactory<\Database\Factories\EventProgramFactory> */
-    use HasCategories, HasFactory, HasSlug, HasTargetGroups, InteractsWithMedia;
+    use HasCategories, HasFactory, HasFaqs, HasSlug, HasTargetGroups, InteractsWithMedia;
 
     public function registerMediaCollections(): void
     {
