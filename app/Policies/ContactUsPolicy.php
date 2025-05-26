@@ -15,7 +15,7 @@ class ContactUsPolicy
 
     public function view(User $user, ContactUs $contactUs): bool
     {
-        return $user->hasPermissionTo(PermissionEnum::ViewAnyContests);
+        return $user->hasPermissionTo(PermissionEnum::ViewAnyContactUs);
     }
 
     public function create(User $user): bool
@@ -30,7 +30,7 @@ class ContactUsPolicy
 
     public function delete(User $user, ContactUs $contactUs): bool
     {
-        return $user->hasPermissionTo(PermissionEnum::ViewAnyContests);
+        return $user->hasPermissionTo(PermissionEnum::DeleteAnyContactUs);
     }
 
     public function restore(User $user, ContactUs $contactUs): bool

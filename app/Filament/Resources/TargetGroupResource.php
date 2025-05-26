@@ -34,12 +34,14 @@ class TargetGroupResource extends CustomResource
                 ->translateLabel()
                 ->minValue(1)
                 ->maxValue(150)
+                ->required()
                 ->integer(),
             Forms\Components\TextInput::make('max_age')
                 ->translateLabel()
                 ->gt('min_age')
                 ->minValue(1)
                 ->maxValue(150)
+                ->required()
                 ->integer(),
             FileInput::make($form, 'image', visibility: 'public')
                 ->image()

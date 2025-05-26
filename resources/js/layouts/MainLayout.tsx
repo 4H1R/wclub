@@ -34,7 +34,7 @@ export default function MainLayout({ children }: MainLayoutProps) {
           <main className="space-y flex flex-1 flex-col pb-8 md:pb-6">{children}</main>
           <Footer />
         </div>
-        <div className="drawer-side z-20">
+        <div className="drawer-side">
           <label
             htmlFor={config.mobileDrawerId}
             aria-label="close sidebar"
