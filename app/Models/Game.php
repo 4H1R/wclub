@@ -30,7 +30,7 @@ class Game extends Model
                 'slug' => 'roll-the-dice',
                 'image' => asset('images/games/rollTheDice.webp'),
                 'image_type' => 'contain',
-                'short_description' => 'با ربات باشگاه بانوان مسابقه تاس اندازی بده و هرکی عدد سی رو زودتر اورد برندست.',
+                'short_description' => sprintf('با ربات %s مسابقه تاس اندازی بده و هرکی عدد سی رو زودتر اورد برندست.', config('app.name')),
             ],
         ];
     }
