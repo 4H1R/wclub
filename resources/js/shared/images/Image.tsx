@@ -6,11 +6,5 @@ export interface ImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
 }
 
 export default function Image({ className, ...props }: ImageProps) {
-  return (
-    <img
-      loading="lazy"
-      {...props}
-      className={cn('object-cover duration-75 ease-in-out', className)}
-    />
-  );
+  return <img loading="lazy" {...props} className={cn('object-cover', className)} />;
 }

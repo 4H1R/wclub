@@ -34,7 +34,7 @@ export default function Show() {
       <div className="space-y">
         {news.image && (
           <Image
-            className="w-full rounded-box object-contain"
+            className="mx-auto aspect-square w-full rounded-box object-cover lg:max-h-[40vh] lg:w-[70%]"
             src={news.image?.original_url}
             alt={news.title}
           />

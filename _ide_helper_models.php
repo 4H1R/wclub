@@ -266,8 +266,8 @@ namespace App\Models{
  * @property string $title
  * @property string $description
  * @property string $address
- * @property float $latitude
- * @property float $longitude
+ * @property float|null $latitude
+ * @property float|null $longitude
  * @property int $max_participants
  * @property string|null $published_at
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -589,7 +589,7 @@ namespace App\Models{
  * @property string $description
  * @property int|null $price
  * @property int|null $previous_price
- * @property string|null $faqs_array
+ * @property array<array-key, mixed>|null $faqs
  * @property int $episodes_duration_seconds
  * @property string|null $published_at
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -615,7 +615,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Series whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Series whereDescription($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Series whereEpisodesDurationSeconds($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Series whereFaqsArray($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Series whereFaqs($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Series whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Series wherePaymentType($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Series wherePresentationMode($value)
