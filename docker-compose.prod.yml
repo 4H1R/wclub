@@ -119,7 +119,7 @@ services:
       DB_HOST: pgsql
       DB_NAME: '${DB_DATABASE}'
       AUTH_TYPE: scram-sha-256
-      POOL_MODE: transaction
+      POOL_MODE: session
       ADMIN_USERS: '${DB_USERNAME}'
     networks:
       - wclub
