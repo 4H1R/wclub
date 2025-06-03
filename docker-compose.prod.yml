@@ -138,13 +138,13 @@ services:
       WITH_SCHEDULER: true
       WITH_INERTIA_SSR: true
     ports:
-      - '127.0.0.1:8008:8000'
+      - '127.0.0.1:8000:8000'
   app-fallback:
     <<: *base
     environment:
       CONTAINER_MODE: http
     ports:
-      - '127.0.0.1:8009:8000'
+      - '127.0.0.1:8001:8000'
 
 volumes:
   storage:
