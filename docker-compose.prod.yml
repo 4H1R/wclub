@@ -9,8 +9,8 @@ x-base: &base
   depends_on:
     pgsql:
       condition: service_healthy
-    pgbouncer:
-      condition: service_healthy
+    # pgbouncer:
+    #   condition: service_healthy
     redis:
       condition: service_healthy
     minio:
@@ -93,8 +93,8 @@ services:
     profiles: [ app ]
     image: 'minio/minio:latest'
     ports:
-      - '127.0.0.1:9002:9000'
-      - '127.0.0.1:8902:8900'
+      - '127.0.0.1:9000:9000'
+      - '127.0.0.1:8900:8900'
     security_opt:
       - no-new-privileges:true
     environment:
