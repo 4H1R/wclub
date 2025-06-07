@@ -217,6 +217,7 @@ return [
         'telegram' => 'تلگرام',
         'birth_date' => 'تاریخ تولد',
         'today' => 'امروز',
+        'question' => 'سؤال',
     ],
 
 ];

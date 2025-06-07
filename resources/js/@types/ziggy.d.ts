@@ -75,6 +75,7 @@ declare module 'ziggy-js' {
     'games.index': [];
     'games.nardeban-shadi': [];
     'games.roll-the-dice': [];
+    'faqs.store': [];
     'contests.registrations.store': [
       {
         name: 'contest';

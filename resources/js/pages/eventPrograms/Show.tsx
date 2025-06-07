@@ -106,7 +106,7 @@ export default function Show() {
             </div>
           </div>
         </div>
-        <Faqs faqs={faqs} />
+        <Faqs faqs={faqs} modelId={event_program.id} />
       </div>
       <div className="divider clear-both md:pt-6" />
       <h2 className="h2">رویداد های دیگر</h2>
