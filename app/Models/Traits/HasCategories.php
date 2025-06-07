@@ -3,7 +3,6 @@
 namespace App\Models\Traits;
 
 use App\Models\Category;
-use App\Models\Tag;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 trait HasCategories
@@ -16,7 +15,7 @@ trait HasCategories
     }
 
     /**
-     * @return MorphToMany<Tag>
+     * @return MorphToMany<Category>
      */
     public function categories(): MorphToMany
     {

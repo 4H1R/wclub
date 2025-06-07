@@ -1,3 +1,4 @@
+import { datetimeOptions } from '@/fixtures';
 import axios, { AxiosError } from 'axios';
 import { ClassValue, clsx } from 'clsx';
 import get from 'lodash/get';
@@ -100,4 +101,8 @@ export function isAxiosError<ResponseType>(
 export function isUrlActive(currentUrl: string, targetUrl: string) {
   if (targetUrl === '/') return currentUrl === targetUrl;
   return currentUrl.startsWith(targetUrl);
+}
+
+export function formatDatetime(timestamp: string, options?: Intl.DateTimeFormatOptions): string {
+  return new Intl.DateTimeFormat('fa-IR', options ?? datetimeOptions).format(new Date(timestamp));
 }

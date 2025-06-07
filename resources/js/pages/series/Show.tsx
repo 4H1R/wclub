@@ -71,7 +71,7 @@ export default function Show() {
                   <h2 className="h2 text-base-content md:text-start">توضیحات</h2>
                 </div>
                 <Description description={series.description} />
-                <Faqs faqs={series.faqs} />
+                <Faqs faqsArray={series.faqs_array} />
               </div>
             </div>
           </div>

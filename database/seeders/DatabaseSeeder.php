@@ -9,6 +9,7 @@ use App\Models\ContactUs;
 use App\Models\Contest;
 use App\Models\Coupon;
 use App\Models\EventProgram;
+use App\Models\Faq;
 use App\Models\Garden;
 use App\Models\News;
 use App\Models\Order;
@@ -54,6 +55,7 @@ class DatabaseSeeder extends Seeder
             ->create()
             ->each(function (EventProgram $eventProgram) use ($eventProgramCategories) {
                 $eventProgram->categories()->attach($eventProgramCategories->random(rand(0, 5))->pluck('id'));
+                Faq::factory(random_int(0, 5))->for($eventProgram, 'model')->create();
             });
 
         $contestsCategories = Category::factory(10)->create(['model' => Contest::class]);
@@ -85,7 +87,6 @@ class DatabaseSeeder extends Seeder
                             'model_id' => $series_id,
                         ]);
                     });
-
                 Transaction::factory(random_int(1, 5))->create([
                     'order_id' => $order->id,
                     'user_id' => $order->user_id,

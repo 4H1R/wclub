@@ -106,6 +106,11 @@ enum PermissionEnum: string implements HasLabel
     case CreateTransactions = 'Create Transactions';
     case DeleteAnyTransactions = 'Delete Any Transactions';
     case UpdateAnyTransactions = 'Update Any Transactions';
+    // Faqs
+    case ViewAnyFaqs = 'View Any Faqs';
+    case CreateFaqs = 'Create Faqs';
+    case DeleteAnyFaqs = 'Delete Any Faqs';
+    case UpdateAnyFaqs = 'Update Any Faqs';
 
     public function getLabel(): string
     {
@@ -207,6 +212,11 @@ enum PermissionEnum: string implements HasLabel
             self::UpdateAnyTransactions => 'ویرایش هر تراکنش',
             self::CreateTransactions => 'ایجاد تراکنش',
             self::DeleteAnyTransactions => 'حدف هر تراکنش',
+            // Faqs
+            self::ViewAnyFaqs => 'مشاهده همه پرسش و پاسخ ها',
+            self::UpdateAnyFaqs => 'ویرایش هر پرسش و پاسخ',
+            self::CreateFaqs => 'ایجاد پرسش و پاسخ',
+            self::DeleteAnyFaqs => 'حدف هر پرسش و پاسخ',
         };
     }
 }

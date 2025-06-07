@@ -1,11 +1,11 @@
 import { GoDotFill } from 'react-icons/go';
 
 type FaqsProps = {
-  faqs: App.Data.Series.SeriesFaqData[] | undefined | null;
+  faqsArray: App.Data.Series.SeriesFaqData[] | undefined | null;
 };
 
-export default function Faqs({ faqs }: FaqsProps) {
-  if (!faqs || faqs.length <= 0) return null;
+export default function Faqs({ faqsArray }: FaqsProps) {
+  if (!faqsArray || faqsArray.length <= 0) return null;
 
   return (
     <>
@@ -14,7 +14,7 @@ export default function Faqs({ faqs }: FaqsProps) {
         <GoDotFill className="hidden size-4 md:block" />
         <h2 className="h2 text-base-content md:text-start">سوالات متداول</h2>
       </div>
-      {faqs.map((faq, i) => (
+      {faqsArray.map((faq, i) => (
         <div
           key={i}
           tabIndex={0}

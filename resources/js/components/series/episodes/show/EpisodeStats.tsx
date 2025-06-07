@@ -1,4 +1,4 @@
-import { convertSecondsToTime } from '@/utils';
+import { convertSecondsToTime, formatDatetime } from '@/utils';
 import { digitsEnToFa, numberToWords } from '@persian-tools/persian-tools';
 import { HiBookOpen, HiClock, HiFilm, HiMap } from 'react-icons/hi2';
 
@@ -18,7 +18,7 @@ export default function EpisodeStats({ currentEpisode }: EpisodeStatsProps) {
     {
       Icon: HiMap,
       title: 'انتشار شده در',
-      value: new Intl.DateTimeFormat('fa-IR').format(new Date(currentEpisode.created_at)),
+      value: formatDatetime(currentEpisode.created_at),
     },
   ];
 

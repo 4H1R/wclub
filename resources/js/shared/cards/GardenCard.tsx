@@ -23,9 +23,9 @@ export default function GardenCard({ garden, hasWidth = false, className }: Gard
       <div className="card-body h-full">
         <h2 className="card-title">{garden.title}</h2>
         <p className="mb-4 line-clamp-4 max-h-fit text-sm text-base-content/80">{garden.address}</p>
-        <Link className="btn mt-auto" href={href}>
+        {/* <Link className="btn mt-auto" href={href}>
           <span>اطلاعات بیشتر</span>
-        </Link>
+        </Link> */}
       </div>
     </div>
   );

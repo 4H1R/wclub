@@ -147,12 +147,33 @@ namespace App\Models{
 /**
  * 
  *
+ * @property int $id
+ * @property int|null $user_id
+ * @property string $title
+ * @property string $code
  * @property \App\Enums\Coupon\CouponTypeEnum $type
+ * @property int|null $amount
+ * @property int|null $percentage
+ * @property int|null $max_percentage_amount
+ * @property \Illuminate\Support\Carbon $expired_at
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\User|null $user
  * @method static \Database\Factories\CouponFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Coupon newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Coupon newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Coupon query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Coupon whereAmount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Coupon whereCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Coupon whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Coupon whereExpiredAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Coupon whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Coupon whereMaxPercentageAmount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Coupon wherePercentage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Coupon whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Coupon whereType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Coupon whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Coupon whereUserId($value)
  * @mixin \Eloquent
  */
 	#[\AllowDynamicProperties]
@@ -165,9 +186,12 @@ namespace App\Models{
  *
  * @property int $id
  * @property int|null $user_id
+ * @property string $payment_type
  * @property string $title
  * @property string $short_description
  * @property string $description
+ * @property int|null $price
+ * @property int|null $previous_price
  * @property int|null $min_participants
  * @property int|null $max_participants
  * @property string $started_at
@@ -177,6 +201,8 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Category> $categories
  * @property-read int|null $categories_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Faq> $faqs
+ * @property-read int|null $faqs_count
  * @property-read \App\Models\Media|null $image
  * @property-read \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection<int, \App\Models\Media> $media
  * @property-read int|null $media_count
@@ -194,6 +220,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram whereMaxParticipants($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram whereMinParticipants($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram wherePaymentType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram wherePreviousPrice($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram wherePrice($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram wherePublishedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram whereShortDescription($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram whereStartedAt($value)
@@ -204,6 +233,23 @@ namespace App\Models{
  */
 	#[\AllowDynamicProperties]
 	class IdeHelperEventProgram {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property \App\Enums\Faq\FaqStatusEnum $status
+ * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $model
+ * @property-read \App\Models\User|null $user
+ * @method static \Database\Factories\FaqFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Faq newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Faq newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Faq query()
+ * @mixin \Eloquent
+ */
+	#[\AllowDynamicProperties]
+	class IdeHelperFaq {}
 }
 
 namespace App\Models{
@@ -239,8 +285,8 @@ namespace App\Models{
  * @property string $title
  * @property string $description
  * @property string $address
- * @property float $latitude
- * @property float $longitude
+ * @property float|null $latitude
+ * @property float|null $longitude
  * @property int $max_participants
  * @property string|null $published_at
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -369,8 +415,17 @@ namespace App\Models{
 /**
  * 
  *
+ * @property int $id
+ * @property int|null $user_id
+ * @property int|null $coupon_id
  * @property \App\Enums\Order\OrderStatusEnum $status
  * @property \App\Enums\Order\OrderPaymentStatusEnum $payment_status
+ * @property int $total_amount
+ * @property int $coupon_amount
+ * @property int $paying_amount
+ * @property string|null $description
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\Coupon|null $coupon
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\OrderItem> $items
  * @property-read int|null $items_count
@@ -381,6 +436,17 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Order newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Order newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Order query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Order whereCouponAmount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Order whereCouponId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Order whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Order whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Order whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Order wherePayingAmount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Order wherePaymentStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Order whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Order whereTotalAmount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Order whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Order whereUserId($value)
  * @mixin \Eloquent
  */
 	#[\AllowDynamicProperties]
@@ -391,12 +457,30 @@ namespace App\Models{
 /**
  * 
  *
+ * @property int $id
+ * @property int $order_id
+ * @property string $model_type
+ * @property int $model_id
+ * @property int $price
+ * @property int $quantity
+ * @property int $subtotal
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $model
- * @property-read \App\Models\Order|null $order
+ * @property-read \App\Models\Order $order
  * @method static \Database\Factories\OrderItemFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|OrderItem newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|OrderItem newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|OrderItem query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|OrderItem whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|OrderItem whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|OrderItem whereModelId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|OrderItem whereModelType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|OrderItem whereOrderId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|OrderItem wherePrice($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|OrderItem whereQuantity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|OrderItem whereSubtotal($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|OrderItem whereUpdatedAt($value)
  * @mixin \Eloquent
  */
 	#[\AllowDynamicProperties]
@@ -517,17 +601,18 @@ namespace App\Models{
  *
  * @property int $id
  * @property \App\Enums\Series\SeriesStatusEnum $status
- * @property string $type
+ * @property \App\Enums\PaymentTypeEnum $payment_type
+ * @property \App\Enums\Series\SeriesPresentationModeEnum $presentation_mode
  * @property string $title
  * @property string $short_description
  * @property string $description
- * @property array<array-key, mixed>|null $faqs
+ * @property int|null $price
+ * @property int|null $previous_price
+ * @property string|null $faqs
  * @property int $episodes_duration_seconds
  * @property string|null $published_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property \App\Enums\PaymentTypeEnum $payment_type
- * @property \App\Enums\Series\SeriesPresentationModeEnum $presentation_mode
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Category> $categories
  * @property-read int|null $categories_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\SeriesChapter> $chapters
@@ -551,11 +636,14 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Series whereEpisodesDurationSeconds($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Series whereFaqs($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Series whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Series wherePaymentType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Series wherePresentationMode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Series wherePreviousPrice($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Series wherePrice($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Series wherePublishedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Series whereShortDescription($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Series whereStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Series whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Series whereType($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Series whereUpdatedAt($value)
  * @mixin \Eloquent
  */
@@ -674,14 +762,34 @@ namespace App\Models{
 /**
  * 
  *
+ * @property int $id
+ * @property int|null $user_id
+ * @property int|null $order_id
  * @property \App\Enums\Transaction\TransactionStatusEnum $status
  * @property \App\Enums\Transaction\TransactionGatewayNameEnum $gateway_name
+ * @property int $amount
+ * @property string|null $ref_id
+ * @property string|null $token
+ * @property string|null $description
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\Order|null $order
  * @property-read \App\Models\User|null $user
  * @method static \Database\Factories\TransactionFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Transaction newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Transaction newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Transaction query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transaction whereAmount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transaction whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transaction whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transaction whereGatewayName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transaction whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transaction whereOrderId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transaction whereRefId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transaction whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transaction whereToken($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transaction whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Transaction whereUserId($value)
  * @mixin \Eloquent
  */
 	#[\AllowDynamicProperties]
@@ -752,11 +860,23 @@ namespace App\Models{
 /**
  * 
  *
- * @property-read \App\Models\User|null $user
+ * @property int $id
+ * @property int $user_id
+ * @property int $score
+ * @property string $text
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\User $user
  * @method static \Database\Factories\UserScoreLogFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UserScoreLog newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UserScoreLog newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UserScoreLog query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|UserScoreLog whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|UserScoreLog whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|UserScoreLog whereScore($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|UserScoreLog whereText($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|UserScoreLog whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|UserScoreLog whereUserId($value)
  * @mixin \Eloquent
  */
 	#[\AllowDynamicProperties]

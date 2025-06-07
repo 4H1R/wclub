@@ -94,6 +94,14 @@ declare namespace App.Data.EventProgram {
     categories: Array<App.Data.Category.CategoryData>;
   };
 }
+declare namespace App.Data.Faq {
+  export type FaqData = {
+    id: number;
+    question: string;
+    answer: string | null;
+    created_at: string;
+  };
+}
 declare namespace App.Data.Game {
   export type GameData = {
     title: string;
@@ -208,7 +216,7 @@ declare namespace App.Data.Series {
     owned_users_count: number;
     is_owned: boolean;
     chapters: Array<App.Data.SeriesChapter.SeriesChapterData>;
-    faqs: Array<App.Data.Series.SeriesFaqData> | null;
+    faqs_array: Array<App.Data.Series.SeriesFaqData> | null;
     image: App.Data.Media.ImageData | null;
     categories: Array<App.Data.Category.CategoryData>;
     published_at: string;
@@ -354,11 +362,18 @@ declare namespace App.Enums {
     | 'View Any Transactions'
     | 'Create Transactions'
     | 'Delete Any Transactions'
-    | 'Update Any Transactions';
+    | 'Update Any Transactions'
+    | 'View Any Faqs'
+    | 'Create Faqs'
+    | 'Delete Any Faqs'
+    | 'Update Any Faqs';
   export type RoleEnum = 'Super Admin' | 'Test';
 }
 declare namespace App.Enums.Coupon {
   export type CouponTypeEnum = 'AMOUNT' | 'PERCENTAGE';
+}
+declare namespace App.Enums.Faq {
+  export type FaqStatusEnum = 'UNDER_REVIEW' | 'APPROVED' | 'REJECTED';
 }
 declare namespace App.Enums.Order {
   export type OrderPaymentStatusEnum = 'WAITING_FOR_PAYMENT' | 'FAILURE' | 'SUCCESSFUL';

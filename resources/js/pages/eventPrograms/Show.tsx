@@ -1,5 +1,5 @@
 import { PageProps } from '@/@types';
-import { timeOptions } from '@/fixtures';
+import Faqs from '@/components/faqs/Faqs';
 import BreadCrumb from '@/shared/BreadCrumb';
 import EventProgramCard from '@/shared/cards/EventProgramCard';
 import Button from '@/shared/forms/Button';
@@ -7,7 +7,7 @@ import Head from '@/shared/Head';
 import Image from '@/shared/images/Image';
 import CategoriesBadge from '@/shared/resources/show/CategoriesBadge';
 import ShareButton from '@/shared/resources/show/ShareButton';
-import { slugifyId } from '@/utils';
+import { formatDatetime, slugifyId } from '@/utils';
 import { usePage } from '@inertiajs/react';
 import { addCommas, digitsEnToFa } from '@persian-tools/persian-tools';
 import { HiOutlineInformationCircle } from 'react-icons/hi2';
@@ -16,12 +16,13 @@ import Markdown from 'react-markdown';
 type TPage = PageProps<{
   event_program: App.Data.EventProgram.EventProgramFullData;
   recommended_event_programs: App.Data.EventProgram.EventProgramData[];
+  faqs: App.Data.Faq.FaqData[];
 }>;
 
 const registerId = 'registerId';
 
 export default function Show() {
-  const { event_program, recommended_event_programs } = usePage<TPage>().props;
+  const { event_program, recommended_event_programs, faqs } = usePage<TPage>().props;
 
   const handleScrollToRegister = () => {
     document.getElementById(registerId)?.scrollIntoView({ behavior: 'smooth' });
@@ -95,14 +96,8 @@ export default function Show() {
                   </li>
                 )}
                 <li>
-                  شروع از{' '}
-                  {new Intl.DateTimeFormat('fa-IR', timeOptions).format(
-                    new Date(event_program.started_at),
-                  )}{' '}
-                  تا{' '}
-                  {new Intl.DateTimeFormat('fa-IR', timeOptions).format(
-                    new Date(event_program.finished_at),
-                  )}
+                  شروع از {formatDatetime(event_program.started_at)} تا{' '}
+                  {formatDatetime(event_program.finished_at)}
                 </li>
               </ul>
               {/*<div className="card-actions mt-4">*/}
@@ -111,6 +106,7 @@ export default function Show() {
             </div>
           </div>
         </div>
+        <Faqs faqs={faqs} />
       </div>
       <div className="divider clear-both md:pt-6" />
       <h2 className="h2">رویداد های دیگر</h2>

@@ -1,6 +1,5 @@
 import { PageProps } from '@/@types';
 import RegisterContest from '@/components/contests/RegisterContest';
-import { timeOptions } from '@/fixtures';
 import BreadCrumb from '@/shared/BreadCrumb';
 import ContestCard from '@/shared/cards/ContestCard';
 import Button from '@/shared/forms/Button';
@@ -8,7 +7,7 @@ import Head from '@/shared/Head';
 import Image from '@/shared/images/Image';
 import CategoriesBadge from '@/shared/resources/show/CategoriesBadge';
 import ShareButton from '@/shared/resources/show/ShareButton';
-import { slugifyId } from '@/utils';
+import { formatDatetime, slugifyId } from '@/utils';
 import { usePage } from '@inertiajs/react';
 import { addCommas, digitsEnToFa } from '@persian-tools/persian-tools';
 import { HiOutlineCheck } from 'react-icons/hi2';
@@ -90,14 +89,8 @@ export default function Show() {
                   <li>حداکثر {digitsEnToFa(addCommas(contest.max_participants as number))} فرد</li>
                 )}
                 <li>
-                  شروع از{' '}
-                  {new Intl.DateTimeFormat('fa-IR', timeOptions).format(
-                    new Date(contest.started_at),
-                  )}{' '}
-                  تا{' '}
-                  {new Intl.DateTimeFormat('fa-IR', timeOptions).format(
-                    new Date(contest.finished_at),
-                  )}
+                  شروع از {formatDatetime(contest.started_at)} تا{' '}
+                  {formatDatetime(contest.finished_at)}
                 </li>
               </ul>
               <div className="card-actions mt-4">

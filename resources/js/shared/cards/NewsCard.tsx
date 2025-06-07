@@ -33,9 +33,9 @@ export default function NewsCard({ news, hasWidth = false }: NewsCardProps) {
             ))}
           </div>
         )}
-        <Link className="btn mt-auto" href={href}>
+        {/* <Link className="btn mt-auto" href={href}>
           <span>اطلاعات بیشتر</span>
-        </Link>
+        </Link> */}
       </div>
     </div>
   );

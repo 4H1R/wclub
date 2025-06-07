@@ -33,7 +33,7 @@ enum OrderStatusEnum: string implements HasColor, HasLabel
     {
         return match ($this) {
             self::WaitingForPayment => 'gray',
-            self::Canceled => 'error',
+            self::Canceled => 'danger',
             self::Paid => 'success',
             self::Ready => 'success',
             self::Sent => 'success',

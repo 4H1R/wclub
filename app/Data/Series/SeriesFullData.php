@@ -29,7 +29,7 @@ class SeriesFullData extends Data
         /** @var SeriesChapterData[] */
         public array $chapters,
         /** @var SeriesFaqData[] */
-        public ?array $faqs,
+        public ?array $faqs_array,
         public ?ImageData $image,
         /** @var CategoryData[] */
         public array $categories,
