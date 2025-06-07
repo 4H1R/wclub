@@ -13,8 +13,8 @@ x-base: &base
       condition: service_healthy
     redis:
       condition: service_healthy
-    # minio:
-    #   condition: service_healthy
+    minio:
+      condition: service_healthy
   build:
     context: .
     dockerfile: app.dockerfile
@@ -52,8 +52,8 @@ services:
       - no-new-privileges:true
     volumes:
       - pgsql-data:/var/lib/postgresql/data
-    # ports:
-    #   - "127.0.0.1:5437:5432"
+    ports:
+      - "127.0.0.1:5437:5432"
     environment:
       POSTGRES_DB: '${DB_DATABASE}'
       POSTGRES_USER: '${DB_USERNAME}'
@@ -89,34 +89,34 @@ services:
       test: [ 'CMD', 'redis-cli', 'ping' ]
       retries: 3
       timeout: 5s
-  # minio:
-  #   profiles: [ app ]
-  #   image: 'minio/minio:latest'
-  #   ports:
-  #     - '127.0.0.1:9002:9000'
-  #     - '127.0.0.1:8902:8900'
-  #   security_opt:
-  #     - no-new-privileges:true
-  #   environment:
-  #     MINIO_ROOT_USER: '${PUBLIC_AWS_ACCESS_KEY_ID}'
-  #     MINIO_ROOT_PASSWORD: '${PUBLIC_AWS_SECRET_ACCESS_KEY}'
-  #   volumes:
-  #     - 'minio-data:/data/minio'
-  #   networks:
-  #     - wclub
-  #   command: 'minio server /data/minio --console-address ":8900"'
-  #   restart: always
-  #   logging: *default-logging
-  #   healthcheck:
-  #     test: [ 'CMD', 'mc', 'ready', 'local' ]
-  #     retries: 3
-  #     timeout: 5s
+  minio:
+    profiles: [ app ]
+    image: 'minio/minio:latest'
+    ports:
+      - '127.0.0.1:9002:9000'
+      - '127.0.0.1:8902:8900'
+    security_opt:
+      - no-new-privileges:true
+    environment:
+      MINIO_ROOT_USER: '${PUBLIC_AWS_ACCESS_KEY_ID}'
+      MINIO_ROOT_PASSWORD: '${PUBLIC_AWS_SECRET_ACCESS_KEY}'
+    volumes:
+      - 'minio-data:/data/minio'
+    networks:
+      - wclub
+    command: 'minio server /data/minio --console-address ":8900"'
+    restart: always
+    logging: *default-logging
+    healthcheck:
+      test: [ 'CMD', 'mc', 'ready', 'local' ]
+      retries: 3
+      timeout: 5s
   pgbouncer:
     image: edoburu/pgbouncer:latest
     environment:
       DB_USER: '${DB_USERNAME}'
       DB_PASSWORD: '${DB_PASSWORD}'
-      DB_HOST: pgsql
+      DB_HOST: '${DB_HOST}'
       DB_NAME: '${DB_DATABASE}'
       AUTH_TYPE: scram-sha-256
       POOL_MODE: session
@@ -148,7 +148,7 @@ services:
 
 volumes:
   storage:
-  # minio-data:
+  minio-data:
   pgsql-data:
   redis-data:
 
