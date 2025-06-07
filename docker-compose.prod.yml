@@ -111,25 +111,25 @@ services:
       test: [ 'CMD', 'mc', 'ready', 'local' ]
       retries: 3
       timeout: 5s
-  pgbouncer:
-    image: edoburu/pgbouncer:latest
-    environment:
-      DB_USER: '${DB_USERNAME}'
-      DB_PASSWORD: '${DB_PASSWORD}'
-      DB_HOST: '${DB_HOST}'
-      DB_NAME: '${DB_DATABASE}'
-      AUTH_TYPE: scram-sha-256
-      POOL_MODE: session
-      ADMIN_USERS: '${DB_USERNAME}'
-    networks:
-      - wclub
-    # ports:
-    #   - '127.0.0.1:5437:5432'
-    depends_on:
-      pgsql:
-        condition: service_healthy
-    healthcheck:
-      test: [ 'CMD', 'pg_isready', '-h', 'localhost' ]
+  # pgbouncer:
+  #   image: edoburu/pgbouncer:latest
+  #   environment:
+  #     DB_USER: '${DB_USERNAME}'
+  #     DB_PASSWORD: '${DB_PASSWORD}'
+  #     DB_HOST: '${DB_HOST}'
+  #     DB_NAME: '${DB_DATABASE}'
+  #     AUTH_TYPE: scram-sha-256
+  #     POOL_MODE: session
+  #     ADMIN_USERS: '${DB_USERNAME}'
+  #   networks:
+  #     - wclub
+  #   # ports:
+  #   #   - '127.0.0.1:5437:5432'
+  #   depends_on:
+  #     pgsql:
+  #       condition: service_healthy
+  #   healthcheck:
+  #     test: [ 'CMD', 'pg_isready', '-h', 'localhost' ]
   app:
     <<: *base
     environment:
