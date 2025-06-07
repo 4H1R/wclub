@@ -37,11 +37,11 @@ export default function Index() {
         <div className="card-body md:gap-8">
           <div className="space-y-4 text-center">
             <h1 className="text-4xl font-black leading-tight">
-              با کمک باشگاه بانوان اصفهان از خدمات و امتیازات فراوان استفاده کن
+              با کمک {config.websiteTitle} اصفهان از خدمات و امتیازات فراوان استفاده کن
             </h1>
             <p className="text-lg text-base-content/80">
-              باشگاه بانوان برای بانوان از کودک تا بزرگسال توسط شهرداری اصفهان تدارک دیده شده که
-              بیشترین استفاده را از شهر زیبای اصفهان ببرند.
+              {config.websiteTitle} برای بانوان از کودک تا بزرگسال توسط شهرداری اصفهان تدارک دیده
+              شده که بیشترین استفاده را از شهر زیبای اصفهان ببرند.
             </p>
           </div>
           <TargetGroups targetGroups={target_groups} />

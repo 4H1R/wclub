@@ -87,7 +87,6 @@ class DatabaseSeeder extends Seeder
                             'model_id' => $series_id,
                         ]);
                     });
-
                 Transaction::factory(random_int(1, 5))->create([
                     'order_id' => $order->id,
                     'user_id' => $order->user_id,

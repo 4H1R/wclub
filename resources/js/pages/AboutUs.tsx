@@ -1,3 +1,4 @@
+import config from '@/fixtures/config';
 import Head from '@/shared/Head';
 
 export default function AboutUs() {
@@ -22,7 +23,7 @@ export default function AboutUs() {
         <ul className="list-inside list-disc">
           <li>توانمند سازی بانوان بزرگوار اصفهان در زمینه های فرهنگی،علمی، مدیریتی،و اجتماعی</li>
           <li>انسجام ارتباطات و افزایش تعاملات علمی، فرهنگی و اجتماعی بین زنان و مسئولین</li>
-          <li>ایجاد باشگاه بانوان اصفهان جهت ارتباط و تعاملات گسترده با بانوان</li>
+          <li>ایجاد {config.websiteTitle} اصفهان جهت ارتباط و تعاملات گسترده با بانوان</li>
         </ul>
         <p>03134468112 خیابان سروش، کوچه ۶۲ دفتر تخصصی بانوان آفتاب</p>
       </div>

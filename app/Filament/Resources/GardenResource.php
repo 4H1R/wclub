@@ -57,12 +57,10 @@ class GardenResource extends CustomResource
                 ->required(),
             Forms\Components\TextInput::make('longitude')
                 ->translateLabel()
-                ->readOnly()
-                ->required(),
+                ->requiredWith('latitude'),
             Forms\Components\TextInput::make('latitude')
                 ->translateLabel()
-                ->readOnly()
-                ->required(),
+                ->requiredWith('longitude'),
             Map::make('location')
                 ->translateLabel()
                 ->columnSpanFull()
