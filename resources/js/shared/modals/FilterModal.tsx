@@ -80,7 +80,7 @@ export default function FilterModal({
             .map((option) => (
               <div key={option.value} className="form-control">
                 <label className="label cursor-pointer">
-                  <span className="label-text">{option.label}</span>
+                  <span className="label-text lg:text-base">{option.label}</span>
                   <input
                     key={`${option.value}-${selectedOption.has(option.value)}`}
                     defaultChecked={selectedOption.has(option.value)}

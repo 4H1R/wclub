@@ -10,11 +10,12 @@ import Pagination from '@/shared/Pagination';
 import Search from '@/shared/Search';
 import { PaginatedCollection } from '@/types';
 import { usePage } from '@inertiajs/react';
-import { HiOutlineSparkles } from 'react-icons/hi2';
+import { HiOutlineSparkles, HiOutlineStar } from 'react-icons/hi2';
 
 type TPage = PageProps<{
   reward_programs: PaginatedCollection<App.Data.RewardProgram.RewardProgramData>;
   categories: App.Data.Category.CategoryData[];
+  target_groups: App.Data.TargetGroup.TargetGroupData[];
 }>;
 
 const sorts = [
@@ -26,7 +27,7 @@ const sorts = [
 ];
 
 export default function Index() {
-  const { reward_programs, categories } = usePage<TPage>().props;
+  const { reward_programs, categories, target_groups } = usePage<TPage>().props;
   const showTooltip = useShowTooltip();
   const url = usePage().url;
 
@@ -44,6 +45,16 @@ export default function Index() {
           }))}
           title="دسته بندی ها"
           modalTitle="فیلتر بر اساس دسته بندی ها"
+        />
+        <FilterModal
+          ButtonIcon={HiOutlineStar}
+          filterId="target_groups_id"
+          options={target_groups.map((group) => ({
+            label: group.title,
+            value: group.id.toString(),
+          }))}
+          title="گروه های هدف"
+          modalTitle="فیلتر بر اساس گروه های هدف"
         />
       </div>
       <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between lg:flex-col lg:items-start lg:justify-normal">

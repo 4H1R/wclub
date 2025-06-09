@@ -6,11 +6,13 @@ use App\Data\Category\CategoryData;
 use App\Data\EventProgram\EventProgramData;
 use App\Data\EventProgram\EventProgramFullData;
 use App\Data\Faq\FaqData;
+use App\Data\TargetGroup\TargetGroupData;
 use App\Enums\Faq\FaqStatusEnum;
 use App\Http\Middleware\FixSlugMiddleware;
 use App\Models\Category;
 use App\Models\EventProgram;
 use App\Models\Scopes\PublishedScope;
+use App\Models\TargetGroup;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
@@ -36,6 +38,9 @@ class EventProgramController extends Controller implements HasMiddleware
                 AllowedFilter::callback('categories_id', function (Builder $query, array $ids) {
                     $query->whereHas('categories', fn (Builder $builder) => $builder->whereIn('category_id', $ids));
                 }),
+                AllowedFilter::callback('target_groups_id', function (Builder $query, array $ids) {
+                    $query->whereHas('targetGroups', fn (Builder $builder) => $builder->whereIn('target_group_id', $ids));
+                }),
             ], )
             ->defaultSort('-created_at')
             ->allowedSorts(['created_at', 'min_participants', 'max_participants'])
@@ -47,9 +52,14 @@ class EventProgramController extends Controller implements HasMiddleware
             ->where('model', EventProgram::class)
             ->get();
 
+        $targetGroups = TargetGroup::query()
+            ->with('image')
+            ->get();
+
         return Inertia::render('eventPrograms/Index', [
             'event_programs' => EventProgramData::collect($eventPrograms, PaginatedDataCollection::class),
             'categories' => CategoryData::collect($categories),
+            'target_groups' => TargetGroupData::collect($targetGroups),
         ]);
     }
 

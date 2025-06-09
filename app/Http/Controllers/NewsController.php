@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\Data\Category\CategoryData;
 use App\Data\News\NewsData;
 use App\Data\News\NewsFullData;
+use App\Data\TargetGroup\TargetGroupData;
 use App\Http\Middleware\FixSlugMiddleware;
 use App\Models\Category;
 use App\Models\News;
 use App\Models\Scopes\PublishedScope;
+use App\Models\TargetGroup;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
@@ -34,6 +36,9 @@ class NewsController extends Controller implements HasMiddleware
                 AllowedFilter::callback('categories_id', function (Builder $query, array $ids) {
                     $query->whereHas('categories', fn (Builder $builder) => $builder->whereIn('category_id', $ids));
                 }),
+                AllowedFilter::callback('target_groups_id', function (Builder $query, array $ids) {
+                    $query->whereHas('targetGroups', fn (Builder $builder) => $builder->whereIn('target_group_id', $ids));
+                }),
             ], )
             ->defaultSort('-created_at')
             ->allowedSorts(['created_at'])
@@ -45,9 +50,14 @@ class NewsController extends Controller implements HasMiddleware
             ->where('model', News::class)
             ->get();
 
+        $targetGroups = TargetGroup::query()
+            ->with('image')
+            ->get();
+
         return Inertia::render('news/Index', [
             'news' => NewsData::collect($news, PaginatedDataCollection::class),
             'categories' => CategoryData::collect($categories),
+            'target_groups' => TargetGroupData::collect($targetGroups),
         ]);
     }
 
