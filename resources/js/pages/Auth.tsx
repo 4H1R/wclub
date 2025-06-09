@@ -8,12 +8,10 @@ export default function Auth() {
       <Head
         canonicalUrl={route('auth')}
         title="حساب کاربری"
-        description={`ورود یا ایجاد حساب کاربری خود در ${config.websiteTitle} اصفهان`}
+        description={`ورود یا ایجاد حساب کاربری خود در ${config.websiteTitle}`}
       />
       <div className="w-full space-y-4 rounded-box bg-base-200 p-6 md:max-w-xl">
-        <h1 className="text-center text-3xl font-black">
-          حساب کاربری {config.websiteTitle} اصفهان
-        </h1>
+        <h1 className="text-center text-3xl font-black">حساب کاربری {config.websiteTitle}</h1>
         <p className="text-center text-base-content/80">
           شما میتوانید از طریق گزینه های زیر به حساب کاربری خود وارد شوید یا حساب کاربری جدیدی ایجاد
           کنید.
