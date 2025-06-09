@@ -44,7 +44,7 @@ class SeriesController extends Controller implements HasMiddleware
                 }),
             )
             ->withGlobalScope('published', new PublishedScope)
-            ->with(['image', 'categories'])
+            ->with(Series::getCardRelations())
             ->paginate(12);
 
         $categories = Category::query()
@@ -65,7 +65,7 @@ class SeriesController extends Controller implements HasMiddleware
 
         $recommendedSeries = Cache::remember($this->seriesService->getRecommendedSeriesCacheKey($series), now()->addMinutes(10), function () use ($series) {
             $series = Series::query()
-                ->with(['image', 'categories'])
+                ->with(Series::getCardRelations())
                 ->where('id', '!=', $series->id)
                 ->withGlobalScope('published', new PublishedScope)
                 ->inRandomOrder()

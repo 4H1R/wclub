@@ -36,35 +36,35 @@ class IndexController extends Controller
                 ->get();
 
             $eventPrograms = EventProgram::query()
-                ->with(['categories', 'image'])
+                ->with(EventProgram::getCardRelations())
                 ->latest('id')
                 ->take(8)
                 ->withGlobalScope('published', new PublishedScope)
                 ->get();
 
             $rewardPrograms = RewardProgram::query()
-                ->with(['categories', 'image'])
+                ->with(RewardProgram::getCardRelations())
                 ->inRandomOrder()
                 ->take(8)
                 ->withGlobalScope('published', new PublishedScope)
                 ->get();
 
             $contests = Contest::query()
-                ->with(['categories', 'image'])
+                ->with(Contest::getCardRelations())
                 ->latest('id')
                 ->take(8)
                 ->withGlobalScope('published', new PublishedScope)
                 ->get();
 
             $series = Series::query()
-                ->with(['categories', 'image'])
+                ->with(Series::getCardRelations())
                 ->inRandomOrder()
                 ->take(8)
                 ->withGlobalScope('published', new PublishedScope)
                 ->get();
 
             $news = News::query()
-                ->with(['categories', 'image'])
+                ->with(News::getCardRelations())
                 ->latest('id')
                 ->take(8)
                 ->withGlobalScope('published', new PublishedScope)

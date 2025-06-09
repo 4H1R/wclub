@@ -1,3 +1,4 @@
+import SharedCardProperties from '@/components/cards/SharedCardProperties';
 import { cn, slugifyId } from '@/utils';
 import { Link } from '@inertiajs/react';
 import Image from '../images/Image';
@@ -24,18 +25,7 @@ export default function NewsCard({ news, hasWidth = false }: NewsCardProps) {
         <p className="line-clamp-4 max-h-fit text-sm text-base-content/80">
           {news.short_description}
         </p>
-        {news.categories.length > 0 && (
-          <div className="flex flex-wrap items-center gap-1 pb-6 pt-2">
-            {news.categories.map((category) => (
-              <span key={category.id} className="badge badge-md bg-base-200">
-                {category.title}
-              </span>
-            ))}
-          </div>
-        )}
-        {/* <Link className="btn mt-auto" href={href}>
-          <span>اطلاعات بیشتر</span>
-        </Link> */}
+        <SharedCardProperties targetGroups={news.target_groups} categories={news.categories} />
       </div>
     </div>
   );

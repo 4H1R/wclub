@@ -40,7 +40,7 @@ class EventProgramController extends Controller implements HasMiddleware
             ->defaultSort('-created_at')
             ->allowedSorts(['created_at', 'min_participants', 'max_participants'])
             ->withGlobalScope('published', new PublishedScope)
-            ->with(['image', 'categories'])
+            ->with(EventProgram::getCardRelations())
             ->paginate(12);
 
         $categories = Category::query()
@@ -57,10 +57,10 @@ class EventProgramController extends Controller implements HasMiddleware
     {
         abort_unless($eventProgram->published_at, 404);
 
-        $eventProgram->load(['categories', 'image']);
+        $eventProgram->load(EventProgram::getCardRelations());
 
         $recommendedEventPrograms = EventProgram::query()
-            ->with(['categories', 'image'])
+            ->with(EventProgram::getCardRelations())
             ->withGlobalScope('published', new PublishedScope)
             ->where('id', '!=', $eventProgram->id)
             ->take(6)

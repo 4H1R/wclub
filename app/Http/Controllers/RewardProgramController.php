@@ -37,7 +37,7 @@ class RewardProgramController extends Controller implements HasMiddleware
             ], )
             ->allowedSorts(['created_at', 'required_score'])
             ->withGlobalScope('published', new PublishedScope)
-            ->with(['image', 'categories'])
+            ->with(RewardProgram::getCardRelations())
             ->paginate(12);
 
         $categories = Category::query()
@@ -54,10 +54,10 @@ class RewardProgramController extends Controller implements HasMiddleware
     {
         abort_unless($rewardProgram->published_at, 404);
 
-        $rewardProgram->load(['categories', 'image']);
+        $rewardProgram->load(RewardProgram::getCardRelations());
 
         $recommendedRewardPrograms = RewardProgram::query()
-            ->with(['categories', 'image'])
+            ->with(RewardProgram::getCardRelations())
             ->withGlobalScope('published', new PublishedScope)
             ->where('id', '!=', $rewardProgram->id)
             ->take(6)

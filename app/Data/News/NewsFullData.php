@@ -4,6 +4,7 @@ namespace App\Data\News;
 
 use App\Data\Category\CategoryData;
 use App\Data\Media\ImageData;
+use App\Data\TargetGroup\TargetGroupData;
 use Spatie\LaravelData\Data;
 use Spatie\TypeScriptTransformer\Attributes\TypeScript;
 
@@ -18,5 +19,7 @@ class NewsFullData extends Data
         public ?ImageData $image,
         /** @var CategoryData[] */
         public array $categories,
+        /** @var TargetGroupData[] */
+        public array $target_groups,
     ) {}
 }

@@ -4,6 +4,7 @@ namespace App\Data\EventProgram;
 
 use App\Data\Category\CategoryData;
 use App\Data\Media\ImageData;
+use App\Data\TargetGroup\TargetGroupData;
 use App\Enums\PaymentTypeEnum;
 use Spatie\LaravelData\Data;
 use Spatie\TypeScriptTransformer\Attributes\TypeScript;
@@ -26,5 +27,7 @@ class EventProgramFullData extends Data
         public string $finished_at,
         /** @var CategoryData[] */
         public array $categories,
+        /** @var TargetGroupData[] */
+        public array $target_groups,
     ) {}
 }

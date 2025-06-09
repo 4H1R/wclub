@@ -38,7 +38,7 @@ class NewsController extends Controller implements HasMiddleware
             ->defaultSort('-created_at')
             ->allowedSorts(['created_at'])
             ->withGlobalScope('published', new PublishedScope)
-            ->with(['image', 'categories'])
+            ->with(News::getCardRelations())
             ->paginate(12);
 
         $categories = Category::query()
@@ -55,10 +55,10 @@ class NewsController extends Controller implements HasMiddleware
     {
         abort_unless($news->published_at, 404);
 
-        $news->load(['categories', 'image']);
+        $news->load(News::getCardRelations());
 
         $recommendedNews = News::query()
-            ->with(['categories', 'image'])
+            ->with(News::getCardRelations())
             ->withGlobalScope('published', new PublishedScope)
             ->where('id', '!=', $news->id)
             ->take(6)

@@ -1,3 +1,4 @@
+import SharedCardProperties from '@/components/cards/SharedCardProperties';
 import { cn, slugifyId } from '@/utils';
 import { Link } from '@inertiajs/react';
 import { addCommas, digitsEnToFa } from '@persian-tools/persian-tools';
@@ -47,15 +48,11 @@ export default function RewardProgramCard({
               </span>
             </div>
           </div>
-          {rewardProgram.categories.map((category) => (
-            <span key={category.id} className="badge badge-md bg-base-200">
-              {category.title}
-            </span>
-          ))}
         </div>
-        {/* <Link className="btn mt-auto" href={href}>
-          اطلاعات بیشتر
-        </Link> */}
+        <SharedCardProperties
+          targetGroups={rewardProgram.target_groups}
+          categories={rewardProgram.categories}
+        />
       </div>
     </div>
   );

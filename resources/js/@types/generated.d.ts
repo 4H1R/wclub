@@ -38,6 +38,7 @@ declare namespace App.Data.Contest {
     started_at: string;
     finished_at: string;
     categories: Array<App.Data.Category.CategoryData>;
+    target_groups: Array<App.Data.TargetGroup.TargetGroupData>;
   };
   export type ContestFullData = {
     id: number;
@@ -51,6 +52,7 @@ declare namespace App.Data.Contest {
     started_at: string;
     finished_at: string;
     categories: Array<App.Data.Category.CategoryData>;
+    target_groups: Array<App.Data.TargetGroup.TargetGroupData>;
   };
 }
 declare namespace App.Data.Coupon {
@@ -77,6 +79,7 @@ declare namespace App.Data.EventProgram {
     started_at: string;
     finished_at: string;
     categories: Array<App.Data.Category.CategoryData>;
+    target_groups: Array<App.Data.TargetGroup.TargetGroupData>;
   };
   export type EventProgramFullData = {
     id: number;
@@ -92,6 +95,7 @@ declare namespace App.Data.EventProgram {
     started_at: string;
     finished_at: string;
     categories: Array<App.Data.Category.CategoryData>;
+    target_groups: Array<App.Data.TargetGroup.TargetGroupData>;
   };
 }
 declare namespace App.Data.Faq {
@@ -156,6 +160,7 @@ declare namespace App.Data.News {
     short_description: string;
     image: App.Data.Media.ImageData | null;
     categories: Array<App.Data.Category.CategoryData>;
+    target_groups: Array<App.Data.TargetGroup.TargetGroupData>;
   };
   export type NewsFullData = {
     id: number;
@@ -164,6 +169,7 @@ declare namespace App.Data.News {
     description: string;
     image: App.Data.Media.ImageData | null;
     categories: Array<App.Data.Category.CategoryData>;
+    target_groups: Array<App.Data.TargetGroup.TargetGroupData>;
   };
 }
 declare namespace App.Data.RewardProgram {
@@ -174,6 +180,7 @@ declare namespace App.Data.RewardProgram {
     required_score: number;
     image: App.Data.Media.ImageData | null;
     categories: Array<App.Data.Category.CategoryData>;
+    target_groups: Array<App.Data.TargetGroup.TargetGroupData>;
   };
   export type RewardProgramFullData = {
     id: number;
@@ -183,6 +190,7 @@ declare namespace App.Data.RewardProgram {
     description: string;
     image: App.Data.Media.ImageData | null;
     categories: Array<App.Data.Category.CategoryData>;
+    target_groups: Array<App.Data.TargetGroup.TargetGroupData>;
   };
 }
 declare namespace App.Data.Series {
@@ -197,6 +205,7 @@ declare namespace App.Data.Series {
     episodes_duration_seconds: number;
     image: App.Data.Media.ImageData | null;
     categories: Array<App.Data.Category.CategoryData>;
+    target_groups: Array<App.Data.TargetGroup.TargetGroupData>;
   };
   export type SeriesFaqData = {
     title: string;
@@ -219,6 +228,7 @@ declare namespace App.Data.Series {
     faqs_array: Array<App.Data.Series.SeriesFaqData> | null;
     image: App.Data.Media.ImageData | null;
     categories: Array<App.Data.Category.CategoryData>;
+    target_groups: Array<App.Data.TargetGroup.TargetGroupData>;
     published_at: string;
   };
 }

@@ -25,6 +25,7 @@ const sorts = [
 
 export default function Index() {
   const { event_programs, categories } = usePage<TPage>().props;
+  console.log(event_programs);
   const url = usePage().url;
 
   return (

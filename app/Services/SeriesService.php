@@ -22,6 +22,7 @@ class SeriesService
             $series->load([
                 'image',
                 'categories',
+                'targetGroups',
                 'chapters' => fn (HasMany $builder) => $builder
                     ->ordered()
                     ->withGlobalScope('published', new PublishedScope)

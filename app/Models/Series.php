@@ -77,4 +77,9 @@ class Series extends Model implements HasMedia
     {
         $query->whereAny(['title'], 'ilike', "%$value%");
     }
+
+    public static function getCardRelations(): array
+    {
+        return ['image', 'targetGroups', 'categories'];
+    }
 }

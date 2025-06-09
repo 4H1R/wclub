@@ -40,7 +40,7 @@ class ContestController extends Controller implements HasMiddleware
             ->defaultSort('-created_at')
             ->allowedSorts(['created_at', 'min_participants', 'max_participants'])
             ->withGlobalScope('published', new PublishedScope)
-            ->with(['image', 'categories'])
+            ->with(Contest::getCardRelations())
             ->paginate(12);
 
         $categories = Category::query()
@@ -57,11 +57,11 @@ class ContestController extends Controller implements HasMiddleware
     {
         abort_unless($contest->published_at, 404);
 
-        $contest->load(['categories', 'image']);
+        $contest->load(Contest::getCardRelations());
         $contest->has_registered = Auth::check() && $contest->registrations()->where('user_id', Auth::id())->exists();
 
         $recommendedContests = Contest::query()
-            ->with(['categories', 'image'])
+            ->with(Contest::getCardRelations())
             ->withGlobalScope('published', new PublishedScope)
             ->where('id', '!=', $contest->id)
             ->take(6)

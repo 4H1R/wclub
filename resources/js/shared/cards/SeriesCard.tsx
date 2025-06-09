@@ -1,3 +1,4 @@
+import SharedCardProperties from '@/components/cards/SharedCardProperties';
 import { seriesStatusTranslation } from '@/enums';
 import { cn, convertSecondsToTime, slugifyId } from '@/utils';
 import { Link } from '@inertiajs/react';
@@ -40,24 +41,13 @@ export default function SeriesCard({ series, hasWidth = false, className }: Seri
         <p className="line-clamp-4 max-h-fit text-sm text-base-content/80">
           {series.short_description}
         </p>
-        {series.categories.length > 0 && (
-          <div className="flex flex-wrap items-center gap-1 pb-6 pt-2">
-            {series.categories.map((category) => (
-              <span key={category.id} className="badge badge-md bg-base-200">
-                {category.title}
-              </span>
-            ))}
-          </div>
-        )}
+        <SharedCardProperties targetGroups={series.target_groups} categories={series.categories} />
         <div className="mt-4 flex items-center justify-between gap-2">
           <span className="badge rounded-none bg-base-200 text-base-content/80">
             {digitsEnToFa(convertSecondsToTime(series.episodes_duration_seconds))}
           </span>
           <Price price={series.price} previousPrice={series.previous_price} />
         </div>
-        {/* <Link className="btn mt-auto" href={href}>
-          <span>اطلاعات بیشتر</span>
-        </Link> */}
       </div>
     </div>
   );

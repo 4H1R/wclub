@@ -5,6 +5,7 @@ namespace App\Data\Series;
 use App\Data\Category\CategoryData;
 use App\Data\Media\ImageData;
 use App\Data\SeriesChapter\SeriesChapterData;
+use App\Data\TargetGroup\TargetGroupData;
 use App\Enums\PaymentTypeEnum;
 use App\Enums\Series\SeriesStatusEnum;
 use Spatie\LaravelData\Data;
@@ -33,6 +34,8 @@ class SeriesFullData extends Data
         public ?ImageData $image,
         /** @var CategoryData[] */
         public array $categories,
+        /** @var TargetGroupData[] */
+        public array $target_groups,
         public string $published_at,
     ) {}
 }
