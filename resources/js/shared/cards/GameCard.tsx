@@ -1,38 +1,12 @@
-import { cn } from '@/utils';
-import { Link } from '@inertiajs/react';
-import Image from '../images/Image';
+import BaseCard from './BaseCard';
 
 type GameCardProps = {
   game: App.Data.Game.GameData;
   hasWidth?: boolean;
-  className?: string;
 };
 
-export default function GameCard({ game, className, hasWidth = false }: GameCardProps) {
+export default function GameCard({ game, hasWidth = false }: GameCardProps) {
   const href = `/games/${game.slug}`;
 
-  return (
-    <div className={cn('card h-full bg-base-100 shadow', { 'w-[22rem]': hasWidth }, className)}>
-      <Link href={href}>
-        <figure className="h-44 w-full bg-base-200 lg:h-56">
-          <Image
-            className={cn('size-full object-contain', {
-              'object-cover': game.image_type === 'cover',
-            })}
-            src={game.image}
-            alt={game.title}
-          />
-        </figure>
-      </Link>
-      <div className="card-body h-full">
-        <h2 className="card-title">{game.title}</h2>
-        <p className="line-clamp-4 max-h-fit pb-4 text-sm text-base-content/80">
-          {game.short_description}
-        </p>
-        {/* <Link className="btn mt-auto" href={href}>
-          <span>اطلاعات بیشتر</span>
-        </Link> */}
-      </div>
-    </div>
-  );
+  return <BaseCard data={game} href={href} hasWidth={hasWidth} />;
 }

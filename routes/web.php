@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\ChatbotController;
+use App\Http\Controllers\ConsultationController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\Contest\ContestController;
 use App\Http\Controllers\Contest\ContestRegistrationController;
@@ -29,6 +30,9 @@ Route::post('/contact-us', [ContactUsController::class, 'store']);
 Route::get('/about-us', AboutUsController::class)->name('about-us');
 Route::get('/search', SearchController::class)->name('search');
 Route::get('/chatbot', ChatbotController::class)->name('chatbot');
+
+Route::get('/consultations', [ConsultationController::class, 'index'])->name('consultations.index');
+Route::get('/consultations/in-person', [ConsultationController::class, 'inPerson'])->name('consultations.in-person');
 
 Route::post('/mellat/callback', [MellatController::class, 'callback'])->name('mellat.callback');
 

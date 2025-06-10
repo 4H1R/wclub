@@ -1,9 +1,11 @@
 import { TIcon } from '@/types';
 import {
+  HiChatBubbleLeft,
   HiEnvelope,
   HiFilm,
   HiHome,
   HiNewspaper,
+  HiOutlineChatBubbleLeft,
   HiOutlineEnvelope,
   HiOutlineFilm,
   HiOutlineHome,
@@ -61,6 +63,13 @@ export const navbarLinks: TNavbarLink[] = [
     showOn: 'all',
   },
   {
+    title: 'مشاوره',
+    href: '/consultations',
+    Icon: HiOutlineChatBubbleLeft,
+    ActiveIcon: HiChatBubbleLeft,
+    showOn: 'mobile',
+  },
+  {
     title: 'باغ های بانوان',
     href: '/gardens',
     Icon: HiOutlineSparkles,
@@ -74,6 +83,7 @@ export const navbarLinks: TNavbarLink[] = [
     ActiveIcon: HiStar,
     showOn: 'mobile',
   },
+
   { title: 'دوره ها', href: '/series', Icon: HiOutlineFilm, ActiveIcon: HiFilm, showOn: 'all' },
   {
     title: 'خدمات',
@@ -82,6 +92,10 @@ export const navbarLinks: TNavbarLink[] = [
     ActiveIcon: HiSparkles,
     showOn: 'desktop',
     desktopSubLinks: [
+      {
+        title: 'مشاوره',
+        href: '/consultations',
+      },
       {
         title: 'خدمات',
         href: '/reward-programs',
@@ -171,6 +185,7 @@ export const footerLinks = [
   {
     title: 'خدمات',
     links: [
+      { title: 'مشاوره', href: '/consultations' },
       { title: 'باغ های بانوان', href: '/gardens' },
       { title: 'همه خدمات', href: '/reward-programs' },
     ],

@@ -21,14 +21,7 @@ export default function Profile() {
     return `${auth.user.first_name} ${auth.user.last_name}`;
   }, [auth]);
 
-  const authLinks: TLink[] = compact([
-    { title: 'داشبورد', href: route('dashboard') },
-    auth.user?.can_access_admin_panel && {
-      title: 'پنل کاربران بالا رده',
-      href: `/admin`,
-      openOnNewTab: true,
-    },
-  ]);
+  const authLinks: TLink[] = compact([{ title: 'داشبورد', href: route('dashboard') }]);
 
   return (
     <div className="dropdown dropdown-end">

@@ -108,10 +108,11 @@ declare namespace App.Data.Faq {
 }
 declare namespace App.Data.Game {
   export type GameData = {
+    id: number;
     title: string;
     slug: string;
-    short_description: string | null;
-    image: string;
+    short_description: string;
+    image: App.Data.Media.ImageData;
     image_type: string;
   };
 }
@@ -280,7 +281,6 @@ declare namespace App.Data.User {
     phone: string | null;
     email_verified_at: string | null;
     phone_verified_at: string | null;
-    can_access_admin_panel: boolean;
     created_at: string;
     updated_at: string;
   };
