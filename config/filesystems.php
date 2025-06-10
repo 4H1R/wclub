@@ -57,6 +57,7 @@ return [
             'use_path_style_endpoint' => env('PRIVATE_AWS_USE_PATH_STYLE_ENDPOINT', false),
             'throw' => false,
             'retain_visibility' => false,
+            'http' => ['verify' => false],
         ],
 
         's3_public' => [
@@ -71,6 +72,7 @@ return [
             'use_path_style_endpoint' => env('PUBLIC_AWS_USE_PATH_STYLE_ENDPOINT', false),
             'retain_visibility' => false,
             'throw' => false,
+            'http' => ['verify' => false],
         ],
 
     ],
