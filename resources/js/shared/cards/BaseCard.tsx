@@ -34,7 +34,7 @@ export default function BaseCard({
       </Link>
       <div className="card-body h-full">
         {bodyStartChildren}
-        <p className="card-title">{data.title}</p>
+        <p className="card-title line-clamp-2 max-h-fit">{data.title}</p>
         <p className="line-clamp-4 max-h-fit text-sm text-base-content/80">
           {data.short_description}
         </p>
