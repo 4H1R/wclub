@@ -3,11 +3,13 @@ import {
   HiChatBubbleLeft,
   HiEnvelope,
   HiFilm,
+  HiGift,
   HiHome,
   HiNewspaper,
   HiOutlineChatBubbleLeft,
   HiOutlineEnvelope,
   HiOutlineFilm,
+  HiOutlineGift,
   HiOutlineHome,
   HiOutlineNewspaper,
   HiOutlinePlayCircle,
@@ -138,6 +140,13 @@ export const navbarLinks: TNavbarLink[] = [
     showOn: 'mobile',
   },
   {
+    title: 'هدیه نگار زیست عفیفانه',
+    href: '/hn',
+    Icon: HiOutlineGift,
+    ActiveIcon: HiGift,
+    showOn: 'mobile',
+  },
+  {
     title: 'تماس با ما',
     href: '/contact-us',
     Icon: HiOutlineEnvelope,
@@ -165,6 +174,10 @@ export const navbarLinks: TNavbarLink[] = [
       {
         title: 'درباره ما',
         href: '/about-us',
+      },
+      {
+        title: 'هدیه نگار',
+        href: '/hn',
       },
     ],
   },
@@ -195,6 +208,10 @@ export const footerLinks = [
     links: [
       { title: 'درباره ما', href: '/about-us' },
       { title: 'تماس با ما', href: '/contact-us' },
+      {
+        title: 'هدیه نگار زیست عفیفانه',
+        href: '/hn',
+      },
     ],
   },
 ] as const;
