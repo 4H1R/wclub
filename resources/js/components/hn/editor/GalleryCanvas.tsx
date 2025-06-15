@@ -6,22 +6,21 @@ import { IFrame } from './Gallery';
 interface IProps {
   userImage: HTMLImageElement;
   source: IFrame;
-  allow: boolean;
   setFinal: (img: Blob) => void;
 }
 
-function GalleryCanvas({ userImage, source, allow, setFinal }: IProps) {
+export default function GalleryCanvas({ userImage, source, setFinal }: IProps) {
   const refCanvas = useRef<HTMLCanvasElement>(null);
   const refCTX = useRef<CanvasRenderingContext2D | null>(null);
   const [img, setImg] = useState<HTMLImageElement>();
 
-  const save = () => {
+  const handleSave = () => {
     const canvas = refCanvas.current;
     if (!canvas) return;
     canvas.toBlob((blob) => blob && setFinal(blob));
   };
 
-  const download = () => {
+  const handleDownload = () => {
     const canvas = refCanvas.current;
     if (!canvas) return;
     const link = document.createElement('a');
@@ -201,7 +200,7 @@ function GalleryCanvas({ userImage, source, allow, setFinal }: IProps) {
         {/* <button onClick={save} disabled={!allow} className="btn">
           {allow ? 'نهایی سازی تغییرات' : 'مجاز به نهایی سازی نیستید'}
         </button> */}
-        <button onClick={download} disabled={!allow} className="btn btn-outline">
+        <button onClick={handleDownload} className="btn btn-outline">
           <HiOutlineArrowDownTray />
           <span>دانلود</span>
         </button>
@@ -209,5 +208,3 @@ function GalleryCanvas({ userImage, source, allow, setFinal }: IProps) {
     </div>
   );
 }
-
-export default GalleryCanvas;

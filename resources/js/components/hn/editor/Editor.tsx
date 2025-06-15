@@ -1,7 +1,8 @@
-import { Head } from '@inertiajs/react';
-import { useState } from 'react';
+import Button from '@/shared/forms/Button';
+import { useRef, useState } from 'react';
+import Container from './Container';
 import EditorCanvas from './EditorCanvas';
-import EditorFilePicker from './EditorFilePicker';
+import EditorFileLoader from './EditorFileLoader';
 import EditorSidebar from './EditorSidebar';
 import Gallery from './Gallery';
 
@@ -13,6 +14,7 @@ export interface IText {
   textAlign: CanvasTextAlign;
   textVAlign: CanvasTextAlign;
 }
+
 export interface ITextSetters {
   setText: (text: string) => void;
   setTextSize: (size: number) => void;
@@ -21,6 +23,7 @@ export interface ITextSetters {
   setTextAlign: (align: CanvasTextAlign) => void;
   setTextVAlign: (valign: CanvasTextAlign) => void;
 }
+
 export type ITextState = IText & ITextSetters;
 
 const useText = (): ITextState => {
@@ -45,13 +48,14 @@ const useText = (): ITextState => {
     setTextVAlign,
   };
 };
-interface IProps {
-  imgSource: string;
-  setFinal: (img: Blob) => void;
-  allow: boolean;
-}
 
-function Editor({ imgSource, setFinal, allow }: IProps) {
+type EditorProps = {
+  imgSource: string;
+  step: number;
+  setStep: React.Dispatch<React.SetStateAction<number>>;
+};
+
+export default function Editor({ imgSource, step, setStep }: EditorProps) {
   const [onImage, setOnImage] = useState<HTMLImageElement>();
 
   const [bg, setBg] = useState<string>('#ffffff');
@@ -68,24 +72,37 @@ function Editor({ imgSource, setFinal, allow }: IProps) {
   const [width, setWidth] = useState<number>(0);
   const [height, setHeight] = useState<number>(0);
 
+  const canvasRef = useRef<HTMLCanvasElement>(null);
   const [canvasWidth, setCanvasWidth] = useState<number>(8.25 * 150);
   const [canvasHeight, setCanvasHeight] = useState<number>(11.75 * 150);
   const [canvasDPI, setCanvasDPI] = useState<number>(150);
 
   const [radius, setRadius] = useState<number>(50);
 
+  const handleDownload = () => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const link = document.createElement('a');
+    link.download = 'image.png';
+    link.href = canvas.toDataURL();
+    link.click();
+  };
+
+  if (!img) {
+    return (
+      <EditorFileLoader
+        default={imgSource}
+        setImage={setImage}
+        setWidth={setWidth}
+        setHeight={setHeight}
+      />
+    );
+  }
+
   return (
-    <div className="flex h-max w-full flex-wrap items-center justify-center gap-4 lg:flex-nowrap">
-      <Head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;900&family=Lalezar&family=Noto+Nastaliq+Urdu:wght@400&display=swap"
-          rel="stylesheet"
-        />
-      </Head>
-      {onImage ? (
-        <Gallery userImage={onImage} setFinal={setFinal} allow={allow} />
-      ) : img ? (
-        <>
+    <>
+      <Container>
+        {step !== 3 && (
           <EditorSidebar
             defaults={{
               width: width,
@@ -113,35 +130,38 @@ function Editor({ imgSource, setFinal, allow }: IProps) {
             setLogoHeight={setLogoHeight}
             setLogoPosition={setLogoPosition}
           />
-          <EditorCanvas
-            setFinal={setOnImage}
-            allow={allow}
-            logoImage={logo}
-            logoHeight={logoHeight}
-            logoWidth={logoWidth}
-            logoPosition={logoPosition}
-            backgroundColor={bg}
-            canvasWidth={canvasWidth}
-            canvasHeight={canvasHeight}
-            width={width}
-            height={height}
-            mainImage={img}
-            text={textMain}
-            textAuthor={textAuthor}
-            textCaption={textCaption}
-            radius={radius}
-          />
-        </>
-      ) : (
-        <EditorFilePicker
-          default={imgSource}
-          setImage={setImage}
-          setWidth={setWidth}
-          setHeigth={setHeight}
+        )}
+        <EditorCanvas
+          setFinal={setOnImage}
+          logoImage={logo}
+          logoHeight={logoHeight}
+          logoWidth={logoWidth}
+          logoPosition={logoPosition}
+          backgroundColor={bg}
+          canvasWidth={canvasWidth}
+          canvasHeight={canvasHeight}
+          width={width}
+          height={height}
+          mainImage={img}
+          text={textMain}
+          textAuthor={textAuthor}
+          textCaption={textCaption}
+          radius={radius}
+          canvasRef={canvasRef}
         />
-      )}
-    </div>
+        {step === 3 && onImage && <Gallery userImage={onImage} setFinal={() => {}} />}
+      </Container>
+      <div className="flex items-center justify-between gap-4">
+        <Button onClick={() => setStep(step - 1)} className="btn">
+          مرحله قبل
+        </Button>
+        <Button
+          onClick={step === 3 ? handleDownload : () => setStep(step + 1)}
+          className="btn btn-primary"
+        >
+          {step === 3 ? 'دانلود خروجی نهایی' : 'مرحله بعد'}
+        </Button>
+      </div>
+    </>
   );
 }
-
-export default Editor;

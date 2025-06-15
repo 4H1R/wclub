@@ -10,7 +10,7 @@ type SelectImagesProps = {
 export default function SelectImages({ onSelect }: SelectImagesProps) {
   const test: TData[] = Array.from({ length: 30 }).map((_, i) => ({
     id: i + 1,
-    image: { id: 1, original_url: 'https://picsum.photos/id/' + (i + 1) + '/500/600' },
+    image: { id: 1, original_url: '/images/hn/back/mug.webp' },
   }));
 
   const chunkedData = chunk(test, 4);

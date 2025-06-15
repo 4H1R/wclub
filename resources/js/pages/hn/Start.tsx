@@ -19,6 +19,10 @@ export default function Start() {
   const [step, setStep] = useState(1);
   const [selectedImage, setSelectedImage] = useState<null | TData>(null);
 
+  const editorRendered = selectedImage && (
+    <Editor step={step} setStep={setStep} imgSource={selectedImage?.image.original_url} />
+  );
+
   const steps: Record<number, TStep> = {
     1: {
       title: 'انتخاب تصویر',
@@ -33,13 +37,11 @@ export default function Start() {
     },
     2: {
       title: 'ویرایش عکس',
-      children: (
-        <Editor allow imgSource="/images/consultations/inPerson.webp" setFinal={() => {}} />
-      ),
+      children: editorRendered,
     },
     3: {
-      title: 'گرفتن خروجی',
-      children: <div>Submit</div>,
+      title: 'خروجی نهایی',
+      children: editorRendered,
     },
   };
 

@@ -22,7 +22,7 @@ interface IProps {
   children?: ReactNode;
 }
 
-const MultiInput = ({ fields, selects, title, children }: IProps) => {
+export default function MultiInput({ fields, selects, title, children }: IProps) {
   return (
     <div className="flex flex-col justify-start rounded-lg border-2 p-2 sm:bg-gray-50">
       <span className="w-full px-4 py-3 text-center font-black text-gray-800">{title}</span>
@@ -59,6 +59,4 @@ const MultiInput = ({ fields, selects, title, children }: IProps) => {
       {children}
     </div>
   );
-};
-
-export default MultiInput;
+}

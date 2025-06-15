@@ -1,9 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
+import Button from '@/shared/forms/Button';
 import { useCallback, useEffect, useRef } from 'react';
-import { toast } from 'react-toastify';
+import { HiOutlineArrowDownTray } from 'react-icons/hi2';
 import { IText } from './Editor';
 
-interface IProps {
+type EditorCanvasProps = {
+  canvasRef: React.RefObject<HTMLCanvasElement | null>;
   width: number;
   height: number;
   radius: number;
@@ -22,11 +24,11 @@ interface IProps {
   text: IText;
   textAuthor: IText;
   textCaption: IText;
-  allow: boolean;
   setFinal: (img: HTMLImageElement) => void;
-}
+};
 
-function EditorCanvas({
+export default function EditorCanvas({
+  canvasRef,
   width,
   height,
   radius,
@@ -41,31 +43,22 @@ function EditorCanvas({
   text: textMain,
   textAuthor,
   textCaption,
-  allow,
   setFinal,
-}: IProps) {
-  const refCanvas = useRef<HTMLCanvasElement>(null);
-  const refCTX = useRef<CanvasRenderingContext2D | null>(null);
-  const download = () => {
-    const canvas = refCanvas.current;
-    if (!canvas) return;
-    const link = document.createElement('a');
-    link.download = 'image.png';
-    link.href = canvas.toDataURL();
-    link.click();
-  };
+}: EditorCanvasProps) {
+  const CTXRef = useRef<CanvasRenderingContext2D | null>(null);
 
   useEffect(() => {
-    const canvas: HTMLCanvasElement | null = refCanvas.current;
+    const canvas: HTMLCanvasElement | null = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     if (ctx) {
-      refCTX.current = ctx;
+      CTXRef.current = ctx;
       render();
     }
   }, []);
-  const save = () => {
-    const canvas = refCanvas.current;
+
+  const handleSave = () => {
+    const canvas = canvasRef.current;
     if (!canvas) return;
     const img = new Image();
     img.addEventListener('load', () => {
@@ -76,8 +69,8 @@ function EditorCanvas({
   };
 
   const render = useCallback(() => {
-    const canvas = refCanvas.current;
-    const ctx = refCTX.current;
+    const canvas = canvasRef.current;
+    const ctx = CTXRef.current;
 
     if (!canvas || !ctx) return;
 
@@ -274,58 +267,18 @@ function EditorCanvas({
 
   useEffect(() => {
     render();
+    handleSave();
     document.fonts.ready.then(render);
   }, [render]);
 
   return (
-    <div className="flex w-full flex-col items-center justify-center sm:h-full">
+    <div className="flex w-full flex-col items-center justify-center gap-8 sm:h-full">
       <canvas
-        ref={refCanvas}
+        ref={canvasRef}
         className="h-auto w-full sm:w-[512px] sm:rounded-lg"
         width={canvasWidth}
         height={canvasHeight}
       />
-      <div className="mt-4 flex items-center justify-center gap-5">
-        <button
-          onClick={allow ? save : () => {}}
-          className="btn btn-primary bottom-0 left-0 right-0 m-auto mb-2 text-white"
-        >
-          <svg
-            width="24"
-            height="24"
-            fill="none"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M17.75 3A3.25 3.25 0 0 1 21 6.25v11.5A3.25 3.25 0 0 1 17.75 21H6.25A3.25 3.25 0 0 1 3 17.75V6.25A3.25 3.25 0 0 1 6.25 3h11.5Zm.58 16.401-5.805-5.686a.75.75 0 0 0-.966-.071l-.084.07-5.807 5.687c.182.064.378.099.582.099h11.5c.203 0 .399-.035.58-.099l-5.805-5.686L18.33 19.4ZM17.75 4.5H6.25A1.75 1.75 0 0 0 4.5 6.25v11.5c0 .208.036.408.103.594l5.823-5.701a2.25 2.25 0 0 1 3.02-.116l.128.116 5.822 5.702c.067-.186.104-.386.104-.595V6.25a1.75 1.75 0 0 0-1.75-1.75Zm-2.498 2a2.252 2.252 0 1 1 0 4.504 2.252 2.252 0 0 1 0-4.504Zm0 1.5a.752.752 0 1 0 0 1.504.752.752 0 0 0 0-1.504Z"
-              fill="currentColor"
-            />
-          </svg>
-          {allow ? 'نمایش نمونه' : 'مجاز به نهایی سازی نیستید'}
-        </button>
-
-        <button
-          onClick={allow ? download : () => {}}
-          className="btn btn-primary bottom-0 left-0 right-0 m-auto mb-2 border-slate-950 bg-slate-700 text-white"
-        >
-          <svg
-            width="24"
-            height="24"
-            fill="none"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M6.087 7.75a5.752 5.752 0 0 1 11.326 0h.087a4 4 0 0 1 3.962 4.552 6.534 6.534 0 0 0-1.597-1.364A2.501 2.501 0 0 0 17.5 9.25h-.756a.75.75 0 0 1-.75-.713 4.25 4.25 0 0 0-8.489 0 .75.75 0 0 1-.749.713H6a2.5 2.5 0 0 0 0 5h4.4a6.458 6.458 0 0 0-.357 1.5H6a4 4 0 0 1 0-8h.087ZM22 16.5a5.5 5.5 0 1 0-11 0 5.5 5.5 0 0 0 11 0Zm-6-3a.5.5 0 0 1 1 0v4.793l1.646-1.647a.5.5 0 0 1 .708.708l-2.5 2.5a.5.5 0 0 1-.708 0l-2.5-2.5a.5.5 0 0 1 .708-.708L16 18.293V13.5Z"
-              fill="#ffffff"
-            />
-          </svg>
-          {allow ? 'بارگیری برای استفاده' : 'مجاز به نهایی سازی نیستید'}
-        </button>
-      </div>
     </div>
   );
 }
-
-export default EditorCanvas;

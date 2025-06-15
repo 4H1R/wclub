@@ -1,11 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ChangeEvent, useState } from 'react';
-// import * as tf from '@tensorflow/tfjs';
 import { ITextState } from './Editor';
 import MultiInput from './MultiInput';
-
-// const worker = new Worker('/build/workers.js');
 
 interface IProps {
   defaults: {
@@ -35,7 +32,7 @@ interface IProps {
   setLogoPosition: (position: any) => void;
 }
 
-function EditorSidebar({
+export default function EditorSidebar({
   defaults,
   textMain,
   textCaption,
@@ -142,58 +139,6 @@ function EditorSidebar({
     createImage(url, setLogo);
   };
 
-  // worker.onmessage = async (
-  //   ev: MessageEvent<{
-  //     msg: string;
-  //     img: [Float32Array | Int32Array | Uint8Array, [number, number, number]];
-  //   }>,
-  // ) => {
-  //   const { msg, img } = ev.data;
-
-  //   if (msg === 'done') {
-  //     const [data, shape] = img;
-
-  //     const tensor: tf.Tensor3D = tf.tidy(() => tf.tensor(data, shape).div(255));
-  //     const canvas = document.createElement('canvas');
-
-  //     canvas.width = shape[1];
-  //     canvas.height = shape[0];
-
-  //     setWorkerState('درحال تبدیل عکس');
-
-  //     tf.browser.toPixels(tensor, canvas).then(() => {
-  //       setWidth(shape[1]);
-  //       setHeight(shape[0]);
-  //       tensor.dispose();
-  //       createImage(canvas.toDataURL(), setImage);
-  //       setUpscaling(false);
-  //     });
-
-  //     return;
-  //   }
-
-  //   if (msg === 'error') {
-  //     setUpscaling(false);
-  //     setWorkerState('شروع فرایند (خطا در فرایند قبل)');
-  //     return;
-  //   }
-
-  //   setWorkerState(msg); // Update worker state with message
-  // };
-
-  // const upscale = async () => {
-  //   if (upscaling) return;
-
-  //   const pixels = tf.browser.fromPixels(defaults.img);
-  //   await tf.nextFrame();
-  //   const data = await pixels.data();
-
-  //   setWorkerState('در حال اماده سازی هوش مصنوعی');
-
-  //   worker.postMessage([data, pixels.shape, model]);
-  //   setUpscaling(true);
-  // };
-
   const renderTextInput = (textObj: ITextState, title: string) => (
     <MultiInput
       title={title}
@@ -212,22 +157,6 @@ function EditorSidebar({
         },
       ]}
       selects={[
-        // {
-        //   options: [
-        //     { value: 'center', label: 'وسط چین' },
-        //     { value: 'right', label: 'راست چین' },
-        //     { value: 'left', label: 'چپ چین' },
-        //   ],
-        //   onChange: (ev) => setToValue(ev, textObj.setTextAlign),
-        // },
-        // {
-        //   options: [
-        //     { value: 'center', label: 'وسط' },
-        //     { value: 'end', label: 'بالا' },
-        //     { value: 'start', label: 'پایین' },
-        //   ],
-        //   onChange: (ev) => setToValue(ev, textObj.setTextVAlign),
-        // },
         {
           options: [
             { value: 'Lalezar', label: 'فونت لاله زار' },
@@ -253,7 +182,6 @@ function EditorSidebar({
   return (
     <div className="flex w-full max-w-sm flex-col gap-5 text-right sm:max-h-screen sm:overflow-y-scroll">
       <p className="text-xl font-bold">تنظیمات</p>
-
       <MultiInput
         title="پس زمینه"
         fields={[
@@ -265,53 +193,6 @@ function EditorSidebar({
           },
         ]}
       />
-      {/* <MultiInput
-        title="افزایش کیفیت"
-        fields={[]}
-        selects={[
-          {
-            options: [
-              { value: '0', label: 'دو برابر' },
-              { value: '1', label: 'سه برابر' },
-              { value: '2', label: 'چهار برابر' },
-              { value: '3', label: 'هشت برابر' },
-            ],
-            onChange: (ev) => setToValue(ev, setModel),
-          },
-        ]}
-      >
-        <button
-          type="button"
-          className="inline-flex w-full items-center justify-center rounded-md bg-blue-500 px-4 py-3 text-sm font-semibold text-white shadow transition duration-150 ease-in-out hover:bg-blue-400"
-          disabled={upscaling}
-          onClick={upscale}
-        >
-          {upscaling ? (
-            <svg
-              className="-ml-1 mr-3 h-4 w-4 animate-spin text-white"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-            >
-              <circle
-                className="opacity-25"
-                cx="12"
-                cy="12"
-                r="10"
-                stroke="currentColor"
-                strokeWidth="4"
-              ></circle>
-              <path
-                className="opacity-75"
-                fill="currentColor"
-                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-              ></path>
-            </svg>
-          ) : null}
-          <span>{workerState}</span>
-        </button>
-      </MultiInput> */}
-
       <MultiInput
         title="بوم"
         fields={[
@@ -353,11 +234,9 @@ function EditorSidebar({
           },
         ]}
       />
-
       {renderTextInput(textMain, 'متن دلخواه')}
       {renderTextInput(textCaption, 'متن زیرنویس')}
       {renderTextInput(textAuthor, 'نام نویسنده')}
-
       <MultiInput
         title="نماد"
         fields={[
@@ -386,7 +265,7 @@ function EditorSidebar({
       >
         <label
           htmlFor="dropzone-file"
-          className="w-full cursor-pointer rounded-lg bg-gray-100 hover:hover:bg-blue-700 hover:text-white"
+          className="w-full cursor-pointer rounded-lg bg-gray-100 hover:bg-primary hover:text-white"
         >
           <div className="flex flex-col items-center justify-center gap-5 p-3">فایل</div>
           <input id="dropzone-file" type="file" className="hidden" onChange={createLogo} />
@@ -395,5 +274,3 @@ function EditorSidebar({
     </div>
   );
 }
-
-export default EditorSidebar;
