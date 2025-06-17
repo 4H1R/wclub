@@ -9,6 +9,7 @@ declare module 'ziggy-js' {
     chatbot: [];
     'hn.index': [];
     'hn.start': [];
+    'hn.images': [];
     'consultations.index': [];
     'consultations.in-person': [];
     'mellat.callback': [];

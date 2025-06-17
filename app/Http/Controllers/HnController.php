@@ -22,7 +22,7 @@ class HnController extends Controller
             ->with('image')
             ->whereHas('image')
             ->withGlobalScope('published', new PublishedScope)
-            ->simplePaginate(1);
+            ->simplePaginate(20);
 
         if ($data->isEmpty() && $data->currentPage() !== 1) {
             return redirect('/hn/start');

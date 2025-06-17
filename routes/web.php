@@ -35,6 +35,7 @@ Route::get('/chatbot', ChatbotController::class)->name('chatbot');
 // هدیه نگار زیست عفیفانه
 Route::get('/hn', [HnController::class, 'index'])->name('hn.index');
 Route::get('/hn/start', [HnController::class, 'start'])->name('hn.start');
+Route::get('/api/hn/images', [HnController::class, 'images'])->name('hn.images');
 
 Route::get('/consultations', [ConsultationController::class, 'index'])->name('consultations.index');
 Route::get('/consultations/in-person', [ConsultationController::class, 'inPerson'])->name('consultations.in-person');

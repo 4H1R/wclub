@@ -14,7 +14,7 @@ export default function SelectImages({ onSelect, data }: SelectImagesProps) {
   const chunkedData = chunk(data.data, 4);
 
   const handleLoadMore = () => {
-    router.reload({ data: { page: data.meta.current_page + 1 }, only: ['images'] });
+    router.reload({ data: { page: data.meta.current_page + 1 }, only: ['data'] });
   };
 
   return (
