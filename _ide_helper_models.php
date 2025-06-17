@@ -366,6 +366,32 @@ namespace App\Models{
  * 
  *
  * @property int $id
+ * @property string $text
+ * @property string $author
+ * @property string|null $published_at
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Database\Factories\HnTextFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|HnText newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|HnText newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|HnText query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|HnText whereAuthor($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|HnText whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|HnText whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|HnText wherePublishedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|HnText whereText($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|HnText whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
+	#[\AllowDynamicProperties]
+	class IdeHelperHnText {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
  * @property string $model_type
  * @property int $model_id
  * @property string|null $uuid

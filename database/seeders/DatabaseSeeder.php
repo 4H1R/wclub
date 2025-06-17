@@ -11,6 +11,8 @@ use App\Models\Coupon;
 use App\Models\EventProgram;
 use App\Models\Faq;
 use App\Models\Garden;
+use App\Models\HnImage;
+use App\Models\HnText;
 use App\Models\News;
 use App\Models\Order;
 use App\Models\OrderItem;
@@ -96,5 +98,8 @@ class DatabaseSeeder extends Seeder
                     'user_id' => $order->user_id,
                 ]);
             });
+
+        HnText::factory(50)->create();
+        HnImage::factory(50)->create();
     }
 }

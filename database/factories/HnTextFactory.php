@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\HnImage>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\HnText>
  */
-class HnImageFactory extends Factory
+class HnTextFactory extends Factory
 {
     /**
      * @return array<string, mixed>
@@ -15,7 +15,8 @@ class HnImageFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => $this->faker->persianWords(random_int(2, 7), true),
+            'text' => $this->faker->persianWords(random_int(2, 7), true),
+            'author' => $this->faker->name,
             'published_at' => fake()->boolean(90) ? now() : null,
         ];
     }

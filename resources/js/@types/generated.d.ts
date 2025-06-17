@@ -387,7 +387,11 @@ declare namespace App.Enums {
     | 'View Any Hn Images'
     | 'Create Hn Images'
     | 'Delete Any Hn Images'
-    | 'Update Any Hn Images';
+    | 'Update Any Hn Images'
+    | 'View Any Hn Texts'
+    | 'Create Hn Texts'
+    | 'Delete Any Hn Texts'
+    | 'Update Any Hn Texts';
   export type RoleEnum = 'Super Admin' | 'Test';
 }
 declare namespace App.Enums.Coupon {
