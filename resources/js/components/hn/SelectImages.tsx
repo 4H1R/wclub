@@ -1,19 +1,21 @@
-import { TData } from '@/pages/hn/Start';
+import Button from '@/shared/forms/Button';
 import Image from '@/shared/images/Image';
+import { PaginatedCollection } from '@/types';
 import { chunk } from '@/utils';
+import { router } from '@inertiajs/react';
 import React from 'react';
 
 type SelectImagesProps = {
-  onSelect: (data: TData) => void;
+  onSelect: (data: App.Data.Hn.HnImageData) => void;
+  data: PaginatedCollection<App.Data.Hn.HnImageData>;
 };
 
-export default function SelectImages({ onSelect }: SelectImagesProps) {
-  const test: TData[] = Array.from({ length: 30 }).map((_, i) => ({
-    id: i + 1,
-    image: { id: 1, original_url: '/images/hn/back/mug.webp' },
-  }));
+export default function SelectImages({ onSelect, data }: SelectImagesProps) {
+  const chunkedData = chunk(data.data, 4);
 
-  const chunkedData = chunk(test, 4);
+  const handleLoadMore = () => {
+    router.reload({ data: { page: data.meta.current_page + 1 }, only: ['images'] });
+  };
 
   return (
     <>
@@ -30,13 +32,20 @@ export default function SelectImages({ onSelect }: SelectImagesProps) {
                   <Image
                     className="h-full max-w-full rounded-lg object-cover"
                     src={item.image.original_url}
-                    alt={(i + 1).toString()}
+                    alt={item.title}
                   />
                 </button>
               ))}
           </div>
         ))}
       </div>
+      {data.meta.next_page_url && (
+        <div className="flex items-center justify-center">
+          <Button className="btn btn-primary mx-auto" onClick={handleLoadMore}>
+            نمایش بیشتر
+          </Button>
+        </div>
+      )}
     </>
   );
 }

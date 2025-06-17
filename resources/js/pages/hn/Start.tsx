@@ -1,8 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
+import { PageProps } from '@/@types';
 import Editor from '@/components/hn/editor/Editor';
 import SelectImages from '@/components/hn/SelectImages';
 import Head from '@/shared/Head';
+import { PaginatedCollection } from '@/types';
 import { cn } from '@/utils';
+import { usePage } from '@inertiajs/react';
 import React, { useState } from 'react';
 
 type TStep = {
@@ -10,17 +13,17 @@ type TStep = {
   children: React.ReactNode;
 };
 
-export type TData = {
-  id: number;
-  image: App.Data.Media.ImageData;
-};
+type TPage = PageProps<{
+  data: PaginatedCollection<App.Data.Hn.HnImageData>;
+}>;
 
 export default function Start() {
   const [step, setStep] = useState(1);
-  const [selectedImage, setSelectedImage] = useState<null | TData>(null);
+  const { data } = usePage<TPage>().props;
+  const [selectedImage, setSelectedImage] = useState<null | App.Data.Hn.HnImageData>(null);
 
   const editorRendered = selectedImage && (
-    <Editor step={step} setStep={setStep} imgSource={selectedImage?.image.original_url} />
+    <Editor step={step} setStep={setStep} imgSource={selectedImage?.image!.original_url} />
   );
 
   const steps: Record<number, TStep> = {
@@ -28,6 +31,7 @@ export default function Start() {
       title: 'انتخاب تصویر',
       children: (
         <SelectImages
+          data={data}
           onSelect={(image) => {
             setSelectedImage(image);
             setStep(step + 1);

@@ -339,6 +339,33 @@ namespace App\Models{
  * 
  *
  * @property int $id
+ * @property string $title
+ * @property string|null $published_at
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Media|null $image
+ * @property-read \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection<int, \App\Models\Media> $media
+ * @property-read int|null $media_count
+ * @method static \Database\Factories\HnImageFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|HnImage newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|HnImage newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|HnImage query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|HnImage whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|HnImage whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|HnImage wherePublishedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|HnImage whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|HnImage whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
+	#[\AllowDynamicProperties]
+	class IdeHelperHnImage {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
  * @property string $model_type
  * @property int $model_id
  * @property string|null $uuid
