@@ -1,4 +1,5 @@
 /* eslint-disable react/no-unknown-property */
+import { cn } from '@/utils';
 import React, { HTMLInputTypeAttribute, ReactNode } from 'react';
 
 interface Field {
@@ -24,37 +25,34 @@ interface IProps {
 
 export default function MultiInput({ fields, selects, title, children }: IProps) {
   return (
-    <div className="flex flex-col justify-start rounded-lg border-2 p-2 sm:bg-gray-50">
-      <span className="w-full px-4 py-3 text-center font-black text-gray-800">{title}</span>
+    <div className="flex flex-col justify-start gap-2 rounded-box border-2 bg-base-100 p-2">
+      <span className="w-full px-4 py-3 text-center font-black">{title}</span>
+      {fields?.map(({ value, type, onChange, placeholder }, i) => (
+        <input
+          key={i}
+          value={value}
+          type={type || 'text'}
+          onChange={onChange}
+          placeholder={placeholder}
+          className={cn('input input-bordered w-full', { 'border-none px-0': type === 'color' })}
+        />
+      ))}
 
-      {fields &&
-        fields.map(({ value, type, onChange, placeholder }, i) => (
-          <input
-            key={i}
-            value={value}
-            type={type || 'text'}
-            onChange={onChange}
-            placeholder={placeholder}
-            className={`block w-full rounded-md bg-transparent text-right outline-none ${type === 'color' ? 'p-0' : 'p-3'}`}
-          />
-        ))}
-
-      {selects &&
-        selects.map(({ options, onChange, value, type }, i) => (
-          <select
-            key={i}
-            value={value}
-            onChange={onChange}
-            className="rtl block w-full bg-transparent p-3 text-right"
-            typeof={type}
-          >
-            {options.map(({ value, label }, index) => (
-              <option key={index} value={value}>
-                {label}
-              </option>
-            ))}
-          </select>
-        ))}
+      {selects?.map(({ options, onChange, value, type }, i) => (
+        <select
+          key={i}
+          value={value}
+          onChange={onChange}
+          className="select select-bordered w-full"
+          typeof={type}
+        >
+          {options.map(({ value, label }, index) => (
+            <option key={index} value={value}>
+              {label}
+            </option>
+          ))}
+        </select>
+      ))}
 
       {children}
     </div>

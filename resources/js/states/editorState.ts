@@ -9,6 +9,8 @@ export interface IText {
   textVAlign: CanvasTextAlign;
 }
 
+export type TLogoPosition = '7' | '9' | '1' | '3';
+
 export interface EditorState {
   img?: HTMLImageElement;
   width: number;
@@ -19,7 +21,7 @@ export interface EditorState {
   canvasHeight: number;
   canvasDPI: number;
   logo?: HTMLImageElement;
-  logoPosition: '7' | '9' | '1' | '3';
+  logoPosition: TLogoPosition;
   logoWidth: number;
   logoHeight: number;
   textMain: IText;
@@ -35,7 +37,7 @@ export interface EditorState {
   setCanvasHeight: (height: number) => void;
   setCanvasDPI: (dpi: number) => void;
   setLogo: (logo: HTMLImageElement) => void;
-  setLogoPosition: (pos: '7' | '9' | '1' | '3') => void;
+  setLogoPosition: (pos: TLogoPosition) => void;
   setLogoWidth: (width: number) => void;
   setLogoHeight: (height: number) => void;
   setText: (key: 'textMain' | 'textAuthor' | 'textCaption', newText: Partial<IText>) => void;

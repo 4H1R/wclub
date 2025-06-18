@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { IText, useEditorStore } from '@/states/editorState';
+import { IText, TLogoPosition, useEditorStore } from '@/states/editorState';
 import { ChangeEvent, memo, useCallback, useState } from 'react';
 import MultiInput from './MultiInput';
 
@@ -136,7 +135,7 @@ function EditorSidebar() {
         ]}
       >
         <textarea
-          className="w-full p-3"
+          className="textarea textarea-bordered w-full"
           onChange={(e) => setText(key, { text: e.target.value })}
           placeholder="نوشته"
           value={textObj.text}
@@ -226,14 +225,11 @@ function EditorSidebar() {
               { value: '1', label: 'پایین چپ' },
               { value: '3', label: 'پایین راست' },
             ],
-            onChange: (e) => store.setLogoPosition(e.target.value as any),
+            onChange: (e) => store.setLogoPosition(e.target.value as TLogoPosition),
           },
         ]}
       >
-        <label
-          htmlFor="dropzone-file"
-          className="w-full cursor-pointer rounded-lg bg-gray-100 hover:bg-primary hover:text-white"
-        >
+        <label htmlFor="dropzone-file" className="btn btn-block">
           <div className="flex flex-col items-center justify-center gap-5 p-3">فایل</div>
           <input id="dropzone-file" type="file" className="hidden" onChange={createLogo} />
         </label>
