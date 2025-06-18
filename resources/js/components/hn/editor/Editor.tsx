@@ -14,9 +14,18 @@ type EditorProps = {
 };
 
 export default function Editor({ imgSource, step, setStep }: EditorProps) {
-  const [onImage, setOnImage] = useState<HTMLImageElement>();
+  const [finalImage, setFinalImage] = useState<HTMLImageElement>();
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const img = useEditorStore((state) => state.img);
+
+  const handleSave = () => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const img = new Image();
+    img.addEventListener('load', () => setFinalImage(img));
+    img.src = canvas.toDataURL();
+  };
 
   const handleDownload = () => {
     const canvas = canvasRef.current;
@@ -27,23 +36,25 @@ export default function Editor({ imgSource, step, setStep }: EditorProps) {
     link.click();
   };
 
+  const handleNext = () => {
+    if (step === 2) handleSave();
+    setStep(step + 1);
+  };
+
   if (!img) return <EditorFileLoader imgSource={imgSource} />;
 
   return (
     <>
       <Container>
         {step !== 3 && <EditorSidebar />}
-        <EditorCanvas setFinal={setOnImage} canvasRef={canvasRef} />
-        {step === 3 && onImage && <Gallery userImage={onImage} setFinal={() => {}} />}
+        <EditorCanvas canvasRef={canvasRef} />
+        {step === 3 && finalImage && <Gallery userImage={finalImage} />}
       </Container>
       <div className="flex items-center justify-between gap-4">
         <Button onClick={() => setStep(step - 1)} className="btn">
           مرحله قبل
         </Button>
-        <Button
-          onClick={step === 3 ? handleDownload : () => setStep(step + 1)}
-          className="btn btn-primary"
-        >
+        <Button onClick={step === 3 ? handleDownload : handleNext} className="btn btn-primary">
           {step === 3 ? 'دانلود خروجی نهایی' : 'مرحله بعد'}
         </Button>
       </div>

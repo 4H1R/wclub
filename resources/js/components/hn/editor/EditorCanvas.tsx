@@ -1,15 +1,12 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import Button from '@/shared/forms/Button';
 import { useEditorStore } from '@/states/editorState';
 import { memo, useCallback, useEffect, useRef } from 'react';
-import { shallow, useShallow } from 'zustand/shallow';
+import { useShallow } from 'zustand/shallow';
 
 type EditorCanvasProps = {
   canvasRef: React.RefObject<HTMLCanvasElement | null>;
-  setFinal: (img: HTMLImageElement) => void;
 };
 
-function EditorCanvas({ canvasRef, setFinal }: EditorCanvasProps) {
+function EditorCanvas({ canvasRef }: EditorCanvasProps) {
   const CTXRef = useRef<CanvasRenderingContext2D | null>(null);
 
   const {
@@ -56,17 +53,6 @@ function EditorCanvas({ canvasRef, setFinal }: EditorCanvasProps) {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  const handleSave = () => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const img = new Image();
-    img.addEventListener('load', () => {
-      setFinal(img);
-      render();
-    });
-    img.src = canvas.toDataURL();
-  };
 
   const render = useCallback(() => {
     const canvas = canvasRef.current;
@@ -117,7 +103,7 @@ function EditorCanvas({ canvasRef, setFinal }: EditorCanvasProps) {
       );
     }
 
-    const txt = text(
+    text(
       textMain.text,
       ctx,
       cx,
@@ -139,7 +125,7 @@ function EditorCanvas({ canvasRef, setFinal }: EditorCanvasProps) {
       'end',
       textAuthor.textFont,
     );
-    const caption = text(
+    text(
       textCaption.text,
       ctx,
       cx,
@@ -151,7 +137,6 @@ function EditorCanvas({ canvasRef, setFinal }: EditorCanvasProps) {
       textCaption.textFont,
       96,
     );
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     width,
     height,
@@ -182,6 +167,8 @@ function EditorCanvas({ canvasRef, setFinal }: EditorCanvasProps) {
     textFont: string,
     margin: number = 0, // Single margin value for both top and bottom
   ): number {
+    if (!text || text.length === 0) return 0;
+
     // Return the height of the rendered text
     // ctx.shadowBlur = 5;
     ctx.shadowColor = 'black';
@@ -269,7 +256,6 @@ function EditorCanvas({ canvasRef, setFinal }: EditorCanvasProps) {
 
   useEffect(() => {
     render();
-    handleSave();
     document.fonts.ready.then(render);
   }, [render]);
 

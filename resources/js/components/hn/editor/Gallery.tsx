@@ -31,14 +31,13 @@ const sources: IFrame[] = [
 
 type GalleryProps = {
   userImage: HTMLImageElement;
-  setFinal: (img: Blob) => void;
 };
 
-export default function Gallery({ userImage, setFinal }: GalleryProps) {
+export default function Gallery({ userImage }: GalleryProps) {
   return (
     <div className="flex flex-col items-center justify-center gap-10 p-10">
       {sources.map((s, i) => (
-        <GalleryCanvas key={i} source={s} userImage={userImage} setFinal={setFinal} />
+        <GalleryCanvas key={i} source={s} userImage={userImage} setFinal={() => {}} />
       ))}
     </div>
   );
