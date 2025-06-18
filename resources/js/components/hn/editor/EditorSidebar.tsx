@@ -1,126 +1,83 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { ChangeEvent, useState } from 'react';
-import { ITextState } from './Editor';
+import { IText, useEditorStore } from '@/states/editorState';
+import { ChangeEvent, memo, useCallback, useState } from 'react';
 import MultiInput from './MultiInput';
 
-interface IProps {
-  defaults: {
-    width: number;
-    height: number;
-    canvasWidth: number;
-    canvasHeight: number;
-    dpi: number;
-    img: HTMLImageElement;
-    radius: number;
-    bg: string;
-  };
-  setImage: (img: HTMLImageElement) => void;
-  textMain: ITextState;
-  textCaption: ITextState;
-  textAuthor: ITextState;
-  setWidth: (width: number) => void;
-  setHeight: (height: number) => void;
-  setCanvasWidth: (width: number) => void;
-  setCanvasHeight: (height: number) => void;
-  setCanvasDPI: (dpi: number) => void;
-  setRadius: (radius: number) => void;
-  setBg: (color: string) => void;
-  setLogo: (img: HTMLImageElement) => void;
-  setLogoWidth: (width: number) => void;
-  setLogoHeight: (height: number) => void;
-  setLogoPosition: (position: any) => void;
-}
+const sizes: { n: string; w: number; h: number }[] = [
+  { n: 'سایز A0', w: 33.125, h: 46.8125 },
+  { n: 'سایز A1', w: 23.375, h: 33.125 },
+  { n: 'سایز A2', w: 16.5, h: 23.375 },
+  { n: 'سایز A3', w: 11.75, h: 16.5 },
+  { n: 'سایز A4', w: 8.25, h: 11.75 },
+  { n: 'سایز A5 (مناسب تیشرت)', w: 5.875, h: 8.25 },
+  { n: 'سایز A6 (مناسب لیوان)', w: 4.125, h: 5.875 },
+  { n: 'سایز A7', w: 2.9375, h: 4.125 },
+  { n: 'سایز A8', w: 2.0625, h: 2.9375 },
+  { n: 'مربع 4x4', w: 1.5748, h: 1.5748 },
+  { n: 'مربع 10x10', w: 3.93701, h: 3.93701 },
+  { n: 'مربع 40x40', w: 15.748, h: 15.748 },
+];
 
-export default function EditorSidebar({
-  defaults,
-  textMain,
-  textCaption,
-  textAuthor,
-  setWidth,
-  setHeight,
-  setCanvasWidth,
-  setCanvasHeight,
-  setCanvasDPI,
-  setRadius,
-  setBg,
-  setImage,
-  setLogo,
-  setLogoWidth,
-  setLogoHeight,
-  setLogoPosition,
-}: IProps) {
+function EditorSidebar() {
   const [sizeSelected, setSelectedSize] = useState<number>(0);
-  const [upscaling, setUpscaling] = useState<boolean>(false);
-  const [model, setModel] = useState<number>(0);
-  const [workerState, setWorkerState] = useState<string>('شروع فرایند');
-  const sizes: { n: string; w: number; h: number }[] = [
-    { n: 'سایز A0', w: 33.125, h: 46.8125 },
-    { n: 'سایز A1', w: 23.375, h: 33.125 },
-    { n: 'سایز A2', w: 16.5, h: 23.375 },
-    { n: 'سایز A3', w: 11.75, h: 16.5 },
-    { n: 'سایز A4', w: 8.25, h: 11.75 },
-    { n: 'سایز A5 (مناسب تیشرت)', w: 5.875, h: 8.25 },
-    { n: 'سایز A6 (مناسب لیوان)', w: 4.125, h: 5.875 },
-    { n: 'سایز A7', w: 2.9375, h: 4.125 },
-    { n: 'سایز A8', w: 2.0625, h: 2.9375 },
-    { n: 'مربع 4x4', w: 1.5748, h: 1.5748 },
-    { n: 'مربع 10x10', w: 3.93701, h: 3.93701 },
-    { n: 'مربع 40x40', w: 15.748, h: 15.748 },
-  ];
+  const store = useEditorStore();
 
-  const setToValue = (
-    ev: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>,
-    callback: (value: any) => void,
-  ) => {
-    let value: any = ev.target.value;
-    if (ev.target.type === 'number') {
-      value = Number(value);
-    }
-    callback(value);
-  };
+  const setSize = useCallback(
+    (e: ChangeEvent<HTMLInputElement>, type: 'width' | 'height') => {
+      const value = Number(e.target.value);
+      const ratio = store.img!.width / store.img!.height;
+      if (type === 'width') {
+        store.setWidth(Math.floor(value));
+        store.setHeight(Math.floor(value / ratio));
+      } else {
+        store.setHeight(Math.floor(value));
+        store.setWidth(Math.floor(value * ratio));
+      }
+    },
+    [store.img, store.setWidth, store.setHeight],
+  );
 
-  const setSize = (ev: ChangeEvent<HTMLInputElement>, type: 'width' | 'height') => {
-    const value = Number(ev.target.value);
-    const ratio = defaults.img.width / defaults.img.height;
-    if (type === 'width') {
-      setWidth(Math.floor(value));
-      setHeight(Math.floor(value / ratio));
-    } else {
-      setHeight(Math.floor(value));
-      setWidth(Math.floor(value * ratio));
-    }
-  };
+  const setPaper = useCallback(
+    (index: number) => {
+      const { w, h } = sizes[index];
+      setSelectedSize(index);
+      const newWidth = w * store.canvasDPI;
+      const newHeight = h * store.canvasDPI;
 
-  const setPaper = (index: number) => {
-    const { w, h } = sizes[index];
-    setSelectedSize(index);
-    const newWidth = w * defaults.dpi;
-    const newHeight = h * defaults.dpi;
+      store.setCanvasWidth(newWidth);
+      store.setCanvasHeight(newHeight);
 
-    setCanvasWidth(newWidth);
-    setCanvasHeight(newHeight);
+      const scaleX = newWidth / store.canvasWidth;
+      const scaleY = newHeight / store.canvasHeight;
+      const scale = Math.min(scaleX, scaleY);
 
-    const scaleX = newWidth / defaults.canvasWidth;
-    const scaleY = newHeight / defaults.canvasHeight;
+      store.setWidth(store.width * scale);
+      store.setHeight(store.height * scale);
+    },
+    [
+      store.canvasDPI,
+      store.canvasWidth,
+      store.canvasHeight,
+      store.width,
+      store.height,
+      store.setCanvasWidth,
+      store.setCanvasHeight,
+      store.setWidth,
+      store.setHeight,
+    ],
+  );
 
-    const scale = Math.min(scaleX, scaleY);
+  const setDPI = useCallback(
+    (dpi: number) => {
+      const { w, h } = sizes[sizeSelected];
+      store.setCanvasDPI(dpi);
+      store.setCanvasWidth(w * dpi);
+      store.setCanvasHeight(h * dpi);
+    },
+    [sizeSelected, store.setCanvasDPI, store.setCanvasWidth, store.setCanvasHeight],
+  );
 
-    const imgNewWidth = defaults.width * scale;
-    const imgNewHeight = defaults.height * scale;
-
-    setWidth(imgNewWidth);
-    setHeight(imgNewHeight);
-  };
-
-  const setDPI = (dpi: number) => {
-    const { w, h } = sizes[sizeSelected];
-    setCanvasDPI(dpi);
-    setCanvasWidth(w * dpi);
-    setCanvasHeight(h * dpi);
-  };
-
-  const createImage = (url: string, callback: CallableFunction) => {
+  const createImage = useCallback((url: string, callback: CallableFunction) => {
     const img = new Image();
 
     img.addEventListener('load', () => {
@@ -129,54 +86,64 @@ export default function EditorSidebar({
     });
     img.crossOrigin = 'anonymous';
     img.src = url;
-  };
+  }, []);
 
-  const createLogo = (ev: ChangeEvent<HTMLInputElement>) => {
-    const file = ev.target?.files?.[0];
-    if (!file) return;
+  const createLogo = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      const file = e.target?.files?.[0];
+      if (!file) return;
+      const url = URL.createObjectURL(file);
+      createImage(url, store.setLogo);
+    },
+    [createImage, store.setLogo],
+  );
 
-    const url = URL.createObjectURL(file);
-    createImage(url, setLogo);
-  };
+  const setText = useEditorStore((state) => state.setText);
+  const textMain = useEditorStore((state) => state.textMain);
+  const textCaption = useEditorStore((state) => state.textCaption);
+  const textAuthor = useEditorStore((state) => state.textAuthor);
 
-  const renderTextInput = (textObj: ITextState, title: string) => (
-    <MultiInput
-      title={title}
-      fields={[
-        {
-          placeholder: 'اندازه',
-          value: textObj.textSize,
-          onChange: (ev) => setToValue(ev, textObj.setTextSize),
-          type: 'number',
-        },
-        {
-          placeholder: 'رنگ',
-          value: textObj.textColor,
-          onChange: (ev) => setToValue(ev, textObj.setTextColor),
-          type: 'color',
-        },
-      ]}
-      selects={[
-        {
-          options: [
-            { value: 'Lalezar', label: 'فونت لاله زار' },
-            { value: 'Vazirmatn', label: 'فونت وزیر' },
-            { value: 'Iran Nastaliq', label: 'فونت نستعلیق' },
-            { value: 'Arial', label: 'اریال' },
-            { value: 'Calibri', label: 'کالیبری' },
-            { value: 'system-ui', label: 'سیستم' },
-          ],
-          onChange: (ev) => setToValue(ev, textObj.setTextFont),
-        },
-      ]}
-    >
-      <textarea
-        className="w-full p-3"
-        onChange={(ev) => setToValue(ev, textObj.setText)}
-        placeholder="نوشته"
-        value={textObj.text}
-      />
-    </MultiInput>
+  const renderTextInput = useCallback(
+    (textObj: IText, title: string, key: 'textMain' | 'textAuthor' | 'textCaption') => (
+      <MultiInput
+        title={title}
+        fields={[
+          {
+            placeholder: 'اندازه',
+            value: textObj.textSize,
+            onChange: (e) => setText(key, { textSize: Number(e.target.value) }),
+            type: 'number',
+          },
+          {
+            placeholder: 'رنگ',
+            value: textObj.textColor,
+            onChange: (e) => setText(key, { textColor: e.target.value }),
+            type: 'color',
+          },
+        ]}
+        selects={[
+          {
+            options: [
+              { value: 'Lalezar', label: 'فونت لاله زار' },
+              { value: 'Vazirmatn', label: 'فونت وزیر' },
+              { value: 'Iran Nastaliq', label: 'فونت نستعلیق' },
+              { value: 'Arial', label: 'اریال' },
+              { value: 'Calibri', label: 'کالیبری' },
+              { value: 'system-ui', label: 'سیستم' },
+            ],
+            onChange: (e) => setText(key, { textFont: e.target.value }),
+          },
+        ]}
+      >
+        <textarea
+          className="w-full p-3"
+          onChange={(e) => setText(key, { text: e.target.value })}
+          placeholder="نوشته"
+          value={textObj.text}
+        />
+      </MultiInput>
+    ),
+    [setText],
   );
 
   return (
@@ -187,8 +154,8 @@ export default function EditorSidebar({
         fields={[
           {
             placeholder: 'رنگ',
-            value: defaults.bg,
-            onChange: (ev) => setToValue(ev, setBg),
+            value: store.bg,
+            onChange: (e) => store.setBg(e.target.value),
             type: 'color',
           },
         ]}
@@ -198,56 +165,56 @@ export default function EditorSidebar({
         fields={[
           {
             placeholder: 'کیفیت',
-            value: defaults.dpi,
-            onChange: (ev) => setDPI(Number(ev.target.value)),
+            value: store.canvasDPI,
+            onChange: (e) => setDPI(Number(e.target.value)),
             type: 'number',
           },
         ]}
         selects={[
           {
             options: sizes.map((p, i) => ({ value: i, label: p.n })),
-            onChange: (ev) => setPaper(Number(ev.target.value)),
+            onChange: (e) => setPaper(Number(e.target.value)),
+            value: sizeSelected,
           },
         ]}
       />
-
       <MultiInput
         title="اندازه تصویر"
         fields={[
           {
             placeholder: 'عرض',
-            value: defaults.width,
-            onChange: (ev) => setSize(ev, 'width'),
+            value: Math.round(store.width),
+            onChange: (e) => setSize(e, 'width'),
             type: 'number',
           },
           {
             placeholder: 'طول',
-            value: defaults.height,
-            onChange: (ev) => setSize(ev, 'height'),
+            value: Math.round(store.height),
+            onChange: (e) => setSize(e, 'height'),
             type: 'number',
           },
           {
             placeholder: 'گوشه',
-            value: defaults.radius,
-            onChange: (ev) => setToValue(ev, setRadius),
+            value: store.radius,
+            onChange: (e) => store.setRadius(Number(e.target.value)),
             type: 'number',
           },
         ]}
       />
-      {renderTextInput(textMain, 'متن دلخواه')}
-      {renderTextInput(textCaption, 'متن زیرنویس')}
-      {renderTextInput(textAuthor, 'نام نویسنده')}
+      {renderTextInput(textMain, 'متن دلخواه', 'textMain')}
+      {renderTextInput(textCaption, 'متن زیرنویس', 'textCaption')}
+      {renderTextInput(textAuthor, 'نام نویسنده', 'textAuthor')}
       <MultiInput
         title="نماد"
         fields={[
           {
             placeholder: 'عرض',
-            onChange: (ev) => setToValue(ev, setLogoWidth),
+            onChange: (ev) => store.setLogoWidth(Number(ev.target.value)),
             type: 'number',
           },
           {
             placeholder: 'طول',
-            onChange: (ev) => setToValue(ev, setLogoHeight),
+            onChange: (ev) => store.setLogoHeight(Number(ev.target.value)),
             type: 'number',
           },
         ]}
@@ -259,7 +226,7 @@ export default function EditorSidebar({
               { value: '1', label: 'پایین چپ' },
               { value: '3', label: 'پایین راست' },
             ],
-            onChange: (ev) => setLogoPosition(ev.target.value),
+            onChange: (e) => store.setLogoPosition(e.target.value as any),
           },
         ]}
       >
@@ -274,3 +241,5 @@ export default function EditorSidebar({
     </div>
   );
 }
+
+export default memo(EditorSidebar);

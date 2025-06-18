@@ -1,51 +1,50 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import Button from '@/shared/forms/Button';
-import { useCallback, useEffect, useRef } from 'react';
-import { HiOutlineArrowDownTray } from 'react-icons/hi2';
-import { IText } from './Editor';
+import { useEditorStore } from '@/states/editorState';
+import { memo, useCallback, useEffect, useRef } from 'react';
+import { shallow, useShallow } from 'zustand/shallow';
 
 type EditorCanvasProps = {
   canvasRef: React.RefObject<HTMLCanvasElement | null>;
-  width: number;
-  height: number;
-  radius: number;
-  canvasWidth: number;
-  canvasHeight: number;
-
-  backgroundColor: string | CanvasGradient | CanvasPattern;
-
-  mainImage: HTMLImageElement;
-
-  logoImage?: HTMLImageElement;
-  logoPosition: '7' | '9' | '3' | '1';
-  logoWidth: number;
-  logoHeight: number;
-
-  text: IText;
-  textAuthor: IText;
-  textCaption: IText;
   setFinal: (img: HTMLImageElement) => void;
 };
 
-export default function EditorCanvas({
-  canvasRef,
-  width,
-  height,
-  radius,
-  canvasWidth,
-  canvasHeight,
-  backgroundColor,
-  mainImage,
-  logoImage,
-  logoPosition,
-  logoWidth,
-  logoHeight,
-  text: textMain,
-  textAuthor,
-  textCaption,
-  setFinal,
-}: EditorCanvasProps) {
+function EditorCanvas({ canvasRef, setFinal }: EditorCanvasProps) {
   const CTXRef = useRef<CanvasRenderingContext2D | null>(null);
+
+  const {
+    width,
+    height,
+    radius,
+    canvasWidth,
+    canvasHeight,
+    backgroundColor,
+    mainImage,
+    logoImage,
+    logoPosition,
+    logoWidth,
+    logoHeight,
+    textMain,
+    textAuthor,
+    textCaption,
+  } = useEditorStore(
+    useShallow((state) => ({
+      width: state.width,
+      height: state.height,
+      radius: state.radius,
+      canvasWidth: state.canvasWidth,
+      canvasHeight: state.canvasHeight,
+      backgroundColor: state.bg,
+      mainImage: state.img,
+      logoImage: state.logo,
+      logoPosition: state.logoPosition,
+      logoWidth: state.logoWidth,
+      logoHeight: state.logoHeight,
+      textMain: state.textMain,
+      textAuthor: state.textAuthor,
+      textCaption: state.textCaption,
+    })),
+  );
 
   useEffect(() => {
     const canvas: HTMLCanvasElement | null = canvasRef.current;
@@ -55,6 +54,7 @@ export default function EditorCanvas({
       CTXRef.current = ctx;
       render();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleSave = () => {
@@ -72,7 +72,7 @@ export default function EditorCanvas({
     const canvas = canvasRef.current;
     const ctx = CTXRef.current;
 
-    if (!canvas || !ctx) return;
+    if (!canvas || !ctx || !mainImage) return;
 
     // Clear canvas
     canvas.width = canvasWidth;
@@ -151,6 +151,7 @@ export default function EditorCanvas({
       textCaption.textFont,
       96,
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     width,
     height,
@@ -166,6 +167,7 @@ export default function EditorCanvas({
     textMain,
     textAuthor,
     textCaption,
+    canvasRef,
   ]);
 
   function text(
@@ -282,3 +284,5 @@ export default function EditorCanvas({
     </div>
   );
 }
+
+export default memo(EditorCanvas);
