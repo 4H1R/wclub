@@ -256,7 +256,6 @@ function EditorCanvas({ canvasRef }: EditorCanvasProps) {
 
   useEffect(() => {
     render();
-    document.fonts.ready.then(render);
   }, [render]);
 
   return (
