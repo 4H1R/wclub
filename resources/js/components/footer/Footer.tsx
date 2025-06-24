@@ -42,16 +42,18 @@ export default function Footer() {
             </p>
             {/* <Socials /> */}
           </aside>
-          {footerLinks.map((link) => (
-            <nav key={link.title}>
-              <h6 className="footer-title text-lg font-semibold">{link.title}</h6>
-              {link.links.map((subLink) => (
-                <Link key={subLink.title} href={subLink.href} className="text-md link-hover link">
-                  {subLink.title}
-                </Link>
-              ))}
-            </nav>
-          ))}
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-5">
+            {footerLinks.map((link) => (
+              <nav key={link.title} className="flex flex-col gap-1">
+                <h6 className="footer-title text-lg font-semibold">{link.title}</h6>
+                {link.links.map((subLink) => (
+                  <Link key={subLink.title} href={subLink.href} className="text-md link-hover link">
+                    {subLink.title}
+                  </Link>
+                ))}
+              </nav>
+            ))}
+          </div>
         </div>
       </footer>
     </section>

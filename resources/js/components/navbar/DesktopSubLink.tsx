@@ -21,7 +21,7 @@ export default function DesktopSubLink({ link }: DesktopSubLinkProps) {
   return (
     <details className="desktop-sub-links" ref={ref} id={id}>
       <summary>{link.title}</summary>
-      <ul className="w-32 min-w-full rounded-t-none bg-base-100">
+      <ul className={cn('w-32 min-w-fit rounded-t-none bg-base-100', link.desktopSubLinkClassName)}>
         {link.desktopSubLinks.map((subLink) => (
           <li key={subLink.href}>
             <Link

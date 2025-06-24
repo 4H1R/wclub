@@ -2,12 +2,14 @@ import { TIcon } from '@/types';
 import {
   HiChatBubbleLeft,
   HiEnvelope,
+  HiFaceSmile,
   HiFilm,
   HiGift,
   HiHome,
   HiNewspaper,
   HiOutlineChatBubbleLeft,
   HiOutlineEnvelope,
+  HiOutlineFaceSmile,
   HiOutlineFilm,
   HiOutlineGift,
   HiOutlineHome,
@@ -36,6 +38,7 @@ export type TNavbarLink = {
   ActiveIcon: TIcon;
   showOn: 'mobile' | 'desktop' | 'all';
   middleware?: 'auth';
+  desktopSubLinkClassName?: string;
   desktopSubLinks?: { title: string; href: string }[];
 };
 
@@ -88,10 +91,33 @@ export const navbarLinks: TNavbarLink[] = [
 
   { title: 'دوره ها', href: '/series', Icon: HiOutlineFilm, ActiveIcon: HiFilm, showOn: 'all' },
   {
+    title: 'زیست عفیفانه',
+    href: '/clean-life',
+    Icon: HiOutlineSparkles,
+    ActiveIcon: HiSparkles,
+    desktopSubLinkClassName: 'w-40',
+    showOn: 'desktop',
+    desktopSubLinks: [
+      {
+        title: 'طرح نیک دخت',
+        href: '/clean-life#1',
+      },
+      {
+        title: 'زیست عفیفانه',
+        href: '/clean-life#2',
+      },
+      {
+        title: 'زن',
+        href: '/clean-life#3',
+      },
+    ],
+  },
+  {
     title: 'خدمات',
     href: '/services-group',
     Icon: HiOutlineSparkles,
     ActiveIcon: HiSparkles,
+    desktopSubLinkClassName: 'w-40',
     showOn: 'desktop',
     desktopSubLinks: [
       {
@@ -106,15 +132,6 @@ export const navbarLinks: TNavbarLink[] = [
         title: 'باغ های بانوان',
         href: '/gardens',
       },
-    ],
-  },
-  {
-    title: 'چالش ها و مسابقات',
-    href: '/contests',
-    Icon: HiOutlineTrophy,
-    ActiveIcon: HiTrophy,
-    showOn: 'desktop',
-    desktopSubLinks: [
       {
         title: 'چالش و مسابقات',
         href: '/contests',
@@ -161,11 +178,38 @@ export const navbarLinks: TNavbarLink[] = [
     showOn: 'mobile',
   },
   {
+    title: 'خانواده شاد',
+    href: '/wclub',
+    Icon: HiOutlineFaceSmile,
+    ActiveIcon: HiFaceSmile,
+    desktopSubLinkClassName: 'w-52',
+    showOn: 'desktop',
+    desktopSubLinks: [
+      {
+        title: 'مهارت های پیش از ازدواج و انتخاب همسر',
+        href: '/happy-family#1',
+      },
+      {
+        title: 'همسرداری',
+        href: '/happy-family#2',
+      },
+      {
+        title: 'تربیت فرزند',
+        href: '/happy-family#3',
+      },
+      {
+        title: 'جمعیت و حفظ حیات جنین',
+        href: '/happy-family#4',
+      },
+    ],
+  },
+  {
     title: config.websiteTitle,
     href: '/wclub',
     Icon: HiOutlineFilm,
     ActiveIcon: HiFilm,
     showOn: 'desktop',
+    desktopSubLinkClassName: 'w-10',
     desktopSubLinks: [
       {
         title: 'تماس با ما',
@@ -211,6 +255,44 @@ export const footerLinks = [
       {
         title: 'هدیه نگار زیست عفیفانه',
         href: '/hn',
+      },
+    ],
+  },
+  {
+    title: 'زیست عفیفانه',
+    links: [
+      {
+        title: 'طرح نیک دخت',
+        href: '/clean-life#1',
+      },
+      {
+        title: 'زیست عفیفانه',
+        href: '/clean-life#2',
+      },
+      {
+        title: 'زن',
+        href: '/clean-life#3',
+      },
+    ],
+  },
+  {
+    title: 'خانواده شاد',
+    links: [
+      {
+        title: 'مهارت های پیش از ازدواج و انتخاب همسر',
+        href: '/happy-family#1',
+      },
+      {
+        title: 'همسرداری',
+        href: '/happy-family#2',
+      },
+      {
+        title: 'تربیت فرزند',
+        href: '/happy-family#3',
+      },
+      {
+        title: 'جمعیت و حفظ حیات جنین',
+        href: '/happy-family#4',
       },
     ],
   },

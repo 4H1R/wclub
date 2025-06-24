@@ -89,12 +89,12 @@ export default function Navbar() {
         <div className="navbar-end gap-4">
           {!isInSearch && (
             <>
-              <div className="form-control hidden xl:flex">
+              <div className="form-control hidden 2xl:flex">
                 <Search url={route('search', undefined, false)} />
               </div>
               <Link
                 href={route('search')}
-                className="btn btn-circle btn-ghost relative hidden lg:flex xl:hidden"
+                className="btn btn-circle btn-ghost relative hidden lg:flex 2xl:hidden"
               >
                 <HiOutlineMagnifyingGlass className="size-6" />
               </Link>

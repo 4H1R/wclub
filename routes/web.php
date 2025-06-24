@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\ChatbotController;
+use App\Http\Controllers\CleanLifeController;
 use App\Http\Controllers\ConsultationController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\Contest\ContestController;
@@ -13,6 +14,7 @@ use App\Http\Controllers\Game\GameController;
 use App\Http\Controllers\Game\NardebanShadiController;
 use App\Http\Controllers\Game\RollTheDiceGameController;
 use App\Http\Controllers\GardenController;
+use App\Http\Controllers\HappyFamilyController;
 use App\Http\Controllers\HnController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\Me\ScoreController;
@@ -32,10 +34,12 @@ Route::get('/about-us', AboutUsController::class)->name('about-us');
 Route::get('/search', SearchController::class)->name('search');
 Route::get('/chatbot', ChatbotController::class)->name('chatbot');
 
+Route::get('happy-family', HappyFamilyController::class)->name('happy-family');
+Route::get('clean-life', CleanLifeController::class)->name('clean-life');
+
 // هدیه نگار زیست عفیفانه
 Route::get('/hn', [HnController::class, 'index'])->name('hn.index');
 Route::get('/hn/start', [HnController::class, 'start'])->name('hn.start');
-Route::get('/api/hn/images', [HnController::class, 'images'])->name('hn.images');
 
 Route::get('/consultations', [ConsultationController::class, 'index'])->name('consultations.index');
 Route::get('/consultations/in-person', [ConsultationController::class, 'inPerson'])->name('consultations.in-person');

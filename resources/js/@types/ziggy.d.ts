@@ -7,9 +7,10 @@ declare module 'ziggy-js' {
     'about-us': [];
     search: [];
     chatbot: [];
+    'happy-family': [];
+    'clean-life': [];
     'hn.index': [];
     'hn.start': [];
-    'hn.images': [];
     'consultations.index': [];
     'consultations.in-person': [];
     'mellat.callback': [];
