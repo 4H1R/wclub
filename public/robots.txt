@@ -3,3 +3,4 @@ Disallow: /search
 Disallow: /dashboard/*
 Disallow: /admin/*
 Disallow : /mellat/*
+Disallow : /hn/start/*

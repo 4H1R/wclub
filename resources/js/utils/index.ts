@@ -106,3 +106,20 @@ export function isUrlActive(currentUrl: string, targetUrl: string) {
 export function formatDatetime(timestamp: string, options?: Intl.DateTimeFormatOptions): string {
   return new Intl.DateTimeFormat('fa-IR', options ?? datetimeOptions).format(new Date(timestamp));
 }
+
+export function chunk<T>(items: T[], count: number) {
+  const data: T[][] = Array.from({ length: count }).map(() => [] as T[]);
+
+  let index = 0;
+
+  for (const item of items) {
+    data[index].push(item);
+    if (index === count - 1) {
+      index = 0;
+    } else {
+      index++;
+    }
+  }
+
+  return data;
+}

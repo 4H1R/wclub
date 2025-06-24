@@ -135,6 +135,13 @@ declare namespace App.Data.Garden {
     images: Array<App.Data.Media.ImageData>;
   };
 }
+declare namespace App.Data.Hn {
+  export type HnImageData = {
+    id: number;
+    title: string;
+    image: App.Data.Media.ImageData;
+  };
+}
 declare namespace App.Data.Honeypot {
   export type HoneypotData = {
     name_field_name: string;
@@ -376,7 +383,15 @@ declare namespace App.Enums {
     | 'View Any Faqs'
     | 'Create Faqs'
     | 'Delete Any Faqs'
-    | 'Update Any Faqs';
+    | 'Update Any Faqs'
+    | 'View Any Hn Images'
+    | 'Create Hn Images'
+    | 'Delete Any Hn Images'
+    | 'Update Any Hn Images'
+    | 'View Any Hn Texts'
+    | 'Create Hn Texts'
+    | 'Delete Any Hn Texts'
+    | 'Update Any Hn Texts';
   export type RoleEnum = 'Super Admin' | 'Test';
 }
 declare namespace App.Enums.Coupon {

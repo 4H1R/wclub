@@ -111,6 +111,16 @@ enum PermissionEnum: string implements HasLabel
     case CreateFaqs = 'Create Faqs';
     case DeleteAnyFaqs = 'Delete Any Faqs';
     case UpdateAnyFaqs = 'Update Any Faqs';
+    // Hn Images
+    case ViewAnyHnImages = 'View Any Hn Images';
+    case CreateHnImages = 'Create Hn Images';
+    case DeleteAnyHnImages = 'Delete Any Hn Images';
+    case UpdateAnyHnImages = 'Update Any Hn Images';
+    // Hn Texts
+    case ViewAnyHnTexts = 'View Any Hn Texts';
+    case CreateHnTexts = 'Create Hn Texts';
+    case DeleteAnyHnTexts = 'Delete Any Hn Texts';
+    case UpdateAnyHnTexts = 'Update Any Hn Texts';
 
     public function getLabel(): string
     {
@@ -217,6 +227,16 @@ enum PermissionEnum: string implements HasLabel
             self::UpdateAnyFaqs => 'ویرایش هر پرسش و پاسخ',
             self::CreateFaqs => 'ایجاد پرسش و پاسخ',
             self::DeleteAnyFaqs => 'حدف هر پرسش و پاسخ',
+            // Hn Images
+            self::ViewAnyHnImages => 'مشاهده همه تصاویر هدیه نگار',
+            self::UpdateAnyHnImages => 'ویرایش هر تصویر هدیه نگار',
+            self::CreateHnImages => 'ایجاد تصویر هدیه نگار',
+            self::DeleteAnyHnImages => 'حدف هر تصویر هدیه نگار',
+            // Hn Texts
+            self::ViewAnyHnTexts => 'مشاهده همه متن های هدیه نگار',
+            self::UpdateAnyHnTexts => 'ویرایش هر متن هدیه نگار',
+            self::CreateHnTexts => 'ایجاد متن هدیه نگار',
+            self::DeleteAnyHnTexts => 'حدف هر متن هدیه نگار',
         };
     }
 }

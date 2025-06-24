@@ -29,7 +29,7 @@ export default function Index() {
   return (
     <div className="space-y container">
       <Head canonicalUrl={route('news.index')} title="اخبار" description="اخبار" />
-      <div className="flex items-center gap-2 overflow-x-auto pt-4">
+      <div className="flex items-center gap-2 pt-4">
         <MobileSortBy options={sorts} />
         <FilterModal
           ButtonIcon={HiOutlineSparkles}

@@ -13,6 +13,7 @@ use App\Http\Controllers\Game\GameController;
 use App\Http\Controllers\Game\NardebanShadiController;
 use App\Http\Controllers\Game\RollTheDiceGameController;
 use App\Http\Controllers\GardenController;
+use App\Http\Controllers\HnController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\Me\ScoreController;
 use App\Http\Controllers\MellatController;
@@ -30,6 +31,11 @@ Route::post('/contact-us', [ContactUsController::class, 'store']);
 Route::get('/about-us', AboutUsController::class)->name('about-us');
 Route::get('/search', SearchController::class)->name('search');
 Route::get('/chatbot', ChatbotController::class)->name('chatbot');
+
+// هدیه نگار زیست عفیفانه
+Route::get('/hn', [HnController::class, 'index'])->name('hn.index');
+Route::get('/hn/start', [HnController::class, 'start'])->name('hn.start');
+Route::get('/api/hn/images', [HnController::class, 'images'])->name('hn.images');
 
 Route::get('/consultations', [ConsultationController::class, 'index'])->name('consultations.index');
 Route::get('/consultations/in-person', [ConsultationController::class, 'inPerson'])->name('consultations.in-person');
