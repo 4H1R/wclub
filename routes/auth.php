@@ -12,7 +12,8 @@ Route::middleware('guest')->group(function () {
     Route::get('/auth/my-isfahan', [MyIsfahanController::class, 'redirect'])
         ->name('auth.my-isfahan');
 
-    Route::get('/auth/my-isfahan/callback', [MyIsfahanController::class, 'callback']);
+    Route::get('/auth/my-isfahan/callback', [MyIsfahanController::class, 'callback'])
+        ->name('auth.my-isfahan.callback');
 
     Route::get('/auth', [AuthController::class, 'show'])
         ->name('auth');

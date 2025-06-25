@@ -394,6 +394,12 @@ declare namespace App.Enums {
     | 'Update Any Hn Texts';
   export type RoleEnum = 'Super Admin' | 'Test';
 }
+declare namespace App.Enums.Auth {
+  export type IsfahanSSOAuthLevelEnum = {
+    name: string;
+    value: string;
+  };
+}
 declare namespace App.Enums.Coupon {
   export type CouponTypeEnum = 'AMOUNT' | 'PERCENTAGE';
 }

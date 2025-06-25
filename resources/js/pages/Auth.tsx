@@ -1,10 +1,18 @@
 import config from '@/fixtures/config';
 import Head from '@/shared/Head';
 import { Link } from '@inertiajs/react';
+import { useEffect } from 'react';
+import { toast } from 'react-toastify';
 
 export default function Auth() {
+  useEffect(() => {
+    if (route().params['error']) {
+      toast.error('درخواست اصفهان من شما با خطا مواجه شد. لطفا دوباره سعی کنید.');
+    }
+  }, []);
+
   return (
-    <div className="container relative mt-10 flex flex-1 items-center justify-center">
+    <div className="container relative mt-10 flex flex-1 flex-col items-center justify-center">
       <Head
         canonicalUrl={route('auth')}
         title="حساب کاربری"
@@ -17,8 +25,8 @@ export default function Auth() {
           کنید.
         </p>
         <div className="divider" />
-        <Link disabled href={route('auth.my-isfahan')} className="btn btn-primary btn-block mt-4">
-          <span>ورود با اصفهان من</span>
+        <Link href={route('auth.my-isfahan')} className="btn btn-primary btn-block mt-4">
+          ورود با اصفهان من
         </Link>
       </div>
     </div>

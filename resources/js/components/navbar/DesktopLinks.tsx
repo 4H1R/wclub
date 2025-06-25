@@ -7,8 +7,8 @@ export default function DesktopLinks() {
   const url = usePage().url;
 
   return (
-    <nav className="navbar-center mr-auto hidden lg:flex">
-      <ul className="menu menu-horizontal px-1 lg:gap-4">
+    <nav className="navbar-center mr-auto hidden xl:flex">
+      <ul className="menu menu-horizontal px-1 xl:gap-4">
         {navbarLinks
           .filter((link) => link.showOn !== 'mobile')
           .map((link) => (

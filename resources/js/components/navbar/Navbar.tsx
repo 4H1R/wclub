@@ -70,11 +70,14 @@ export default function Navbar() {
       <div className="container navbar">
         <MobileDrawerToggle />
         <div
-          className={cn('navbar-center lg:navbar-start lg:flex-shrink', {
-            'lg:max-w-fit': !isInSearch,
+          className={cn('navbar-center xl:navbar-start xl:flex-shrink', {
+            'xl:max-w-fit': !isInSearch,
           })}
         >
-          <Link href="/" className="btn btn-ghost text-xl font-medium hover:bg-transparent">
+          <Link
+            href="/"
+            className="btn btn-ghost text-lg font-medium hover:bg-transparent md:text-xl"
+          >
             <Image
               className="!hidden md:!block"
               src="/images/logo/logo.png"
@@ -82,7 +85,7 @@ export default function Navbar() {
               height={40}
               alt={`لوگو ${config.websiteTitle}`}
             />
-            <span className="lg:hidden">{config.websiteTitle}</span>
+            <span className="xl:hidden">{config.websiteTitle}</span>
           </Link>
         </div>
         <DesktopLinks />
@@ -94,7 +97,7 @@ export default function Navbar() {
               </div>
               <Link
                 href={route('search')}
-                className="btn btn-circle btn-ghost relative hidden lg:flex 2xl:hidden"
+                className="btn btn-circle btn-ghost relative hidden xl:flex 2xl:hidden"
               >
                 <HiOutlineMagnifyingGlass className="size-6" />
               </Link>

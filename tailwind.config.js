@@ -37,6 +37,7 @@ export default {
           'primary-content': colors.gray['900'],
           secondary: colors.cyan['400'],
           error: colors.rose['600'],
+          'error-content': colors.white,
         },
       },
     ],

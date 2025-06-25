@@ -106,6 +106,7 @@ declare module 'ziggy-js' {
     register: [];
     login: [];
     'auth.my-isfahan': [];
+    'auth.my-isfahan.callback': [];
     auth: [];
     'sms.send': [];
     'sms.verify': [];

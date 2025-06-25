@@ -47,4 +47,9 @@ return [
         'terminal_id' => env('MELLAT_TERMINAL_ID'),
         'wsdl_url' => env('MELLAT_WSDL_URL', 'https://bpm.shaparak.ir/pgwchannel/services/pgw?wsdl'),
     ],
+
+    'isfahan_sso' => [
+        'client_id' => env('ISFAHAN_SSO_CLIENT_ID'),
+        'secret' => env('ISFAHAN_SSO_SECRET'),
+    ],
 ];
