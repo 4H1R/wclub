@@ -108,9 +108,6 @@ declare module 'ziggy-js' {
     'auth.my-isfahan': [];
     'auth.my-isfahan.callback': [];
     auth: [];
-    'sms.send': [];
-    'sms.verify': [];
-    'sms.register': [];
     logout: [];
     'storage.local': [
       {
