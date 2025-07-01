@@ -193,8 +193,8 @@ export default function GalleryCanvas({ userImage, source, setFinal }: IProps) {
       <canvas
         ref={refCanvas}
         className="h-auto w-full shadow-xl sm:w-[512px] sm:rounded-lg"
-        width={img?.height}
-        height={img?.width}
+        width={img?.width}
+        height={img?.height}
       ></canvas>
       <div className="mx-auto mt-4 flex items-center gap-4">
         {/* <button onClick={save} disabled={!allow} className="btn">
