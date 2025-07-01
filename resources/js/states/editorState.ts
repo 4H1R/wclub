@@ -27,7 +27,7 @@ export interface EditorState {
   textMain: IText;
   textAuthor: IText;
   textCaption: IText;
-
+  sizeSelected: number;
   setInitialState: (img: HTMLImageElement, width: number, height: number) => void;
   setWidth: (width: number) => void;
   setHeight: (height: number) => void;
@@ -41,6 +41,7 @@ export interface EditorState {
   setLogoWidth: (width: number) => void;
   setLogoHeight: (height: number) => void;
   setText: (key: 'textMain' | 'textAuthor' | 'textCaption', newText: Partial<IText>) => void;
+  setSelectedSize: (sizeSelected: number) => void;
 }
 
 const initialTextState: IText = {
@@ -68,6 +69,7 @@ export const useEditorStore = create<EditorState>((set) => ({
   textMain: { ...initialTextState },
   textAuthor: { ...initialTextState },
   textCaption: { ...initialTextState },
+  sizeSelected: 0,
   setInitialState: (img, width, height) => set({ img, width, height }),
   setWidth: (width) => set({ width }),
   setHeight: (height) => set({ height }),
@@ -84,4 +86,5 @@ export const useEditorStore = create<EditorState>((set) => ({
     set((state) => ({
       [key]: { ...state[key], ...newText },
     })),
+  setSelectedSize: (sizeSelected) => set({ sizeSelected }),
 }));

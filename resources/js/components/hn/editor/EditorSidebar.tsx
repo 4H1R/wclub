@@ -18,7 +18,7 @@ const sizes: { n: string; w: number; h: number }[] = [
 ];
 
 function EditorSidebar() {
-  const [sizeSelected, setSelectedSize] = useState<number>(0);
+  // const [sizeSelected, setSelectedSize] = useState<number>(0);
   const store = useEditorStore();
 
   const setSize = useCallback(
@@ -39,7 +39,7 @@ function EditorSidebar() {
   const setPaper = useCallback(
     (index: number) => {
       const { w, h } = sizes[index];
-      setSelectedSize(index);
+      store.setSelectedSize(index);
       const newWidth = w * store.canvasDPI;
       const newHeight = h * store.canvasDPI;
 
@@ -68,12 +68,12 @@ function EditorSidebar() {
 
   const setDPI = useCallback(
     (dpi: number) => {
-      const { w, h } = sizes[sizeSelected];
+      const { w, h } = sizes[store.sizeSelected];
       store.setCanvasDPI(dpi);
       store.setCanvasWidth(w * dpi);
       store.setCanvasHeight(h * dpi);
     },
-    [sizeSelected, store.setCanvasDPI, store.setCanvasWidth, store.setCanvasHeight],
+    [store.sizeSelected, store.setCanvasDPI, store.setCanvasWidth, store.setCanvasHeight],
   );
 
   const createImage = useCallback((url: string, callback: CallableFunction) => {
@@ -173,7 +173,7 @@ function EditorSidebar() {
           {
             options: sizes.map((p, i) => ({ value: i, label: p.n })),
             onChange: (e) => setPaper(Number(e.target.value)),
-            value: sizeSelected,
+            value: store.sizeSelected,
           },
         ]}
       />
