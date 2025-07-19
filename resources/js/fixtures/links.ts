@@ -1,15 +1,15 @@
 import { TIcon } from '@/types';
 import {
-  HiChatBubbleLeft,
+  // HiChatBubbleLeft,
   HiEnvelope,
-  HiFaceSmile,
+  // HiFaceSmile,
   HiFilm,
   HiGift,
   HiHome,
   HiNewspaper,
-  HiOutlineChatBubbleLeft,
+  // HiOutlineChatBubbleLeft,
   HiOutlineEnvelope,
-  HiOutlineFaceSmile,
+  // HiOutlineFaceSmile,
   HiOutlineFilm,
   HiOutlineGift,
   HiOutlineHome,
@@ -67,13 +67,13 @@ export const navbarLinks: TNavbarLink[] = [
     ActiveIcon: HiNewspaper,
     showOn: 'all',
   },
-  {
-    title: 'مشاوره',
-    href: '/consultations',
-    Icon: HiOutlineChatBubbleLeft,
-    ActiveIcon: HiChatBubbleLeft,
-    showOn: 'mobile',
-  },
+  // {
+  //   title: 'مشاوره',
+  //   href: '/consultations',
+  //   Icon: HiOutlineChatBubbleLeft,
+  //   ActiveIcon: HiChatBubbleLeft,
+  //   showOn: 'mobile',
+  // },
   {
     title: 'باغ های بانوان',
     href: '/gardens',
@@ -90,28 +90,28 @@ export const navbarLinks: TNavbarLink[] = [
   },
 
   { title: 'دوره ها', href: '/series', Icon: HiOutlineFilm, ActiveIcon: HiFilm, showOn: 'all' },
-  {
-    title: 'زیست عفیفانه',
-    href: '/clean-life',
-    Icon: HiOutlineSparkles,
-    ActiveIcon: HiSparkles,
-    desktopSubLinkClassName: 'w-40',
-    showOn: 'desktop',
-    desktopSubLinks: [
-      {
-        title: 'طرح نیک دخت',
-        href: '/clean-life#1',
-      },
-      {
-        title: 'زیست عفیفانه',
-        href: '/clean-life#2',
-      },
-      {
-        title: 'زن',
-        href: '/clean-life#3',
-      },
-    ],
-  },
+  // {
+  //   title: 'زیست عفیفانه',
+  //   href: '/clean-life',
+  //   Icon: HiOutlineSparkles,
+  //   ActiveIcon: HiSparkles,
+  //   desktopSubLinkClassName: 'w-40',
+  //   showOn: 'desktop',
+  //   desktopSubLinks: [
+  //     {
+  //       title: 'طرح نیک دخت',
+  //       href: '/clean-life#1',
+  //     },
+  //     {
+  //       title: 'زیست عفیفانه',
+  //       href: '/clean-life#2',
+  //     },
+  //     {
+  //       title: 'زن',
+  //       href: '/clean-life#3',
+  //     },
+  //   ],
+  // },
   {
     title: 'خدمات',
     href: '/services-group',
@@ -120,10 +120,10 @@ export const navbarLinks: TNavbarLink[] = [
     desktopSubLinkClassName: 'w-40',
     showOn: 'desktop',
     desktopSubLinks: [
-      {
-        title: 'مشاوره',
-        href: '/consultations',
-      },
+      // {
+      //   title: 'مشاوره',
+      //   href: '/consultations',
+      // },
       {
         title: 'خدمات',
         href: '/reward-programs',
@@ -177,32 +177,32 @@ export const navbarLinks: TNavbarLink[] = [
     ActiveIcon: HiQuestionMarkCircle,
     showOn: 'mobile',
   },
-  {
-    title: 'خانواده شاد',
-    href: '/wclub',
-    Icon: HiOutlineFaceSmile,
-    ActiveIcon: HiFaceSmile,
-    desktopSubLinkClassName: 'w-52',
-    showOn: 'desktop',
-    desktopSubLinks: [
-      {
-        title: 'مهارت های پیش از ازدواج و انتخاب همسر',
-        href: '/happy-family#1',
-      },
-      {
-        title: 'همسرداری',
-        href: '/happy-family#2',
-      },
-      {
-        title: 'تربیت فرزند',
-        href: '/happy-family#3',
-      },
-      {
-        title: 'جمعیت و حفظ حیات جنین',
-        href: '/happy-family#4',
-      },
-    ],
-  },
+  // {
+  //   title: 'خانواده شاد',
+  //   href: '/wclub',
+  //   Icon: HiOutlineFaceSmile,
+  //   ActiveIcon: HiFaceSmile,
+  //   desktopSubLinkClassName: 'w-52',
+  //   showOn: 'desktop',
+  //   desktopSubLinks: [
+  //     {
+  //       title: 'مهارت های پیش از ازدواج و انتخاب همسر',
+  //       href: '/happy-family#1',
+  //     },
+  //     {
+  //       title: 'همسرداری',
+  //       href: '/happy-family#2',
+  //     },
+  //     {
+  //       title: 'تربیت فرزند',
+  //       href: '/happy-family#3',
+  //     },
+  //     {
+  //       title: 'جمعیت و حفظ حیات جنین',
+  //       href: '/happy-family#4',
+  //     },
+  //   ],
+  // },
   {
     title: config.websiteTitle,
     href: '/wclub',
@@ -258,42 +258,42 @@ export const footerLinks = [
       },
     ],
   },
-  {
-    title: 'زیست عفیفانه',
-    links: [
-      {
-        title: 'طرح نیک دخت',
-        href: '/clean-life#1',
-      },
-      {
-        title: 'زیست عفیفانه',
-        href: '/clean-life#2',
-      },
-      {
-        title: 'زن',
-        href: '/clean-life#3',
-      },
-    ],
-  },
-  {
-    title: 'خانواده شاد',
-    links: [
-      {
-        title: 'مهارت های پیش از ازدواج و انتخاب همسر',
-        href: '/happy-family#1',
-      },
-      {
-        title: 'همسرداری',
-        href: '/happy-family#2',
-      },
-      {
-        title: 'تربیت فرزند',
-        href: '/happy-family#3',
-      },
-      {
-        title: 'جمعیت و حفظ حیات جنین',
-        href: '/happy-family#4',
-      },
-    ],
-  },
+  // {
+  //   title: 'زیست عفیفانه',
+  //   links: [
+  //     {
+  //       title: 'طرح نیک دخت',
+  //       href: '/clean-life#1',
+  //     },
+  //     {
+  //       title: 'زیست عفیفانه',
+  //       href: '/clean-life#2',
+  //     },
+  //     {
+  //       title: 'زن',
+  //       href: '/clean-life#3',
+  //     },
+  //   ],
+  // },
+  // {
+  //   title: 'خانواده شاد',
+  //   links: [
+  //     {
+  //       title: 'مهارت های پیش از ازدواج و انتخاب همسر',
+  //       href: '/happy-family#1',
+  //     },
+  //     {
+  //       title: 'همسرداری',
+  //       href: '/happy-family#2',
+  //     },
+  //     {
+  //       title: 'تربیت فرزند',
+  //       href: '/happy-family#3',
+  //     },
+  //     {
+  //       title: 'جمعیت و حفظ حیات جنین',
+  //       href: '/happy-family#4',
+  //     },
+  //   ],
+  // },
 ] as const;

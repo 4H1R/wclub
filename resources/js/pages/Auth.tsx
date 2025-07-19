@@ -25,9 +25,18 @@ export default function Auth() {
           کنید.
         </p>
         <div className="divider" />
-        <Link href={route('auth.my-isfahan')} className="btn btn-primary btn-block mt-4">
+        <Link disabled href={route('auth.my-isfahan')} className="btn btn-primary btn-block mt-4">
           ورود با اصفهان من
         </Link>
+        <div className="divider" />
+        <p>
+          برای تست نفوذ و وارد شدن به عنوان کاربر ادمین و کاربر معمولی لطفا به{' '}
+          <a href="/admin" target="_blank" className="text-primary-solo underline">
+            پنل ادمین
+          </a>{' '}
+          مراجعه کنید.
+        </p>
+        <p>سپس پس از ورود میتوانید به همین صفحه اصلی برگردید و کار های مورد نیاز را انجام دهید</p>
       </div>
     </div>
   );
