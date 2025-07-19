@@ -1,5 +1,5 @@
 import { IText, TLogoPosition, useEditorStore } from '@/states/editorState';
-import { ChangeEvent, memo, useCallback, useState } from 'react';
+import { ChangeEvent, memo, useCallback } from 'react';
 import MultiInput from './MultiInput';
 
 const sizes: { n: string; w: number; h: number }[] = [
@@ -18,7 +18,6 @@ const sizes: { n: string; w: number; h: number }[] = [
 ];
 
 function EditorSidebar() {
-  // const [sizeSelected, setSelectedSize] = useState<number>(0);
   const store = useEditorStore();
 
   const setSize = useCallback(
