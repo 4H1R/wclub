@@ -8,12 +8,18 @@ use App\Settings\ScoreSettings;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Pages\SettingsPage;
+use Illuminate\Support\Facades\Auth;
 
 class ManageScore extends SettingsPage
 {
     protected static ?string $navigationIcon = 'heroicon-o-cog-6-tooth';
 
     protected static string $settings = ScoreSettings::class;
+
+    public static function canAccess(): bool
+    {
+        return Auth::user()->isSuperAdmin();
+    }
 
     public function getTitle(): string
     {

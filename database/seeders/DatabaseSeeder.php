@@ -28,18 +28,16 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        // collect(File::json('database/json/target_groups.json')['entities'])->each(function (array $targetGroup) {
-        //     TargetGroup::firstOrCreate($targetGroup);
-        // });
+        collect(File::json('database/json/target_groups.json')['entities'])->each(function (array $targetGroup) {
+            TargetGroup::firstOrCreate($targetGroup);
+        });
 
         $this->call([
             PermissionSeeder::class,
             RoleSeeder::class,
-            // UserSeeder::class,
-            // SeriesSeeder::class,
+            UserSeeder::class,
+            SeriesSeeder::class,
         ]);
-
-        return;
 
         $firstUser = User::firstOrFail();
 
