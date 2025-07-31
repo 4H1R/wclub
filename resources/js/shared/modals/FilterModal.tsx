@@ -53,9 +53,11 @@ export default function FilterModal({
             {digitsEnToFa(addCommas(selectedOption.size))}
           </span>
         )}
-        <Button onClick={() => openModal(modalId)} className="btn btn-sm">
-          <span>{title}</span>
-          <ButtonIcon className="size-5" />
+        <Button onClick={() => openModal(modalId)} className="btn btn-sm block w-max">
+          <div className="flex items-center gap-2">
+            <span>{title}</span>
+            <ButtonIcon className="size-5" />
+          </div>
         </Button>
       </div>
       <DialogModal dialogClassName="modal-bottom md:modal-middle" closeOnClickOutside id={modalId}>
