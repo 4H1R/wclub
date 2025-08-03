@@ -5,6 +5,7 @@ namespace App\Data\EventProgram;
 use App\Data\Category\CategoryData;
 use App\Data\Media\ImageData;
 use App\Data\TargetGroup\TargetGroupData;
+use App\Enums\EventProgram\EventProgramStatusEnum;
 use Spatie\LaravelData\Data;
 use Spatie\TypeScriptTransformer\Attributes\TypeScript;
 
@@ -13,6 +14,7 @@ class EventProgramData extends Data
 {
     public function __construct(
         public int $id,
+        public EventProgramStatusEnum $status,
         public string $title,
         public string $short_description,
         public ?ImageData $image,

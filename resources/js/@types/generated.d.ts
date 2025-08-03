@@ -71,6 +71,7 @@ declare namespace App.Data.Coupon {
 declare namespace App.Data.EventProgram {
   export type EventProgramData = {
     id: number;
+    status: App.Enums.EventProgram.EventProgramStatusEnum;
     title: string;
     short_description: string;
     image: App.Data.Media.ImageData | null;
@@ -83,6 +84,7 @@ declare namespace App.Data.EventProgram {
   };
   export type EventProgramFullData = {
     id: number;
+    status: App.Enums.EventProgram.EventProgramStatusEnum;
     title: string;
     short_description: string;
     description: string;
@@ -402,6 +404,9 @@ declare namespace App.Enums.Auth {
 }
 declare namespace App.Enums.Coupon {
   export type CouponTypeEnum = 'AMOUNT' | 'PERCENTAGE';
+}
+declare namespace App.Enums.EventProgram {
+  export type EventProgramStatusEnum = 'IN_PROGRESS' | 'INDICATOR' | 'ARCHIVE';
 }
 declare namespace App.Enums.Faq {
   export type FaqStatusEnum = 'UNDER_REVIEW' | 'APPROVED' | 'REJECTED';

@@ -1,4 +1,5 @@
 import { PageProps } from '@/@types';
+import { eventProgramStatusTranslation } from '@/enums';
 import EventProgramCard from '@/shared/cards/EventProgramCard';
 import DesktopSortBy from '@/shared/filtering/DesktopSortBy';
 import MobileSortBy from '@/shared/filtering/MobileSortBy';
@@ -9,7 +10,7 @@ import Pagination from '@/shared/Pagination';
 import Search from '@/shared/Search';
 import { PaginatedCollection } from '@/types';
 import { usePage } from '@inertiajs/react';
-import { HiOutlineSparkles, HiOutlineStar } from 'react-icons/hi2';
+import { HiOutlineSparkles, HiOutlineStar, HiOutlineTag } from 'react-icons/hi2';
 
 type TPage = PageProps<{
   event_programs: PaginatedCollection<App.Data.EventProgram.EventProgramData>;
@@ -23,6 +24,11 @@ const sorts = [
   { label: 'تعداد بالا', value: '-max_participants' },
   { label: 'قدیمی ترین', value: 'created_at' },
 ];
+
+const statusOptions = Object.entries(eventProgramStatusTranslation).map(([key, value]) => ({
+  label: value,
+  value: key,
+}));
 
 export default function Index() {
   const { event_programs, categories, target_groups } = usePage<TPage>().props;
@@ -56,6 +62,13 @@ export default function Index() {
           }))}
           title="گروه های هدف"
           modalTitle="فیلتر بر اساس گروه های هدف"
+        />
+        <FilterModal
+          ButtonIcon={HiOutlineTag}
+          filterId="status"
+          options={statusOptions}
+          title="وضعیت"
+          modalTitle="فیلتر بر اساس وضعیت"
         />
       </div>
       <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between lg:flex-col lg:items-start lg:justify-normal">

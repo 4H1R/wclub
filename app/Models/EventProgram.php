@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\EventProgram\EventProgramStatusEnum;
 use App\Models\Traits\HasCategories;
 use App\Models\Traits\HasFaqs;
 use App\Models\Traits\HasSlug;
@@ -21,6 +22,10 @@ class EventProgram extends Model implements HasMedia
 {
     /** @use HasFactory<\Database\Factories\EventProgramFactory> */
     use HasCategories, HasFactory, HasFaqs, HasSlug, HasTargetGroups, InteractsWithMedia;
+
+    protected $casts = [
+        'status' => EventProgramStatusEnum::class,
+    ];
 
     public function registerMediaCollections(): void
     {

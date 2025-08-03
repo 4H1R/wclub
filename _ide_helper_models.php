@@ -13,8 +13,6 @@
 
 namespace App\Models{
 /**
- * 
- *
  * @property int $id
  * @property string $title
  * @property string $link
@@ -44,8 +42,6 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * 
- *
  * @property int $id
  * @property string|null $model
  * @property string $title
@@ -68,8 +64,6 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * 
- *
  * @property int $id
  * @property string $full_name
  * @property string|null $email
@@ -99,8 +93,6 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * 
- *
  * @property int $id
  * @property string $title
  * @property string $short_description
@@ -145,8 +137,6 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * 
- *
  * @property int $id
  * @property int|null $user_id
  * @property string $title
@@ -182,8 +172,6 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * 
- *
  * @property int $id
  * @property int|null $user_id
  * @property string $payment_type
@@ -199,6 +187,7 @@ namespace App\Models{
  * @property string|null $published_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property \App\Enums\EventProgram\EventProgramStatusEnum $status
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Category> $categories
  * @property-read int|null $categories_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Faq> $faqs
@@ -226,6 +215,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram wherePublishedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram whereShortDescription($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram whereStartedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram whereStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram whereUserId($value)
@@ -237,8 +227,6 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * 
- *
  * @property int $id
  * @property \App\Enums\Faq\FaqStatusEnum $status
  * @property int $user_id
@@ -271,8 +259,6 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * 
- *
  * @property int $id
  * @property string|null $title
  * @property string|null $slug
@@ -296,8 +282,6 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * 
- *
  * @property int $id
  * @property string $title
  * @property string $description
@@ -336,8 +320,6 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * 
- *
  * @property int $id
  * @property string $title
  * @property string|null $published_at
@@ -363,8 +345,6 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * 
- *
  * @property int $id
  * @property string $text
  * @property string $author
@@ -389,8 +369,6 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * 
- *
  * @property int $id
  * @property string $model_type
  * @property int $model_id
@@ -447,8 +425,6 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * 
- *
  * @property int $id
  * @property string $title
  * @property string $short_description
@@ -483,8 +459,6 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * 
- *
  * @property int $id
  * @property int|null $user_id
  * @property int|null $coupon_id
@@ -525,8 +499,6 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * 
- *
  * @property int $id
  * @property int $order_id
  * @property string $model_type
@@ -559,8 +531,6 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * 
- *
  * @property int $id
  * @property string $name
  * @property string $title
@@ -594,8 +564,6 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * 
- *
  * @property int $id
  * @property string $title
  * @property string $short_description
@@ -636,8 +604,6 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * 
- *
  * @property int $id
  * @property string $name
  * @property string $title
@@ -667,8 +633,6 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * 
- *
  * @property int $id
  * @property \App\Enums\Series\SeriesStatusEnum $status
  * @property \App\Enums\PaymentTypeEnum $payment_type
@@ -723,8 +687,6 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * 
- *
  * @property int $id
  * @property int $series_id
  * @property string $title
@@ -756,8 +718,6 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * 
- *
  * @property int $id
  * @property int|null $chapter_id
  * @property int $series_id
@@ -800,8 +760,6 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * 
- *
  * @property int $id
  * @property string $title
  * @property int $min_age
@@ -830,8 +788,6 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * 
- *
  * @property int $id
  * @property int|null $user_id
  * @property int|null $order_id
@@ -868,8 +824,6 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * 
- *
  * @property int $id
  * @property string $first_name
  * @property string $last_name
@@ -930,8 +884,6 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * 
- *
  * @property int $id
  * @property int $user_id
  * @property int $score

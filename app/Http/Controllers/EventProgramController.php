@@ -35,6 +35,7 @@ class EventProgramController extends Controller implements HasMiddleware
         $eventPrograms = QueryBuilder::for(EventProgram::class)
             ->allowedFilters([
                 AllowedFilter::scope('query'),
+                AllowedFilter::exact('status'),
                 AllowedFilter::callback('categories_id', function (Builder $query, array $ids) {
                     $query->whereHas('categories', fn (Builder $builder) => $builder->whereIn('category_id', $ids));
                 }),
