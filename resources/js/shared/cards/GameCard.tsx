@@ -8,5 +8,11 @@ type GameCardProps = {
 export default function GameCard({ game, hasWidth = false }: GameCardProps) {
   const href = `/games/${game.slug}`;
 
-  return <BaseCard data={game} href={href} hasWidth={hasWidth} />;
+  return (
+    <BaseCard
+      data={{ ...game, image: { id: 1, original_url: game.image } }}
+      href={href}
+      hasWidth={hasWidth}
+    />
+  );
 }

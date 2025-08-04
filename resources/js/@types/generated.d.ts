@@ -112,7 +112,7 @@ declare namespace App.Data.Game {
     title: string;
     slug: string;
     short_description: string;
-    image: App.Data.Media.ImageData;
+    image: string;
     image_type: string;
   };
 }

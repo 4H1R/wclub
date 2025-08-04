@@ -41,8 +41,8 @@ Route::get('clean-life', CleanLifeController::class)->name('clean-life');
 Route::get('/hn', [HnController::class, 'index'])->name('hn.index');
 Route::get('/hn/start', [HnController::class, 'start'])->name('hn.start');
 
-Route::get('/consultations', [ConsultationController::class, 'index'])->name('consultations.index');
-Route::get('/consultations/in-person', [ConsultationController::class, 'inPerson'])->name('consultations.in-person');
+// Route::get('/consultations', [ConsultationController::class, 'index'])->name('consultations.index');
+// Route::get('/consultations/in-person', [ConsultationController::class, 'inPerson'])->name('consultations.in-person');
 
 Route::post('/mellat/callback', [MellatController::class, 'callback'])->name('mellat.callback');
 
