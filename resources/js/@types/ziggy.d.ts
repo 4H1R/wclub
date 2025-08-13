@@ -11,7 +11,6 @@ declare module 'ziggy-js' {
     'clean-life': [];
     'hn.index': [];
     'hn.start': [];
-    'mellat.callback': [];
     'news.index': [];
     'news.show': [
       {
@@ -101,6 +100,7 @@ declare module 'ziggy-js' {
     'dashboard.account': [];
     'dashboard.orders': [];
     'dashboard.series': [];
+    'mellat.callback': [];
     register: [];
     login: [];
     'auth.my-isfahan': [];
