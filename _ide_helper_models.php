@@ -566,6 +566,28 @@ namespace App\Models{
 /**
  * @property int $id
  * @property string $title
+ * @property array<array-key, mixed> $questions
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Database\Factories\QuestionFormFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|QuestionForm newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|QuestionForm newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|QuestionForm query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|QuestionForm whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|QuestionForm whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|QuestionForm whereQuestions($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|QuestionForm whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|QuestionForm whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
+	#[\AllowDynamicProperties]
+	class IdeHelperQuestionForm {}
+}
+
+namespace App\Models{
+/**
+ * @property int $id
+ * @property string $title
  * @property string $short_description
  * @property string $description
  * @property int $required_score

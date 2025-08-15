@@ -393,7 +393,11 @@ declare namespace App.Enums {
     | 'View Any Hn Texts'
     | 'Create Hn Texts'
     | 'Delete Any Hn Texts'
-    | 'Update Any Hn Texts';
+    | 'Update Any Hn Texts'
+    | 'View Any Question Forms'
+    | 'Create Question Forms'
+    | 'Update Any Question Forms'
+    | 'Delete Any Question Forms';
   export type RoleEnum = 'Super Admin' | 'Test';
 }
 declare namespace App.Enums.Auth {
@@ -420,6 +424,9 @@ declare namespace App.Enums.Order {
     | 'READY'
     | 'SENT'
     | 'FINISHED';
+}
+declare namespace App.Enums.QuestionForm {
+  export type QuestionFormTypeEnum = 'SINGLE_CHOICE' | 'MULTIPLE_CHOICE';
 }
 declare namespace App.Enums.Series {
   export type SeriesPresentationModeEnum = 'IN_PERSON' | 'ONLINE' | 'PLATFORM';
