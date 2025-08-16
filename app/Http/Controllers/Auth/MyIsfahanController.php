@@ -7,6 +7,7 @@ use App\Enums\Auth\IsfahanSSOAuthLevelEnum;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Services\AppService;
+use Hekmatinasser\Verta\Facades\Verta;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -50,7 +51,7 @@ class MyIsfahanController extends Controller
                     'last_name' => $data->citizenLastName,
                     'phone' => $data->citizenMobile,
                     'phone_verified_at' => now(),
-                    'birth_date' => verta($data->citizenBirthDate)->datetime()->toCarbon(),
+                    'birth_date' => Verta::parse('1383-01-22')->datetime(),
                     'password' => Str::password(16),
                 ]
             );

@@ -39,10 +39,6 @@ class DatabaseSeeder extends Seeder
             SeriesSeeder::class,
         ]);
 
-        return;
-
-        return;
-
         $firstUser = User::firstOrFail();
 
         ContactUs::factory(30)->create();
