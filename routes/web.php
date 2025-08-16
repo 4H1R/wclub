@@ -20,6 +20,7 @@ use App\Http\Controllers\IndexController;
 use App\Http\Controllers\Me\ScoreController;
 use App\Http\Controllers\MellatController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\QuestionFormController;
 use App\Http\Controllers\RewardProgramController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\Series\SeriesController;
@@ -37,7 +38,8 @@ Route::get('/chatbot', ChatbotController::class)->name('chatbot');
 Route::get('happy-family', HappyFamilyController::class)->name('happy-family');
 Route::get('clean-life', CleanLifeController::class)->name('clean-life');
 
-// هدیه نگار زیست عفیفانه
+// Route::resource('question-forms', QuestionFormController::class)->only(['show']);
+
 Route::get('/hn', [HnController::class, 'index'])->name('hn.index');
 Route::get('/hn/start', [HnController::class, 'start'])->name('hn.start');
 

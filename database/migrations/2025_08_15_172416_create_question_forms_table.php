@@ -10,6 +10,7 @@ return new class extends Migration
     {
         Schema::create('question_forms', function (Blueprint $table) {
             $table->id();
+            $table->morphs('model');
             $table->string('title');
             $table->json('questions')->default('[]');
             $table->timestamps();

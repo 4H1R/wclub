@@ -7,8 +7,10 @@ use App\Filament\Custom\CustomResource;
 use App\Filament\Forms\Layouts\BasicForm;
 use App\Filament\Resources\QuestionFormResource\Pages;
 use App\Filament\Tables\Columns\TimestampsColumn;
+use App\Models\Contest;
 use App\Models\QuestionForm;
 use Filament\Forms;
+use Filament\Forms\Components\MorphToSelect;
 use Filament\Forms\Form;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -30,6 +32,17 @@ class QuestionFormResource extends CustomResource
                 ->required()
                 ->columnSpanFull()
                 ->maxLength(255),
+            Forms\Components\MorphToSelect::make('model')
+                ->label(trans_choice('Models', 1))
+                ->columnSpanFull()
+                ->searchable()
+                ->preload()
+                ->optionsLimit(50)
+                ->types([
+                    MorphToSelect\Type::make(Contest::class)
+                        ->label(trans_choice('Contests', 1))
+                        ->titleAttribute('title'),
+                ]),
             Forms\Components\Repeater::make('questions')
                 ->columnSpanFull()
                 ->label(trans_choice('Questions', 2))
@@ -97,6 +110,13 @@ class QuestionFormResource extends CustomResource
             ->actions([
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\Action::make('url')
+                    ->label('لینک')
+                    ->icon('heroicon-o-link')
+                    ->color('gray')
+                    ->url(fn (QuestionForm $questionForm) => route('question-forms.show', [$questionForm->id]))
+                    ->openUrlInNewTab(),
+
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
