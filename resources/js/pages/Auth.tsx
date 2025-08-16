@@ -1,6 +1,7 @@
 import config from '@/fixtures/config';
+import Button from '@/shared/forms/Button';
 import Head from '@/shared/Head';
-import { Link } from '@inertiajs/react';
+import { router } from '@inertiajs/react';
 import { useEffect } from 'react';
 import { toast } from 'react-toastify';
 
@@ -10,6 +11,10 @@ export default function Auth() {
       toast.error('درخواست اصفهان من شما با خطا مواجه شد. لطفا دوباره سعی کنید.');
     }
   }, []);
+
+  const handleRedirect = () => {
+    router.get(route('auth.my-isfahan'));
+  };
 
   return (
     <div className="container relative mt-10 flex flex-1 flex-col items-center justify-center">
@@ -25,9 +30,9 @@ export default function Auth() {
           کنید.
         </p>
         <div className="divider" />
-        <Link href={route('auth.my-isfahan')} className="btn btn-primary btn-block mt-4">
+        <Button onClick={handleRedirect} className="btn btn-primary btn-block mt-4">
           ورود با اصفهان من
-        </Link>
+        </Button>
       </div>
     </div>
   );
