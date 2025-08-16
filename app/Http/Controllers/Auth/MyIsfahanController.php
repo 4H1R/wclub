@@ -21,15 +21,12 @@ class MyIsfahanController extends Controller
     {
         $callbackUrl = route('auth.my-isfahan.callback');
 
-        if ($this->appService->isLocalStrict()) {
-            return redirect($callbackUrl);
-        }
-
-        $url = sprintf(`http://isfsso.isfahan.ir/SystemAuth/Authorize?client_id=%s&aut_level=%s&redirect_uri=%s`, [
+        $url = sprintf(
+            'http://isfsso.isfahan.ir/SystemAuth/Authorize?client_id=%s&aut_level=%s&redirect_uri=%s',
             config('services.isfahan_sso.client_id'),
             IsfahanSSOAuthLevelEnum::AuthorizedMobileAndNationalCode,
             $callbackUrl,
-        ]);
+        );
 
         return redirect($url);
     }
@@ -47,13 +44,13 @@ class MyIsfahanController extends Controller
             $data = $this->getCitizenInfo($token, $code);
 
             $user = User::updateOrCreate(
-                ['national_code' => $data->CitizenNationalCode],
+                ['national_code' => $data->citizenNationalCode],
                 [
-                    'first_name' => $data->CitizenFirstName,
-                    'last_name' => $data->CitizenLastName,
-                    'phone' => $data->CitizenMobile,
+                    'first_name' => $data->citizenFirstName,
+                    'last_name' => $data->citizenLastName,
+                    'phone' => $data->citizenMobile,
                     'phone_verified_at' => now(),
-                    'birth_date' => $data->CitizenBirthDate,
+                    'birth_date' => verta($data->citizenBirthDate)->datetime()->toCarbon(),
                     'password' => Str::password(16),
                 ]
             );
@@ -72,10 +69,12 @@ class MyIsfahanController extends Controller
     {
         $isfahan = config('services.isfahan_sso');
 
-        $response = Http::asJson()->post('https://isfsso.isfahan.ir/api/Authenticate/login', [
-            'username' => $isfahan['client_id'],
-            'password' => $isfahan['secret'],
-        ]);
+        $response = Http::asJson()
+            ->withoutVerifying()
+            ->post('https://isfsso.isfahan.ir/api/Authenticate/login', [
+                'username' => $isfahan['client_id'],
+                'password' => $isfahan['secret'],
+            ]);
 
         return $response->json('token');
     }
@@ -84,13 +83,12 @@ class MyIsfahanController extends Controller
     {
         $response = Http::withToken($token)
             ->asMultipart()
+            ->withoutVerifying()
             ->post('https://isfsso.isfahan.ir/api/Citizens/GetCitizenInfo', [
                 'code' => $oneTimeCode,
             ]);
 
         $data = $response->json();
-
-        info($data);
 
         return IsfahanSsoCitizenData::from($data);
     }
