@@ -5,6 +5,7 @@ namespace App\Filament\Pages;
 use App\Services\RecaptchaService;
 use Filament\Http\Responses\Auth\Contracts\LoginResponse;
 use Filament\Pages\Auth\Login;
+use Illuminate\Validation\ValidationException;
 
 class SecureLogin extends Login
 {
@@ -12,12 +13,16 @@ class SecureLogin extends Login
 
     public string $recaptchaToken = '';
 
-    // public function authenticate(): ?LoginResponse
-    // {
-    //     $result = app(RecaptchaService::class)->verify($this->recaptchaToken);
+    public function authenticate(): ?LoginResponse
+    {
+        if (! app(RecaptchaService::class)->verify($this->recaptchaToken)) {
+            throw ValidationException::withMessages([
+                'data.email' => 'ریکپچا نامعتبر است. لطفا دوباره تلاش کنید.',
+            ]);
+        }
 
-    //     return parent::authenticate();
-    // }
+        return parent::authenticate();
+    }
 
     protected function getViewData(): array
     {
