@@ -16,6 +16,7 @@ class SecureLogin extends Login
     public function authenticate(): ?LoginResponse
     {
         if (! $this->verifyHCaptcha()) {
+            $this->resetCaptcha();
             throw ValidationException::withMessages([
                 'data.email' => 'ریکپچا نامعتبر است. لطفا دوباره تلاش کنید.',
             ]);
@@ -26,8 +27,14 @@ class SecureLogin extends Login
 
     protected function throwFailureValidationException(): never
     {
-        $this->js('resetHCaptcha()');
+        $this->resetCaptcha();
         parent::throwFailureValidationException();
+    }
+
+    protected function resetCaptcha(): void
+    {
+        $this->hCaptchaToken = '';
+        $this->js('resetHCaptcha()');
     }
 
     protected function getViewData(): array
