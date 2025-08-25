@@ -2,20 +2,20 @@
 
 namespace App\Filament\Pages;
 
-use App\Services\RecaptchaService;
 use Filament\Http\Responses\Auth\Contracts\LoginResponse;
 use Filament\Pages\Auth\Login;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Validation\ValidationException;
 
 class SecureLogin extends Login
 {
     protected static string $view = 'pages.auth.login';
 
-    public string $recaptchaToken = '';
+    public string $hCaptchaToken = '';
 
     public function authenticate(): ?LoginResponse
     {
-        if (! app(RecaptchaService::class)->verify($this->recaptchaToken)) {
+        if (! $this->verifyHCaptcha()) {
             throw ValidationException::withMessages([
                 'data.email' => 'ریکپچا نامعتبر است. لطفا دوباره تلاش کنید.',
             ]);
@@ -24,10 +24,32 @@ class SecureLogin extends Login
         return parent::authenticate();
     }
 
+    protected function throwFailureValidationException(): never
+    {
+        $this->js('resetHCaptcha()');
+        parent::throwFailureValidationException();
+    }
+
     protected function getViewData(): array
     {
         return array_merge(parent::getViewData(), [
-            'recaptchaSiteKey' => config('services.recaptcha.site_key'),
+            'hcaptchaSiteKey' => config('services.hcaptcha.site_key'),
         ]);
+    }
+
+    protected function verifyHCaptcha(): bool
+    {
+        if (! $this->hCaptchaToken) {
+            return false;
+        }
+
+        $response = Http::asForm()->post('https://api.hcaptcha.com/siteverify', [
+            'secret' => config('services.hcaptcha.secret_key'),
+            'sitekey' => config('services.hcaptcha.site_key'),
+            'response' => $this->hCaptchaToken,
+            'remoteip' => request()->ip(),
+        ]);
+
+        return $response->successful() && $response->json('success', false);
     }
 }
