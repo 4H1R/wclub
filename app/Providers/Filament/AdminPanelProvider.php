@@ -2,7 +2,8 @@
 
 namespace App\Providers\Filament;
 
-use Filament\FontProviders\GoogleFontProvider;
+use App\Filament\Pages\SecureLogin;
+use Filament\FontProviders\LocalFontProvider;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
@@ -27,8 +28,8 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('admin')
-            ->login()
-            ->font('Vazirmatn', provider: GoogleFontProvider::class)
+            ->login(SecureLogin::class)
+            ->font('Vazirmatn', provider: LocalFontProvider::class)
             ->navigationGroups([
                 trans_choice('Event Programs', 2),
                 trans_choice('Contests', 2),

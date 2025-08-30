@@ -62,7 +62,7 @@ export default function RollTheDice() {
         canonicalUrl={route('games.roll-the-dice')}
         title={game.title}
         description={game.title}
-        imageUrl={game.image.original_url}
+        imageUrl={game.image}
       />
       <BreadCrumb
         links={[

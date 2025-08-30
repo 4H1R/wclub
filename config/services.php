@@ -52,4 +52,9 @@ return [
         'client_id' => env('ISFAHAN_SSO_CLIENT_ID'),
         'secret' => env('ISFAHAN_SSO_SECRET'),
     ],
+
+    'hcaptcha' => [
+        'site_key' => env('HCAPTCHA_SITE_KEY'),
+        'secret_key' => env('HCAPTCHA_SECRET_KEY'),
+    ],
 ];

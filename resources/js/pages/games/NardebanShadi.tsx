@@ -16,7 +16,7 @@ export default function NardebanShadi() {
         canonicalUrl={route('games.nardeban-shadi')}
         title={game.title}
         description={game.title}
-        imageUrl={game.image.original_url}
+        imageUrl={game.image}
       />
       <BreadCrumb
         links={[
@@ -70,7 +70,7 @@ export default function NardebanShadi() {
             <div className="card-body gap-4">
               <Image
                 className="mx-auto w-full rounded-box object-cover md:w-full md:max-w-xs"
-                src={game.image.original_url}
+                src={game.image}
                 alt={game.title}
               />
               <div className="flex items-center justify-between gap-4">

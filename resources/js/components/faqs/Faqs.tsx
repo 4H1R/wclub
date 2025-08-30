@@ -47,7 +47,7 @@ export default function Faqs({ className, faqs, modelId }: FaqsProps) {
             </button>
           </div>
         </div>
-        {faqs.length < 1 && <NoRecords />}
+        {faqs.length < 1 && <NoRecords className="border-none bg-transparent shadow-none" />}
         <div className="space-y-2">
           {faqs.map((faq) => (
             <FaqCard key={faq.id} faq={faq} />
