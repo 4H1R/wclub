@@ -17,14 +17,20 @@ use App\Models\RewardProgram;
 use App\Models\Scopes\PublishedScope;
 use App\Models\Series;
 use App\Models\TargetGroup;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Inertia\Inertia;
 
 class IndexController extends Controller
 {
-    public function __invoke(Request $request): \Inertia\Response
+    public function __invoke(Request $request): \Inertia\Response|RedirectResponse
     {
+        // Isfahan SSO redirect
+        if ($code = $request->input('Code')) {
+            return to_route('auth.my-isfahan.callback', ['code' => $code]);
+        }
+
         $data = Cache::remember('index', 60, function () {
             $targetGroups = TargetGroup::query()
                 ->with('image')

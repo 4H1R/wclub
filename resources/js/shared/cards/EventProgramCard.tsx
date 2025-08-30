@@ -1,5 +1,7 @@
 import SharedCardProperties from '@/components/cards/SharedCardProperties';
+import { eventProgramStatusTranslation } from '@/enums';
 import { slugifyId } from '@/utils';
+import { GoDotFill } from 'react-icons/go';
 import BaseCard from './BaseCard';
 
 type EventProgramCardProps = {
@@ -18,6 +20,14 @@ export default function EventProgramCard({
       data={eventProgram}
       href={href}
       hasWidth={hasWidth}
+      bodyStartChildren={
+        <div className="flex items-center gap-1">
+          <GoDotFill className="size-2" />
+          <span className="text-xs font-bold">
+            {eventProgramStatusTranslation[eventProgram.status]}
+          </span>
+        </div>
+      }
       bodyEndChildren={
         <SharedCardProperties
           categories={eventProgram.categories}

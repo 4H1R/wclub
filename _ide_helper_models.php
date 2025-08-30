@@ -187,7 +187,7 @@ namespace App\Models{
  * @property string|null $published_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property string $status
+ * @property \App\Enums\EventProgram\EventProgramStatusEnum $status
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Category> $categories
  * @property-read int|null $categories_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Faq> $faqs
@@ -560,6 +560,33 @@ namespace App\Models{
  */
 	#[\AllowDynamicProperties]
 	class IdeHelperPermission {}
+}
+
+namespace App\Models{
+/**
+ * @property int $id
+ * @property string $model_type
+ * @property int $model_id
+ * @property string $title
+ * @property array<array-key, mixed> $questions
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $model
+ * @method static \Database\Factories\QuestionFormFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|QuestionForm newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|QuestionForm newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|QuestionForm query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|QuestionForm whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|QuestionForm whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|QuestionForm whereModelId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|QuestionForm whereModelType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|QuestionForm whereQuestions($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|QuestionForm whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|QuestionForm whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
+	#[\AllowDynamicProperties]
+	class IdeHelperQuestionForm {}
 }
 
 namespace App\Models{

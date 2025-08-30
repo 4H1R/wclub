@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Enums\EventProgram\EventProgramStatusEnum;
 use App\Enums\PaymentTypeEnum;
 use App\Filament\Custom\CustomResource;
 use App\Filament\Forms\Components\FileInput;
@@ -107,7 +108,12 @@ class EventProgramResource extends CustomResource
                 ->required(),
         ]);
 
-        $statusSection = StatusSection::make(includePublishedAt: true);
+        $statusSection = StatusSection::make([
+            Forms\Components\Select::make('status')
+                ->translateLabel()
+                ->options(EventProgramStatusEnum::class)
+                ->required(),
+        ], includePublishedAt: true);
 
         return ComplexForm::make($form, [$basicSection], [$statusSection]);
     }
@@ -121,6 +127,9 @@ class EventProgramResource extends CustomResource
                     ->sortable()
                     ->searchable()
                     ->translateLabel(),
+                Tables\Columns\TextColumn::make('status')
+                    ->translateLabel()
+                    ->badge(),
                 Tables\Columns\TextColumn::make('min_participants')
                     ->sortable()
                     ->badge()
@@ -147,6 +156,9 @@ class EventProgramResource extends CustomResource
             ->filters([
                 Tables\Filters\TernaryFilter::make('published_at')
                     ->nullable()
+                    ->translateLabel(),
+                Tables\Filters\SelectFilter::make('status')
+                    ->options(EventProgramStatusEnum::class)
                     ->translateLabel(),
             ])
             ->actions([

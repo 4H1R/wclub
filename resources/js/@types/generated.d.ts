@@ -71,6 +71,7 @@ declare namespace App.Data.Coupon {
 declare namespace App.Data.EventProgram {
   export type EventProgramData = {
     id: number;
+    status: App.Enums.EventProgram.EventProgramStatusEnum;
     title: string;
     short_description: string;
     image: App.Data.Media.ImageData | null;
@@ -83,6 +84,7 @@ declare namespace App.Data.EventProgram {
   };
   export type EventProgramFullData = {
     id: number;
+    status: App.Enums.EventProgram.EventProgramStatusEnum;
     title: string;
     short_description: string;
     description: string;
@@ -391,7 +393,11 @@ declare namespace App.Enums {
     | 'View Any Hn Texts'
     | 'Create Hn Texts'
     | 'Delete Any Hn Texts'
-    | 'Update Any Hn Texts';
+    | 'Update Any Hn Texts'
+    | 'View Any Question Forms'
+    | 'Create Question Forms'
+    | 'Update Any Question Forms'
+    | 'Delete Any Question Forms';
   export type RoleEnum = 'Super Admin' | 'Test';
 }
 declare namespace App.Enums.Auth {
@@ -402,6 +408,9 @@ declare namespace App.Enums.Auth {
 }
 declare namespace App.Enums.Coupon {
   export type CouponTypeEnum = 'AMOUNT' | 'PERCENTAGE';
+}
+declare namespace App.Enums.EventProgram {
+  export type EventProgramStatusEnum = 'IN_PROGRESS' | 'INDICATOR' | 'ARCHIVE';
 }
 declare namespace App.Enums.Faq {
   export type FaqStatusEnum = 'UNDER_REVIEW' | 'APPROVED' | 'REJECTED';
@@ -415,6 +424,9 @@ declare namespace App.Enums.Order {
     | 'READY'
     | 'SENT'
     | 'FINISHED';
+}
+declare namespace App.Enums.QuestionForm {
+  export type QuestionFormTypeEnum = 'SINGLE_CHOICE' | 'MULTIPLE_CHOICE';
 }
 declare namespace App.Enums.Series {
   export type SeriesPresentationModeEnum = 'IN_PERSON' | 'ONLINE' | 'PLATFORM';
