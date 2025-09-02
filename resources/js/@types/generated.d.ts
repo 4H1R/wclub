@@ -415,6 +415,19 @@ declare namespace App.Enums.EventProgram {
 declare namespace App.Enums.Faq {
   export type FaqStatusEnum = 'UNDER_REVIEW' | 'APPROVED' | 'REJECTED';
 }
+declare namespace App.Enums.Logger {
+  export type SiemLogIdEnum =
+    | '20020'
+    | '20021'
+    | '20022'
+    | '20023'
+    | '20024'
+    | '20030'
+    | '20031'
+    | '20032'
+    | '20033'
+    | '20034';
+}
 declare namespace App.Enums.Order {
   export type OrderPaymentStatusEnum = 'WAITING_FOR_PAYMENT' | 'FAILURE' | 'SUCCESSFUL';
   export type OrderStatusEnum =
