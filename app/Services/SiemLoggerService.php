@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Enums\Logger\SeimLogIdEnum;
+use App\Enums\Logger\SiemLogIdEnum;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -20,7 +20,7 @@ class SiemLoggerService
         $this->request = $request;
     }
 
-    public function log(SeimLogIdEnum $logId, string $message, array $context = []): void
+    public function log(SiemLogIdEnum $logId, string $message, array $context = []): void
     {
         try {
             $header = $this->buildHeader();
@@ -33,7 +33,7 @@ class SiemLoggerService
             );
             Log::channel($this->logChannel)->info($logString);
         } catch (\Exception $e) {
-            Log::error('Failed to write to SIEM log channel: '.$e->getMessage());
+            Log::error('Failed to write to SIEM log channel: ' . $e->getMessage());
         }
     }
 
@@ -45,7 +45,7 @@ class SiemLoggerService
         ];
     }
 
-    private function buildBody(SeimLogIdEnum $logId, string $message, array $context): string
+    private function buildBody(SiemLogIdEnum $logId, string $message, array $context): string
     {
         $user = Auth::user() ?? $this->request->user();
 

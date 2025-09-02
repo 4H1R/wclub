@@ -8,6 +8,7 @@ enum SiemLogIdEnum: string
 {
     use EnumConcern;
 
+    case UserLoggedIn = '200';
     case WrongPassword = '20020';
     case AccountExpired = '20021';
     case AccountLocked = '20022';

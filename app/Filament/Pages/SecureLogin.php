@@ -2,6 +2,7 @@
 
 namespace App\Filament\Pages;
 
+use App\Enums\Logger\SiemLogIdEnum;
 use App\Services\SiemLoggerService;
 use DanHarrin\LivewireRateLimiting\Exceptions\TooManyRequestsException;
 use Filament\Facades\Filament;
@@ -34,6 +35,7 @@ class SecureLogin extends Login
         try {
             $this->rateLimit(5);
         } catch (TooManyRequestsException $exception) {
+            app(SiemLoggerService::class)->log(SiemLogIdEnum::AccountGotLimited, 'Too many login attempts');
             $this->getRateLimitedNotification($exception)?->send();
 
             return null;
@@ -42,6 +44,10 @@ class SecureLogin extends Login
         $data = $this->form->getState();
 
         if (! Filament::auth()->attempt($this->getCredentialsFromFormData($data), $data['remember'] ?? false)) {
+            app(SiemLoggerService::class)->log(
+                logId: SiemLogIdEnum::WrongPassword,
+                message: 'Wrong password',
+            );
             $this->throwFailureValidationException();
         }
 
@@ -58,7 +64,7 @@ class SecureLogin extends Login
 
         session()->regenerate();
 
-        app(SiemLoggerService::class)->log(SiemLogIdEnum::LoginSuccess, 'Login successful');
+        app(SiemLoggerService::class)->log(SiemLogIdEnum::UserLoggedIn, 'Login successful');
 
         return app(LoginResponse::class);
     }
