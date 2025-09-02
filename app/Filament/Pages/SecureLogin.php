@@ -2,7 +2,12 @@
 
 namespace App\Filament\Pages;
 
+use App\Enums\Logger\SiemLogIdEnum;
+use App\Services\SiemLoggerService;
+use DanHarrin\LivewireRateLimiting\Exceptions\TooManyRequestsException;
+use Filament\Facades\Filament;
 use Filament\Http\Responses\Auth\Contracts\LoginResponse;
+use Filament\Models\Contracts\FilamentUser;
 use Filament\Pages\Auth\Login;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Validation\ValidationException;
@@ -22,7 +27,46 @@ class SecureLogin extends Login
             ]);
         }
 
-        return parent::authenticate();
+        return $this->login();
+    }
+
+    public function login(): ?LoginResponse
+    {
+        try {
+            $this->rateLimit(5);
+        } catch (TooManyRequestsException $exception) {
+            app(SiemLoggerService::class)->log(SiemLogIdEnum::AccountGotLimited, 'Too many login attempts');
+            $this->getRateLimitedNotification($exception)?->send();
+
+            return null;
+        }
+
+        $data = $this->form->getState();
+
+        if (! Filament::auth()->attempt($this->getCredentialsFromFormData($data), $data['remember'] ?? false)) {
+            app(SiemLoggerService::class)->log(
+                logId: SiemLogIdEnum::WrongPassword,
+                message: 'Wrong password',
+            );
+            $this->throwFailureValidationException();
+        }
+
+        $user = Filament::auth()->user();
+
+        if (
+            ($user instanceof FilamentUser) &&
+            (! $user->canAccessPanel(Filament::getCurrentPanel()))
+        ) {
+            Filament::auth()->logout();
+
+            $this->throwFailureValidationException();
+        }
+
+        session()->regenerate();
+
+        app(SiemLoggerService::class)->log(SiemLogIdEnum::UserLoggedIn, 'Login successful');
+
+        return app(LoginResponse::class);
     }
 
     protected function throwFailureValidationException(): never
