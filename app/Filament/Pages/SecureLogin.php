@@ -35,7 +35,7 @@ class SecureLogin extends Login
         try {
             $this->rateLimit(5);
         } catch (TooManyRequestsException $exception) {
-            app(SiemLoggerService::class)->log(SiemLogIdEnum::AccountGotLimited, 'Too many login attempts');
+            app(SiemLoggerService::class)->log(SiemLogIdEnum::AuthFailedSessionIsRateLimited, 'Too many login attempts');
             $this->getRateLimitedNotification($exception)?->send();
 
             return null;
@@ -45,7 +45,7 @@ class SecureLogin extends Login
 
         if (! Filament::auth()->attempt($this->getCredentialsFromFormData($data), $data['remember'] ?? false)) {
             app(SiemLoggerService::class)->log(
-                logId: SiemLogIdEnum::WrongPassword,
+                logId: SiemLogIdEnum::AuthFailedWrongPassword,
                 message: 'Wrong password',
             );
             $this->throwFailureValidationException();
@@ -57,6 +57,7 @@ class SecureLogin extends Login
             ($user instanceof FilamentUser) &&
             (! $user->canAccessPanel(Filament::getCurrentPanel()))
         ) {
+            app(SiemLoggerService::class)->log(SiemLogIdEnum::UserDoesNotHavePermission, 'User does not have permission');
             Filament::auth()->logout();
 
             $this->throwFailureValidationException();

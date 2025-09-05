@@ -33,7 +33,7 @@ class SiemLoggerService
             );
             Log::channel($this->logChannel)->info($logString);
         } catch (\Exception $e) {
-            Log::error('Failed to write to SIEM log channel: ' . $e->getMessage());
+            Log::error('Failed to write to SIEM log channel: '.$e->getMessage());
         }
     }
 
@@ -57,6 +57,7 @@ class SiemLoggerService
             'ServerIP' => $this->request->server('SERVER_ADDR', '127.0.0.1'),
             'ServerPort' => $this->request->server('SERVER_PORT', 80),
             'ServerName' => $this->appName,
+            'ServerPath' => $this->request->path(),
             'ClientIP' => $this->request->ip(),
             'ClientPort' => $this->request->server('REMOTE_PORT'),
             'Username' => $user->email ?? $user->phone ?? $user->national_code ?? $context['Username'] ?? 'Guest',

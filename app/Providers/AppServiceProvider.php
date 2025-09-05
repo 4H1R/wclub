@@ -3,13 +3,16 @@
 namespace App\Providers;
 
 use App\Custom\FileSystem;
+use App\Models\Role;
 use App\Models\Series;
 use App\Models\SeriesChapter;
 use App\Models\SeriesEpisode;
 use App\Models\User;
+use App\Observers\RoleObserver;
 use App\Observers\SeriesChapterObserver;
 use App\Observers\SeriesEpisodeObserver;
 use App\Observers\SeriesObserver;
+use App\Observers\UserObserver;
 use Filament\Support\Assets\Css;
 use Filament\Support\Facades\FilamentAsset;
 use Illuminate\Cache\RateLimiting\Limit;
@@ -53,6 +56,8 @@ class AppServiceProvider extends ServiceProvider
         Series::observe(SeriesObserver::class);
         SeriesEpisode::observe(SeriesEpisodeObserver::class);
         SeriesChapter::observe(SeriesChapterObserver::class);
+        User::observe(UserObserver::class);
+        Role::observe(RoleObserver::class);
 
         Password::defaults(function () {
             $rule = Password::min(8)->max(28);

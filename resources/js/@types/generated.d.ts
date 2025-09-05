@@ -417,16 +417,18 @@ declare namespace App.Enums.Faq {
 }
 declare namespace App.Enums.Logger {
   export type SiemLogIdEnum =
-    | '20020'
-    | '20021'
-    | '20022'
-    | '20023'
-    | '20024'
-    | '20030'
-    | '20031'
-    | '20032'
-    | '20033'
-    | '20034';
+    | '2001'
+    | '2002'
+    | '2003'
+    | '2004'
+    | '2005'
+    | '2006'
+    | '3001'
+    | '4001'
+    | '4002'
+    | '4003'
+    | '4004'
+    | '4005';
 }
 declare namespace App.Enums.Order {
   export type OrderPaymentStatusEnum = 'WAITING_FOR_PAYMENT' | 'FAILURE' | 'SUCCESSFUL';

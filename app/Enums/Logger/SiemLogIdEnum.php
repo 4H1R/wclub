@@ -8,15 +8,16 @@ enum SiemLogIdEnum: string
 {
     use EnumConcern;
 
-    case UserLoggedIn = '200';
-    case WrongPassword = '20020';
-    case AccountExpired = '20021';
-    case AccountLocked = '20022';
-    case AccountInactive = '20023';
-    case AccountDeleted = '20024';
-    case AccountGotLocked = '20030';
-    case AccountGotLimited = '20031';
-    case AccountCreated = '20032';
-    case AccountGroupChanged = '20033';
-    case AccountGotDeleted = '20034';
+    case UserLoggedIn = '2001';
+    case AuthFailedWrongPassword = '2002';
+    case AuthFailedSessionExpired = '2003';
+    case AuthFailedSessionIsRateLimited = '2004';
+    case UserGotDeleted = '2005';
+    case UserGotCreated = '2006';
+    case UserLoggedOut = '3001';
+    case RoleGotUpdated = '4001';
+    case RoleGotCreated = '4002';
+    case RoleGotDeleted = '4003';
+    case UserRoleGotUpdated = '4004';
+    case UserDoesNotHavePermission = '4005';
 }

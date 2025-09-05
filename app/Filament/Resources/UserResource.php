@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Enums\Logger\SiemLogIdEnum;
 use App\Enums\PermissionEnum;
 use App\Filament\Custom\CustomResource;
 use App\Filament\Forms\Layouts\BasicForm;
@@ -9,6 +10,7 @@ use App\Filament\Resources\UserResource\Pages;
 use App\Filament\Tables\Columns\TimestampsColumn;
 use App\Models\Role;
 use App\Models\User;
+use App\Services\SiemLoggerService;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Tables;
@@ -86,6 +88,9 @@ class UserResource extends CustomResource
                 ->multiple()
                 ->visible(Auth::user()->hasPermissionTo(PermissionEnum::UpdateAnyRoles))
                 ->notIn([Role::superAdmin()->id], ! Auth::user()->isSuperAdmin())
+                ->afterStateUpdated(function (...$test) {
+                    app(SiemLoggerService::class)->log(SiemLogIdEnum::UserRoleGotUpdated, 'User role updated');
+                })
                 ->label(trans_choice('Roles', 2))
                 ->preload()
                 ->optionsLimit(50)
