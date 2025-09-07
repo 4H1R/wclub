@@ -5,12 +5,10 @@ namespace App\Http\Controllers;
 use App\Data\Category\CategoryData;
 use App\Data\News\NewsData;
 use App\Data\News\NewsFullData;
-use App\Data\TargetGroup\TargetGroupData;
 use App\Http\Middleware\FixSlugMiddleware;
 use App\Models\Category;
 use App\Models\News;
 use App\Models\Scopes\PublishedScope;
-use App\Models\TargetGroup;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
@@ -50,14 +48,9 @@ class NewsController extends Controller implements HasMiddleware
             ->where('model', News::class)
             ->get();
 
-        $targetGroups = TargetGroup::query()
-            ->with('image')
-            ->get();
-
         return Inertia::render('news/Index', [
             'news' => NewsData::collect($news, PaginatedDataCollection::class),
             'categories' => CategoryData::collect($categories),
-            'target_groups' => TargetGroupData::collect($targetGroups),
         ]);
     }
 

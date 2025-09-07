@@ -26,6 +26,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\Series\SeriesController;
 use App\Http\Controllers\Series\SeriesEpisodeController;
 use App\Http\Controllers\Series\SeriesOwnController;
+use App\Http\Controllers\TargetGroupController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('throttle:global')->group(function () {
@@ -58,6 +59,9 @@ Route::middleware('throttle:global')->group(function () {
 
     Route::get('/games/nardeban-shadi', NardebanShadiController::class)->name('games.nardeban-shadi');
     Route::get('/games/roll-the-dice', RollTheDiceGameController::class)->name('games.roll-the-dice');
+
+    Route::post('/target-groups/active', [TargetGroupController::class, 'active'])->name('target-groups.active');
+    Route::delete('/target-groups/active', [TargetGroupController::class, 'deleteActive']);
 
     Route::middleware(['auth'])->group(function () {
         Route::resource('faqs', FaqController::class)->only(['store']);

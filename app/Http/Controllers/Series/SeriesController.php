@@ -5,13 +5,11 @@ namespace App\Http\Controllers\Series;
 use App\Data\Category\CategoryData;
 use App\Data\Series\SeriesData;
 use App\Data\Series\SeriesFullData;
-use App\Data\TargetGroup\TargetGroupData;
 use App\Http\Controllers\Controller;
 use App\Http\Middleware\FixSlugMiddleware;
 use App\Models\Category;
 use App\Models\Scopes\PublishedScope;
 use App\Models\Series;
-use App\Models\TargetGroup;
 use App\Services\SeriesService;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Routing\Controllers\HasMiddleware;
@@ -56,14 +54,9 @@ class SeriesController extends Controller implements HasMiddleware
             ->where('model', Series::class)
             ->get();
 
-        $targetGroups = TargetGroup::query()
-            ->with('image')
-            ->get();
-
         return Inertia::render('series/Index', [
             'series' => SeriesData::collect($series, PaginatedDataCollection::class),
             'categories' => CategoryData::collect($categories),
-            'target_groups' => TargetGroupData::collect($targetGroups),
         ]);
     }
 

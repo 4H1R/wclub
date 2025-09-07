@@ -78,6 +78,7 @@ declare module 'ziggy-js' {
     'games.index': [];
     'games.nardeban-shadi': [];
     'games.roll-the-dice': [];
+    'target-groups.active': [];
     'faqs.store': [];
     'contests.registrations.store': [
       {

@@ -11,6 +11,7 @@ import { HiOutlineMagnifyingGlass } from 'react-icons/hi2';
 import DesktopLinks from './DesktopLinks';
 import MobileDrawerToggle from './MobileDrawerToggle';
 import Profile from './Profile';
+import TargetGroupSelect from './TargetGroupSelect';
 
 const parentVariants = {
   visible: { opacity: 1, y: 0 },
@@ -76,7 +77,7 @@ export default function Navbar() {
         >
           <Link
             href="/"
-            className="btn btn-ghost text-lg font-medium hover:bg-transparent md:text-xl"
+            className="btn btn-ghost hidden text-lg font-medium hover:bg-transparent md:text-xl xl:flex"
           >
             <Image
               className="!hidden md:!block"
@@ -85,11 +86,11 @@ export default function Navbar() {
               height={40}
               alt={`لوگو ${config.websiteTitle}`}
             />
-            <span className="xl:hidden">{config.websiteTitle}</span>
           </Link>
+          <TargetGroupSelect />
         </div>
         <DesktopLinks />
-        <div className="navbar-end gap-4">
+        <div className="navbar-end w-full gap-4">
           {!isInSearch && (
             <>
               <div className="form-control hidden 2xl:flex">
