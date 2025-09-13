@@ -28,7 +28,8 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('admin')
-            ->login(SecureLogin::class)
+            // ->login(SecureLogin::class)
+            ->login()
             ->font('Vazirmatn', provider: LocalFontProvider::class)
             ->navigationGroups([
                 trans_choice('Event Programs', 2),

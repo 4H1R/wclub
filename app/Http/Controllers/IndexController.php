@@ -29,7 +29,7 @@ class IndexController extends Controller
             return to_route('auth.my-isfahan.callback', ['code' => $code]);
         }
 
-        $data = Cache::remember('index', 60, function () {
+        $data = Cache::remember('index#'.$request->session()->get('active_target_group_id', 0), 60, function () {
             $banners = Banner::query()
                 ->with('image')
                 ->withGlobalScope('published', new PublishedScope)

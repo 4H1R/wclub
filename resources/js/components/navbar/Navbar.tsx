@@ -69,28 +69,29 @@ export default function Navbar() {
       )}
     >
       <div className="container navbar">
-        <MobileDrawerToggle />
         <div
-          className={cn('navbar-center xl:navbar-start xl:flex-shrink', {
+          className={cn('navbar-start grow xl:flex-shrink xl:grow-0', {
             'xl:max-w-fit': !isInSearch,
           })}
         >
           <Link
             href="/"
-            className="btn btn-ghost hidden text-lg font-medium hover:bg-transparent md:text-xl xl:flex"
+            className={cn('btn btn-ghost text-lg font-medium hover:bg-transparent md:text-xl', {
+              'hidden xl:flex': auth.user,
+            })}
           >
             <Image
-              className="!hidden md:!block"
               src="/images/logo/logo.png"
               width={40}
               height={40}
               alt={`لوگو ${config.websiteTitle}`}
             />
           </Link>
+          {auth.user && <Profile className="ml-2 flex xl:hidden" />}
           <TargetGroupSelect />
         </div>
         <DesktopLinks />
-        <div className="navbar-end w-full gap-4">
+        <div className="navbar-end max-w-fit gap-4 xl:flex xl:max-w-none">
           {!isInSearch && (
             <>
               <div className="form-control hidden 2xl:flex">
@@ -105,12 +106,13 @@ export default function Navbar() {
             </>
           )}
           {auth.user ? (
-            <Profile />
+            <Profile className="dropdown-end hidden xl:flex" />
           ) : (
-            <Link className="btn btn-primary" href={route('auth')}>
+            <Link className="btn btn-primary hidden xl:flex" href={route('auth')}>
               حساب کاربری
             </Link>
           )}
+          <MobileDrawerToggle />
         </div>
       </div>
     </motion.header>

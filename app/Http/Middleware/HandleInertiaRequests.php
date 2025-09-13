@@ -23,13 +23,10 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
-        $activeTargetGroupId = $request->session()->get('active_target_group');
-        $activeTargetGroup = $activeTargetGroupId ? TargetGroup::with('image')->find($activeTargetGroupId) : null;
-
         return [
             ...parent::share($request),
             'target_groups' => TargetGroupData::collect(TargetGroup::with('image')->get()),
-            'active_target_group' => $activeTargetGroup ? TargetGroupData::from($activeTargetGroup) : null,
+            'active_target_group_id' => $request->session()->get('active_target_group_id', 0),
             'auth' => [
                 'user' => $request->user() ? AuthUserData::from($request->user()->toArray()) : null,
             ],

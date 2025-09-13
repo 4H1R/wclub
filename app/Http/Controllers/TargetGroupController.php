@@ -13,14 +13,14 @@ class TargetGroupController extends Controller
             'target_group_id' => ['required', Rule::exists('target_groups', 'id')],
         ]);
 
-        $request->session()->put('active_target_group', $request->input('target_group_id'));
+        $request->session()->put('active_target_group_id', $request->input('target_group_id'));
 
         return redirect()->back();
     }
 
     public function deleteActive(Request $request)
     {
-        $request->session()->forget('active_target_group');
+        $request->session()->forget('active_target_group_id');
 
         return redirect()->back();
     }

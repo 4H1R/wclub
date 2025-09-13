@@ -23,7 +23,7 @@ const sorts = [
 ];
 
 export default function Index() {
-  const { news, categories, target_groups } = usePage<TPage>().props;
+  const { news, categories, target_groups, active_target_group_id } = usePage<TPage>().props;
   const url = usePage().url;
 
   return (
@@ -41,16 +41,18 @@ export default function Index() {
           title="دسته بندی ها"
           modalTitle="فیلتر بر اساس دسته بندی ها"
         />
-        <FilterModal
-          ButtonIcon={HiOutlineStar}
-          filterId="target_groups_id"
-          options={target_groups.map((group) => ({
-            label: group.title,
-            value: group.id.toString(),
-          }))}
-          title="گروه های هدف"
-          modalTitle="فیلتر بر اساس گروه های هدف"
-        />
+        {!active_target_group_id && (
+          <FilterModal
+            ButtonIcon={HiOutlineStar}
+            filterId="target_groups_id"
+            options={target_groups.map((group) => ({
+              label: group.title,
+              value: group.id.toString(),
+            }))}
+            title="گروه های هدف"
+            modalTitle="فیلتر بر اساس گروه های هدف"
+          />
+        )}
       </div>
       <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between lg:flex-col lg:items-start lg:justify-normal">
         <h1 className="h1 text-base-content">اخبار</h1>
