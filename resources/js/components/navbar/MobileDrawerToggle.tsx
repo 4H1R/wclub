@@ -1,13 +1,9 @@
 import config from '@/fixtures/config';
-import { cn } from '@/utils';
-import { usePage } from '@inertiajs/react';
 import { HiBars3BottomLeft } from 'react-icons/hi2';
 
 export default function MobileDrawerToggle() {
-  const { auth } = usePage().props;
-
   return (
-    <div className={cn('xl:hidden', { 'w-min sm:w-1/2': !auth.user })}>
+    <div className="xl:hidden">
       <label
         htmlFor={config.mobileDrawerId}
         aria-label="بازکردن منو بغل"
