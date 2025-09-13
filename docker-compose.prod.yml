@@ -35,7 +35,7 @@ x-base: &base
     - wclub
   volumes:
     - './storage/app/public:/var/www/html/storage/app/public'
-    - './storage/logs:/var/www/html/storage/logs'
+    - 'logs-data:/var/www/html/storage/logs'
   logging: *default-logging
   restart: unless-stopped
 
@@ -132,6 +132,7 @@ volumes:
   minio-data:
   pgsql-data:
   redis-data:
+  logs-data:
 
 
 networks:
