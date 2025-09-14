@@ -2,7 +2,9 @@
 
 namespace App\Http\Middleware;
 
+use App\Data\TargetGroup\TargetGroupData;
 use App\Data\User\AuthUserData;
+use App\Models\TargetGroup;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 use Tighten\Ziggy\Ziggy;
@@ -23,6 +25,8 @@ class HandleInertiaRequests extends Middleware
     {
         return [
             ...parent::share($request),
+            'target_groups' => TargetGroupData::collect(TargetGroup::with('image')->get()),
+            'active_target_group_id' => $request->session()->get('active_target_group_id', 0),
             'auth' => [
                 'user' => $request->user() ? AuthUserData::from($request->user()->toArray()) : null,
             ],

@@ -4,6 +4,7 @@ namespace App\Models\Traits;
 
 use App\Models\Tag;
 use App\Models\TargetGroup;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 trait HasTargetGroups
@@ -12,6 +13,14 @@ trait HasTargetGroups
     {
         static::deleted(function (mixed $deletedModel) {
             $deletedModel->targetGroups()->delete();
+        });
+
+        static::addGlobalScope('session_target_group', function (Builder $builder) {
+            if ($id = request()->session()->get('active_target_group_id')) {
+                $builder->whereHas('targetGroups', function (Builder $builder) {
+                    $builder->where('target_groups.id', request()->session()->get('active_target_group_id'));
+                });
+            }
         });
     }
 

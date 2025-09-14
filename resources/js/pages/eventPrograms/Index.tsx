@@ -31,7 +31,8 @@ const statusOptions = Object.entries(eventProgramStatusTranslation).map(([key, v
 }));
 
 export default function Index() {
-  const { event_programs, categories, target_groups } = usePage<TPage>().props;
+  const { event_programs, categories, target_groups, active_target_group_id } =
+    usePage<TPage>().props;
   const url = usePage().url;
 
   return (
@@ -53,16 +54,18 @@ export default function Index() {
           title="دسته بندی ها"
           modalTitle="فیلتر بر اساس دسته بندی ها"
         />
-        <FilterModal
-          ButtonIcon={HiOutlineStar}
-          filterId="target_groups_id"
-          options={target_groups.map((group) => ({
-            label: group.title,
-            value: group.id.toString(),
-          }))}
-          title="گروه های هدف"
-          modalTitle="فیلتر بر اساس گروه های هدف"
-        />
+        {!active_target_group_id && (
+          <FilterModal
+            ButtonIcon={HiOutlineStar}
+            filterId="target_groups_id"
+            options={target_groups.map((group) => ({
+              label: group.title,
+              value: group.id.toString(),
+            }))}
+            title="گروه های هدف"
+            modalTitle="فیلتر بر اساس گروه های هدف"
+          />
+        )}
         <FilterModal
           ButtonIcon={HiOutlineTag}
           filterId="status"

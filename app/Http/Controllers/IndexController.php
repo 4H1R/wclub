@@ -8,7 +8,6 @@ use App\Data\EventProgram\EventProgramData;
 use App\Data\News\NewsData;
 use App\Data\RewardProgram\RewardProgramData;
 use App\Data\Series\SeriesData;
-use App\Data\TargetGroup\TargetGroupData;
 use App\Models\Banner;
 use App\Models\Contest;
 use App\Models\EventProgram;
@@ -16,7 +15,6 @@ use App\Models\News;
 use App\Models\RewardProgram;
 use App\Models\Scopes\PublishedScope;
 use App\Models\Series;
-use App\Models\TargetGroup;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -31,11 +29,7 @@ class IndexController extends Controller
             return to_route('auth.my-isfahan.callback', ['code' => $code]);
         }
 
-        $data = Cache::remember('index', 60, function () {
-            $targetGroups = TargetGroup::query()
-                ->with('image')
-                ->get();
-
+        $data = Cache::remember('index#'.$request->session()->get('active_target_group_id', 0), 60, function () {
             $banners = Banner::query()
                 ->with('image')
                 ->withGlobalScope('published', new PublishedScope)
@@ -77,7 +71,6 @@ class IndexController extends Controller
                 ->get();
 
             return [
-                'target_groups' => TargetGroupData::collect($targetGroups),
                 'banners' => BannerData::collect($banners),
                 'event_programs' => EventProgramData::collect($eventPrograms),
                 'reward_programs' => RewardProgramData::collect($rewardPrograms),

@@ -1,5 +1,6 @@
 import { PageProps } from '@/@types';
 import Button from '@/shared/forms/Button';
+import { cn } from '@/utils';
 import { Link, router, usePage } from '@inertiajs/react';
 import compact from 'lodash/compact';
 import { useMemo } from 'react';
@@ -11,7 +12,11 @@ type TLink = {
   openOnNewTab?: boolean;
 };
 
-export default function Profile() {
+type ProfileProps = {
+  className?: string;
+};
+
+export default function Profile({ className }: ProfileProps) {
   const { auth } = usePage<PageProps>().props;
   const fullName = useMemo(() => {
     if (!auth.user) return '';
@@ -21,10 +26,13 @@ export default function Profile() {
     return `${auth.user.first_name} ${auth.user.last_name}`;
   }, [auth]);
 
-  const authLinks: TLink[] = compact([{ title: 'داشبورد', href: route('dashboard') }]);
+  const authLinks: TLink[] = compact([
+    { title: 'صفحه اصلی', href: '/' },
+    { title: 'داشبورد', href: route('dashboard') },
+  ]);
 
   return (
-    <div className="dropdown dropdown-end">
+    <div className={cn('dropdown dropdown-bottom', className)}>
       <label tabIndex={0} className="avatar btn btn-circle btn-ghost">
         <Avatar title={auth.user ? fullName : '?'} />
       </label>

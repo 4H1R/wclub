@@ -5,13 +5,11 @@ namespace App\Http\Controllers\Contest;
 use App\Data\Category\CategoryData;
 use App\Data\Contest\ContestData;
 use App\Data\Contest\ContestFullData;
-use App\Data\TargetGroup\TargetGroupData;
 use App\Http\Controllers\Controller;
 use App\Http\Middleware\FixSlugMiddleware;
 use App\Models\Category;
 use App\Models\Contest;
 use App\Models\Scopes\PublishedScope;
-use App\Models\TargetGroup;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
@@ -52,14 +50,9 @@ class ContestController extends Controller implements HasMiddleware
             ->where('model', Contest::class)
             ->get();
 
-        $targetGroups = TargetGroup::query()
-            ->with('image')
-            ->get();
-
         return Inertia::render('contests/Index', [
             'contests' => ContestData::collect($news, PaginatedDataCollection::class),
             'categories' => CategoryData::collect($categories),
-            'target_groups' => TargetGroupData::collect($targetGroups),
         ]);
     }
 

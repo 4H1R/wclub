@@ -40,7 +40,7 @@ export default function MainLayout({ children }: MainLayoutProps) {
             aria-label="close sidebar"
             className="drawer-overlay"
           />
-          <div className="menu min-h-full w-80 space-y-4 bg-base-200 p-4">
+          <div className="menu min-h-full w-72 space-y-4 bg-base-200 p-4">
             <DrawerContent />
           </div>
         </div>
