@@ -45,8 +45,8 @@ Route::middleware('throttle:global')->group(function () {
     Route::get('/hn', [HnController::class, 'index'])->name('hn.index');
     Route::get('/hn/start', [HnController::class, 'start'])->name('hn.start');
 
-    // Route::get('/consultations', [ConsultationController::class, 'index'])->name('consultations.index');
-    // Route::get('/consultations/in-person', [ConsultationController::class, 'inPerson'])->name('consultations.in-person');
+    Route::get('/consultations', [ConsultationController::class, 'index'])->name('consultations.index');
+    Route::get('/consultations/in-person', [ConsultationController::class, 'inPerson'])->name('consultations.in-person');
 
     Route::resource('news', NewsController::class)->only(['index', 'show']);
     Route::resource('gardens', GardenController::class)->only(['index', 'show']);

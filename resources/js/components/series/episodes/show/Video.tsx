@@ -50,14 +50,14 @@ type VideoProps = {
   seriesSlug: string;
 };
 
-export default function Video({ episode, image, seriesSlug }: VideoProps) {
+export default function Video({ series, episode, image, seriesSlug }: VideoProps) {
   const { auth } = usePage().props;
 
   const getStartTime = () => {
     return undefined;
   };
 
-  if (!auth.user) {
+  if (!auth.user && series.payment_type !== 'FREE') {
     return (
       <VideoMessage
         image={image}

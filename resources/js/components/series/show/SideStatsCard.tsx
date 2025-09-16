@@ -49,7 +49,7 @@ export default function SideStatsCard({ series }: SideStatsCardProps) {
   ];
 
   return (
-    <ul className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3">
+    <ul className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-2 xl:grid-cols-3">
       {stats.map((stat) => (
         <li key={stat.title} className="card card-compact max-h-min bg-base-200 text-center">
           <div className="min-h-30 card-body items-center md:min-h-36">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Series;
 
 use App\Data\Series\SeriesFullData;
 use App\Data\SeriesEpisode\SeriesEpisodeFullData;
+use App\Enums\PaymentTypeEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Middleware\FixSlugMiddleware;
 use App\Models\Series;
@@ -51,7 +52,7 @@ class SeriesEpisodeController extends Controller implements HasMiddleware
             'current_episode' => SeriesEpisodeFullData::from([
                 ...$episodeModel->toArray(),
                 'episode_number' => $episode,
-                'video' => $this->seriesService->getEpisodeVideoData($series->is_owned, $episodeModel),
+                'video' => $this->seriesService->getEpisodeVideoData($series->is_owned || $series->payment_type === PaymentTypeEnum::Free, $episodeModel),
             ]),
         ]);
     }

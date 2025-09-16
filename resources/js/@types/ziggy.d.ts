@@ -11,6 +11,8 @@ declare module 'ziggy-js' {
     'clean-life': [];
     'hn.index': [];
     'hn.start': [];
+    'consultations.index': [];
+    'consultations.in-person': [];
     'news.index': [];
     'news.show': [
       {

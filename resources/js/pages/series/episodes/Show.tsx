@@ -38,7 +38,6 @@ export default function Show() {
       />
       <BreadCrumb
         links={[
-          { title: 'اسمارتیز آکادمی', href: route('index') },
           { title: 'دوره ها', href: route('series.index') },
           { title: series.title, href: currentSeriesLink },
           { title: `قسمت ${current_episode.episode_number}`, href: '#' },
@@ -60,7 +59,7 @@ export default function Show() {
         </div>
       </div>
       <div className="side-grid-container">
-        <div className="space-y-4 lg:col-span-7">
+        <div className="space-y-4 xl:col-span-7">
           <EpisodePagination
             isFirstEpisode={isFirstEpisode}
             isLastEpisode={isLastEpisode}
@@ -81,7 +80,7 @@ export default function Show() {
           )}
           <ChaptersCard activeEpisodeId={current_episode.id} series={series} />
         </div>
-        <div className="space-y-4 lg:col-span-3">
+        <div className="space-y-4 xl:col-span-3">
           <SideStatsCard series={series} />
         </div>
       </div>
