@@ -70,6 +70,13 @@ class SeriesResource extends CustomResource
                 ->reactive()
                 ->options(SeriesPresentationModeEnum::class)
                 ->required(),
+            Forms\Components\Select::make('target_groups')
+                ->label(trans_choice('Target Groups', 2))
+                ->searchable()
+                ->preload()
+                ->multiple()
+                ->optionsLimit(50)
+                ->relationship('targetGroups', 'title'),
             FileInput::make($form, 'image', visibility: 'public')
                 ->image()
                 ->imageEditor()
