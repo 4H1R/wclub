@@ -10,6 +10,7 @@ return new class extends Migration
     {
         Schema::table('categories', function (Blueprint $table) {
             $table->boolean('is_global')->default(false);
+            $table->foreignId('parent_id')->nullable()->constrained('categories')->nullOnDelete();
         });
     }
 
@@ -17,6 +18,7 @@ return new class extends Migration
     {
         Schema::table('categories', function (Blueprint $table) {
             $table->dropColumn('is_global');
+            $table->dropForeign(['parent_id']);
         });
     }
 };

@@ -16,9 +16,12 @@ trait HasTargetGroups
         });
 
         static::addGlobalScope('session_target_group', function (Builder $builder) {
+            if (! request()->hasSession()) {
+                return;
+            }
             if ($id = request()->session()->get('active_target_group_id')) {
-                $builder->whereHas('targetGroups', function (Builder $builder) {
-                    $builder->where('target_groups.id', request()->session()->get('active_target_group_id'));
+                $builder->whereHas('targetGroups', function (Builder $builder) use ($id) {
+                    $builder->where('target_groups.id', $id);
                 });
             }
         });
