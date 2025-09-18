@@ -19,9 +19,9 @@
     "hekmatinasser/verta": "^8.4",
     "inertiajs/inertia-laravel": "^2.0",
     "kasraghoreyshi/persian-faker": "^1.04",
-    "laravel/framework": "^11.31",
+    "laravel/framework": "^12.29.0",
     "laravel/horizon": "^5.29",
-    "laravel/octane": "2.11",
+    "laravel/octane": "^2.12.2",
     "laravel/sanctum": "^4.0",
     "laravel/tinker": "^2.9",
     "league/flysystem-aws-s3-v3": "^3.0",
@@ -39,7 +39,7 @@
     "spatie/laravel-typescript-transformer": "^2.5",
     "spatie/typescript-transformer": "^2.4",
     "tightenco/ziggy": "^2.4",
-    "vinkla/hashids": "^12.0"
+    "vinkla/hashids": "^13.0.0"
   },
   "require-dev": {
     "barryvdh/laravel-ide-helper": "^3.2",
@@ -52,8 +52,8 @@
     "laravel/telescope": "^5.2",
     "mockery/mockery": "^1.6",
     "nunomaduro/collision": "^8.1",
-    "pestphp/pest": "^3.6",
-    "pestphp/pest-plugin-laravel": "^3.0"
+    "pestphp/pest": "^4.1.0",
+    "pestphp/pest-plugin-laravel": "^4.0.0"
   },
   "autoload": {
     "psr-4": {
