@@ -47,8 +47,8 @@ namespace App\Models{
  * @property string $title
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property bool $is_global
  * @property int|null $parent_id
+ * @property bool $show_on_navbar
  * @property-read Category|null $parent
  * @property-read Category|null $parentSelect
  * @property-read \Illuminate\Database\Eloquent\Collection<int, Category> $subCategories
@@ -59,9 +59,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Category query()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Category whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Category whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Category whereIsGlobal($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Category whereModel($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Category whereParentId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Category whereShowOnNavbar($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Category whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Category whereUpdatedAt($value)
  * @mixin \Eloquent

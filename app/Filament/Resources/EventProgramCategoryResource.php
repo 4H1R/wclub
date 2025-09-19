@@ -18,6 +18,8 @@ class EventProgramCategoryResource extends CategoryResource
 
     public static ?PermissionEnum $deleteAny = PermissionEnum::DeleteAnyEventProgramCategories;
 
+    public static bool $showOnNavbar = true;
+
     public static function getNavigationGroup(): ?string
     {
         return trans_choice('Event Programs', 2);

@@ -1,4 +1,6 @@
+import { PageProps } from '@/@types';
 import { TIcon } from '@/types';
+import { usePage } from '@inertiajs/react';
 import {
   HiChatBubbleLeft,
   HiEnvelope,
@@ -35,147 +37,184 @@ export type TNavbarLink = {
   Icon: TIcon;
   ActiveIcon: TIcon;
   showOn: 'mobile' | 'desktop' | 'all';
-  middleware?: 'auth';
   desktopSubLinkClassName?: string;
   desktopSubLinks?: { title: string; href: string }[];
 };
 
-export const navbarLinks: TNavbarLink[] = [
-  { title: 'خانه', href: '/', Icon: HiOutlineHome, ActiveIcon: HiHome, showOn: 'mobile' },
-  {
-    title: 'حساب کاربری',
-    href: '/dashboard',
-    Icon: HiOutlineUser,
-    ActiveIcon: HiUser,
-    showOn: 'mobile',
-    middleware: 'auth',
-  },
-  {
-    title: 'رویداد ها',
-    href: '/event-programs',
-    Icon: HiOutlineSignal,
-    ActiveIcon: HiSignal,
-    showOn: 'all',
-  },
+type TNavbarProps = {
+  showOn?: 'mobile' | 'desktop' | 'all';
+};
 
-  {
-    title: 'اخبار',
-    href: '/news',
-    Icon: HiOutlineNewspaper,
-    ActiveIcon: HiNewspaper,
-    showOn: 'all',
-  },
-  {
-    title: 'مشاوره',
-    href: '/consultations',
-    Icon: HiOutlineChatBubbleLeft,
-    ActiveIcon: HiChatBubbleLeft,
-    showOn: 'mobile',
-  },
-  {
-    title: 'باغ های بانوان',
-    href: '/gardens',
-    Icon: HiOutlineSparkles,
-    ActiveIcon: HiSparkles,
-    showOn: 'mobile',
-  },
-  {
-    title: 'خدمات',
-    href: '/reward-programs',
-    Icon: HiOutlineStar,
-    ActiveIcon: HiStar,
-    showOn: 'mobile',
-  },
+export function useNavbarLinks({ showOn = 'all' }: TNavbarProps): TNavbarLink[] {
+  const { auth, event_program_categories } = usePage<PageProps>().props;
 
-  { title: 'دوره ها', href: '/series', Icon: HiOutlineFilm, ActiveIcon: HiFilm, showOn: 'all' },
-  {
-    title: 'خدمات',
-    href: '/services-group',
-    Icon: HiOutlineSparkles,
-    ActiveIcon: HiSparkles,
-    desktopSubLinkClassName: 'w-40',
-    showOn: 'desktop',
-    desktopSubLinks: [
-      {
-        title: 'مشاوره',
-        href: '/consultations',
-      },
-      {
-        title: 'خدمات',
-        href: '/reward-programs',
-      },
-      {
-        title: 'باغ های بانوان',
-        href: '/gardens',
-      },
-      {
-        title: 'چالش و مسابقات',
-        href: '/contests',
-      },
-      {
-        title: 'بازی ها',
-        href: '/games',
-      },
-    ],
-  },
-  {
-    title: 'چالش و مسابقات',
-    href: '/contests',
-    Icon: HiOutlineTrophy,
-    ActiveIcon: HiTrophy,
-    showOn: 'mobile',
-  },
-  {
-    title: 'بازی ها',
-    href: '/games',
-    Icon: HiOutlinePlayCircle,
-    ActiveIcon: HiPlayCircle,
-    showOn: 'mobile',
-  },
-  {
-    title: 'هدیه نگار زیست عفیفانه',
-    href: '/hn',
-    Icon: HiOutlineGift,
-    ActiveIcon: HiGift,
-    showOn: 'mobile',
-  },
-  {
-    title: 'تماس با ما',
-    href: '/contact-us',
-    Icon: HiOutlineEnvelope,
-    ActiveIcon: HiEnvelope,
-    showOn: 'mobile',
-  },
-  {
-    title: 'درباره ما',
-    href: '/about-us',
-    Icon: HiOutlineQuestionMarkCircle,
-    ActiveIcon: HiQuestionMarkCircle,
-    showOn: 'mobile',
-  },
-  {
-    title: config.websiteTitle,
-    href: '/wclub',
-    Icon: HiOutlineFilm,
-    ActiveIcon: HiFilm,
-    showOn: 'desktop',
-    desktopSubLinkClassName: 'w-10',
-    desktopSubLinks: [
-      {
-        title: 'تماس با ما',
-        href: '/contact-us',
-      },
-      {
-        title: 'درباره ما',
-        href: '/about-us',
-      },
-      {
-        title: 'هدیه نگار',
-        href: '/hn',
-      },
-    ],
-  },
-] as const;
+  const links: (TNavbarLink | null | false)[] = [
+    { title: 'خانه', href: '/', Icon: HiOutlineHome, ActiveIcon: HiHome, showOn: 'mobile' },
+    auth.user && {
+      title: 'حساب کاربری',
+      href: '/dashboard',
+      Icon: HiOutlineUser,
+      ActiveIcon: HiUser,
+      showOn: 'mobile',
+    },
+    {
+      title: 'رویداد ها',
+      href: '/event-programs',
+      Icon: HiOutlineSignal,
+      ActiveIcon: HiSignal,
+      showOn: 'mobile',
+    },
+    event_program_categories.length < 1 && {
+      title: 'رویداد ها',
+      href: '/event-programs',
+      Icon: HiOutlineSignal,
+      ActiveIcon: HiSignal,
+      showOn: 'desktop',
+    },
+    event_program_categories.length > 0 && {
+      title: 'رویداد ها',
+      href: '/event-programs',
+      Icon: HiOutlineSignal,
+      ActiveIcon: HiSignal,
+      desktopSubLinkClassName: 'w-60',
+      showOn: 'desktop',
+      desktopSubLinks: [
+        ...event_program_categories.map((category) => ({
+          title: category.title,
+          href: `/event-programs?filter[categories_id][0]=${category.id}`,
+        })),
+        {
+          title: 'همه رویداد ها',
+          href: '/event-programs',
+        },
+      ],
+    },
+    {
+      title: 'اخبار',
+      href: '/news',
+      Icon: HiOutlineNewspaper,
+      ActiveIcon: HiNewspaper,
+      showOn: 'all',
+    },
+    {
+      title: 'مشاوره',
+      href: '/consultations',
+      Icon: HiOutlineChatBubbleLeft,
+      ActiveIcon: HiChatBubbleLeft,
+      showOn: 'mobile',
+    },
+    {
+      title: 'باغ های بانوان',
+      href: '/gardens',
+      Icon: HiOutlineSparkles,
+      ActiveIcon: HiSparkles,
+      showOn: 'mobile',
+    },
+    {
+      title: 'خدمات',
+      href: '/reward-programs',
+      Icon: HiOutlineStar,
+      ActiveIcon: HiStar,
+      showOn: 'mobile',
+    },
+    { title: 'دوره ها', href: '/series', Icon: HiOutlineFilm, ActiveIcon: HiFilm, showOn: 'all' },
+    {
+      title: 'خدمات',
+      href: '/services-group',
+      Icon: HiOutlineSparkles,
+      ActiveIcon: HiSparkles,
+      desktopSubLinkClassName: 'w-40',
+      showOn: 'desktop',
+      desktopSubLinks: [
+        {
+          title: 'مشاوره',
+          href: '/consultations',
+        },
+        {
+          title: 'خدمات',
+          href: '/reward-programs',
+        },
+        {
+          title: 'باغ های بانوان',
+          href: '/gardens',
+        },
+        {
+          title: 'چالش و مسابقات',
+          href: '/contests',
+        },
+        {
+          title: 'بازی ها',
+          href: '/games',
+        },
+        {
+          title: 'هدیه نگار',
+          href: '/hn',
+        },
+      ],
+    },
+    {
+      title: 'چالش و مسابقات',
+      href: '/contests',
+      Icon: HiOutlineTrophy,
+      ActiveIcon: HiTrophy,
+      showOn: 'mobile',
+    },
+    {
+      title: 'بازی ها',
+      href: '/games',
+      Icon: HiOutlinePlayCircle,
+      ActiveIcon: HiPlayCircle,
+      showOn: 'mobile',
+    },
+    {
+      title: 'هدیه نگار زیست عفیفانه',
+      href: '/hn',
+      Icon: HiOutlineGift,
+      ActiveIcon: HiGift,
+      showOn: 'mobile',
+    },
+    {
+      title: 'تماس با ما',
+      href: '/contact-us',
+      Icon: HiOutlineEnvelope,
+      ActiveIcon: HiEnvelope,
+      showOn: 'mobile',
+    },
+    {
+      title: 'درباره ما',
+      href: '/about-us',
+      Icon: HiOutlineQuestionMarkCircle,
+      ActiveIcon: HiQuestionMarkCircle,
+      showOn: 'mobile',
+    },
+    {
+      title: 'تماس با ما',
+      href: '/wclub',
+      Icon: HiOutlineFilm,
+      ActiveIcon: HiFilm,
+      showOn: 'desktop',
+      desktopSubLinkClassName: 'w-10',
+      desktopSubLinks: [
+        {
+          title: 'تماس با ما',
+          href: '/contact-us',
+        },
+        {
+          title: 'درباره ما',
+          href: '/about-us',
+        },
+      ],
+    },
+  ];
+
+  const reversedShowOn = showOn === 'mobile' ? 'desktop' : 'mobile';
+
+  return links.filter((link) => {
+    if (!link) return false;
+    if (showOn === 'all') return true;
+    return link.showOn !== reversedShowOn;
+  }) as TNavbarLink[];
+}
 
 export const footerLinks = [
   {

@@ -98,8 +98,9 @@ export function isAxiosError<ResponseType>(
   return axios.isAxiosError(error) && statusCode ? error.response?.status === statusCode : true;
 }
 
-export function isUrlActive(currentUrl: string, targetUrl: string) {
+export function isUrlActive(currentUrl: string, targetUrl: string, isStrict = false) {
   if (targetUrl === '/') return currentUrl === targetUrl;
+  if (isStrict) return currentUrl === targetUrl;
   return currentUrl.startsWith(targetUrl);
 }
 

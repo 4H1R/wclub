@@ -9,6 +9,7 @@ type DesktopSubLinkProps = {
 
 export default function DesktopSubLink({ link }: DesktopSubLinkProps) {
   const url = usePage().url;
+  const decodedUrl = decodeURIComponent(url);
   const id = useId();
   const ref = useRef<HTMLDetailsElement>(null);
 
@@ -27,7 +28,7 @@ export default function DesktopSubLink({ link }: DesktopSubLinkProps) {
             <Link
               onClick={handleClose}
               className={cn('text-base-content', {
-                'text-primary-solo': isUrlActive(url, subLink.href),
+                'text-primary-solo': isUrlActive(decodedUrl, subLink.href, true),
               })}
               href={subLink.href}
             >

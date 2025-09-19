@@ -34,6 +34,8 @@ class CategoryResource extends CustomResource
 
     public static ?PermissionEnum $deleteAny = null;
 
+    public static bool $showOnNavbar = false;
+
     public static function canViewAny(): bool
     {
         return static::$viewAny && Auth::check() && Auth::user()->hasPermissionTo(static::$viewAny);
@@ -67,6 +69,9 @@ class CategoryResource extends CustomResource
                 ->required()
                 ->columnSpanFull()
                 ->maxLength(255),
+            Forms\Components\Toggle::make('show_on_navbar')
+                ->translateLabel()
+                ->visible(static::$showOnNavbar),
         ]);
     }
 
@@ -74,6 +79,10 @@ class CategoryResource extends CustomResource
     {
         return $table
             ->columns([
+                Tables\Columns\IconColumn::make('show_on_navbar')
+                    ->translateLabel()
+                    ->boolean()
+                    ->visible(static::$showOnNavbar),
                 Tables\Columns\TextColumn::make('title')
                     ->sortable()
                     ->searchable()

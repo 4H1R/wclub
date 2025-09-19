@@ -3,7 +3,6 @@
 namespace App\Models\Traits;
 
 use App\Models\Category;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 trait HasCategories
@@ -21,7 +20,6 @@ trait HasCategories
     public function categories(): MorphToMany
     {
         return $this->morphToMany(Category::class, 'model', 'category_model')
-            ->where('categories.model', self::class)
-            ->orWhere(fn (Builder $query) => $query->where('is_global', true)->whereNull('model'));
+            ->where('categories.model', self::class);
     }
 }
