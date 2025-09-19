@@ -7,6 +7,7 @@ use App\Models\Traits\HasCategories;
 use App\Models\Traits\HasFaqs;
 use App\Models\Traits\HasSlug;
 use App\Models\Traits\HasTargetGroups;
+use App\Models\Traits\HasTopics;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -21,7 +22,7 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 class EventProgram extends Model implements HasMedia
 {
     /** @use HasFactory<\Database\Factories\EventProgramFactory> */
-    use HasCategories, HasFactory, HasFaqs, HasSlug, HasTargetGroups, InteractsWithMedia;
+    use HasCategories, HasFactory, HasFaqs, HasSlug, HasTargetGroups, HasTopics, InteractsWithMedia;
 
     protected $casts = [
         'status' => EventProgramStatusEnum::class,

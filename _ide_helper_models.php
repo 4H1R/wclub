@@ -122,6 +122,8 @@ namespace App\Models{
  * @property-read mixed $slug
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\TargetGroup> $targetGroups
  * @property-read int|null $target_groups_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Topic> $topics
+ * @property-read int|null $topics_count
  * @method static \Database\Factories\ContestFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Contest newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Contest newQuery()
@@ -206,6 +208,8 @@ namespace App\Models{
  * @property-read mixed $slug
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\TargetGroup> $targetGroups
  * @property-read int|null $target_groups_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Topic> $topics
+ * @property-read int|null $topics_count
  * @property-read \App\Models\User|null $user
  * @method static \Database\Factories\EventProgramFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram newModelQuery()
@@ -448,6 +452,8 @@ namespace App\Models{
  * @property-read mixed $slug
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\TargetGroup> $targetGroups
  * @property-read int|null $target_groups_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Topic> $topics
+ * @property-read int|null $topics_count
  * @method static \Database\Factories\NewsFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|News newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|News newQuery()
@@ -696,6 +702,8 @@ namespace App\Models{
  * @property-read mixed $slug
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\TargetGroup> $targetGroups
  * @property-read int|null $target_groups_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Topic> $topics
+ * @property-read int|null $topics_count
  * @method static \Database\Factories\SeriesFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Series newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Series newQuery()
@@ -819,6 +827,32 @@ namespace App\Models{
  */
 	#[\AllowDynamicProperties]
 	class IdeHelperTargetGroup {}
+}
+
+namespace App\Models{
+/**
+ * @property int $id
+ * @property int|null $parent_id
+ * @property string $title
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, Topic> $children
+ * @property-read int|null $children_count
+ * @property-read Topic|null $parent
+ * @property-read Topic|null $parentSelect
+ * @method static \Database\Factories\TopicFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Topic newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Topic newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Topic query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Topic whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Topic whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Topic whereParentId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Topic whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Topic whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
+	#[\AllowDynamicProperties]
+	class IdeHelperTopic {}
 }
 
 namespace App\Models{

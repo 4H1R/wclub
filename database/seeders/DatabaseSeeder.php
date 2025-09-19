@@ -19,6 +19,7 @@ use App\Models\OrderItem;
 use App\Models\RewardProgram;
 use App\Models\Series;
 use App\Models\TargetGroup;
+use App\Models\Topic;
 use App\Models\Transaction;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -43,6 +44,7 @@ class DatabaseSeeder extends Seeder
 
         ContactUs::factory(30)->create();
         Coupon::factory(30)->create();
+        Topic::factory(10)->create();
 
         $rewardProgramCategories = Category::factory(10)->create(['model' => RewardProgram::class]);
         RewardProgram::factory(50)

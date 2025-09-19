@@ -8,6 +8,7 @@ use App\Enums\Series\SeriesStatusEnum;
 use App\Models\Traits\HasCategories;
 use App\Models\Traits\HasSlug;
 use App\Models\Traits\HasTargetGroups;
+use App\Models\Traits\HasTopics;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -23,7 +24,7 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 class Series extends Model implements HasMedia
 {
     /** @use HasFactory<\Database\Factories\SeriesFactory> */
-    use HasCategories, HasFactory, HasSlug, HasTargetGroups, InteractsWithMedia;
+    use HasCategories, HasFactory, HasSlug, HasTargetGroups, HasTopics, InteractsWithMedia;
 
     protected $casts = [
         'status' => SeriesStatusEnum::class,

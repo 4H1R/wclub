@@ -7,6 +7,7 @@ use App\Enums\PaymentTypeEnum;
 use App\Filament\Custom\CustomResource;
 use App\Filament\Forms\Components\FileInput;
 use App\Filament\Forms\Components\MoneyInput;
+use App\Filament\Forms\Components\TopicsSelect;
 use App\Filament\Forms\Layouts\BasicSection;
 use App\Filament\Forms\Layouts\ComplexForm;
 use App\Filament\Forms\Layouts\StatusSection;
@@ -97,6 +98,7 @@ class EventProgramResource extends CustomResource
                 ->multiple()
                 ->optionsLimit(50)
                 ->relationship('targetGroups', 'title'),
+            TopicsSelect::make(),
             Forms\Components\Textarea::make('short_description')
                 ->translateLabel()
                 ->columnSpanFull()

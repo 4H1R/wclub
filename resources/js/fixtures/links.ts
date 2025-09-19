@@ -20,14 +20,13 @@ import {
   HiOutlineSparkles,
   HiOutlineStar,
   HiOutlineTrophy,
-  HiOutlineUser,
+  // HiOutlineUser,
   HiPlayCircle,
   HiQuestionMarkCircle,
   HiSignal,
   HiSparkles,
   HiStar,
   HiTrophy,
-  HiUser,
 } from 'react-icons/hi2';
 import config from './config';
 
@@ -38,7 +37,7 @@ export type TNavbarLink = {
   ActiveIcon: TIcon;
   showOn: 'mobile' | 'desktop' | 'all';
   desktopSubLinkClassName?: string;
-  desktopSubLinks?: { title: string; href: string }[];
+  desktopSubLinks?: { title: string; href: string; children?: { title: string; href: string }[] }[];
 };
 
 type TNavbarProps = {
@@ -46,17 +45,18 @@ type TNavbarProps = {
 };
 
 export function useNavbarLinks({ showOn = 'all' }: TNavbarProps): TNavbarLink[] {
-  const { auth, event_program_categories } = usePage<PageProps>().props;
+  const { props, url } = usePage<PageProps>();
+  const { event_program_categories, topics } = props;
 
   const links: (TNavbarLink | null | false)[] = [
     { title: 'خانه', href: '/', Icon: HiOutlineHome, ActiveIcon: HiHome, showOn: 'mobile' },
-    auth.user && {
-      title: 'حساب کاربری',
-      href: '/dashboard',
-      Icon: HiOutlineUser,
-      ActiveIcon: HiUser,
-      showOn: 'mobile',
-    },
+    // auth.user && {
+    //   title: 'حساب کاربری',
+    //   href: '/dashboard',
+    //   Icon: HiOutlineUser,
+    //   ActiveIcon: HiUser,
+    //   showOn: 'mobile',
+    // },
     {
       title: 'رویداد ها',
       href: '/event-programs',
@@ -117,7 +117,39 @@ export function useNavbarLinks({ showOn = 'all' }: TNavbarProps): TNavbarLink[] 
       ActiveIcon: HiStar,
       showOn: 'mobile',
     },
-    { title: 'دوره ها', href: '/series', Icon: HiOutlineFilm, ActiveIcon: HiFilm, showOn: 'all' },
+    {
+      title: 'دوره ها',
+      href: '/series',
+      Icon: HiOutlineFilm,
+      ActiveIcon: HiFilm,
+      showOn: 'mobile',
+    },
+    {
+      title: 'دوره ها',
+      href: '/series',
+      Icon: HiOutlineFilm,
+      ActiveIcon: HiFilm,
+      showOn: 'desktop',
+      desktopSubLinks: [
+        {
+          title: 'حضوری',
+          href: '/series?filter[presentation_mode][0]=IN_PERSON',
+        },
+        {
+          title: 'آنلاین',
+          href: '/series?filter[presentation_mode][0]=ONLINE',
+        },
+        {
+          title: 'پلتفرم',
+          href: '/series?filter[presentation_mode][0]=PLATFORM',
+        },
+        {
+          title: 'همه دوره ها',
+          href: '/series',
+        },
+      ],
+      desktopSubLinkClassName: 'w-40',
+    },
     {
       title: 'خدمات',
       href: '/services-group',
@@ -149,6 +181,28 @@ export function useNavbarLinks({ showOn = 'all' }: TNavbarProps): TNavbarLink[] 
         {
           title: 'هدیه نگار',
           href: '/hn',
+        },
+      ],
+    },
+    url.split('?')[0] === '/' && {
+      title: 'موضوعات محوری',
+      href: '/topics',
+      Icon: HiOutlineSparkles,
+      ActiveIcon: HiSparkles,
+      desktopSubLinkClassName: 'w-60',
+      showOn: 'desktop',
+      desktopSubLinks: [
+        ...topics.map((topic) => ({
+          title: topic.title,
+          href: `/?topic_id=${topic.id}`,
+          children: topic.children.map((child) => ({
+            title: child.title,
+            href: `/?topic_id=${child.id}`,
+          })),
+        })),
+        {
+          title: 'همه موضوعات محوری',
+          href: '/',
         },
       ],
     },

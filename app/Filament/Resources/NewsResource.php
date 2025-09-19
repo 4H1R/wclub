@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Custom\CustomResource;
 use App\Filament\Forms\Components\FileInput;
+use App\Filament\Forms\Components\TopicsSelect;
 use App\Filament\Forms\Layouts\BasicSection;
 use App\Filament\Forms\Layouts\ComplexForm;
 use App\Filament\Forms\Layouts\StatusSection;
@@ -63,6 +64,7 @@ class NewsResource extends CustomResource
                 ->multiple()
                 ->optionsLimit(50)
                 ->relationship('targetGroups', 'title'),
+            TopicsSelect::make(),
             FileInput::make($form, 'image', visibility: 'public')
                 ->image()
                 ->imageEditor()

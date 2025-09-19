@@ -15,6 +15,8 @@ use App\Models\News;
 use App\Models\RewardProgram;
 use App\Models\Scopes\PublishedScope;
 use App\Models\Series;
+use App\Services\CacheService;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -22,6 +24,13 @@ use Inertia\Inertia;
 
 class IndexController extends Controller
 {
+    public function __construct(private readonly CacheService $cacheService) {}
+
+    private function applyTopicFilter(Builder $query, int $topicId): Builder
+    {
+        return $query->whereHas('topics', fn (Builder $builder) => $builder->where('topic_id', $topicId));
+    }
+
     public function __invoke(Request $request): \Inertia\Response|RedirectResponse
     {
         // Isfahan SSO redirect
@@ -29,7 +38,10 @@ class IndexController extends Controller
             return to_route('auth.my-isfahan.callback', ['code' => $code]);
         }
 
-        $data = Cache::remember('index#'.$request->session()->get('active_target_group_id', 0), 60, function () {
+        $topicId = $request->input('topic_id');
+        $cacheKey = $this->cacheService->getIndexCacheKey($request->session()->get('active_target_group_id', 0), $topicId);
+
+        $data = Cache::remember($cacheKey, 60, function () use ($topicId) {
             $banners = Banner::query()
                 ->with('image')
                 ->withGlobalScope('published', new PublishedScope)
@@ -39,6 +51,7 @@ class IndexController extends Controller
                 ->with(EventProgram::getCardRelations())
                 ->latest('id')
                 ->take(8)
+                ->when($topicId, fn (Builder $query) => $this->applyTopicFilter($query, $topicId))
                 ->withGlobalScope('published', new PublishedScope)
                 ->get();
 
@@ -53,6 +66,7 @@ class IndexController extends Controller
                 ->with(Contest::getCardRelations())
                 ->latest('id')
                 ->take(8)
+                ->when($topicId, fn (Builder $query) => $this->applyTopicFilter($query, $topicId))
                 ->withGlobalScope('published', new PublishedScope)
                 ->get();
 
@@ -60,6 +74,7 @@ class IndexController extends Controller
                 ->with(Series::getCardRelations())
                 ->inRandomOrder()
                 ->take(8)
+                ->when($topicId, fn (Builder $query) => $this->applyTopicFilter($query, $topicId))
                 ->withGlobalScope('published', new PublishedScope)
                 ->get();
 
@@ -67,6 +82,7 @@ class IndexController extends Controller
                 ->with(News::getCardRelations())
                 ->latest('id')
                 ->take(8)
+                ->when($topicId, fn (Builder $query) => $this->applyTopicFilter($query, $topicId))
                 ->withGlobalScope('published', new PublishedScope)
                 ->get();
 

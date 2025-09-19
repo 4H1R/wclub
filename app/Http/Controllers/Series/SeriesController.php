@@ -37,7 +37,8 @@ class SeriesController extends Controller implements HasMiddleware
             ->allowedSorts('created_at', 'updated_at', 'episodes_duration_seconds')
             ->allowedFilters(
                 AllowedFilter::exact('status'),
-                AllowedFilter::exact('type'),
+                AllowedFilter::exact('payment_type'),
+                AllowedFilter::exact('presentation_mode'),
                 AllowedFilter::scope('query'),
                 AllowedFilter::callback('categories_id', function (Builder $query, array $ids) {
                     $query->whereHas('categories', fn (Builder $builder) => $builder->whereIn('category_id', $ids));

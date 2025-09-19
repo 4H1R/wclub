@@ -63,8 +63,7 @@ export default function SearchResults() {
           >
             {pageProps[search.name].map((data) => (
               <SwiperSlide className="!size-auto py-2" key={data.id}>
-                {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-                {/* @ts-expect-error */}
+                {/* @ts-expect-error we know it has the cardDataName property */}
                 <search.Card {...{ [search.cardDataName]: data, hasWidth: true }} />
               </SwiperSlide>
             ))}

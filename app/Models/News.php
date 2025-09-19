@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Traits\HasCategories;
 use App\Models\Traits\HasSlug;
 use App\Models\Traits\HasTargetGroups;
+use App\Models\Traits\HasTopics;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -18,7 +19,7 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 class News extends Model implements HasMedia
 {
     /** @use HasFactory<\Database\Factories\NewsFactory> */
-    use HasCategories, HasFactory, HasSlug, HasTargetGroups, InteractsWithMedia;
+    use HasCategories, HasFactory, HasSlug, HasTargetGroups, HasTopics, InteractsWithMedia;
 
     public function registerMediaCollections(): void
     {

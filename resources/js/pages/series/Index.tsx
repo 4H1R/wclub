@@ -9,7 +9,7 @@ import Pagination from '@/shared/Pagination';
 import Search from '@/shared/Search';
 import { PaginatedCollection } from '@/types';
 import { usePage } from '@inertiajs/react';
-import { HiOutlineSparkles, HiOutlineStar } from 'react-icons/hi2';
+import { HiOutlineGlobeAmericas, HiOutlineSparkles, HiOutlineStar } from 'react-icons/hi2';
 
 type TPage = PageProps<{
   series: PaginatedCollection<App.Data.Series.SeriesData>;
@@ -43,6 +43,17 @@ export default function Index() {
           }))}
           title="دسته بندی ها"
           modalTitle="فیلتر بر اساس دسته بندی ها"
+        />
+        <FilterModal
+          ButtonIcon={HiOutlineGlobeAmericas}
+          filterId="presentation_mode"
+          options={[
+            { label: 'حضوری', value: 'IN_PERSON' },
+            { label: 'آنلاین', value: 'ONLINE' },
+            { label: 'پلتفرم', value: 'PLATFORM' },
+          ]}
+          title="نوع ارائه"
+          modalTitle="فیلتر بر اساس نوع ارائه"
         />
         {!active_target_group_id && (
           <FilterModal

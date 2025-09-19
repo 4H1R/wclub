@@ -279,6 +279,13 @@ declare namespace App.Data.TargetGroup {
     image: App.Data.Media.ImageData | null;
   };
 }
+declare namespace App.Data.Topic {
+  export type TopicData = {
+    id: number;
+    title: string;
+    children: Array<App.Data.Topic.TopicData>;
+  };
+}
 declare namespace App.Data.User {
   export type AuthUserData = {
     hash_id: string;
