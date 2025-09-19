@@ -26,7 +26,7 @@ export default function NardebanShadi() {
       />
       <div className="side-grid-container">
         <div className="space-y col-span-full lg:col-span-7">
-          <div className="space-y-3">
+          <div className="flex flex-col gap-3">
             <h1 className="h1">{game.title}</h1>
             <p className="text-base-content/80">{game.short_description}</p>
             <p>

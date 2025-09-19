@@ -1,5 +1,5 @@
 import { PageProps } from '@/@types';
-import Faqs from '@/components/faqs/Faqs';
+// import Faqs from '@/components/faqs/Faqs';
 import BreadCrumb from '@/shared/BreadCrumb';
 import EventProgramCard from '@/shared/cards/EventProgramCard';
 import Button from '@/shared/forms/Button';
@@ -22,7 +22,7 @@ type TPage = PageProps<{
 const registerId = 'registerId';
 
 export default function Show() {
-  const { event_program, recommended_event_programs, faqs } = usePage<TPage>().props;
+  const { event_program, recommended_event_programs } = usePage<TPage>().props;
 
   const handleScrollToRegister = () => {
     document.getElementById(registerId)?.scrollIntoView({ behavior: 'smooth' });
@@ -53,7 +53,7 @@ export default function Show() {
               alt={event_program.title}
             />
           )}
-          <div className="space-y-3">
+          <div className="flex flex-col gap-3">
             <div className="flex flex-wrap items-center justify-between gap-4">
               <h1 className="h1">{event_program.title}</h1>
               <ShareButton predefinedStyleFor="desktop" />
@@ -106,7 +106,7 @@ export default function Show() {
             </div>
           </div>
         </div>
-        <Faqs faqs={faqs} modelId={event_program.id} />
+        {/* <Faqs faqs={faqs} modelId={event_program.id} /> */}
       </div>
       <div className="divider clear-both md:pt-6" />
       <h2 className="h2">رویداد های دیگر</h2>

@@ -50,7 +50,7 @@ export default function Show() {
               alt={contest.title}
             />
           )}
-          <div className="space-y-3">
+          <div className="flex flex-col gap-3">
             <div className="flex flex-wrap items-center justify-between gap-4">
               <h1 className="h1">{contest.title}</h1>
               <ShareButton predefinedStyleFor="desktop" />
