@@ -37,11 +37,12 @@ export default function Index() {
         <div className="card-body md:gap-8">
           <div className="space-y-4 text-center">
             <h1 className="text-4xl font-black leading-tight">
-              با کمک {config.websiteTitle} از خدمات و امتیازات فراوان استفاده کن
+              باشگاه خانواده اصفهان ، بستری است برای عموم شهروندان
             </h1>
             <p className="text-lg text-base-content/80">
-              {config.websiteTitle} برای بانوان از کودک تا بزرگسال توسط شهرداری اصفهان تدارک دیده
-              شده که بیشترین استفاده را از شهر زیبای اصفهان ببرند.
+              به منظور اطلاع و بهره برداری از کلیه فعالیت های شهرداری اصفهان به واسطه اداره بانوان و
+              خانواده امید است با تعامل هرچه بهتر با شما شهروندان ، لحظات پربار و موثری را با یکدیگر
+              بگذرانیم.
             </p>
           </div>
           <TargetGroups targetGroups={target_groups} />

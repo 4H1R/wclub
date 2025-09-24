@@ -36,10 +36,7 @@ export default function Footer() {
               height={150}
               alt={`لوگو ${config.websiteTitle}`}
             />
-            <p>
-              {config.websiteTitle} برای بانوان از کودک تا بزرگسال توسط شهرداری اصفهان تدارک دیده
-              شده که بیشترین استفاده را از شهر زیبای اصفهان ببرند.
-            </p>
+            <p>باشگاه خانواده اصفهان ، بستری برای عموم شهروندان</p>
             {/* <Socials /> */}
           </aside>
           {footerLinks.map((link) => (
