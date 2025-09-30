@@ -1,5 +1,5 @@
 export const seriesStatusTranslation: Record<App.Enums.Series.SeriesStatusEnum, string> = {
-  FINISHED: 'تکمیل ظبط',
+  FINISHED: 'تکمیل ضبط',
   IN_PROGRESS: 'در حال ضبط',
 };
 
