@@ -226,7 +226,7 @@ return [
             'http_compression' => true,
             'http_compression_level' => 6, // 1 - 9
             'compression_min_length' => 20,
-            'package_max_length' => 20 * 1024 * 1024, // 20MB
+            'package_max_length' => 100 * 1024 * 1024, // 100MB
             'open_http2_protocol' => true,
             'document_root' => public_path(),
             'enable_static_handler' => true,
