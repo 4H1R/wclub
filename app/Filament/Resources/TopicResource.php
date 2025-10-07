@@ -35,6 +35,8 @@ class TopicResource extends CustomResource
                 ->required()
                 ->columnSpanFull()
                 ->maxLength(100),
+            Forms\Components\Toggle::make('show_on_navbar')
+                ->translateLabel(),
         ]);
     }
 
@@ -42,6 +44,9 @@ class TopicResource extends CustomResource
     {
         return $table
             ->columns([
+                Tables\Columns\IconColumn::make('show_on_navbar')
+                    ->translateLabel()
+                    ->boolean(),
                 Tables\Columns\TextColumn::make('parent.title')
                     ->label(__('Parent')),
                 Tables\Columns\TextColumn::make('title')

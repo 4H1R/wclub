@@ -11,6 +11,7 @@ use App\Models\EventProgram;
 use App\Models\TargetGroup;
 use App\Models\Topic;
 use App\Services\CacheService;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Inertia\Middleware;
@@ -41,7 +42,11 @@ class HandleInertiaRequests extends Middleware
             return CategoryData::collect($categories);
         });
         $topics = Cache::remember($cacheService->getTopicsCacheKey(), 60, function () {
-            $topics = Topic::whereNull('parent_id')->with('children')->get();
+            $topics = Topic::query()
+                ->whereNull('parent_id')
+                ->where('show_on_navbar', true)
+                ->with(['children' => fn (HasMany $query) => $query->where('show_on_navbar', true)])
+                ->get();
 
             return TopicData::collect($topics);
         });

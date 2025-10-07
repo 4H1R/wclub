@@ -836,6 +836,7 @@ namespace App\Models{
  * @property string $title
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property bool $show_on_navbar
  * @property-read \Illuminate\Database\Eloquent\Collection<int, Topic> $children
  * @property-read int|null $children_count
  * @property-read Topic|null $parent
@@ -847,6 +848,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Topic whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Topic whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Topic whereParentId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Topic whereShowOnNavbar($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Topic whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Topic whereUpdatedAt($value)
  * @mixin \Eloquent
