@@ -10,7 +10,7 @@ trait HasTopics
     public static function bootHasTopics(): void
     {
         static::deleted(function (mixed $deletedModel) {
-            $deletedModel->topics()->delete();
+            $deletedModel->topics()->detach();
         });
     }
 

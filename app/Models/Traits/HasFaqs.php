@@ -11,7 +11,7 @@ trait HasFaqs
     public static function bootHasFaqs(): void
     {
         static::deleted(function (mixed $deletedModel) {
-            $deletedModel->faqs()->delete();
+            $deletedModel->faqs()->detach();
         });
     }
 

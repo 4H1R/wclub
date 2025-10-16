@@ -10,7 +10,7 @@ trait HasCategories
     public static function bootHasCategories(): void
     {
         static::deleted(function (mixed $deletedModel) {
-            $deletedModel->categories()->delete();
+            $deletedModel->categories()->detach();
         });
     }
 

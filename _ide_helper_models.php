@@ -809,6 +809,7 @@ namespace App\Models{
  * @property int $max_age
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property int|null $order_column
  * @property-read \App\Models\Media|null $image
  * @property-read \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection<int, \App\Models\Media> $media
  * @property-read int|null $media_count
@@ -816,11 +817,13 @@ namespace App\Models{
  * @method static \Database\Factories\TargetGroupFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|TargetGroup newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|TargetGroup newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|TargetGroup ordered(string $direction = 'asc')
  * @method static \Illuminate\Database\Eloquent\Builder<static>|TargetGroup query()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|TargetGroup whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|TargetGroup whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|TargetGroup whereMaxAge($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|TargetGroup whereMinAge($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|TargetGroup whereOrderColumn($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|TargetGroup whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|TargetGroup whereUpdatedAt($value)
  * @mixin \Eloquent
@@ -837,6 +840,7 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property bool $show_on_navbar
+ * @property int|null $order_column
  * @property-read \Illuminate\Database\Eloquent\Collection<int, Topic> $children
  * @property-read int|null $children_count
  * @property-read Topic|null $parent
@@ -844,9 +848,11 @@ namespace App\Models{
  * @method static \Database\Factories\TopicFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Topic newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Topic newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Topic ordered(string $direction = 'asc')
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Topic query()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Topic whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Topic whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Topic whereOrderColumn($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Topic whereParentId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Topic whereShowOnNavbar($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Topic whereTitle($value)

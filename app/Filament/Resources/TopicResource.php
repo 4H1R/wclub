@@ -43,6 +43,8 @@ class TopicResource extends CustomResource
     public static function table(Table $table): Table
     {
         return $table
+            ->reorderable(config('eloquent-sortable.order_column_name'))
+            ->defaultSort(config('eloquent-sortable.order_column_name'))
             ->columns([
                 Tables\Columns\IconColumn::make('show_on_navbar')
                     ->translateLabel()

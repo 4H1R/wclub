@@ -17,10 +17,10 @@ use Inertia\Inertia;
 class SearchController extends Controller
 {
     private array $models = [
-        'event_programs' => ['model' => EventProgram::class, 'data' => EventProgramData::class, 'with' => ['image', 'categories']],
-        'reward_programs' => ['model' => RewardProgram::class, 'data' => RewardProgramData::class, 'with' => ['image', 'categories']],
-        'contests' => ['model' => Contest::class, 'data' => ContestData::class, 'with' => ['image', 'categories']],
-        'series' => ['model' => Series::class, 'data' => SeriesData::class, 'with' => ['image', 'categories']],
+        'event_programs' => ['model' => EventProgram::class, 'data' => EventProgramData::class, 'with' => ['image', 'categories', 'targetGroups']],
+        'reward_programs' => ['model' => RewardProgram::class, 'data' => RewardProgramData::class, 'with' => ['image', 'categories', 'targetGroups']],
+        'contests' => ['model' => Contest::class, 'data' => ContestData::class, 'with' => ['image', 'categories', 'targetGroups']],
+        'series' => ['model' => Series::class, 'data' => SeriesData::class, 'with' => ['image', 'categories', 'targetGroups']],
     ];
 
     public function __invoke(Request $request): \Inertia\Response

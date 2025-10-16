@@ -6,14 +6,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Spatie\EloquentSortable\Sortable;
+use Spatie\EloquentSortable\SortableTrait;
 
 /**
  * @mixin IdeHelperTopic
  */
-class Topic extends Model
+class Topic extends Model implements Sortable
 {
     /** @use HasFactory<\Database\Factories\TopicFactory> */
-    use HasFactory;
+    use HasFactory, SortableTrait;
 
     public function parent(): BelongsTo
     {

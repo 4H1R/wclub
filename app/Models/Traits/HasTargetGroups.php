@@ -12,7 +12,7 @@ trait HasTargetGroups
     public static function bootHasTargetGroups(): void
     {
         static::deleted(function (mixed $deletedModel) {
-            $deletedModel->targetGroups()->delete();
+            $deletedModel->targetGroups()->detach();
         });
 
         static::addGlobalScope('session_target_group', function (Builder $builder) {

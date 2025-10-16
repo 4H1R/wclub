@@ -53,6 +53,8 @@ class TargetGroupResource extends CustomResource
     public static function table(Table $table): Table
     {
         return $table
+            ->reorderable(config('eloquent-sortable.order_column_name'))
+            ->defaultSort(config('eloquent-sortable.order_column_name'))
             ->columns([
                 ImageColumn::make('image'),
                 Tables\Columns\TextColumn::make('title')
