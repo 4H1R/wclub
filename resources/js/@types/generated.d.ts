@@ -276,6 +276,8 @@ declare namespace App.Data.TargetGroup {
   export type TargetGroupData = {
     id: number;
     title: string;
+    min_age: number;
+    max_age: number;
     image: App.Data.Media.ImageData | null;
   };
 }
@@ -297,6 +299,7 @@ declare namespace App.Data.User {
     phone: string | null;
     email_verified_at: string | null;
     phone_verified_at: string | null;
+    birth_date: string;
     created_at: string;
     updated_at: string;
   };

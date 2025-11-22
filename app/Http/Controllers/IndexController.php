@@ -17,7 +17,6 @@ use App\Models\Scopes\PublishedScope;
 use App\Models\Series;
 use App\Services\CacheService;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Inertia\Inertia;
@@ -31,13 +30,8 @@ class IndexController extends Controller
         return $query->whereHas('topics', fn (Builder $builder) => $builder->where('topic_id', $topicId));
     }
 
-    public function __invoke(Request $request): \Inertia\Response|RedirectResponse
+    public function __invoke(Request $request): \Inertia\Response
     {
-        // Isfahan SSO redirect
-        if ($code = $request->input('Code')) {
-            return to_route('auth.my-isfahan.callback', ['code' => $code]);
-        }
-
         $topicId = $request->input('topic_id');
         $cacheKey = $this->cacheService->getIndexCacheKey($request->session()->get('active_target_group_id', 0), $topicId);
 

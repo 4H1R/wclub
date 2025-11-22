@@ -107,9 +107,9 @@ declare module 'ziggy-js' {
     'mellat.callback': [];
     register: [];
     login: [];
-    'auth.my-isfahan': [];
-    'auth.my-isfahan.callback': [];
     auth: [];
+    'sms.send': [];
+    'sms.verify': [];
     logout: [];
     'storage.local': [
       {

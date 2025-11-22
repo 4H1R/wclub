@@ -124,3 +124,18 @@ export function chunk<T>(items: T[], count: number) {
 
   return data;
 }
+
+export function calculateAge(birthDate: string | Date) {
+  const dob = new Date(birthDate);
+  const today = new Date();
+
+  let age = today.getFullYear() - dob.getFullYear();
+
+  if (today.getMonth() < dob.getMonth()) {
+    age--;
+  } else if (today.getMonth() === dob.getMonth() && today.getDate() < dob.getDate()) {
+    age--;
+  }
+
+  return age;
+}

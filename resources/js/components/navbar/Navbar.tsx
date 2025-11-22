@@ -10,7 +10,7 @@ import { useEffect, useRef, useState } from 'react';
 import { HiOutlineMagnifyingGlass } from 'react-icons/hi2';
 import DesktopLinks from './DesktopLinks';
 import MobileDrawerToggle from './MobileDrawerToggle';
-// import Profile from './Profile';
+import Profile from './Profile';
 import TargetGroupSelect from './TargetGroupSelect';
 
 const parentVariants = {
@@ -86,7 +86,7 @@ export default function Navbar() {
               alt={`لوگو ${config.websiteTitle}`}
             />
           </Link>
-          {/* {auth.user && <Profile className="ml-2 flex xl:hidden" />} */}
+          {auth.user && <Profile className="ml-2 flex xl:hidden" />}
           <TargetGroupSelect />
         </div>
         <DesktopLinks />
@@ -104,13 +104,13 @@ export default function Navbar() {
               </Link>
             </>
           )}
-          {/* {auth.user ? (
+          {auth.user ? (
             <Profile className="dropdown-end hidden xl:flex" />
           ) : (
             <Link className="btn btn-primary hidden xl:flex" href={route('auth')}>
               حساب کاربری
             </Link>
-          )} */}
+          )}
           <MobileDrawerToggle />
         </div>
       </div>

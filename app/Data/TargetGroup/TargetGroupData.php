@@ -12,6 +12,8 @@ class TargetGroupData extends Data
     public function __construct(
         public int $id,
         public string $title,
+        public int $min_age,
+        public int $max_age,
         public ?ImageData $image,
     ) {}
 }

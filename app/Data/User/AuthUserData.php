@@ -22,6 +22,7 @@ class AuthUserData extends Data
         public ?string $phone,
         public ?string $email_verified_at,
         public ?string $phone_verified_at,
+        public string $birth_date,
         public string $created_at,
         public string $updated_at,
     ) {

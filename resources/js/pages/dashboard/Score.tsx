@@ -1,7 +1,7 @@
 import { PageProps } from '@/@types';
 import ConvertToCouponCard from '@/components/dashboard/score/ConvertToCouponCard';
 import CouponsTable from '@/components/dashboard/score/CouponsTable';
-import TransferScoreCard from '@/components/dashboard/score/TransferScoreCard';
+// import TransferScoreCard from '@/components/dashboard/score/TransferScoreCard';
 import Head from '@/shared/Head';
 import { usePage } from '@inertiajs/react';
 
@@ -17,7 +17,7 @@ export default function Score() {
     <>
       <Head title="امتیازات" description="امتیازات" />
       <ConvertToCouponCard logic={score_to_coupon_logic} />
-      <TransferScoreCard />
+      {/* <TransferScoreCard /> */}
       {coupons.length > 0 && <CouponsTable coupons={coupons} />}
     </>
   );

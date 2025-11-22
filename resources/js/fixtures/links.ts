@@ -20,13 +20,14 @@ import {
   HiOutlineSparkles,
   HiOutlineStar,
   HiOutlineTrophy,
-  // HiOutlineUser,
+  HiOutlineUser,
   HiPlayCircle,
   HiQuestionMarkCircle,
   HiSignal,
   HiSparkles,
   HiStar,
   HiTrophy,
+  HiUser,
 } from 'react-icons/hi2';
 import config from './config';
 
@@ -46,17 +47,17 @@ type TNavbarProps = {
 
 export function useNavbarLinks({ showOn = 'all' }: TNavbarProps): TNavbarLink[] {
   const { props, url } = usePage<PageProps>();
-  const { event_program_categories, topics } = props;
+  const { event_program_categories, topics, auth } = props;
 
   const links: (TNavbarLink | null | false)[] = [
     { title: 'خانه', href: '/', Icon: HiOutlineHome, ActiveIcon: HiHome, showOn: 'mobile' },
-    // auth.user && {
-    //   title: 'حساب کاربری',
-    //   href: '/dashboard',
-    //   Icon: HiOutlineUser,
-    //   ActiveIcon: HiUser,
-    //   showOn: 'mobile',
-    // },
+    auth.user && {
+      title: 'حساب کاربری',
+      href: '/dashboard',
+      Icon: HiOutlineUser,
+      ActiveIcon: HiUser,
+      showOn: 'mobile',
+    },
     {
       title: 'رویداد ها',
       href: '/event-programs',
@@ -247,7 +248,7 @@ export function useNavbarLinks({ showOn = 'all' }: TNavbarProps): TNavbarLink[] 
       Icon: HiOutlineFilm,
       ActiveIcon: HiFilm,
       showOn: 'desktop',
-      desktopSubLinkClassName: 'w-10',
+      desktopSubLinkClassName: 'w-40',
       desktopSubLinks: [
         {
           title: 'تماس با ما',

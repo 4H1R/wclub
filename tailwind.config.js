@@ -11,7 +11,6 @@ export default {
     './resources/js/**/*.tsx',
     './resources/js/**/*.ts',
   ],
-
   theme: {
     extend: {
       colors: {
