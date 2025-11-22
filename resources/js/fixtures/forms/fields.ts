@@ -1,6 +1,12 @@
 import { FieldProps } from '@/shared/forms/FieldWrapper';
 
 const fields = {
+  age: {
+    isRequired: true,
+    name: 'age',
+    label: { text: 'سن' },
+    attributes: { type: 'number', placeholder: 'سن' },
+  },
   email: {
     isRequired: true,
     name: 'email',
