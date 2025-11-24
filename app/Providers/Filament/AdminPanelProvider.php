@@ -3,11 +3,13 @@
 namespace App\Providers\Filament;
 
 use App\Filament\Pages\SecureLogin;
+use App\Services\AppService;
 use Filament\FontProviders\GoogleFontProvider;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Filament\Pages;
+use Filament\Pages\Auth\Login;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
@@ -24,12 +26,13 @@ class AdminPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
     {
+        $appService = app(AppService::class);
+
         return $panel
             ->default()
             ->id('admin')
             ->path('admin')
-            ->login(SecureLogin::class)
-            // ->login()
+            ->login($appService->isLocalStrict() ? Login::class : SecureLogin::class)
             ->font('Vazirmatn', provider: GoogleFontProvider::class)
             ->navigationGroups([
                 trans_choice('Event Programs', 2),

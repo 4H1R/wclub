@@ -40,15 +40,15 @@ class ContestResource extends CustomResource
                 ->required()
                 ->columnSpanFull()
                 ->maxLength(255),
-            Forms\Components\TextInput::make('min_participants')
-                ->translateLabel()
-                ->minValue(0)
-                ->integer(),
-            Forms\Components\TextInput::make('max_participants')
-                ->translateLabel()
-                ->gt('min_participants')
-                ->minValue(0)
-                ->integer(),
+            // Forms\Components\TextInput::make('min_participants')
+            //     ->translateLabel()
+            //     ->minValue(0)
+            //     ->integer(),
+            // Forms\Components\TextInput::make('max_participants')
+            //     ->translateLabel()
+            //     ->gt('min_participants')
+            //     ->minValue(0)
+            //     ->integer(),
             Forms\Components\Textarea::make('short_description')
                 ->translateLabel()
                 ->columnSpanFull()
@@ -104,18 +104,18 @@ class ContestResource extends CustomResource
                     ->sortable()
                     ->searchable()
                     ->translateLabel(),
-                Tables\Columns\TextColumn::make('min_participants')
-                    ->sortable()
-                    ->badge()
-                    ->toggleable()
-                    ->toggledHiddenByDefault()
-                    ->translateLabel(),
-                Tables\Columns\TextColumn::make('max_participants')
-                    ->sortable()
-                    ->badge()
-                    ->toggleable()
-                    ->toggledHiddenByDefault()
-                    ->translateLabel(),
+                // Tables\Columns\TextColumn::make('min_participants')
+                //     ->sortable()
+                //     ->badge()
+                //     ->toggleable()
+                //     ->toggledHiddenByDefault()
+                //     ->translateLabel(),
+                // Tables\Columns\TextColumn::make('max_participants')
+                //     ->sortable()
+                //     ->badge()
+                //     ->toggleable()
+                //     ->toggledHiddenByDefault()
+                //     ->translateLabel(),
                 CustomTimeColumn::make('started_at')
                     ->sortable()
                     ->translateLabel(),
