@@ -35,7 +35,7 @@ class IndexController extends Controller
         $topicId = $request->input('topic_id');
         $cacheKey = $this->cacheService->getIndexCacheKey($request->session()->get('active_target_group_id', 0), $topicId);
 
-        $data = Cache::remember($cacheKey, 60, function () use ($topicId) {
+        $data = Cache::remember($cacheKey, now()->addMinutes(5), function () use ($topicId) {
             $banners = Banner::query()
                 ->with('image')
                 ->withGlobalScope('published', new PublishedScope)

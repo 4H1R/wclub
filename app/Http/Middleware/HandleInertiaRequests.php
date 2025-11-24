@@ -36,12 +36,14 @@ class HandleInertiaRequests extends Middleware
         $targetGroups = Cache::rememberForever($cacheService->getTargetGroupsCacheKey(), function () {
             return TargetGroupData::collect(TargetGroup::with('image')->ordered()->get());
         });
+
         $eventProgramCategories = Cache::rememberForever($cacheService->getEventProgramCategoriesCacheKey(), function () {
             $categories = Category::where('model', EventProgram::class)->where('show_on_navbar', true)->get();
 
             return CategoryData::collect($categories);
         });
-        $topics = Cache::remember($cacheService->getTopicsCacheKey(), 60, function () {
+
+        $topics = Cache::remember($cacheService->getTopicsCacheKey(), now()->addMinutes(5), function () {
             $topics = Topic::query()
                 ->whereNull('parent_id')
                 ->where('show_on_navbar', true)

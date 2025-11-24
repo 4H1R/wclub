@@ -53,12 +53,12 @@ class AuthService
         $token = $resp->json('token');
         $expiredAt = Carbon::createFromFormat('m/d/Y H:i:s', $resp->json('smsExpireTime'), 'Asia/Tehran');
 
-        Cache::put($this->cacheService->getIsfahanSsoTokenCacheKey($phone), $token, $expiredAt);
+        Cache::put($this->cacheService->getIsfahanSSOTokenCacheKey($phone), $token, $expiredAt);
     }
 
     public function validateTokenAndGetRefreshToken(string $phone, int $code): string|false
     {
-        $token = Cache::get($this->cacheService->getIsfahanSsoTokenCacheKey($phone));
+        $token = Cache::get($this->cacheService->getIsfahanSSOTokenCacheKey($phone));
 
         if (! $token) {
             return false;

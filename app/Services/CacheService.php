@@ -24,7 +24,7 @@ class CacheService
         return 'topics';
     }
 
-    public function getIsfahanSsoTokenCacheKey(string $phone)
+    public function getIsfahanSSOTokenCacheKey(string $phone)
     {
         return 'isfahan_sso_token_'.$phone;
     }
