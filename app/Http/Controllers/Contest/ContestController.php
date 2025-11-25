@@ -66,8 +66,14 @@ class ContestController extends Controller implements HasMiddleware
         abort_unless($contest->published_at, 404);
 
         $contest->load(Contest::getCardRelations());
-        $contest->has_registered = Auth::check() && $contest->registrations()->where('user_id', Auth::id())->exists();
-        $contest->question_form_id = Auth::check() ? $contest->questionForm?->id : null;
+        $registration = null;
+
+        if (Auth::check()) {
+            $registration = ContestUserRegistration::where('contest_id', $contest->id)->where('user_id', Auth::id())->first();
+        }
+
+        $contest->has_registered = (bool) $registration;
+        $contest->question_form_id = $contest->has_registered ? $contest->questionForm?->id : null;
         $contest->has_uploaded_image = false;
 
         if (Auth::check() && $contest->question_form_id) {
@@ -75,7 +81,6 @@ class ContestController extends Controller implements HasMiddleware
         }
 
         if (Auth::check()) {
-            $registration = ContestUserRegistration::where('contest_id', $contest->id)->where('user_id', Auth::id())->first();
             $contest->has_uploaded_image = $registration?->image?->exists();
         }
 
