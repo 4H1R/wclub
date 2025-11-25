@@ -1,6 +1,7 @@
 import Button from '@/shared/forms/Button';
 import { slugifyId } from '@/utils';
 import { router, useForm, usePage } from '@inertiajs/react';
+import { HiCheckBadge } from 'react-icons/hi2';
 import { toast } from 'react-toastify';
 
 type RegisterContestProps = {
@@ -9,8 +10,10 @@ type RegisterContestProps = {
 
 export default function RegisterContest({ contest }: RegisterContestProps) {
   const { auth } = usePage().props;
-  const hasPassedRegistration = new Date(contest.started_at).getTime() < new Date().getTime();
+  const hasPassedRegistration = new Date(contest.finished_at).getTime() < new Date().getTime();
+  const canInteract = contest.has_registered && !hasPassedRegistration;
   const form = useForm();
+
   const getText = () => {
     if (hasPassedRegistration) return 'تاریخ گذشته است';
     if (contest.has_registered) return 'شما قبلا ثبت نام کرده اید.';
@@ -31,12 +34,32 @@ export default function RegisterContest({ contest }: RegisterContestProps) {
   };
 
   return (
-    <Button
-      onClick={handleRegister}
-      disabled={hasPassedRegistration || contest.has_registered || form.processing}
-      className="btn btn-neutral btn-block"
-    >
-      {getText()}
-    </Button>
+    <>
+      {contest.question_form_answered && (
+        <div className="flex items-center gap-2">
+          <HiCheckBadge className="size-6 text-primary" />
+          <p className="text-base-content/80">شما پاسخ به سوالات را ثبت کرده اید.</p>
+        </div>
+      )}
+      {canInteract && contest.question_form_id && !contest.question_form_answered && (
+        <a
+          target="_blank"
+          className="btn btn-neutral btn-block"
+          href={route('question-forms.show', [contest.question_form_id])}
+          rel="noreferrer"
+        >
+          پاسخ به سوالات
+        </a>
+      )}
+      {!contest.has_registered && (
+        <Button
+          onClick={handleRegister}
+          disabled={hasPassedRegistration || form.processing}
+          className="btn btn-neutral btn-block"
+        >
+          {getText()}
+        </Button>
+      )}
+    </>
   );
 }

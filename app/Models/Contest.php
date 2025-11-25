@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Traits\HasCategories;
+use App\Models\Traits\HasQuestionForms;
 use App\Models\Traits\HasSlug;
 use App\Models\Traits\HasTargetGroups;
 use App\Models\Traits\HasTopics;
@@ -20,7 +21,7 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 class Contest extends Model implements HasMedia
 {
     /** @use HasFactory<\Database\Factories\ContestFactory> */
-    use HasCategories, HasFactory, HasSlug, HasTargetGroups, HasTopics, InteractsWithMedia;
+    use HasCategories, HasFactory, HasQuestionForms, HasSlug, HasTargetGroups, HasTopics, InteractsWithMedia;
 
     public function registerMediaCollections(): void
     {
@@ -45,6 +46,14 @@ class Contest extends Model implements HasMedia
     }
 
     /**
+     * @return MorphOne<QuestionForm>
+     */
+    public function questionForm(): MorphOne
+    {
+        return $this->morphOne(QuestionForm::class, 'model');
+    }
+
+    /**
      * @param  Builder<EventProgram>  $query
      */
     public function scopeQuery(Builder $query, string $value): void
@@ -55,5 +64,10 @@ class Contest extends Model implements HasMedia
     public static function getCardRelations(): array
     {
         return ['image', 'targetGroups', 'categories'];
+    }
+
+    public function canAnswerQuestionForm(): bool
+    {
+        return $this->started_at <= now() && $this->finished_at >= now();
     }
 }

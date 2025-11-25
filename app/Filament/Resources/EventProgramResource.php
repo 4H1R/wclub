@@ -60,15 +60,15 @@ class EventProgramResource extends CustomResource
                         ->gt('price')
                         ->required(false),
                 ]),
-            // Forms\Components\TextInput::make('min_participants')
-            //     ->translateLabel()
-            //     ->minValue(0)
-            //     ->integer(),
-            // Forms\Components\TextInput::make('max_participants')
-            //     ->translateLabel()
-            //     ->gt('min_participants')
-            //     ->minValue(0)
-            //     ->integer(),
+            Forms\Components\TextInput::make('min_participants')
+                ->translateLabel()
+                ->minValue(0)
+                ->integer(),
+            Forms\Components\TextInput::make('max_participants')
+                ->translateLabel()
+                ->gt('min_participants')
+                ->minValue(0)
+                ->integer(),
             Forms\Components\MarkdownEditor::make('description')
                 ->disableToolbarButtons(['attachFiles'])
                 ->translateLabel()
@@ -132,18 +132,18 @@ class EventProgramResource extends CustomResource
                 Tables\Columns\TextColumn::make('status')
                     ->translateLabel()
                     ->badge(),
-                // Tables\Columns\TextColumn::make('min_participants')
-                //     ->sortable()
-                //     ->badge()
-                //     ->toggleable()
-                //     ->toggledHiddenByDefault()
-                //     ->translateLabel(),
-                // Tables\Columns\TextColumn::make('max_participants')
-                //     ->sortable()
-                //     ->badge()
-                //     ->toggleable()
-                //     ->toggledHiddenByDefault()
-                //     ->translateLabel(),
+                Tables\Columns\TextColumn::make('min_participants')
+                    ->sortable()
+                    ->badge()
+                    ->toggleable()
+                    ->toggledHiddenByDefault()
+                    ->translateLabel(),
+                Tables\Columns\TextColumn::make('max_participants')
+                    ->sortable()
+                    ->badge()
+                    ->toggleable()
+                    ->toggledHiddenByDefault()
+                    ->translateLabel(),
                 CustomTimeColumn::make('started_at')
                     ->sortable()
                     ->translateLabel(),

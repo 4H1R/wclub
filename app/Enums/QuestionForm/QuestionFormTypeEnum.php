@@ -10,13 +10,11 @@ enum QuestionFormTypeEnum: string implements HasLabel
     use EnumConcern;
 
     case SingleChoice = 'SINGLE_CHOICE';
-    case MultipleChoice = 'MULTIPLE_CHOICE';
 
     public function getLabel(): string
     {
         return match ($this) {
             self::SingleChoice => 'یک گزینه',
-            self::MultipleChoice => 'چند گزینه',
         };
     }
 }

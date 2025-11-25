@@ -48,6 +48,8 @@ declare namespace App.Data.Contest {
     image: App.Data.Media.ImageData | null;
     min_participants: number | null;
     max_participants: number | null;
+    question_form_id: number | null;
+    question_form_answered: boolean | null;
     has_registered: boolean;
     started_at: string;
     finished_at: string;
@@ -180,6 +182,27 @@ declare namespace App.Data.News {
     image: App.Data.Media.ImageData | null;
     categories: Array<App.Data.Category.CategoryData>;
     target_groups: Array<App.Data.TargetGroup.TargetGroupData>;
+  };
+}
+declare namespace App.Data.QuestionForm {
+  export type QuestionFormFullData = {
+    id: number;
+    title: string;
+    questions: Array<App.Data.QuestionForm.QuestionFormQuestionData>;
+  };
+  export type QuestionFormPropertiesData = {
+    options: Array<App.Data.QuestionForm.QuestionFormPropertiesOptionData>;
+  };
+  export type QuestionFormPropertiesOptionData = {
+    value: string;
+    label: string;
+  };
+  export type QuestionFormQuestionData = {
+    id: string;
+    title: string;
+    type: App.Enums.QuestionForm.QuestionFormTypeEnum;
+    description: string | null;
+    properties: App.Data.QuestionForm.QuestionFormPropertiesData;
   };
 }
 declare namespace App.Data.RewardProgram {
@@ -451,7 +474,7 @@ declare namespace App.Enums.Order {
     | 'FINISHED';
 }
 declare namespace App.Enums.QuestionForm {
-  export type QuestionFormTypeEnum = 'SINGLE_CHOICE' | 'MULTIPLE_CHOICE';
+  export type QuestionFormTypeEnum = 'SINGLE_CHOICE';
 }
 declare namespace App.Enums.Series {
   export type SeriesPresentationModeEnum = 'IN_PERSON' | 'ONLINE' | 'PLATFORM';

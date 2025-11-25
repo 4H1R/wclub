@@ -10,8 +10,10 @@ import ShareButton from '@/shared/resources/show/ShareButton';
 import { formatDatetime, slugifyId } from '@/utils';
 import { usePage } from '@inertiajs/react';
 import { addCommas, digitsEnToFa } from '@persian-tools/persian-tools';
+import { useEffect } from 'react';
 import { HiOutlineCheck } from 'react-icons/hi2';
 import Markdown from 'react-markdown';
+import { toast } from 'react-toastify';
 
 type TPage = PageProps<{
   contest: App.Data.Contest.ContestFullData;
@@ -22,6 +24,13 @@ const registerId = 'registerId';
 
 export default function Show() {
   const { contest, recommended_contests } = usePage<TPage>().props;
+  const url = usePage().url;
+
+  useEffect(() => {
+    if (url.includes('question-form-answered')) {
+      toast.success('پاسخ به سوالات با موفقیت ثبت شد');
+    }
+  }, [url]);
 
   const handleScrollToRegister = () => {
     document.getElementById(registerId)?.scrollIntoView({ behavior: 'smooth' });

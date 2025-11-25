@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Middleware\FixSlugMiddleware;
 use App\Models\Category;
 use App\Models\Contest;
+use App\Models\QuestionFormAnswer;
 use App\Models\Scopes\PublishedScope;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Routing\Controllers\HasMiddleware;
@@ -62,6 +63,11 @@ class ContestController extends Controller implements HasMiddleware
 
         $contest->load(Contest::getCardRelations());
         $contest->has_registered = Auth::check() && $contest->registrations()->where('user_id', Auth::id())->exists();
+        $contest->question_form_id = Auth::check() ? $contest->questionForm?->id : null;
+
+        if (Auth::check() && $contest->question_form_id) {
+            $contest->question_form_answered = QuestionFormAnswer::where('question_form_id', $contest->question_form_id)->where('user_id', Auth::id())->exists();
+        }
 
         $recommendedContests = Contest::query()
             ->with(Contest::getCardRelations())

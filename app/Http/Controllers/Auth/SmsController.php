@@ -30,7 +30,6 @@ class SmsController extends Controller
             2,
             function () use ($validated) {
                 $this->authService->sendTokenToPhone($validated['phone']);
-                // sent
             },
         );
 

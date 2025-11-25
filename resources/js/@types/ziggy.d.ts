@@ -83,6 +83,18 @@ declare module 'ziggy-js' {
     'games.roll-the-dice': [];
     'target-groups.active': [];
     'faqs.store': [];
+    'question-forms.show': [
+      {
+        name: 'question_form';
+        required: true;
+      },
+    ];
+    'question-forms.answers.store': [
+      {
+        name: 'question_form';
+        required: true;
+      },
+    ];
     'contests.registrations.store': [
       {
         name: 'contest';

@@ -13,7 +13,7 @@ class ContestRegistrationController extends Controller
     public function store(Contest $contest): RedirectResponse
     {
         abort_unless($contest->published_at, 403);
-        abort_unless(Carbon::parse($contest->started_at)->gt(now()), 403);
+        abort_unless(Carbon::parse($contest->finished_at)->gt(now()), 403);
 
         $contest->registrations()->syncWithoutDetaching([Auth::id()]);
 

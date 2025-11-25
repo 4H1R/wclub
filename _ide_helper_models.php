@@ -117,6 +117,7 @@ namespace App\Models{
  * @property-read \App\Models\Media|null $image
  * @property-read \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection<int, \App\Models\Media> $media
  * @property-read int|null $media_count
+ * @property-read \App\Models\QuestionForm|null $questionForm
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\User> $registrations
  * @property-read int|null $registrations_count
  * @property-read mixed $slug
@@ -601,6 +602,34 @@ namespace App\Models{
  */
 	#[\AllowDynamicProperties]
 	class IdeHelperQuestionForm {}
+}
+
+namespace App\Models{
+/**
+ * @property int $id
+ * @property int $question_form_id
+ * @property int $user_id
+ * @property int $score
+ * @property array<array-key, mixed> $answers
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\QuestionForm $questionForm
+ * @property-read \App\Models\User $user
+ * @method static \Database\Factories\QuestionFormAnswerFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|QuestionFormAnswer newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|QuestionFormAnswer newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|QuestionFormAnswer query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|QuestionFormAnswer whereAnswers($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|QuestionFormAnswer whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|QuestionFormAnswer whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|QuestionFormAnswer whereQuestionFormId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|QuestionFormAnswer whereScore($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|QuestionFormAnswer whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|QuestionFormAnswer whereUserId($value)
+ * @mixin \Eloquent
+ */
+	#[\AllowDynamicProperties]
+	class IdeHelperQuestionFormAnswer {}
 }
 
 namespace App\Models{

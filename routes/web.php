@@ -40,8 +40,6 @@ Route::middleware('throttle:global')->group(function () {
     Route::get('happy-family', HappyFamilyController::class)->name('happy-family');
     Route::get('clean-life', CleanLifeController::class)->name('clean-life');
 
-    // Route::resource('question-forms', QuestionFormController::class)->only(['show']);
-
     Route::get('/hn', [HnController::class, 'index'])->name('hn.index');
     Route::get('/hn/start', [HnController::class, 'start'])->name('hn.start');
 
@@ -65,6 +63,9 @@ Route::middleware('throttle:global')->group(function () {
 
     Route::middleware(['auth'])->group(function () {
         Route::resource('faqs', FaqController::class)->only(['store']);
+
+        Route::resource('question-forms', QuestionFormController::class)->only(['show']);
+        Route::resource('question-forms.answers', QuestionFormController::class)->only(['store']);
 
         Route::resource('contests.registrations', ContestRegistrationController::class)->only(['store']);
         Route::resource('series.owns', SeriesOwnController::class)->only(['store']);

@@ -78,10 +78,9 @@ class QuestionFormResource extends CustomResource
                                         ->translateLabel()
                                         ->maxLength(255)
                                         ->required(),
-                                    Forms\Components\TextInput::make('value')
-                                        ->translateLabel()
-                                        ->maxLength(255)
-                                        ->required(),
+                                    Forms\Components\Hidden::make('value')
+                                        ->distinct()
+                                        ->default(fn () => Str::random(10)),
                                     Forms\Components\TextInput::make('score')
                                         ->integer()
                                         ->minValue(0)
@@ -110,13 +109,6 @@ class QuestionFormResource extends CustomResource
             ->actions([
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\Action::make('url')
-                    ->label('لینک')
-                    ->icon('heroicon-o-link')
-                    ->color('gray')
-                    ->url(fn (QuestionForm $questionForm) => route('question-forms.show', [$questionForm->id]))
-                    ->openUrlInNewTab(),
-
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
