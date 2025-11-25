@@ -6,6 +6,7 @@ use App\Enums\QuestionForm\QuestionFormTypeEnum;
 use App\Filament\Custom\CustomResource;
 use App\Filament\Forms\Layouts\BasicForm;
 use App\Filament\Resources\QuestionFormResource\Pages;
+use App\Filament\Resources\QuestionFormResource\RelationManagers;
 use App\Filament\Tables\Columns\TimestampsColumn;
 use App\Models\Contest;
 use App\Models\QuestionForm;
@@ -21,6 +22,11 @@ class QuestionFormResource extends CustomResource
     protected static ?string $model = QuestionForm::class;
 
     protected static string $translationLabel = 'Question Forms';
+
+    public static function getNavigationGroup(): ?string
+    {
+        return trans_choice('Question Forms', 2);
+    }
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -120,7 +126,7 @@ class QuestionFormResource extends CustomResource
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\AnswersRelationManager::class,
         ];
     }
 

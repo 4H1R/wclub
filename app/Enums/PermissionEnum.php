@@ -126,6 +126,8 @@ enum PermissionEnum: string implements HasLabel
     case CreateQuestionForms = 'Create Question Forms';
     case UpdateAnyQuestionForms = 'Update Any Question Forms';
     case DeleteAnyQuestionForms = 'Delete Any Question Forms';
+    // Question Form Answers
+    case ViewAnyQuestionFormAnswers = 'View Any Question Form Answers';
 
     public function getLabel(): string
     {
@@ -247,6 +249,8 @@ enum PermissionEnum: string implements HasLabel
             self::UpdateAnyQuestionForms => 'ویرایش هر فرم پرسش',
             self::CreateQuestionForms => 'ایجاد فرم پرسش',
             self::DeleteAnyQuestionForms => 'حدف هر فرم پرسش',
+            // Question Form Answers
+            self::ViewAnyQuestionFormAnswers => 'مشاهده همه پاسخ های فرم پرسش',
         };
     }
 }

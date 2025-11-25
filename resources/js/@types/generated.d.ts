@@ -430,7 +430,8 @@ declare namespace App.Enums {
     | 'View Any Question Forms'
     | 'Create Question Forms'
     | 'Update Any Question Forms'
-    | 'Delete Any Question Forms';
+    | 'Delete Any Question Forms'
+    | 'View Any Question Form Answers';
   export type RoleEnum = 'Super Admin' | 'Test';
 }
 declare namespace App.Enums.Auth {

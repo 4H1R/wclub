@@ -44,6 +44,7 @@ class AdminPanelProvider extends PanelProvider
                 __('Hn'),
                 trans_choice('Orders', 2),
                 trans_choice('Users', 2),
+                trans_choice('Question Forms', 2),
                 __('Settings'),
             ])
             ->colors([

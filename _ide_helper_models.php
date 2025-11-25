@@ -586,6 +586,8 @@ namespace App\Models{
  * @property array<array-key, mixed> $questions
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\QuestionFormAnswer> $answers
+ * @property-read int|null $answers_count
  * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $model
  * @method static \Database\Factories\QuestionFormFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|QuestionForm newModelQuery()
