@@ -9,16 +9,20 @@ use App\Http\Controllers\Controller;
 use App\Http\Middleware\FixSlugMiddleware;
 use App\Models\Category;
 use App\Models\Contest;
+use App\Models\ContestUserRegistration;
 use App\Models\QuestionFormAnswer;
 use App\Models\Scopes\PublishedScope;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 use Inertia\Inertia;
 use Spatie\LaravelData\PaginatedDataCollection;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class ContestController extends Controller implements HasMiddleware
 {
@@ -64,9 +68,15 @@ class ContestController extends Controller implements HasMiddleware
         $contest->load(Contest::getCardRelations());
         $contest->has_registered = Auth::check() && $contest->registrations()->where('user_id', Auth::id())->exists();
         $contest->question_form_id = Auth::check() ? $contest->questionForm?->id : null;
+        $contest->has_uploaded_image = false;
 
         if (Auth::check() && $contest->question_form_id) {
             $contest->question_form_answered = QuestionFormAnswer::where('question_form_id', $contest->question_form_id)->where('user_id', Auth::id())->exists();
+        }
+
+        if (Auth::check()) {
+            $registration = ContestUserRegistration::where('contest_id', $contest->id)->where('user_id', Auth::id())->first();
+            $contest->has_uploaded_image = $registration?->image?->exists();
         }
 
         $recommendedContests = Contest::query()
@@ -80,5 +90,18 @@ class ContestController extends Controller implements HasMiddleware
             'contest' => ContestFullData::from($contest),
             'recommended_contests' => ContestData::collect($recommendedContests),
         ]);
+    }
+
+    public function uploadImage(Request $request, Contest $contest): RedirectResponse
+    {
+        $request->validate([
+            'image' => ['required',  Rule::file()->image()->max(1024)],
+        ]);
+
+        $registration = ContestUserRegistration::where('contest_id', $contest->id)->where('user_id', Auth::id())->firstOrFail();
+
+        $registration->addMediaFromRequest('image')->toMediaCollection('image');
+
+        return back();
     }
 }

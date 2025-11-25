@@ -66,6 +66,7 @@ Route::middleware('throttle:global')->group(function () {
 
         Route::resource('question-forms', QuestionFormController::class)->only(['show']);
         Route::resource('question-forms.answers', QuestionFormController::class)->only(['store']);
+        Route::post('/contests/{contest}/image', [ContestController::class, 'uploadImage'])->name('contests.upload-image');
 
         Route::resource('contests.registrations', ContestRegistrationController::class)->only(['store']);
         Route::resource('series.owns', SeriesOwnController::class)->only(['store']);

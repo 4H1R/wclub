@@ -23,6 +23,10 @@ class Contest extends Model implements HasMedia
     /** @use HasFactory<\Database\Factories\ContestFactory> */
     use HasCategories, HasFactory, HasQuestionForms, HasSlug, HasTargetGroups, HasTopics, InteractsWithMedia;
 
+    protected $casts = [
+        'can_upload_image' => 'boolean',
+    ];
+
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('image')->singleFile();

@@ -50,6 +50,8 @@ declare namespace App.Data.Contest {
     max_participants: number | null;
     question_form_id: number | null;
     question_form_answered: boolean | null;
+    can_upload_image: boolean;
+    has_uploaded_image: boolean;
     has_registered: boolean;
     started_at: string;
     finished_at: string;

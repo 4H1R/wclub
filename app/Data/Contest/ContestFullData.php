@@ -21,6 +21,8 @@ class ContestFullData extends Data
         public ?int $max_participants,
         public ?int $question_form_id,
         public ?bool $question_form_answered,
+        public bool $can_upload_image,
+        public bool $has_uploaded_image,
         public bool $has_registered,
         public string $started_at,
         public string $finished_at,

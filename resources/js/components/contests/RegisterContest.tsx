@@ -3,6 +3,7 @@ import { slugifyId } from '@/utils';
 import { router, useForm, usePage } from '@inertiajs/react';
 import { HiCheckBadge } from 'react-icons/hi2';
 import { toast } from 'react-toastify';
+import UploadImage from './UploadImage';
 
 type RegisterContestProps = {
   contest: App.Data.Contest.ContestFullData;
@@ -12,7 +13,7 @@ export default function RegisterContest({ contest }: RegisterContestProps) {
   const { auth } = usePage().props;
   const hasPassedRegistration = new Date(contest.finished_at).getTime() < new Date().getTime();
   const canInteract = contest.has_registered && !hasPassedRegistration;
-  const form = useForm();
+  const registerForm = useForm();
 
   const getText = () => {
     if (hasPassedRegistration) return 'تاریخ گذشته است';
@@ -26,21 +27,25 @@ export default function RegisterContest({ contest }: RegisterContestProps) {
       router.get(route('auth'));
       return;
     }
-    form.post(route('contests.registrations.store', [slugifyId(contest.id, contest.title)]), {
-      onSuccess: () => {
-        toast.success(`شما با موفقیت در چالش و مسابقه ${contest.title} ثبت نام کردید`);
+    registerForm.post(
+      route('contests.registrations.store', [slugifyId(contest.id, contest.title)]),
+      {
+        onSuccess: () => {
+          toast.success(`شما با موفقیت در چالش و مسابقه ${contest.title} ثبت نام کردید`);
+        },
       },
-    });
+    );
   };
 
   return (
-    <>
+    <div className="flex w-full flex-col gap-2">
       {contest.question_form_answered && (
         <div className="flex items-center gap-2">
           <HiCheckBadge className="size-6 text-primary" />
           <p className="text-base-content/80">شما پاسخ به سوالات را ثبت کرده اید.</p>
         </div>
       )}
+      <UploadImage contest={contest} canInteract={canInteract} />
       {canInteract && contest.question_form_id && !contest.question_form_answered && (
         <a
           target="_blank"
@@ -54,12 +59,12 @@ export default function RegisterContest({ contest }: RegisterContestProps) {
       {!contest.has_registered && (
         <Button
           onClick={handleRegister}
-          disabled={hasPassedRegistration || form.processing}
+          disabled={hasPassedRegistration || registerForm.processing}
           className="btn btn-neutral btn-block"
         >
           {getText()}
         </Button>
       )}
-    </>
+    </div>
   );
 }

@@ -112,6 +112,7 @@ namespace App\Models{
  * @property string|null $published_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property bool $can_upload_image
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Category> $categories
  * @property-read int|null $categories_count
  * @property-read \App\Models\Media|null $image
@@ -129,6 +130,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Contest newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Contest newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Contest query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Contest whereCanUploadImage($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Contest whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Contest whereDescription($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Contest whereFinishedAt($value)
@@ -144,6 +146,32 @@ namespace App\Models{
  */
 	#[\AllowDynamicProperties]
 	class IdeHelperContest {}
+}
+
+namespace App\Models{
+/**
+ * @property int $id
+ * @property int $contest_id
+ * @property int $user_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Contest $contest
+ * @property-read \App\Models\Media|null $image
+ * @property-read \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection<int, \App\Models\Media> $media
+ * @property-read int|null $media_count
+ * @property-read \App\Models\User $user
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ContestUserRegistration newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ContestUserRegistration newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ContestUserRegistration query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ContestUserRegistration whereContestId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ContestUserRegistration whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ContestUserRegistration whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ContestUserRegistration whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ContestUserRegistration whereUserId($value)
+ * @mixin \Eloquent
+ */
+	#[\AllowDynamicProperties]
+	class IdeHelperContestUserRegistration {}
 }
 
 namespace App\Models{

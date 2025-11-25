@@ -90,7 +90,11 @@ class ContestResource extends CustomResource
                 ->required(),
         ]);
 
-        $statusSection = StatusSection::make(includePublishedAt: true);
+        $statusSection = StatusSection::make([
+            Forms\Components\Toggle::make('can_upload_image')
+                ->translateLabel()
+                ->default(false),
+        ], includePublishedAt: true);
 
         return ComplexForm::make($form, [$basicSection], [$statusSection]);
     }

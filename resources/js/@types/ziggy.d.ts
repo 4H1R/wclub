@@ -95,6 +95,13 @@ declare module 'ziggy-js' {
         required: true;
       },
     ];
+    'contests.upload-image': [
+      {
+        name: 'contest';
+        required: true;
+        binding: 'id';
+      },
+    ];
     'contests.registrations.store': [
       {
         name: 'contest';
