@@ -119,6 +119,8 @@ namespace App\Models{
  * @property-read \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection<int, \App\Models\Media> $media
  * @property-read int|null $media_count
  * @property-read \App\Models\QuestionForm|null $questionForm
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\ContestUserRegistration> $rawRegistrations
+ * @property-read int|null $raw_registrations_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\User> $registrations
  * @property-read int|null $registrations_count
  * @property-read mixed $slug

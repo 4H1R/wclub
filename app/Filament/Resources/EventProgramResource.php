@@ -124,7 +124,7 @@ class EventProgramResource extends CustomResource
     {
         return $table
             ->columns([
-                ImageColumn::make('image'),
+                ImageColumn::make('image', 'public'),
                 Tables\Columns\TextColumn::make('title')
                     ->sortable()
                     ->searchable()

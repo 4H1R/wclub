@@ -104,7 +104,8 @@ class User extends Authenticatable implements FilamentUser, HasName
      */
     public function contestRegistrations(): BelongsToMany
     {
-        return $this->belongsToMany(Contest::class, 'contest_user_registrations');
+        return $this->belongsToMany(Contest::class, 'contest_user_registrations')
+            ->withTimestamps();
     }
 
     /**
@@ -112,7 +113,8 @@ class User extends Authenticatable implements FilamentUser, HasName
      */
     public function ownedSeries(): BelongsToMany
     {
-        return $this->belongsToMany(Series::class, 'user_owned_series');
+        return $this->belongsToMany(Series::class, 'user_owned_series')
+            ->withTimestamps();
     }
 
     /**

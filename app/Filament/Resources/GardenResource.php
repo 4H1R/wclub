@@ -108,7 +108,7 @@ class GardenResource extends CustomResource
     {
         return $table
             ->columns([
-                ImageColumn::make('image'),
+                ImageColumn::make('images', 'public'),
                 Tables\Columns\TextColumn::make('title')
                     ->sortable()
                     ->searchable()

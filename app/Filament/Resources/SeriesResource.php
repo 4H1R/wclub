@@ -121,7 +121,7 @@ class SeriesResource extends CustomResource
     {
         return $table
             ->columns([
-                ImageColumn::make('image'),
+                ImageColumn::make('image', 'public'),
                 Tables\Columns\TextColumn::make('title')
                     ->translateLabel()
                     ->sortable()

@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
@@ -46,7 +47,16 @@ class Contest extends Model implements HasMedia
      */
     public function registrations(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'contest_user_registrations');
+        return $this->belongsToMany(User::class, 'contest_user_registrations')
+            ->withTimestamps();
+    }
+
+    /**
+     * @return HasMany<ContestUserRegistration>
+     */
+    public function rawRegistrations(): HasMany
+    {
+        return $this->hasMany(ContestUserRegistration::class);
     }
 
     /**

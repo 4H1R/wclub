@@ -6,10 +6,12 @@ use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 
 class ImageColumn
 {
-    public static function make(string $name): SpatieMediaLibraryImageColumn
+    public static function make(string $name, string $visibility = 'private'): SpatieMediaLibraryImageColumn
     {
         return SpatieMediaLibraryImageColumn::make($name)
             ->translateLabel()
-            ->collection($name);
+            ->collection($name)
+            ->disk($visibility === 'private' ? 's3_private' : 's3_public')
+            ->visibility($visibility);
     }
 }

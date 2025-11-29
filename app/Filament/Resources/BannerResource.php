@@ -58,7 +58,7 @@ class BannerResource extends CustomResource
             ->reorderable(config('eloquent-sortable.order_column_name'))
             ->defaultSort(config('eloquent-sortable.order_column_name'))
             ->columns([
-                ImageColumn::make('image'),
+                ImageColumn::make('image', 'public'),
                 Tables\Columns\TextColumn::make('title')
                     ->sortable()
                     ->searchable()

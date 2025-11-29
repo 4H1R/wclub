@@ -77,11 +77,11 @@ class ContestController extends Controller implements HasMiddleware
         $contest->has_uploaded_image = false;
 
         if (Auth::check() && $contest->question_form_id) {
-            $contest->question_form_answered = QuestionFormAnswer::where('question_form_id', $contest->question_form_id)->where('user_id', Auth::id())->exists();
+            $contest->question_form_answered = (bool) QuestionFormAnswer::where('question_form_id', $contest->question_form_id)->where('user_id', Auth::id())->exists();
         }
 
         if (Auth::check()) {
-            $contest->has_uploaded_image = $registration?->image?->exists();
+            $contest->has_uploaded_image = (bool) $registration?->image?->exists();
         }
 
         $recommendedContests = Contest::query()

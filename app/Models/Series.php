@@ -68,7 +68,8 @@ class Series extends Model implements HasMedia
      */
     public function ownedUsers(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'user_owned_series');
+        return $this->belongsToMany(User::class, 'user_owned_series')
+            ->withTimestamps();
     }
 
     /**
