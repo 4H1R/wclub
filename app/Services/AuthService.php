@@ -95,6 +95,7 @@ class AuthService
     private function getClient(): PendingRequest
     {
         return Http::baseUrl($this->baseUrl)
+            ->withoutVerifying()
             ->acceptJson();
     }
 }
