@@ -38,7 +38,7 @@ class DashboardController extends Controller
         $series = Auth::user()
             ->ownedSeries()
             ->withGlobalScope('published', new PublishedScope)
-            ->with(['image', 'categories'])
+            ->with(['image', 'categories', 'targetGroups'])
             ->paginate();
 
         return Inertia::render('dashboard/Series', [
