@@ -47,11 +47,11 @@ type TNavbarProps = {
 
 export function useNavbarLinks({ showOn = 'all' }: TNavbarProps): TNavbarLink[] {
   const { props, url } = usePage<PageProps>();
-  const { event_program_categories, topics, auth } = props;
+  const { event_program_categories, topics } = props;
 
   const links: (TNavbarLink | null | false)[] = [
     { title: 'خانه', href: '/', Icon: HiOutlineHome, ActiveIcon: HiHome, showOn: 'mobile' },
-    auth.user && {
+    {
       title: 'حساب کاربری',
       href: '/dashboard',
       Icon: HiOutlineUser,
