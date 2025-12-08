@@ -176,6 +176,7 @@ class EventProgramResource extends CustomResource
     public static function getRelations(): array
     {
         return [
+            RelationManagers\UserRegistrationsRelationManager::class,
             RelationManagers\FaqsRelationManager::class,
         ];
     }

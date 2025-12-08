@@ -1,4 +1,5 @@
 import { PageProps } from '@/@types';
+import RegisterEventProgram from '@/components/eventPrograms/RegisterEventProgram';
 // import Faqs from '@/components/faqs/Faqs';
 import BreadCrumb from '@/shared/BreadCrumb';
 import EventProgramCard from '@/shared/cards/EventProgramCard';
@@ -100,9 +101,9 @@ export default function Show() {
                   {formatDatetime(event_program.finished_at)}
                 </li>
               </ul>
-              {/*<div className="card-actions mt-4">*/}
-              {/*  <Button className="btn btn-neutral btn-block">ثبت نام</Button>*/}
-              {/*</div>*/}
+              <div className="card-actions mt-4">
+                <RegisterEventProgram eventProgram={event_program} />
+              </div>
             </div>
           </div>
         </div>

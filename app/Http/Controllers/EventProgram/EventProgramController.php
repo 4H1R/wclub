@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\EventProgram;
 
 use App\Data\Category\CategoryData;
 use App\Data\EventProgram\EventProgramData;
 use App\Data\EventProgram\EventProgramFullData;
 use App\Data\Faq\FaqData;
 use App\Enums\Faq\FaqStatusEnum;
+use App\Http\Controllers\Controller;
 use App\Http\Middleware\FixSlugMiddleware;
 use App\Models\Category;
 use App\Models\EventProgram;
@@ -14,6 +15,7 @@ use App\Models\Scopes\PublishedScope;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use Spatie\LaravelData\PaginatedDataCollection;
 use Spatie\QueryBuilder\AllowedFilter;
@@ -62,6 +64,12 @@ class EventProgramController extends Controller implements HasMiddleware
         abort_unless($eventProgram->published_at, 404);
 
         $eventProgram->load(EventProgram::getCardRelations());
+
+        $eventProgram->has_registered = false;
+
+        if (Auth::check()) {
+            $eventProgram->has_registered = $eventProgram->rawRegistrations()->where('user_id', Auth::id())->exists();
+        }
 
         $recommendedEventPrograms = EventProgram::query()
             ->with(EventProgram::getCardRelations())

@@ -109,6 +109,12 @@ declare module 'ziggy-js' {
         binding: 'id';
       },
     ];
+    'event-programs.registrations.store': [
+      {
+        name: 'event_program';
+        required: true;
+      },
+    ];
     'series.owns.store': [
       {
         name: 'series';

@@ -236,6 +236,10 @@ namespace App\Models{
  * @property-read \App\Models\Media|null $image
  * @property-read \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection<int, \App\Models\Media> $media
  * @property-read int|null $media_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\EventProgramUserRegistration> $rawRegistrations
+ * @property-read int|null $raw_registrations_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\User> $registrations
+ * @property-read int|null $registrations_count
  * @property-read mixed $slug
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\TargetGroup> $targetGroups
  * @property-read int|null $target_groups_count
@@ -266,6 +270,30 @@ namespace App\Models{
  */
 	#[\AllowDynamicProperties]
 	class IdeHelperEventProgram {}
+}
+
+namespace App\Models{
+/**
+ * @property int $id
+ * @property int $event_program_id
+ * @property int $user_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\EventProgram $eventProgram
+ * @property-read \App\Models\User $user
+ * @method static \Database\Factories\EventProgramUserRegistrationFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgramUserRegistration newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgramUserRegistration newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgramUserRegistration query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgramUserRegistration whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgramUserRegistration whereEventProgramId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgramUserRegistration whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgramUserRegistration whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgramUserRegistration whereUserId($value)
+ * @mixin \Eloquent
+ */
+	#[\AllowDynamicProperties]
+	class IdeHelperEventProgramUserRegistration {}
 }
 
 namespace App\Models{

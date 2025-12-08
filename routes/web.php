@@ -8,7 +8,8 @@ use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\Contest\ContestController;
 use App\Http\Controllers\Contest\ContestRegistrationController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\EventProgramController;
+use App\Http\Controllers\EventProgram\EventProgramController;
+use App\Http\Controllers\EventProgram\EventProgramRegistrationController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\Game\GameController;
 use App\Http\Controllers\Game\NardebanShadiController;
@@ -69,6 +70,7 @@ Route::middleware('throttle:global')->group(function () {
         Route::post('/contests/{contest}/image', [ContestController::class, 'uploadImage'])->name('contests.upload-image');
 
         Route::resource('contests.registrations', ContestRegistrationController::class)->only(['store']);
+        Route::resource('event-programs.registrations', EventProgramRegistrationController::class)->only(['store']);
         Route::resource('series.owns', SeriesOwnController::class)->only(['store']);
 
         Route::prefix('/me')->name('me.')->group(function () {

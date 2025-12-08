@@ -98,6 +98,7 @@ declare namespace App.Data.EventProgram {
     image: App.Data.Media.ImageData | null;
     min_participants: number | null;
     max_participants: number | null;
+    has_registered: boolean;
     started_at: string;
     finished_at: string;
     categories: Array<App.Data.Category.CategoryData>;
