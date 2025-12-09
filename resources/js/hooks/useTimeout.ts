@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export default function useTimeout(defaultAmount = 60, amount = 60) {
+export default function useTimeout(defaultAmount = 120, amount = 120) {
   const [timeout, setTimeout] = useState(defaultAmount);
 
   const handleActiveTimeout = () => {
