@@ -108,6 +108,8 @@ class EventProgramResource extends CustomResource
                 ->image()
                 ->imageEditor()
                 ->required(),
+            FileInput::make($form, 'video', visibility: 'public')
+                ->acceptedFileTypes(['video/*']),
         ]);
 
         $statusSection = StatusSection::make([

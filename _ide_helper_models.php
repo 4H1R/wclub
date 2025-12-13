@@ -246,6 +246,7 @@ namespace App\Models{
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Topic> $topics
  * @property-read int|null $topics_count
  * @property-read \App\Models\User|null $user
+ * @property-read \App\Models\Media|null $video
  * @method static \Database\Factories\EventProgramFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram newQuery()

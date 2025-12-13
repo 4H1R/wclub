@@ -11,6 +11,6 @@ class VideoData extends Data
     public function __construct(
         public int $id,
         public string $mime_type,
-        public ?string $url,
+        public ?string $original_url,
     ) {}
 }

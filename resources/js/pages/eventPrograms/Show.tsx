@@ -8,6 +8,7 @@ import Head from '@/shared/Head';
 import Image from '@/shared/images/Image';
 import CategoriesBadge from '@/shared/resources/show/CategoriesBadge';
 import ShareButton from '@/shared/resources/show/ShareButton';
+import VideoJS from '@/shared/VideoJs';
 import { formatDatetime, slugifyId } from '@/utils';
 import { usePage } from '@inertiajs/react';
 import { addCommas, digitsEnToFa } from '@persian-tools/persian-tools';
@@ -68,6 +69,23 @@ export default function Show() {
               <ShareButton predefinedStyleFor="mobile" />
             </div>
           </div>
+          {event_program.video && (
+            <VideoJS
+              options={{
+                autoplay: false,
+                playbackRates: [0.5, 1, 1.5, 2],
+                controls: true,
+                responsive: true,
+                fluid: true,
+                sources: [
+                  {
+                    src: event_program.video.original_url,
+                    type: event_program.video.mime_type,
+                  },
+                ],
+              }}
+            />
+          )}
           <div className="prose max-w-none text-base-content">
             <Markdown>{event_program.description}</Markdown>
           </div>

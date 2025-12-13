@@ -63,7 +63,10 @@ class EventProgramController extends Controller implements HasMiddleware
     {
         abort_unless($eventProgram->published_at, 404);
 
-        $eventProgram->load(EventProgram::getCardRelations());
+        $eventProgram->load([
+            ...EventProgram::getCardRelations(),
+            'video',
+        ]);
 
         $eventProgram->has_registered = false;
 

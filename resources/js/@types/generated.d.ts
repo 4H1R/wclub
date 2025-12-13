@@ -96,6 +96,7 @@ declare namespace App.Data.EventProgram {
     price: number | null;
     previous_price: number | null;
     image: App.Data.Media.ImageData | null;
+    video: App.Data.Media.VideoData | null;
     min_participants: number | null;
     max_participants: number | null;
     has_registered: boolean;
@@ -165,7 +166,7 @@ declare namespace App.Data.Media {
   export type VideoData = {
     id: number;
     mime_type: string;
-    url: string | null;
+    original_url: string | null;
   };
 }
 declare namespace App.Data.News {

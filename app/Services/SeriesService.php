@@ -67,7 +67,7 @@ class SeriesService
 
         return VideoData::from([
             ...$video->toArray(),
-            'url' => $url,
+            'original_url' => $url,
         ]);
     }
 

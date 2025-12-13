@@ -4,6 +4,7 @@ namespace App\Data\EventProgram;
 
 use App\Data\Category\CategoryData;
 use App\Data\Media\ImageData;
+use App\Data\Media\VideoData;
 use App\Data\TargetGroup\TargetGroupData;
 use App\Enums\EventProgram\EventProgramStatusEnum;
 use App\Enums\PaymentTypeEnum;
@@ -23,6 +24,7 @@ class EventProgramFullData extends Data
         public ?int $price,
         public ?int $previous_price,
         public ?ImageData $image,
+        public ?VideoData $video,
         public ?int $min_participants,
         public ?int $max_participants,
         public bool $has_registered,

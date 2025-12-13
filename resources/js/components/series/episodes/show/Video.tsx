@@ -72,7 +72,7 @@ export default function Video({ series, episode, image, seriesSlug }: VideoProps
     return <VideoMessage Icon={HiFilm} title="این قسمت هیچ ویدیویی برای پخش ندارد." />;
   }
 
-  if (!episode.video?.url) {
+  if (!episode.video?.original_url) {
     return (
       <VideoMessage
         image={image}
@@ -103,7 +103,7 @@ export default function Video({ series, episode, image, seriesSlug }: VideoProps
         fluid: true,
         sources: [
           {
-            src: episode.video.url,
+            src: episode.video.original_url,
             type: episode.video.mime_type,
           },
         ],
