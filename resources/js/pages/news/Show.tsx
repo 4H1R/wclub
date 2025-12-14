@@ -5,6 +5,7 @@ import Head from '@/shared/Head';
 import Image from '@/shared/images/Image';
 import CategoriesBadge from '@/shared/resources/show/CategoriesBadge';
 import ShareButton from '@/shared/resources/show/ShareButton';
+import VideoJS from '@/shared/VideoJs';
 import { slugifyId } from '@/utils';
 import { usePage } from '@inertiajs/react';
 import Markdown from 'react-markdown';
@@ -46,6 +47,23 @@ export default function Show() {
           </div>
           <CategoriesBadge categories={news.categories} />
         </div>
+        {news.video && (
+          <VideoJS
+            options={{
+              autoplay: false,
+              playbackRates: [0.5, 1, 1.5, 2],
+              controls: true,
+              responsive: true,
+              fluid: true,
+              sources: [
+                {
+                  src: news.video.original_url,
+                  type: news.video.mime_type,
+                },
+              ],
+            }}
+          />
+        )}
         <div className="prose max-w-none text-base-content">
           <Markdown>{news.description}</Markdown>
         </div>

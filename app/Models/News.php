@@ -24,6 +24,7 @@ class News extends Model implements HasMedia
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('image')->singleFile();
+        $this->addMediaCollection('video')->singleFile();
     }
 
     /**
@@ -33,6 +34,15 @@ class News extends Model implements HasMedia
     {
         return $this->morphOne(Media::class, 'model')
             ->where('collection_name', 'image');
+    }
+
+    /**
+     * @return MorphOne<Media>
+     */
+    public function video(): MorphOne
+    {
+        return $this->morphOne(Media::class, 'model')
+            ->where('collection_name', 'video');
     }
 
     /**

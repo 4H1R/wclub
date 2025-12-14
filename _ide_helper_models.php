@@ -514,6 +514,7 @@ namespace App\Models{
  * @property-read int|null $target_groups_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Topic> $topics
  * @property-read int|null $topics_count
+ * @property-read \App\Models\Media|null $video
  * @method static \Database\Factories\NewsFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|News newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|News newQuery()

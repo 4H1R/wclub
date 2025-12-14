@@ -58,7 +58,10 @@ class NewsController extends Controller implements HasMiddleware
     {
         abort_unless($news->published_at, 404);
 
-        $news->load(News::getCardRelations());
+        $news->load([
+            ...News::getCardRelations(),
+            'video',
+        ]);
 
         $recommendedNews = News::query()
             ->with(News::getCardRelations())

@@ -184,6 +184,7 @@ declare namespace App.Data.News {
     short_description: string;
     description: string;
     image: App.Data.Media.ImageData | null;
+    video: App.Data.Media.VideoData | null;
     categories: Array<App.Data.Category.CategoryData>;
     target_groups: Array<App.Data.TargetGroup.TargetGroupData>;
   };
