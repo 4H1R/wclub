@@ -12,6 +12,7 @@ export type VideoJsProps = {
   onPause?: () => void;
   startTime?: number;
   onLastSecondLazy?: (seconds: number) => void;
+  className?: string;
 };
 
 export default function VideoJS({
@@ -22,6 +23,7 @@ export default function VideoJS({
   onLastSecondLazy,
   onReady,
   startTime,
+  className,
 }: VideoJsProps) {
   const videoRef = useRef<HTMLDivElement>(null);
   const lastSeconds = useRef<number>(0);
@@ -70,7 +72,7 @@ export default function VideoJS({
   }, [playerRef]);
 
   return (
-    <div data-vjs-player>
+    <div data-vjs-player className={className}>
       <div ref={videoRef} />
     </div>
   );

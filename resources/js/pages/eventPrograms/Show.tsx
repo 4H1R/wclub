@@ -71,6 +71,7 @@ export default function Show() {
           </div>
           {event_program.video && (
             <VideoJS
+              className="max-height-video-container"
               options={{
                 autoplay: false,
                 playbackRates: [0.5, 1, 1.5, 2],
