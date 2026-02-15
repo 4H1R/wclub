@@ -229,6 +229,7 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \App\Enums\EventProgram\EventProgramStatusEnum $status
+ * @property string|null $aparat_video_hash
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Category> $categories
  * @property-read int|null $categories_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Faq> $faqs
@@ -251,6 +252,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram whereAparatVideoHash($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram whereDescription($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|EventProgram whereFinishedAt($value)
@@ -504,6 +506,7 @@ namespace App\Models{
  * @property string|null $published_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property string|null $aparat_video_hash
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Category> $categories
  * @property-read int|null $categories_count
  * @property-read \App\Models\Media|null $image
@@ -519,6 +522,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|News newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|News newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|News query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|News whereAparatVideoHash($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|News whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|News whereDescription($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|News whereId($value)
@@ -863,6 +867,7 @@ namespace App\Models{
  * @property string|null $published_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property string|null $aparat_video_hash
  * @property-read \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection<int, \App\Models\Media> $attachments
  * @property-read int|null $attachments_count
  * @property-read \App\Models\SeriesChapter|null $chapter
@@ -875,6 +880,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|SeriesEpisode newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|SeriesEpisode ordered(string $direction = 'asc')
  * @method static \Illuminate\Database\Eloquent\Builder<static>|SeriesEpisode query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SeriesEpisode whereAparatVideoHash($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|SeriesEpisode whereChapterId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|SeriesEpisode whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|SeriesEpisode whereDescription($value)

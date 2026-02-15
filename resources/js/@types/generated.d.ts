@@ -104,6 +104,7 @@ declare namespace App.Data.EventProgram {
     finished_at: string;
     categories: Array<App.Data.Category.CategoryData>;
     target_groups: Array<App.Data.TargetGroup.TargetGroupData>;
+    aparat_video_hash: string | null;
   };
 }
 declare namespace App.Data.Faq {
@@ -187,6 +188,7 @@ declare namespace App.Data.News {
     video: App.Data.Media.VideoData | null;
     categories: Array<App.Data.Category.CategoryData>;
     target_groups: Array<App.Data.TargetGroup.TargetGroupData>;
+    aparat_video_hash: string | null;
   };
 }
 declare namespace App.Data.QuestionForm {
@@ -291,6 +293,7 @@ declare namespace App.Data.SeriesEpisode {
     description: string | null;
     video_duration_seconds: number;
     video: App.Data.Media.VideoData | null;
+    aparat_video_hash: string | null;
     created_at: string;
   };
 }

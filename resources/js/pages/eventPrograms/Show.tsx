@@ -1,6 +1,7 @@
 import { PageProps } from '@/@types';
 import RegisterEventProgram from '@/components/eventPrograms/RegisterEventProgram';
 // import Faqs from '@/components/faqs/Faqs';
+import AparatVideo from '@/shared/AparatVideo';
 import BreadCrumb from '@/shared/BreadCrumb';
 import EventProgramCard from '@/shared/cards/EventProgramCard';
 import Button from '@/shared/forms/Button';
@@ -86,6 +87,9 @@ export default function Show() {
                 ],
               }}
             />
+          )}
+          {event_program.aparat_video_hash && (
+            <AparatVideo videohash={event_program.aparat_video_hash} />
           )}
           <div className="prose max-w-none text-base-content">
             <Markdown>{event_program.description}</Markdown>

@@ -3,6 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Custom\CustomResource;
+use App\Filament\Forms\Components\AparatVideoInput;
 use App\Filament\Forms\Components\FileInput;
 use App\Filament\Forms\Components\TopicsSelect;
 use App\Filament\Forms\Layouts\BasicSection;
@@ -71,6 +72,7 @@ class NewsResource extends CustomResource
                 ->required(),
             FileInput::make($form, 'video', visibility: 'public')
                 ->acceptedFileTypes(['video/*']),
+            AparatVideoInput::make(),
         ]);
 
         $statusSection = StatusSection::make(includePublishedAt: true);

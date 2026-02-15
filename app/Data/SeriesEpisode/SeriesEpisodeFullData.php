@@ -17,6 +17,7 @@ class SeriesEpisodeFullData extends Data
         public ?string $description,
         public int $video_duration_seconds,
         public ?VideoData $video,
+        public ?string $aparat_video_hash,
         public string $created_at,
     ) {}
 }

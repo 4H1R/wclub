@@ -34,5 +34,6 @@ class EventProgramFullData extends Data
         public array $categories,
         /** @var TargetGroupData[] */
         public array $target_groups,
+        public ?string $aparat_video_hash,
     ) {}
 }

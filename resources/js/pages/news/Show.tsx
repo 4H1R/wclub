@@ -1,4 +1,5 @@
 import { PageProps } from '@/@types';
+import AparatVideo from '@/shared/AparatVideo';
 import BreadCrumb from '@/shared/BreadCrumb';
 import NewsCard from '@/shared/cards/NewsCard';
 import Head from '@/shared/Head';
@@ -65,6 +66,7 @@ export default function Show() {
             }}
           />
         )}
+        {news.aparat_video_hash && <AparatVideo videohash={news.aparat_video_hash} />}
         <div className="prose max-w-none text-base-content">
           <Markdown>{news.description}</Markdown>
         </div>

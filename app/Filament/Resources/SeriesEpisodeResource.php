@@ -3,6 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Custom\CustomResource;
+use App\Filament\Forms\Components\AparatVideoInput;
 use App\Filament\Forms\Components\FileInput;
 use App\Filament\Forms\Layouts\BasicSection;
 use App\Filament\Forms\Layouts\ComplexForm;
@@ -74,6 +75,7 @@ class SeriesEpisodeResource extends CustomResource
                 ->reorderable(false)
                 ->helperText('لطفا فایل های بزرگ تر از ۵۰ مگابایت رو با روش دستی اپلود و با اضافه کردن ویدیو در بالا ان را وصل کنید')
                 ->acceptedFileTypes(['video/mp4']),
+            AparatVideoInput::make(),
         ]);
 
         $statusSection = StatusSection::make(includePublishedAt: true);

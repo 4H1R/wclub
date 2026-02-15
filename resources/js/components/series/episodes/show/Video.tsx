@@ -1,3 +1,4 @@
+import AparatVideo from '@/shared/AparatVideo';
 import VideoJS from '@/shared/VideoJs';
 import Button from '@/shared/forms/Button';
 import { TIcon } from '@/types';
@@ -66,6 +67,10 @@ export default function Video({ series, episode, image, seriesSlug }: VideoProps
         title="لطفا به حساب کاربری خود وارد شوید."
       />
     );
+  }
+
+  if (episode.aparat_video_hash) {
+    return <AparatVideo videohash={episode.aparat_video_hash} />;
   }
 
   if (!episode.video) {
