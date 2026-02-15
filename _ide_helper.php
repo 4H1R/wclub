@@ -5,7 +5,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 12.44.0.
+ * Generated for Laravel 12.51.0.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -2581,6 +2581,19 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
+         * Create a HMAC of the password hash for storage in cookies.
+         *
+         * @param string $passwordHash
+         * @return string
+         * @static
+         */
+        public static function hashPasswordForCookie($passwordHash)
+        {
+            /** @var \Illuminate\Auth\SessionGuard $instance */
+            return $instance->hashPasswordForCookie($passwordHash);
+        }
+
+        /**
          * Log the user out of the application.
          *
          * @return void
@@ -4207,7 +4220,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Assert if a batch was dispatched based on a truth-test callback.
          *
-         * @param callable(\Illuminate\Bus\PendingBatch):  bool  $callback
+         * @param array|callable(\Illuminate\Bus\PendingBatch):  bool  $callback
          * @return void
          * @static
          */
@@ -4463,6 +4476,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param array $config
          * @return \Illuminate\Cache\Repository
+         * @throws \InvalidArgumentException
          * @static
          */
         public static function build($config)
@@ -4579,7 +4593,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Determine if an item exists in the cache.
          *
-         * @param array|string $key
+         * @param \BackedEnum|\UnitEnum|array|string $key
          * @return bool
          * @static
          */
@@ -4592,7 +4606,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Determine if an item doesn't exist in the cache.
          *
-         * @param string $key
+         * @param \BackedEnum|\UnitEnum|string $key
          * @return bool
          * @static
          */
@@ -4605,7 +4619,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Retrieve an item from the cache by key.
          *
-         * @param array|string $key
+         * @param \BackedEnum|\UnitEnum|array|string $key
          * @param mixed $default
          * @return mixed
          * @static
@@ -4652,7 +4666,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Retrieve an item from the cache and delete it.
          *
-         * @param array|string $key
+         * @param \BackedEnum|\UnitEnum|array|string $key
          * @param mixed $default
          * @return mixed
          * @static
@@ -4664,9 +4678,84 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
+         * Retrieve a string item from the cache.
+         *
+         * @param \BackedEnum|\UnitEnum|string $key
+         * @param (\Closure():(string|null))|string|null $default
+         * @return string
+         * @throws \InvalidArgumentException
+         * @static
+         */
+        public static function string($key, $default = null)
+        {
+            /** @var \Illuminate\Cache\Repository $instance */
+            return $instance->string($key, $default);
+        }
+
+        /**
+         * Retrieve an integer item from the cache.
+         *
+         * @param \BackedEnum|\UnitEnum|string $key
+         * @param (\Closure():(int|null))|int|null $default
+         * @return int
+         * @throws \InvalidArgumentException
+         * @static
+         */
+        public static function integer($key, $default = null)
+        {
+            /** @var \Illuminate\Cache\Repository $instance */
+            return $instance->integer($key, $default);
+        }
+
+        /**
+         * Retrieve a float item from the cache.
+         *
+         * @param \BackedEnum|\UnitEnum|string $key
+         * @param (\Closure():(float|null))|float|null $default
+         * @return float
+         * @throws \InvalidArgumentException
+         * @static
+         */
+        public static function float($key, $default = null)
+        {
+            /** @var \Illuminate\Cache\Repository $instance */
+            return $instance->float($key, $default);
+        }
+
+        /**
+         * Retrieve a boolean item from the cache.
+         *
+         * @param \BackedEnum|\UnitEnum|string $key
+         * @param (\Closure():(bool|null))|bool|null $default
+         * @return bool
+         * @throws \InvalidArgumentException
+         * @static
+         */
+        public static function boolean($key, $default = null)
+        {
+            /** @var \Illuminate\Cache\Repository $instance */
+            return $instance->boolean($key, $default);
+        }
+
+        /**
+         * Retrieve an array item from the cache.
+         *
+         * @param \BackedEnum|\UnitEnum|string $key
+         * @param (\Closure():(array<array-key, mixed>|null))|array<array-key, mixed>|null $default
+         * @return array<array-key, mixed>
+         * @throws \InvalidArgumentException
+         * @static
+         */
+        public static function array($key, $default = null)
+        {
+            /** @var \Illuminate\Cache\Repository $instance */
+            return $instance->array($key, $default);
+        }
+
+        /**
          * Store an item in the cache.
          *
-         * @param array|string $key
+         * @param \BackedEnum|\UnitEnum|array|string $key
          * @param mixed $value
          * @param \DateTimeInterface|\DateInterval|int|null $ttl
          * @return bool
@@ -4679,17 +4768,12 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Persists data in the cache, uniquely referenced by a key with an optional expiration TTL time.
+         * Store an item in the cache.
          *
+         * @param \BackedEnum|\UnitEnum|array|string $key
+         * @param mixed $value
+         * @param \DateTimeInterface|\DateInterval|int|null $ttl
          * @return bool
-         * @param string $key The key of the item to store.
-         * @param mixed $value The value of the item to store, must be serializable.
-         * @param null|int|\DateInterval $ttl Optional. The TTL value of this item. If no value is sent and
-         *                                      the driver supports TTL then the library may set a default value
-         *                                      for it or let the driver take care of that.
-         * @return bool True on success and false on failure.
-         * @throws \Psr\SimpleCache\InvalidArgumentException
-         *   MUST be thrown if the $key string is not a legal value.
          * @static
          */
         public static function set($key, $value, $ttl = null)
@@ -4735,7 +4819,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Store an item in the cache if the key does not exist.
          *
-         * @param string $key
+         * @param \BackedEnum|\UnitEnum|array|string $key
          * @param mixed $value
          * @param \DateTimeInterface|\DateInterval|int|null $ttl
          * @return bool
@@ -4750,7 +4834,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Increment the value of an item in the cache.
          *
-         * @param string $key
+         * @param \BackedEnum|\UnitEnum|string $key
          * @param mixed $value
          * @return int|bool
          * @static
@@ -4764,7 +4848,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Decrement the value of an item in the cache.
          *
-         * @param string $key
+         * @param \BackedEnum|\UnitEnum|string $key
          * @param mixed $value
          * @return int|bool
          * @static
@@ -4778,7 +4862,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Store an item in the cache indefinitely.
          *
-         * @param string $key
+         * @param \BackedEnum|\UnitEnum|string $key
          * @param mixed $value
          * @return bool
          * @static
@@ -4793,7 +4877,7 @@ namespace Illuminate\Support\Facades {
          * Get an item from the cache, or execute the given Closure and store the result.
          *
          * @template TCacheValue
-         * @param string $key
+         * @param \BackedEnum|\UnitEnum|string $key
          * @param \Closure|\DateTimeInterface|\DateInterval|int|null $ttl
          * @param \Closure():  TCacheValue  $callback
          * @return TCacheValue
@@ -4809,7 +4893,7 @@ namespace Illuminate\Support\Facades {
          * Get an item from the cache, or execute the given Closure and store the result forever.
          *
          * @template TCacheValue
-         * @param string $key
+         * @param \BackedEnum|\UnitEnum|string $key
          * @param \Closure():  TCacheValue  $callback
          * @return TCacheValue
          * @static
@@ -4824,7 +4908,7 @@ namespace Illuminate\Support\Facades {
          * Get an item from the cache, or execute the given Closure and store the result forever.
          *
          * @template TCacheValue
-         * @param string $key
+         * @param \BackedEnum|\UnitEnum|string $key
          * @param \Closure():  TCacheValue  $callback
          * @return TCacheValue
          * @static
@@ -4839,7 +4923,7 @@ namespace Illuminate\Support\Facades {
          * Retrieve an item from the cache by key, refreshing it in the background if it is stale.
          *
          * @template TCacheValue
-         * @param string $key
+         * @param \BackedEnum|\UnitEnum|string $key
          * @param array{ 0: \DateTimeInterface|\DateInterval|int, 1: \DateTimeInterface|\DateInterval|int } $ttl
          * @param (callable(): TCacheValue) $callback
          * @param array{ seconds?: int, owner?: string }|null $lock
@@ -4854,9 +4938,28 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
+         * Execute a callback while holding an atomic lock on a cache mutex to prevent overlapping calls.
+         *
+         * @template TReturn
+         * @param \BackedEnum|\UnitEnum|string $key
+         * @param callable():  TReturn  $callback
+         * @param int $lockFor
+         * @param int $waitFor
+         * @param string|null $owner
+         * @return TReturn
+         * @throws \Illuminate\Contracts\Cache\LockTimeoutException
+         * @static
+         */
+        public static function withoutOverlapping($key, $callback, $lockFor = 0, $waitFor = 10, $owner = null)
+        {
+            /** @var \Illuminate\Cache\Repository $instance */
+            return $instance->withoutOverlapping($key, $callback, $lockFor, $waitFor, $owner);
+        }
+
+        /**
          * Remove an item from the cache.
          *
-         * @param string $key
+         * @param \BackedEnum|\UnitEnum|array|string $key
          * @return bool
          * @static
          */
@@ -4867,13 +4970,10 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Delete an item from the cache by its unique key.
+         * Remove an item from the cache.
          *
+         * @param \BackedEnum|\UnitEnum|array|string $key
          * @return bool
-         * @param string $key The unique cache key of the item to delete.
-         * @return bool True if the item was successfully removed. False if there was an error.
-         * @throws \Psr\SimpleCache\InvalidArgumentException
-         *   MUST be thrown if the $key string is not a legal value.
          * @static
          */
         public static function delete($key)
@@ -5028,7 +5128,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Determine if a cached value exists.
          *
-         * @param string $key
+         * @param \BackedEnum|\UnitEnum|string $key
          * @return bool
          * @static
          */
@@ -5041,7 +5141,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Retrieve an item from the cache by key.
          *
-         * @param string $key
+         * @param \BackedEnum|\UnitEnum|string $key
          * @return mixed
          * @static
          */
@@ -5054,7 +5154,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Store an item in the cache for the default time.
          *
-         * @param string $key
+         * @param \BackedEnum|\UnitEnum|string $key
          * @param mixed $value
          * @return void
          * @static
@@ -5068,7 +5168,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Remove an item from the cache.
          *
-         * @param string $key
+         * @param \BackedEnum|\UnitEnum|string $key
          * @return void
          * @static
          */
@@ -5296,41 +5396,38 @@ namespace Illuminate\Support\Facades {
         /**
          * Create an instance of the process concurrency driver.
          *
-         * @param array $config
          * @return \Illuminate\Concurrency\ProcessDriver
          * @static
          */
-        public static function createProcessDriver($config)
+        public static function createProcessDriver()
         {
             /** @var \Illuminate\Concurrency\ConcurrencyManager $instance */
-            return $instance->createProcessDriver($config);
+            return $instance->createProcessDriver();
         }
 
         /**
          * Create an instance of the fork concurrency driver.
          *
-         * @param array $config
          * @return \Illuminate\Concurrency\ForkDriver
          * @throws \RuntimeException
          * @static
          */
-        public static function createForkDriver($config)
+        public static function createForkDriver()
         {
             /** @var \Illuminate\Concurrency\ConcurrencyManager $instance */
-            return $instance->createForkDriver($config);
+            return $instance->createForkDriver();
         }
 
         /**
          * Create an instance of the sync concurrency driver.
          *
-         * @param array $config
          * @return \Illuminate\Concurrency\SyncDriver
          * @static
          */
-        public static function createSyncDriver($config)
+        public static function createSyncDriver()
         {
             /** @var \Illuminate\Concurrency\ConcurrencyManager $instance */
-            return $instance->createSyncDriver($config);
+            return $instance->createSyncDriver();
         }
 
         /**
@@ -6184,7 +6281,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Execute the given callback when context is about to be dehydrated.
          *
-         * @param callable $callback
+         * @param (callable(static): void) $callback
          * @return \Illuminate\Log\Context\Repository
          * @static
          */
@@ -6197,7 +6294,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Execute the given callback when context has been hydrated.
          *
-         * @param callable $callback
+         * @param (callable(static): void) $callback
          * @return \Illuminate\Log\Context\Repository
          * @static
          */
@@ -6667,6 +6764,18 @@ namespace Illuminate\Support\Facades {
         {
             /** @var \Illuminate\Encryption\Encrypter $instance */
             return $instance->decryptString($payload);
+        }
+
+        /**
+         * Determine if the given value appears to be encrypted by this encrypter.
+         *
+         * @param mixed $value
+         * @return bool
+         * @static
+         */
+        public static function appearsEncrypted($value)
+        {
+            return \Illuminate\Encryption\Encrypter::appearsEncrypted($value);
         }
 
         /**
@@ -7831,6 +7940,20 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
+         * Set the read PDO connection configuration.
+         *
+         * @param array $config
+         * @return \Illuminate\Database\PostgresConnection
+         * @static
+         */
+        public static function setReadPdoConfig($config)
+        {
+            //Method inherited from \Illuminate\Database\Connection 
+            /** @var \Illuminate\Database\PostgresConnection $instance */
+            return $instance->setReadPdoConfig($config);
+        }
+
+        /**
          * Get the database connection name.
          *
          * @return string|null
@@ -7844,7 +7967,7 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Get the database connection full name.
+         * Get the database connection with its read / write type.
          *
          * @return string|null
          * @static
@@ -7967,7 +8090,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Get the event dispatcher used by the connection.
          *
-         * @return \Illuminate\Contracts\Events\Dispatcher
+         * @return \Illuminate\Contracts\Events\Dispatcher|null
          * @static
          */
         public static function getEventDispatcher()
@@ -9518,7 +9641,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Determine if a given ability has been defined.
          *
-         * @param string|array $ability
+         * @param \UnitEnum|array|string $ability
          * @return bool
          * @static
          */
@@ -10971,7 +11094,7 @@ namespace Illuminate\Support\Facades {
      * @method static \Illuminate\Log\Logger withContext(array $context = [])
      * @method static void listen(\Closure $callback)
      * @method static \Psr\Log\LoggerInterface getLogger()
-     * @method static \Illuminate\Contracts\Events\Dispatcher getEventDispatcher()
+     * @method static \Illuminate\Contracts\Events\Dispatcher|null getEventDispatcher()
      * @method static void setEventDispatcher(\Illuminate\Contracts\Events\Dispatcher $dispatcher)
      * @method static \Illuminate\Log\Logger|mixed when(\Closure|mixed|null $value = null, callable|null $callback = null, callable|null $default = null)
      * @method static \Illuminate\Log\Logger|mixed unless(\Closure|mixed|null $value = null, callable|null $callback = null, callable|null $default = null)
@@ -11970,6 +12093,57 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
+         * Register a custom macro.
+         *
+         * @param string $name
+         * @param object|callable $macro
+         * @param-closure-this static  $macro
+         * @return void
+         * @static
+         */
+        public static function macro($name, $macro)
+        {
+            \Illuminate\Notifications\ChannelManager::macro($name, $macro);
+        }
+
+        /**
+         * Mix another object into the class.
+         *
+         * @param object $mixin
+         * @param bool $replace
+         * @return void
+         * @throws \ReflectionException
+         * @static
+         */
+        public static function mixin($mixin, $replace = true)
+        {
+            \Illuminate\Notifications\ChannelManager::mixin($mixin, $replace);
+        }
+
+        /**
+         * Checks if macro is registered.
+         *
+         * @param string $name
+         * @return bool
+         * @static
+         */
+        public static function hasMacro($name)
+        {
+            return \Illuminate\Notifications\ChannelManager::hasMacro($name);
+        }
+
+        /**
+         * Flush the existing macros.
+         *
+         * @return void
+         * @static
+         */
+        public static function flushMacros()
+        {
+            \Illuminate\Notifications\ChannelManager::flushMacros();
+        }
+
+        /**
          * Assert if a notification was sent on-demand based on a truth-test callback.
          *
          * @param string|\Closure $notification
@@ -12150,57 +12324,6 @@ namespace Illuminate\Support\Facades {
         {
             /** @var \Illuminate\Support\Testing\Fakes\NotificationFake $instance */
             return $instance->sentNotifications();
-        }
-
-        /**
-         * Register a custom macro.
-         *
-         * @param string $name
-         * @param object|callable $macro
-         * @param-closure-this static  $macro
-         * @return void
-         * @static
-         */
-        public static function macro($name, $macro)
-        {
-            \Illuminate\Support\Testing\Fakes\NotificationFake::macro($name, $macro);
-        }
-
-        /**
-         * Mix another object into the class.
-         *
-         * @param object $mixin
-         * @param bool $replace
-         * @return void
-         * @throws \ReflectionException
-         * @static
-         */
-        public static function mixin($mixin, $replace = true)
-        {
-            \Illuminate\Support\Testing\Fakes\NotificationFake::mixin($mixin, $replace);
-        }
-
-        /**
-         * Checks if macro is registered.
-         *
-         * @param string $name
-         * @return bool
-         * @static
-         */
-        public static function hasMacro($name)
-        {
-            return \Illuminate\Support\Testing\Fakes\NotificationFake::hasMacro($name);
-        }
-
-        /**
-         * Flush the existing macros.
-         *
-         * @return void
-         * @static
-         */
-        public static function flushMacros()
-        {
-            \Illuminate\Support\Testing\Fakes\NotificationFake::flushMacros();
         }
 
             }
@@ -12892,6 +13015,20 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
+         * Assert if a job was pushed a number of times.
+         *
+         * @param string $job
+         * @param int $times
+         * @return void
+         * @static
+         */
+        public static function assertPushedTimes($job, $times = 1)
+        {
+            /** @var \Illuminate\Support\Testing\Fakes\QueueFake $instance */
+            $instance->assertPushedTimes($job, $times);
+        }
+
+        /**
          * Assert if a job was pushed based on a truth-test callback.
          *
          * @param string $queue
@@ -13272,6 +13409,18 @@ namespace Illuminate\Support\Facades {
         {
             /** @var \Illuminate\Support\Testing\Fakes\QueueFake $instance */
             return $instance->serializeAndRestore($serializeAndRestore);
+        }
+
+        /**
+         * Release the locks for all unique jobs that were pushed.
+         *
+         * @return void
+         * @static
+         */
+        public static function releaseUniqueJobLocks()
+        {
+            /** @var \Illuminate\Support\Testing\Fakes\QueueFake $instance */
+            $instance->releaseUniqueJobLocks();
         }
 
         /**
@@ -13888,6 +14037,7 @@ namespace Illuminate\Support\Facades {
 
             }
     /**
+     * @method static \BackedEnum|(\BackedEnum|null enum(string $key, string $enumClass, \BackedEnum|null $default = null)
      * @see \Illuminate\Http\Request
      */
     class Request {
@@ -14268,6 +14418,7 @@ namespace Illuminate\Support\Facades {
          * @param string $key
          * @param mixed $default
          * @return mixed
+         * @deprecated use ->input() instead
          * @static
          */
         public static function get($key, $default = null)
@@ -16252,6 +16403,22 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
+         * Retrieve data clamped between min and max values.
+         *
+         * @param string $key
+         * @param int|float $min
+         * @param int|float $max
+         * @param int|float $default
+         * @return float|int
+         * @static
+         */
+        public static function clamp($key, $min, $max, $default = 0)
+        {
+            /** @var \Illuminate\Http\Request $instance */
+            return $instance->clamp($key, $min, $max, $default);
+        }
+
+        /**
          * Retrieve data from the instance as a Carbon instance.
          *
          * @param string $key
@@ -16271,10 +16438,11 @@ namespace Illuminate\Support\Facades {
          * Retrieve data from the instance as an enum.
          *
          * @template TEnum of \BackedEnum
+         * @template TDefault of TEnum|null
          * @param string $key
          * @param class-string<TEnum> $enumClass
-         * @param TEnum|null $default
-         * @return TEnum|null
+         * @param TDefault $default
+         * @return TEnum|TDefault
          * @static
          */
         public static function enum($key, $enumClass, $default = null)
@@ -18245,7 +18413,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Set the default string length for migrations.
          *
-         * @param int $length
+         * @param non-negative-int $length
          * @return void
          * @static
          */
@@ -18745,8 +18913,9 @@ namespace Illuminate\Support\Facades {
         /**
          * Disable foreign key constraints during the execution of a callback.
          *
-         * @param \Closure $callback
-         * @return mixed
+         * @template TReturn
+         * @param (\Closure(): TReturn) $callback
+         * @return TReturn
          * @static
          */
         public static function withoutForeignKeyConstraints($callback)
@@ -18754,6 +18923,35 @@ namespace Illuminate\Support\Facades {
             //Method inherited from \Illuminate\Database\Schema\Builder 
             /** @var \Illuminate\Database\Schema\PostgresBuilder $instance */
             return $instance->withoutForeignKeyConstraints($callback);
+        }
+
+        /**
+         * Create the vector extension on the schema if it does not exist.
+         *
+         * @param string|null $schema
+         * @return void
+         * @static
+         */
+        public static function ensureVectorExtensionExists($schema = null)
+        {
+            //Method inherited from \Illuminate\Database\Schema\Builder 
+            /** @var \Illuminate\Database\Schema\PostgresBuilder $instance */
+            $instance->ensureVectorExtensionExists($schema);
+        }
+
+        /**
+         * Create a new extension on the schema if it does not exist.
+         *
+         * @param string $name
+         * @param string|null $schema
+         * @return void
+         * @static
+         */
+        public static function ensureExtensionExists($name, $schema = null)
+        {
+            //Method inherited from \Illuminate\Database\Schema\Builder 
+            /** @var \Illuminate\Database\Schema\PostgresBuilder $instance */
+            $instance->ensureExtensionExists($name, $schema);
         }
 
         /**
@@ -18774,7 +18972,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param string $reference
          * @param string|bool|null $withDefaultSchema
-         * @return array
+         * @return array{string|null, string}
          * @static
          */
         public static function parseSchemaAndTable($reference, $withDefaultSchema = null)
@@ -19116,7 +19314,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Checks if a key exists.
          *
-         * @param string|array $key
+         * @param \BackedEnum|\UnitEnum|string|array $key
          * @return bool
          * @static
          */
@@ -19129,7 +19327,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Determine if the given key is missing from the session data.
          *
-         * @param string|array $key
+         * @param \BackedEnum|\UnitEnum|string|array $key
          * @return bool
          * @static
          */
@@ -19142,7 +19340,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Determine if a key is present and not null.
          *
-         * @param string|array $key
+         * @param \BackedEnum|\UnitEnum|string|array $key
          * @return bool
          * @static
          */
@@ -19155,7 +19353,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Determine if any of the given keys are present and not null.
          *
-         * @param string|array $key
+         * @param \BackedEnum|\UnitEnum|string|array $key
          * @return bool
          * @static
          */
@@ -19168,7 +19366,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Get an item from the session.
          *
-         * @param string $key
+         * @param \BackedEnum|\UnitEnum|string $key
          * @param mixed $default
          * @return mixed
          * @static
@@ -19182,7 +19380,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Get the value of a given key and then forget it.
          *
-         * @param string $key
+         * @param \BackedEnum|\UnitEnum|string $key
          * @param mixed $default
          * @return mixed
          * @static
@@ -19236,7 +19434,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Put a key / value pair or array of key / value pairs in the session.
          *
-         * @param string|array $key
+         * @param \BackedEnum|\UnitEnum|string|array $key
          * @param mixed $value
          * @return void
          * @static
@@ -19250,7 +19448,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Get an item from the session, or store the default value.
          *
-         * @param string $key
+         * @param \BackedEnum|\UnitEnum|string $key
          * @param \Closure $callback
          * @return mixed
          * @static
@@ -19264,7 +19462,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Push a value onto a session array.
          *
-         * @param string $key
+         * @param \BackedEnum|\UnitEnum|string $key
          * @param mixed $value
          * @return void
          * @static
@@ -19278,7 +19476,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Increment the value of an item in the session.
          *
-         * @param string $key
+         * @param \BackedEnum|\UnitEnum|string $key
          * @param int $amount
          * @return mixed
          * @static
@@ -19292,7 +19490,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Decrement the value of an item in the session.
          *
-         * @param string $key
+         * @param \BackedEnum|\UnitEnum|string $key
          * @param int $amount
          * @return int
          * @static
@@ -19306,7 +19504,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Flash a key / value pair to the session.
          *
-         * @param string $key
+         * @param \BackedEnum|\UnitEnum|string $key
          * @param mixed $value
          * @return void
          * @static
@@ -19320,7 +19518,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Flash a key / value pair to the session for immediate use.
          *
-         * @param string $key
+         * @param \BackedEnum|\UnitEnum|string $key
          * @param mixed $value
          * @return void
          * @static
@@ -19384,7 +19582,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Remove an item from the session, returning its value.
          *
-         * @param string $key
+         * @param \BackedEnum|\UnitEnum|string $key
          * @return mixed
          * @static
          */
@@ -19397,7 +19595,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Remove one or many items from the session.
          *
-         * @param string|array $keys
+         * @param \BackedEnum|\UnitEnum|string|array $keys
          * @return void
          * @static
          */
@@ -19890,6 +20088,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param array $config
          * @return \Illuminate\Filesystem\AwsS3V3Adapter
+         * @throws \InvalidArgumentException
          * @static
          */
         public static function createScopedDriver($config)
@@ -24345,6 +24544,27 @@ namespace Illuminate\Testing {
             return \Illuminate\Testing\TestResponse::inertiaProps($propName);
         }
 
+        /**
+         * @see \Inertia\Testing\TestResponseMacros::assertInertiaFlash()
+         * @param string $key
+         * @param mixed|null $expected
+         * @static
+         */
+        public static function assertInertiaFlash($key, $expected = null)
+        {
+            return \Illuminate\Testing\TestResponse::assertInertiaFlash($key, $expected);
+        }
+
+        /**
+         * @see \Inertia\Testing\TestResponseMacros::assertInertiaFlashMissing()
+         * @param string $key
+         * @static
+         */
+        public static function assertInertiaFlashMissing($key)
+        {
+            return \Illuminate\Testing\TestResponse::assertInertiaFlashMissing($key);
+        }
+
             }
     }
 
@@ -27557,7 +27777,7 @@ namespace  {
          * Get the first record matching the attributes. If the record is not found, create it.
          *
          * @param array $attributes
-         * @param array $values
+         * @param (\Closure(): array)|array $values
          * @return TModel
          * @static
          */
@@ -27571,7 +27791,7 @@ namespace  {
          * Attempt to create the record. If a unique constraint violation occurs, attempt to find the matching record.
          *
          * @param array $attributes
-         * @param array $values
+         * @param (\Closure(): array)|array $values
          * @return TModel
          * @static
          */
@@ -28925,6 +29145,7 @@ namespace  {
          * @param \Illuminate\Database\Eloquent\Relations\MorphTo<*, *>|string $relation
          * @param \Illuminate\Database\Eloquent\Model|iterable<int, \Illuminate\Database\Eloquent\Model>|string|null $model
          * @return \Illuminate\Database\Eloquent\Builder<static>
+         * @throws \InvalidArgumentException
          * @static
          */
         public static function whereMorphedTo($relation, $model, $boolean = 'and')
@@ -28939,6 +29160,7 @@ namespace  {
          * @param \Illuminate\Database\Eloquent\Relations\MorphTo<*, *>|string $relation
          * @param \Illuminate\Database\Eloquent\Model|iterable<int, \Illuminate\Database\Eloquent\Model>|string $model
          * @return \Illuminate\Database\Eloquent\Builder<static>
+         * @throws \InvalidArgumentException
          * @static
          */
         public static function whereNotMorphedTo($relation, $model, $boolean = 'and')
@@ -29599,6 +29821,20 @@ namespace  {
         }
 
         /**
+         * Add a select expression to the query.
+         *
+         * @param \Illuminate\Contracts\Database\Query\Expression $expression
+         * @param string $as
+         * @return \Illuminate\Database\Eloquent\Builder<static>
+         * @static
+         */
+        public static function selectExpression($expression, $as)
+        {
+            /** @var \Illuminate\Database\Query\Builder $instance */
+            return $instance->selectExpression($expression, $as);
+        }
+
+        /**
          * Add a new "raw" select expression to the query.
          *
          * @param string $expression
@@ -29627,7 +29863,7 @@ namespace  {
         }
 
         /**
-         * Add a raw from clause to the query.
+         * Add a raw "from" clause to the query.
          *
          * @param string $expression
          * @param mixed $bindings
@@ -29651,6 +29887,21 @@ namespace  {
         {
             /** @var \Illuminate\Database\Query\Builder $instance */
             return $instance->addSelect($column);
+        }
+
+        /**
+         * Add a vector-similarity selection to the query.
+         *
+         * @param \Illuminate\Contracts\Database\Query\Expression|string $column
+         * @param \Illuminate\Support\Collection<int, float>|\Illuminate\Contracts\Support\Arrayable|array<int, float>|string $vector
+         * @param string|null $as
+         * @return \Illuminate\Database\Eloquent\Builder<static>
+         * @static
+         */
+        public static function selectVectorDistance($column, $vector, $as = null)
+        {
+            /** @var \Illuminate\Database\Query\Builder $instance */
+            return $instance->selectVectorDistance($column, $vector, $as);
         }
 
         /**
@@ -29719,7 +29970,7 @@ namespace  {
         }
 
         /**
-         * Add a join clause to the query.
+         * Add a "join" clause to the query.
          *
          * @param \Illuminate\Contracts\Database\Query\Expression|string $table
          * @param \Closure|\Illuminate\Contracts\Database\Query\Expression|string $first
@@ -29754,7 +30005,7 @@ namespace  {
         }
 
         /**
-         * Add a subquery join clause to the query.
+         * Add a "subquery join" clause to the query.
          *
          * @param \Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder<*>|string $query
          * @param string $as
@@ -29774,7 +30025,7 @@ namespace  {
         }
 
         /**
-         * Add a lateral join clause to the query.
+         * Add a "lateral join" clause to the query.
          *
          * @param \Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder<*>|string $query
          * @return \Illuminate\Database\Eloquent\Builder<static>
@@ -29928,7 +30179,7 @@ namespace  {
         }
 
         /**
-         * Merge an array of where clauses and bindings.
+         * Merge an array of "where" clauses and bindings.
          *
          * @param array $wheres
          * @param array $bindings
@@ -29989,7 +30240,54 @@ namespace  {
         }
 
         /**
-         * Add a raw where clause to the query.
+         * Add a vector similarity clause to the query, filtering by minimum similarity and ordering by similarity.
+         *
+         * @param \Illuminate\Contracts\Database\Query\Expression|string $column
+         * @param \Illuminate\Support\Collection<int, float>|\Illuminate\Contracts\Support\Arrayable|array<int, float>|string $vector
+         * @param float $minSimilarity A value between 0.0 and 1.0, where 1.0 is identical.
+         * @param bool $order
+         * @return \Illuminate\Database\Eloquent\Builder<static>
+         * @static
+         */
+        public static function whereVectorSimilarTo($column, $vector, $minSimilarity = 0.6, $order = true)
+        {
+            /** @var \Illuminate\Database\Query\Builder $instance */
+            return $instance->whereVectorSimilarTo($column, $vector, $minSimilarity, $order);
+        }
+
+        /**
+         * Add a vector distance "where" clause to the query.
+         *
+         * @param \Illuminate\Contracts\Database\Query\Expression|string $column
+         * @param \Illuminate\Support\Collection<int, float>|\Illuminate\Contracts\Support\Arrayable|array<int, float>|string $vector
+         * @param float $maxDistance
+         * @param string $boolean
+         * @return \Illuminate\Database\Eloquent\Builder<static>
+         * @static
+         */
+        public static function whereVectorDistanceLessThan($column, $vector, $maxDistance, $boolean = 'and')
+        {
+            /** @var \Illuminate\Database\Query\Builder $instance */
+            return $instance->whereVectorDistanceLessThan($column, $vector, $maxDistance, $boolean);
+        }
+
+        /**
+         * Add a vector distance "or where" clause to the query.
+         *
+         * @param \Illuminate\Contracts\Database\Query\Expression|string $column
+         * @param \Illuminate\Support\Collection<int, float>|\Illuminate\Contracts\Support\Arrayable|array<int, float>|string $vector
+         * @param float $maxDistance
+         * @return \Illuminate\Database\Eloquent\Builder<static>
+         * @static
+         */
+        public static function orWhereVectorDistanceLessThan($column, $vector, $maxDistance)
+        {
+            /** @var \Illuminate\Database\Query\Builder $instance */
+            return $instance->orWhereVectorDistanceLessThan($column, $vector, $maxDistance);
+        }
+
+        /**
+         * Add a raw "where" clause to the query.
          *
          * @param \Illuminate\Contracts\Database\Query\Expression|string $sql
          * @param mixed $bindings
@@ -30004,7 +30302,7 @@ namespace  {
         }
 
         /**
-         * Add a raw or where clause to the query.
+         * Add a raw "or where" clause to the query.
          *
          * @param string $sql
          * @param mixed $bindings
@@ -30241,9 +30539,9 @@ namespace  {
         }
 
         /**
-         * Add a where between statement to the query.
+         * Add a "where between" statement to the query.
          *
-         * @param \Illuminate\Contracts\Database\Query\Expression|string $column
+         * @param \Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder<*>|\Illuminate\Contracts\Database\Query\Expression|string $column
          * @param string $boolean
          * @param bool $not
          * @return \Illuminate\Database\Eloquent\Builder<static>
@@ -30256,7 +30554,7 @@ namespace  {
         }
 
         /**
-         * Add a where between statement using columns to the query.
+         * Add a "where between" statement using columns to the query.
          *
          * @param \Illuminate\Contracts\Database\Query\Expression|string $column
          * @param string $boolean
@@ -30271,9 +30569,9 @@ namespace  {
         }
 
         /**
-         * Add an or where between statement to the query.
+         * Add an "or where between" statement to the query.
          *
-         * @param \Illuminate\Contracts\Database\Query\Expression|string $column
+         * @param \Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder<*>|\Illuminate\Contracts\Database\Query\Expression|string $column
          * @return \Illuminate\Database\Eloquent\Builder<static>
          * @static
          */
@@ -30284,7 +30582,7 @@ namespace  {
         }
 
         /**
-         * Add an or where between statement using columns to the query.
+         * Add an "or where between" statement using columns to the query.
          *
          * @param \Illuminate\Contracts\Database\Query\Expression|string $column
          * @return \Illuminate\Database\Eloquent\Builder<static>
@@ -30297,9 +30595,9 @@ namespace  {
         }
 
         /**
-         * Add a where not between statement to the query.
+         * Add a "where not between" statement to the query.
          *
-         * @param \Illuminate\Contracts\Database\Query\Expression|string $column
+         * @param \Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder<*>|\Illuminate\Contracts\Database\Query\Expression|string $column
          * @param string $boolean
          * @return \Illuminate\Database\Eloquent\Builder<static>
          * @static
@@ -30311,7 +30609,7 @@ namespace  {
         }
 
         /**
-         * Add a where not between statement using columns to the query.
+         * Add a "where not between" statement using columns to the query.
          *
          * @param \Illuminate\Contracts\Database\Query\Expression|string $column
          * @param string $boolean
@@ -30325,9 +30623,9 @@ namespace  {
         }
 
         /**
-         * Add an or where not between statement to the query.
+         * Add an "or where not between" statement to the query.
          *
-         * @param \Illuminate\Contracts\Database\Query\Expression|string $column
+         * @param \Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder<*>|\Illuminate\Contracts\Database\Query\Expression|string $column
          * @return \Illuminate\Database\Eloquent\Builder<static>
          * @static
          */
@@ -30338,7 +30636,7 @@ namespace  {
         }
 
         /**
-         * Add an or where not between statement using columns to the query.
+         * Add an "or where not between" statement using columns to the query.
          *
          * @param \Illuminate\Contracts\Database\Query\Expression|string $column
          * @return \Illuminate\Database\Eloquent\Builder<static>
@@ -30351,7 +30649,7 @@ namespace  {
         }
 
         /**
-         * Add a where between columns statement using a value to the query.
+         * Add a "where between columns" statement using a value to the query.
          *
          * @param mixed $value
          * @param array{\Illuminate\Contracts\Database\Query\Expression|string, \Illuminate\Contracts\Database\Query\Expression|string} $columns
@@ -30367,7 +30665,7 @@ namespace  {
         }
 
         /**
-         * Add an or where between columns statement using a value to the query.
+         * Add an "or where between columns" statement using a value to the query.
          *
          * @param mixed $value
          * @param array{\Illuminate\Contracts\Database\Query\Expression|string, \Illuminate\Contracts\Database\Query\Expression|string} $columns
@@ -30381,7 +30679,7 @@ namespace  {
         }
 
         /**
-         * Add a where not between columns statement using a value to the query.
+         * Add a "where not between columns" statement using a value to the query.
          *
          * @param mixed $value
          * @param array{\Illuminate\Contracts\Database\Query\Expression|string, \Illuminate\Contracts\Database\Query\Expression|string} $columns
@@ -30396,7 +30694,7 @@ namespace  {
         }
 
         /**
-         * Add an or where not between columns statement using a value to the query.
+         * Add an "or where not between columns" statement using a value to the query.
          *
          * @param mixed $value
          * @param array{\Illuminate\Contracts\Database\Query\Expression|string, \Illuminate\Contracts\Database\Query\Expression|string} $columns
@@ -30578,7 +30876,7 @@ namespace  {
         }
 
         /**
-         * Add a nested where statement to the query.
+         * Add a nested "where" statement to the query.
          *
          * @param string $boolean
          * @return \Illuminate\Database\Eloquent\Builder<static>
@@ -30617,7 +30915,7 @@ namespace  {
         }
 
         /**
-         * Add an exists clause to the query.
+         * Add an "exists" clause to the query.
          *
          * @param \Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder<*> $callback
          * @param string $boolean
@@ -30632,7 +30930,7 @@ namespace  {
         }
 
         /**
-         * Add an or exists clause to the query.
+         * Add an "or where exists" clause to the query.
          *
          * @param \Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder<*> $callback
          * @param bool $not
@@ -30646,7 +30944,7 @@ namespace  {
         }
 
         /**
-         * Add a where not exists clause to the query.
+         * Add a "where not exists" clause to the query.
          *
          * @param \Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder<*> $callback
          * @param string $boolean
@@ -30660,7 +30958,7 @@ namespace  {
         }
 
         /**
-         * Add a where not exists clause to the query.
+         * Add an "or where not exists" clause to the query.
          *
          * @param \Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder<*> $callback
          * @return \Illuminate\Database\Eloquent\Builder<static>
@@ -30673,7 +30971,7 @@ namespace  {
         }
 
         /**
-         * Add an exists clause to the query.
+         * Add an "exists" clause to the query.
          *
          * @param string $boolean
          * @param bool $not
@@ -30952,7 +31250,7 @@ namespace  {
         }
 
         /**
-         * Add a "or where fulltext" clause to the query.
+         * Add an "or where fulltext" clause to the query.
          *
          * @param string|string[] $columns
          * @param string $value
@@ -31072,7 +31370,7 @@ namespace  {
         }
 
         /**
-         * Add a raw groupBy clause to the query.
+         * Add a raw "groupBy" clause to the query.
          *
          * @param string $sql
          * @return \Illuminate\Database\Eloquent\Builder<static>
@@ -31116,7 +31414,7 @@ namespace  {
         }
 
         /**
-         * Add a nested having statement to the query.
+         * Add a nested "having" statement to the query.
          *
          * @param string $boolean
          * @return \Illuminate\Database\Eloquent\Builder<static>
@@ -31198,7 +31496,7 @@ namespace  {
         }
 
         /**
-         * Add a "having between " clause to the query.
+         * Add a "having between" clause to the query.
          *
          * @param string $column
          * @param string $boolean
@@ -31213,7 +31511,50 @@ namespace  {
         }
 
         /**
-         * Add a raw having clause to the query.
+         * Add a "having not between" clause to the query.
+         *
+         * @param string $column
+         * @param iterable $values
+         * @param string $boolean
+         * @return \Illuminate\Database\Eloquent\Builder<static>
+         * @static
+         */
+        public static function havingNotBetween($column, $values, $boolean = 'and')
+        {
+            /** @var \Illuminate\Database\Query\Builder $instance */
+            return $instance->havingNotBetween($column, $values, $boolean);
+        }
+
+        /**
+         * Add an "or having between" clause to the query.
+         *
+         * @param string $column
+         * @param iterable $values
+         * @return \Illuminate\Database\Eloquent\Builder<static>
+         * @static
+         */
+        public static function orHavingBetween($column, $values)
+        {
+            /** @var \Illuminate\Database\Query\Builder $instance */
+            return $instance->orHavingBetween($column, $values);
+        }
+
+        /**
+         * Add an "or having not between" clause to the query.
+         *
+         * @param string $column
+         * @param iterable $values
+         * @return \Illuminate\Database\Eloquent\Builder<static>
+         * @static
+         */
+        public static function orHavingNotBetween($column, $values)
+        {
+            /** @var \Illuminate\Database\Query\Builder $instance */
+            return $instance->orHavingNotBetween($column, $values);
+        }
+
+        /**
+         * Add a raw "having" clause to the query.
          *
          * @param string $sql
          * @param string $boolean
@@ -31227,7 +31568,7 @@ namespace  {
         }
 
         /**
-         * Add a raw or having clause to the query.
+         * Add a raw "or having" clause to the query.
          *
          * @param string $sql
          * @return \Illuminate\Database\Eloquent\Builder<static>
@@ -31265,6 +31606,20 @@ namespace  {
         {
             /** @var \Illuminate\Database\Query\Builder $instance */
             return $instance->orderByDesc($column);
+        }
+
+        /**
+         * Add a vector-distance "order by" clause to the query.
+         *
+         * @param \Illuminate\Contracts\Database\Query\Expression|string $column
+         * @param \Illuminate\Support\Collection<int, float>|\Illuminate\Contracts\Support\Arrayable|array<int, float> $vector
+         * @return \Illuminate\Database\Eloquent\Builder<static>
+         * @static
+         */
+        public static function orderByVectorDistance($column, $vector)
+        {
+            /** @var \Illuminate\Database\Query\Builder $instance */
+            return $instance->orderByVectorDistance($column, $vector);
         }
 
         /**
@@ -31432,7 +31787,7 @@ namespace  {
         }
 
         /**
-         * Add a union statement to the query.
+         * Add a "union" statement to the query.
          *
          * @param \Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder<*> $query
          * @param bool $all
@@ -31446,7 +31801,7 @@ namespace  {
         }
 
         /**
-         * Add a union all statement to the query.
+         * Add a "union all" statement to the query.
          *
          * @param \Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder<*> $query
          * @return \Illuminate\Database\Eloquent\Builder<static>
@@ -31493,6 +31848,20 @@ namespace  {
         {
             /** @var \Illuminate\Database\Query\Builder $instance */
             return $instance->sharedLock();
+        }
+
+        /**
+         * Set a query execution timeout in seconds.
+         *
+         * @param int|null $seconds
+         * @return \Illuminate\Database\Eloquent\Builder<static>
+         * @throws InvalidArgumentException
+         * @static
+         */
+        public static function timeout($seconds)
+        {
+            /** @var \Illuminate\Database\Query\Builder $instance */
+            return $instance->timeout($seconds);
         }
 
         /**
@@ -31854,7 +32223,7 @@ namespace  {
         }
 
         /**
-         * Run a truncate statement on the table.
+         * Run a "truncate" statement on the table.
          *
          * @return void
          * @static

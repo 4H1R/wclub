@@ -3,6 +3,7 @@ declare module 'ziggy-js' {
   interface RouteList {
     'boost.browser-logs': [];
     'sanctum.csrf-cookie': [];
+    'default.livewire.update': [];
     index: [];
     'contact-us': [];
     'about-us': [];

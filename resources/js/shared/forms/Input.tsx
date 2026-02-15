@@ -34,7 +34,6 @@ export default function Input({ attributes, inputClassName, ...props }: InputPro
             value={value as string}
             onChange={(e) => {
               if (hasError) clearErrors(props.name);
-              // @ts-expect-error it's not gonna be infinite
               setData(props.name, e.target.value);
             }}
             className={cn('input input-bordered w-full', inputClassName, {

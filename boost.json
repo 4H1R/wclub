@@ -1,0 +1,23 @@
+{
+    "agents": [
+        "cursor",
+        "gemini",
+        "opencode"
+    ],
+    "guidelines": true,
+    "herd_mcp": false,
+    "mcp": true,
+    "packages": [
+        "spatie/laravel-medialibrary",
+        "spatie/laravel-permission",
+        "filament/filament"
+    ],
+    "sail": true,
+    "skills": [
+        "pest-testing",
+        "inertia-react-development",
+        "tailwindcss-development",
+        "medialibrary-development",
+        "laravel-permission-development"
+    ]
+}
